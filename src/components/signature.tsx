@@ -7,7 +7,7 @@ export default function Signature() {
       <p className="block text-[10svw] font-bold sm:text-[10svh]">
         shreyan <span className="text-secondary">dey</span>
       </p>
-      <span className="absolute right-[5svw] -bottom-[2svw] block sm:right-[5svh] sm:-bottom-[2svh] sm:text-[4svh]">
+      <span className="absolute right-[5svw] -bottom-[2svw] block text-[4svw] sm:right-[5svh] sm:-bottom-[2svh] sm:text-[4svh]">
         a fullstack dev
       </span>
     </div>
