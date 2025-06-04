@@ -55,13 +55,13 @@ export const techStackItems = {
     },
     {
       id: 2,
-      name: "javascript",
-      icon: "/logos/js.png",
+      name: "cpp",
+      icon: "/logos/c++.png",
     },
     {
       id: 3,
-      name: "cpp",
-      icon: "/logos/c++.png",
+      name: "javascript",
+      icon: "/logos/js.png",
     },
   ],
   frontend: [
@@ -83,7 +83,7 @@ export const techStackItems = {
     {
       id: 4,
       name: "tailwindcss",
-      icon: "/logos/tailwind.png",
+      icon: "/logos/tailwindcss.png",
     },
     {
       id: 5,
@@ -94,35 +94,35 @@ export const techStackItems = {
   backend: [
     {
       id: 1,
-      name: "nodejs",
-      icon: "/logos/nodejs.png",
-    },
-    {
-      id: 2,
       name: "express",
       icon: "/logos/express.png",
     },
     {
+      id: 2,
+      name: "nodejs",
+      icon: "/logos/nodejs.png",
+    },
+    {
       id: 3,
       name: "postgresql",
-      icon: "/logos/Postgresql.png",
+      icon: "/logos/postgresql.png",
     },
   ],
   miscellaneous: [
     {
       id: 1,
+      name: "github",
+      icon: "/logos/Github.png",
+    },
+    {
+      id: 2,
       name: "docker",
       icon: "/logos/docker.png",
     },
     {
-      id: 2,
+      id: 3,
       name: "git",
       icon: "/logos/git.png",
-    },
-    {
-      id: 3,
-      name: "github",
-      icon: "/logos/Github.png",
     },
   ],
 };

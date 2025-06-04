@@ -11,3 +11,12 @@
   --color-foreground: var(--foreground);
   --color-secondary: var(--secondary);
 }
+
+body {
+  overflow-x: hidden;
+}
+
+html,
+body {
+  height: 100%;
+}

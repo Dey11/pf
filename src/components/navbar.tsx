@@ -12,7 +12,7 @@ export default function Navbar() {
   const { scrollYProgress } = useScroll();
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest > 0.1) {
+    if (latest > 0.02) {
       setIsScrolled(true);
     } else {
       setIsScrolled(false);
@@ -21,12 +21,21 @@ export default function Navbar() {
 
   return (
     <motion.nav
+      initial={{
+        y: 5,
+        filter: "blur(3px)",
+      }}
       animate={{
         y: isScrolled ? 5 : 0,
-        width: isScrolled ? "90%" : "100%",
+        width: isScrolled ? "98%" : "100%",
+        filter: "blur(0px)",
+        backgroundColor: isScrolled ? "rgba(0, 0, 0, 0.5)" : "rgba(0, 0, 0, 0)",
+        padding: isScrolled ? "0px 20px 5px 20px" : "",
+        borderRadius: isScrolled ? "20px" : "",
+        backdropFilter: isScrolled ? "blur(2px)" : "",
       }}
       transition={{
-        duration: 0.3,
+        duration: 0.2,
         ease: "easeInOut",
       }}
       className="sticky inset-x-0 top-0 z-50 mx-auto"
@@ -36,7 +45,7 @@ export default function Navbar() {
           <Link href={item.href} key={item.href}>
             <li
               className={cn(
-                "text-xl font-medium hover:underline",
+                "text-2xl font-medium hover:underline",
                 item.href === pathname && "text-secondary",
               )}
             >
@@ -57,10 +66,6 @@ const navItems = [
   {
     title: "projects",
     href: "/projects",
-  },
-  {
-    title: "skills",
-    href: "/skills",
   },
   {
     title: "blog",

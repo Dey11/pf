@@ -1,14 +1,15 @@
 import Signature from "@/components/signature";
-import { heroItems, locationUrl } from "@/lib/constants";
+import { heroItems, locationUrl, techStackItems } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="mt-5">
       <section className="mb-[13svh] flex min-h-[87svh] flex-col overflow-hidden">
-        <p className="pb-2">(000)</p>
+        <p className="pb-2 text-sm md:text-base">(000)</p>
 
         <div className="flex flex-row-reverse justify-center gap-2">
           {heroItems.map((item, idx) => (
@@ -33,19 +34,21 @@ export default function Home() {
                     item.title === "wabisabi design agency" && "h-8 w-36",
                   )}
                 />
-                <p className="cursor-default leading-tight">
+                <p className="cursor-default text-sm leading-tight md:text-base">
                   {item.description}
                 </p>
 
                 <Link
                   href={item.live}
                   target="_blank"
-                  className="w-fit underline underline-offset-2"
+                  className="w-fit text-sm underline underline-offset-2 md:text-base"
                 >
-                  live preview <span className="text-sm">→</span>
+                  live preview <span className="text-xs md:text-sm">→</span>
                 </Link>
 
-                <p className="cursor-default">tech stack</p>
+                <p className="cursor-default text-sm md:text-base">
+                  tech stack
+                </p>
               </div>
             </div>
           ))}
@@ -67,14 +70,14 @@ export default function Home() {
       </section>
 
       <section className="mb-20 flex flex-col overflow-hidden">
-        <p className="pb-2">(001)</p>
+        <p className="pb-2 text-sm md:text-base">(001)</p>
 
-        <h1 className="text-4xl font-semibold">
+        <h1 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
           about me<span className="text-secondary">.</span>
         </h1>
 
         <div className="flex flex-col justify-between gap-10 pt-10 lg:flex-row">
-          <p className="order-2 text-5xl font-bold lg:order-1">
+          <p className="order-2 text-2xl font-bold sm:text-3xl md:text-4xl lg:order-1 lg:text-5xl">
             it is{" "}
             <span className="bg-gradient-to-r from-[#576265] via-[#757A7B] to-[#576265] bg-clip-text text-transparent">
               not in the stars
@@ -87,25 +90,28 @@ export default function Home() {
               <br />
               ourselves
             </span>
-            <span className="text-secondary">.</span>
+            {/* <span className="text-secondary">.</span> */}
           </p>
 
-          <div className="order-1 flex max-w-md flex-col items-end justify-between gap-10 lg:order-2">
-            <p className="grow text-end text-2xl">
+          <div className="order-1 ml-auto flex max-w-md flex-col items-end justify-between gap-10 lg:order-2 lg:ml-0">
+            <p className="grow text-end text-lg sm:text-xl md:text-2xl">
               im a passionate cs undergrad always keen to learn about new
               technology<span className="text-secondary">.</span> currently
               trying to get my foundations right also a quick learner with
               unwavering determination
-              <span className="text-secondary">.</span>
+              {/* <span className="text-secondary">.</span> */}
             </p>
 
             <div className="group relative">
               <img
                 src="/logos/github.svg"
-                alt="github"
+                alt="GitHub logo"
                 className="absolute -top-4.5 right-2 -z-10 size-5 translate-y-0 transition-all duration-300 group-hover:translate-y-2"
               />
-              <button className="bg-background flex cursor-pointer items-center justify-center gap-1 rounded-full border border-white px-5 pt-1 pb-2 leading-none">
+              <button
+                aria-label="Read more about me"
+                className="bg-background flex cursor-pointer items-center justify-center gap-1 rounded-full border border-white px-5 pt-1 pb-2 text-sm leading-none md:text-base"
+              >
                 read more
                 <span>→</span>
               </button>
@@ -115,19 +121,134 @@ export default function Home() {
       </section>
 
       <section className="pb-20 text-end">
-        <p className="pb-2">(010)</p>
+        <p className="pb-2 text-sm md:text-base">(010)</p>
 
-        <h1 className="text-4xl font-semibold">
+        <h1 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
           tech stack {"<>"} skills<span className="text-secondary">.</span>
         </h1>
 
-        <div className="flex justify-between">
+        <div className="flex flex-col items-end gap-5 pt-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
           <div className="flex items-end gap-2">
-            <p className="text-6xl font-semibold">
+            <p className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
               /01<span className="text-secondary">.</span>
             </p>
-            <h2 className="text-5xl font-semibold">languages</h2>
+            <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl lg:text-5xl">
+              languages
+            </h2>
           </div>
+
+          <ul className="flex flex-col overflow-x-hidden pl-5">
+            <div className="flex flex-wrap justify-center gap-2 lg:-mr-5">
+              {techStackItems.languages.map((item) => (
+                <li key={item.id} className="group">
+                  <div className="relative size-20 sm:size-24 md:size-32 lg:-skew-x-[15deg]">
+                    <p className="absolute pl-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:skew-x-[15deg] lg:text-xl">
+                      {item.name}
+                      <span className="text-secondary">.</span>
+                    </p>
+                    <img
+                      src={item.icon}
+                      alt={item.name}
+                      className="size-20 sm:size-24 md:size-32"
+                    />
+                  </div>
+                </li>
+              ))}
+            </div>
+          </ul>
+        </div>
+
+        <div className="flex flex-col items-start gap-5 pt-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
+          <div className="flex items-end gap-2">
+            <p className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
+              /02<span className="text-secondary">.</span>
+            </p>
+            <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl lg:text-5xl">
+              frontend
+            </h2>
+          </div>
+
+          <ul className="flex flex-col overflow-x-hidden lg:pr-5">
+            <div className="flex flex-wrap gap-2 lg:-ml-5">
+              {techStackItems.frontend.map((item) => (
+                <li key={item.id} className="group">
+                  <div className="relative size-20 sm:size-24 md:size-32 lg:skew-x-[15deg]">
+                    <p className="absolute right-0 pr-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:-skew-x-[15deg] lg:text-xl">
+                      {item.name}
+                      <span className="text-secondary">.</span>
+                    </p>
+                    <img
+                      src={item.icon}
+                      alt={item.name}
+                      className="size-20 sm:size-24 md:size-32"
+                    />
+                  </div>
+                </li>
+              ))}
+            </div>
+          </ul>
+        </div>
+
+        <div className="flex flex-col items-end gap-5 pt-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
+          <div className="flex items-end gap-2">
+            <p className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
+              /03<span className="text-secondary">.</span>
+            </p>
+            <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl lg:text-5xl">
+              backend
+            </h2>
+          </div>
+
+          <ul className="flex flex-col overflow-x-hidden pl-5">
+            <div className="flex flex-wrap justify-center gap-2 lg:-mr-5">
+              {techStackItems.backend.map((item) => (
+                <li key={item.id} className="group">
+                  <div className="relative size-20 sm:size-24 md:size-32 lg:-skew-x-[15deg]">
+                    <p className="absolute pl-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:skew-x-[15deg] lg:text-xl">
+                      {item.name}
+                      <span className="text-secondary">.</span>
+                    </p>
+                    <img
+                      src={item.icon}
+                      alt={item.name}
+                      className="size-20 sm:size-24 md:size-32"
+                    />
+                  </div>
+                </li>
+              ))}
+            </div>
+          </ul>
+        </div>
+
+        <div className="flex flex-col items-start gap-5 pt-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
+          <div className="flex items-end gap-2">
+            <p className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
+              /04<span className="text-secondary">.</span>
+            </p>
+            <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl lg:text-5xl">
+              miscellaneous
+            </h2>
+          </div>
+
+          <ul className="flex flex-col overflow-x-hidden pr-5">
+            <div className="flex flex-wrap justify-center gap-2 lg:-ml-5">
+              {techStackItems.miscellaneous.map((item) => (
+                <li key={item.id} className="group">
+                  <div className="relative size-20 sm:size-24 md:size-32 lg:skew-x-[15deg]">
+                    <p className="absolute right-0 pr-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:-skew-x-[15deg] lg:text-xl">
+                      {item.name}
+                      <span className="text-secondary">.</span>
+                    </p>
+                    <img
+                      src={item.icon}
+                      alt={item.name}
+                      className="size-20 sm:size-24 md:size-32"
+                    />
+                  </div>
+                </li>
+              ))}
+            </div>
+          </ul>
         </div>
       </section>
     </div>

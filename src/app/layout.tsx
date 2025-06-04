@@ -3,6 +3,8 @@ import { Darker_Grotesque } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/container";
 import Navbar from "@/components/navbar";
+import { unstable_ViewTransition as ViewTransition } from "react";
+import ScrollToTop from "@/components/scroll-to-top";
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ["latin"],
@@ -20,13 +22,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ scrollBehavior: "smooth" }}>
       <body
         className={`${darkerGrotesque.className} bg-background text-foreground antialiased`}
       >
+        <ScrollToTop />
         <Container>
-          <Navbar />
-          {children}
+          <ViewTransition>
+            <Navbar />
+            {children}
+          </ViewTransition>
         </Container>
       </body>
     </html>
