@@ -1,9 +1,8 @@
+import ContactForm from "@/components/contact-form";
 import Signature from "@/components/signature";
 import { heroItems, locationUrl, techStackItems } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -21,9 +20,9 @@ export default function Home() {
                 backgroundPosition: "center",
                 height: `calc(60svh - ${idx * 10}svh)`,
               }}
-              className={`group relative lg:w-[341px]`}
+              className={`group relative w-full last:hidden even:hidden sm:even:block lg:w-[341px] lg:first:block lg:last:block`}
             >
-              <div className="absolute inset-x-0 bottom-0 flex h-full flex-col justify-end gap-3 bg-gradient-to-t from-black/80 to-black/0 p-4 text-white opacity-0 backdrop-blur-[2px] transition-opacity delay-75 duration-300 group-hover:opacity-100">
+              <div className="absolute inset-x-0 bottom-0 flex h-full flex-col justify-end gap-3 bg-gradient-to-t from-black/80 to-black/0 p-4 text-white opacity-100 backdrop-blur-[2px] transition-opacity delay-75 duration-300 group-hover:opacity-100 lg:opacity-0">
                 <img
                   src={item.titleLogo}
                   alt={item.title}
@@ -158,7 +157,7 @@ export default function Home() {
           </ul>
         </div>
 
-        <div className="flex flex-col items-start gap-5 pt-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
+        <div className="flex flex-col items-start gap-5 pt-10 lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-0">
           <div className="flex items-end gap-2">
             <p className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
               /02<span className="text-secondary">.</span>
@@ -220,7 +219,7 @@ export default function Home() {
           </ul>
         </div>
 
-        <div className="flex flex-col items-start gap-5 pt-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
+        <div className="flex flex-col items-start gap-5 pt-10 lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-0">
           <div className="flex items-end gap-2">
             <p className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
               /04<span className="text-secondary">.</span>
@@ -249,6 +248,43 @@ export default function Home() {
               ))}
             </div>
           </ul>
+        </div>
+      </section>
+
+      <section id="contact" className="py-10 md:py-20 md:pt-0">
+        <p className="pb-2 text-sm md:text-base">(011)</p>
+
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
+          <div className="flex flex-col gap-5 pb-5 md:gap-8 md:pb-0">
+            <h1 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
+              connect with{" "}
+              <span className="text-secondary tracking-tighter">dey.</span>
+            </h1>
+
+            <p className="max-w-sm text-lg">
+              i’m always open to new opportunities and conversations. drop me a
+              message, and let’s connect about your role, ideas or projects!
+            </p>
+
+            <div className="flex gap-2">
+              <Link href="https://x.com/dey_twts" target="_blank">
+                <img
+                  src="/logos/twt.svg"
+                  alt="Dey's Twitter"
+                  className="size-5"
+                />
+              </Link>
+              <Link href="https://github.com/dey11" target="_blank">
+                <img
+                  src="/logos/github-form.svg"
+                  alt="Dey's GitHub"
+                  className="size-5"
+                />
+              </Link>
+            </div>
+          </div>
+
+          <ContactForm />
         </div>
       </section>
     </div>

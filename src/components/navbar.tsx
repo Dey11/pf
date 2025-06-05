@@ -73,6 +73,6 @@ const navItems = [
   },
   {
     title: "contact",
-    href: "/contact",
+    href: "/#contact",
   },
 ];
