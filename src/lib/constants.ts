@@ -35,14 +35,14 @@ export const heroItems = [
     readMore: "/projects/wabisabi",
   },
   {
-    title: "clarityhub",
-    titleLogo: "/landing-images/clarityhub-logo.png",
-    imageUrl: "/landing-images/clarityhub.png",
+    title: "drites",
+    titleLogo: "/landing-images/drites-logo.png",
+    imageUrl: "/landing-images/drites.png",
     description: "a simple blogging platform.",
-    live: "https://clarityhub.site",
-    github: "https://github.com/dey11/clarityhub",
+    live: "https://drites.site",
+    github: "https://github.com/dey11/drites",
     techStack: ["typescript", "nextjs", "prisma", "postgresql", "clerk"],
-    readMore: "/projects/clarityhub",
+    readMore: "/projects/drites",
   },
 ];
 

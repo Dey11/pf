@@ -1,10 +1,10 @@
-import { default as UseTransitionBlog } from "@/blog-content/use-transition.mdx";
+import { default as UseOptimisticBlog } from "@/blog-content/use-optimistic-hook.mdx";
 import { getBlogBySlug } from "@/blog-content/metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata() {
-  const blog = getBlogBySlug("use-transition-hook");
+  const blog = getBlogBySlug("use-optimistic-hook");
 
   if (!blog) {
     return {
@@ -34,7 +34,7 @@ export async function generateMetadata() {
 }
 
 export default function Page() {
-  const blog = getBlogBySlug("use-transition-hook");
+  const blog = getBlogBySlug("use-optimistic-hook");
 
   if (!blog) {
     notFound();
@@ -77,7 +77,7 @@ export default function Page() {
       </header>
 
       {/* Blog content */}
-      <UseTransitionBlog />
+      <UseOptimisticBlog />
     </div>
   );
 }

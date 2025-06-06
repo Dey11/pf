@@ -9,13 +9,13 @@ export interface BlogMetadata {
 
 export const blogPosts: BlogMetadata[] = [
   {
-    slug: "use-transition-hook",
-    title: "React 19's useTransition Hook",
+    slug: "use-optimistic-hook",
+    title: "React 19's useOptimistic Hook",
     description:
-      "Learn how React 19's useTransition hook creates smooth, responsive user interfaces by managing state updates efficiently.",
-    publishedAt: "2024-01-15",
-    readTime: "8 min read",
-    tags: ["React", "React 19", "Performance", "Hooks"],
+      "Learn how React 19's useOptimistic hook creates smooth, responsive user interfaces by managing state updates efficiently.",
+    publishedAt: "2025-06-06",
+    readTime: "10 min read",
+    tags: ["React", "React 19", "Performance", "Hooks", "useOptimistic"],
   },
 ];
 

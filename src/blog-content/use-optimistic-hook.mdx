@@ -1,0 +1,150 @@
+# What is useOptimistic hook in React?
+
+The new useOptimistic hook was released in React 19 as a stable hook. It has been around for a long time in an unstable version but it is finally stable and ready for production use. The useOptimistic hook is used to optimistically update the UI (in the frontend, which is React or Nextjs in our case) when the user interacts with something, even before the data is received and registered in the backend. Thus, the hook gives a very snappy user experience - ideal for any sort of web apps where you prioritize user experience.
+
+## Why use this hook? Why not just go about the traditional way and update the UI after it registers in the backend?
+
+Yes we can. This hook is just an add on benefit one could use in their website to improve user experience - this is not a necessity. However, now that it has been released by React as a hook and is easy to use, one should use this to improve the quality of the website, if time allows.
+
+## When to use this hook?
+
+When something is changed in the UI, the data is sent to the backend to register that change. The backend then returns a success response, after which the UI changes. These backend calls take time and hence the user has to wait for 1-2 seconds before they can see the UI update after their interaction. This is not a very pleasant experience.
+
+This is where useOptimistic hook comes into action. Using this hook, we can update the UI immediately while sending a backend request to register the interaction. If the request succeeds, the UI stays as is. If the request fails due to any reason, the UI then reverts back to its original state (as it was, before the interaction was made), to reflect that it was not successful.
+
+## How to use this hook
+
+Now I will go through how I used this hook in this blog application for the like button. If try liking this post, you can see the like button's color changes immediately but the like counter increases after a while. This happens because I am changing the like button's color using useOptimistic hook but changing the counter after confirmation comes from that backend that it has been registered in the database.
+
+### Syntax
+
+```typescript
+const [optimisticState, addOptimistic] = useOptimistic(state, updateFn);
+```
+
+**Note:** As with all React hooks, this hook can only be used in client components. So even if you want the page to be server rendered, ensure that the like button is client component.
+
+### Backend for the like interaction
+
+Before creating the ui for the hook, let's create the backend first where we will be updating the interaction and registering in the backend. Since I am using Nextjs, I will create a server action for this. Make a file named `interaction.ts` in `src/app/actions` directory.
+
+In `src/app/actions/interaction.ts`:
+
+```typescript
+export async function handleLikeAction({
+  postId,
+  liked,
+}: {
+  postId: string;
+  liked: boolean;
+}): Promise<{
+  success: boolean;
+  count: number;
+}> {
+  // increase the like counter in your db here, against the postId
+}
+```
+
+Let me explain this code:
+
+- **postId** (string) is needed to know which post has been liked. So we can update the database accordingly.
+- **liked** (boolean) tells us whether the post has been liked or unliked (if it was liked from before). This basically tells us the new state which we want to store in the database, true or false.
+
+We return 2 things - success and count:
+
+- **success** (boolean) tells the frontend whether the backend call was a success or a failure. Note that if it returns success, the frontend UI will not change further since it had already optimistically been changed before. However, if false, the UI reverts back to its original state.
+- **count** (number) returns the new counter for the number of likes on the post. This therefore is not optimistically updated, as was talked about earlier in the blog.
+
+### Now, lets move to the frontend
+
+In the frontend, lets first create the UI and worry about the hooks later. So my LikeButton looks something like this:
+
+```typescript
+type LikeButtonProps = {
+  isLiked: boolean; // whether the button is liked from before already
+  disabled?: boolean; // if the user is not signed in, the like button should not work
+  likes: number; // the count of likes on this blog post
+  postId: string; // the id of the blog
+};
+
+export default function LikeButton({
+  isLiked,
+  disabled,
+  likes,
+  postId,
+}: LikeButtonProps) {
+  return (
+    <form
+      onClick={handleSubmit}
+      className={cn( // cn is just an utility component that helps merging tailwind classes effectively
+        "flex cursor-pointer items-center gap-2",
+        disabled && "pointer-events-none" // if disabled, the like button should not work and hence clicking should not be possible
+      )}
+    >
+      <Heart
+        className={cn(
+          "size-4",
+          optimisticLike && "fill-red-500 text-brand-section"
+        )}
+      />
+      <span className={cn("text-sm", isPending && "opacity-50")}>
+        {likeCount} Likes
+      </span>
+    </form>
+  );
+}
+```
+
+The props have already been explained in comments. Let us go over the component:
+
+- We are using a form component so that we are able to interact with the backend.
+- Heart component is from Lucide icons. We will go over optimisticLike when we come to it.
+- likeCount is another state that basically tells the count of the number of liked in the blog. This does not update optimistically, as mentioned before.
+
+Now, lets use the hooks:
+
+```typescript
+const [userLiked, setUserLiked] = useState<boolean>(isLiked);
+const [likeCount, setLikeCount] = useState<number>(likes);
+const [optimisticLike, setOptimisticLike] = useOptimistic<boolean>(userLiked);
+const [isPending, startTransition] = useTransition();
+```
+
+- The **userLiked** hook will update optimistically. This will be either true/false depending upon whether the post was liked from before or will be liked in the future.
+- **likeCount** state will store the data that is received from the props - the initial like count. This does not update optimistically even if the user likes or dislikes the post now.
+- `const [optimisticLike, setOptimisticLike] = useOptimistic<boolean>(userLiked);` is where we use the useOptimistic hook. It receives a boolean whether the button is liked or not, from before. The setOptimisticLike will be used in the handleSubmit function, to update the state optimistically.
+- The **useTransition** hook is another new hook by React that gives us pending states out of the box for form submissions. So we no longer have to use another state defined by ourself just to update the pending states. This is one of the main reasons for using form component for this button.
+
+Finally, let us go through the handleSubmit function:
+
+```typescript
+async function handleSubmit() {
+  startTransition(async () => {
+    try {
+      setOptimisticLike(!optimisticLike);
+      const { count, success } = await handleLike({
+        postId,
+        liked: !userLiked,
+      });
+      if (success) {
+        setUserLiked(!userLiked);
+        setLikeCount(count);
+      } else {
+        console.error("Like operation failed");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  });
+}
+```
+
+We use the startTransition hook inside the handleSubmit function. Firstly, we change the optimisticLike to the opposite of what it was. So if the post was liked from before, the setOptimisticLike will change the optimisticLike state to false. This change is now showed in the frontend.
+
+Then we call the server action from the backend and check if the call was a success or failure. If the backend call was a success, we update the count as well as the original boolean like state - the userLiked state. Otherwise, we do not touch the userLiked state and it automatically reverts back to the past state (if the backend call was a failure).
+
+Worth noting down that userLiked is the single source of truth that the useOptimistic hook follows. If after the backend call the userLiked changes, then the optimisticLike stays the same. If not, the optimisticLike reverts back to its original state. This is why we pass userLiked state to the useOptimistic hook.
+
+## Conclusion
+
+Thus, this is how one could use useOptimistic hook for like buttons in their React project. The hook can also be used in other ways, like mentioned in the official [React docs](https://react.dev/reference/react/useOptimistic). Here is the open source code of this website, including the useOptimistic hook demo, on my [GitHub](https://github.com/Dey11/drites). Feel free to ask doubts in the comments, lets learn together.
