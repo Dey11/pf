@@ -68,8 +68,8 @@ const navItems = [
     href: "/projects",
   },
   {
-    title: "blog",
-    href: "/blog",
+    title: "blogs",
+    href: "/blogs",
   },
   {
     title: "contact",
