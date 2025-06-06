@@ -43,6 +43,7 @@ export default function HeroSection() {
                 className={cn(
                   "size-10",
                   item.title === "clarityhub" && "h-8 w-28",
+                  item.title === "drites" && "h-6 w-24",
                   item.title === "wabisabi design agency" && "h-8 w-36",
                 )}
               />

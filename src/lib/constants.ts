@@ -21,7 +21,7 @@ export const heroItems = [
       "docker",
       "bullmq",
     ],
-    readMore: "/projects/pdx",
+    readMore: "/projects#pdx",
   },
   {
     title: "wabisabi design agency",
@@ -32,7 +32,7 @@ export const heroItems = [
     live: "https://wabisabi.agency",
     github: "https://github.com/dey11/wabisabi-agency",
     techStack: ["typescript", "nextjs", "tailwind", "framer-motion"],
-    readMore: "/projects/wabisabi",
+    readMore: "/projects#wabisabi",
   },
   {
     title: "drites",
@@ -42,7 +42,7 @@ export const heroItems = [
     live: "https://drites.site",
     github: "https://github.com/dey11/drites",
     techStack: ["typescript", "nextjs", "prisma", "postgresql", "clerk"],
-    readMore: "/projects/drites",
+    readMore: "/projects#drites",
   },
 ];
 

@@ -1,9 +1,8 @@
 import ContactForm from "@/components/contact-form";
 import HeroSection from "@/components/hero-section";
-import Signature from "@/components/signature";
-import { heroItems, locationUrl, techStackItems } from "@/lib/constants";
-import { cn } from "@/lib/utils";
+import { techStackItems } from "@/lib/constants";
 import Link from "next/link";
+import { Mail } from "lucide-react";
 
 export default function Home() {
   return (
@@ -222,6 +221,9 @@ export default function Home() {
                   alt="Dey's GitHub"
                   className="size-5"
                 />
+              </Link>
+              <Link href="mailto:deydevelops@gmail.com" target="_blank">
+                <Mail className="size-5" />
               </Link>
             </div>
           </div>
