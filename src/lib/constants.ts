@@ -126,3 +126,156 @@ export const techStackItems = {
     },
   ],
 };
+
+export const projects = [
+  {
+    id: "0001",
+    name: "pdx",
+    tags: ["typescript", "nextjs", "gemini", "bullmq", "authjs", "postgresql"],
+    description: `Generates study material pdfs (theory/qna) with AI from syllabus - can exceed 100 pages of content, in one click.
+      • Worker backend with Puppeteer (for generating PDFs) and Docker for easy deployment
+      • Generates study materials in a redis queue system and Bullmq workers
+      • AI-powered content generation with comprehensive study materials`,
+    live: "https://usepdx.tech",
+    github: "https://github.com/dey11/pdx",
+    image: "/projects/pdx.png",
+    createdAt: "2025",
+  },
+  {
+    id: "0010",
+    name: "clarityhub",
+    tags: ["typescript", "nextjs", "gemini", "tailwindcss", "clerk", "prisma"],
+    description: `Generates roadmaps and quizzes using AI for learning purposes.
+      • AI-powered roadmap generation for structured learning paths
+      • Interactive quizzes with intelligent question generation
+      • User authentication and progress tracking`,
+    live: "https://clarityhub.vercel.app",
+    github: "https://github.com/dey11/clarity-hub",
+    image: "/projects/clarityhub.png",
+    createdAt: "2025",
+  },
+  {
+    id: "0011",
+    name: "wabisabi",
+    tags: ["typescript", "nextjs", "tailwind", "framer-motion", "shadcn"],
+    description: `A design agency's portfolio site with micro-interactions and animations.
+      • Clean, modern design showcasing agency work
+      • Custom animations and micro-interactions throughout
+      • Built from scratch without heavy dependencies`,
+    live: "https://wabisabi.agency",
+    github: "https://github.com/dey11/wabisabi-agency",
+    image: "/landing-images/wabisabi.png",
+    createdAt: "2025",
+  },
+  {
+    id: "0100",
+    name: "real estate agent",
+    tags: ["typescript", "nextjs", "tailwind", "gemini", "pinecone"],
+    description: `A voice-based chatbot for real estate sales and property information.
+      • Voice-based interaction using Gemini Live API
+      • RAG system with 100 dummy property data through tool calling
+      • Real-time streaming voice API through websockets`,
+    live: "https://convoagent.vercel.app/",
+    github: "https://github.com/Dey11/gemini-conversational-agent",
+    image: "/projects/realestate.png",
+    createdAt: "2025",
+  },
+  {
+    id: "0101",
+    name: "tinder scraper",
+    tags: ["typescript", "nextjs", "nodejs", "express", "postgresql", "prisma"],
+    description: `Reverse engineered Tinder API for educational profile scraping.
+      • Fuzzy match names from scraped Tinder profiles
+      • Image matching using vector embeddings with Pinecone
+      • Location-based scraping with 7-day caching mechanism`,
+    live: null,
+    github: "https://github.com/Dey11/Tinder-scraper",
+    image: "/projects/placeholder.png",
+    createdAt: "2025",
+  },
+  {
+    id: "0110",
+    name: "drites",
+    tags: ["typescript", "nextjs", "prisma", "postgresql", "clerk"],
+    description: `A personal blogging platform with markdown support.
+      • Markdown-based content creation and editing
+      • User authentication and authorization
+      • Clean, minimalist design for reading experience`,
+    live: "https://www.drites.site",
+    github: "https://github.com/dey11/drites",
+    image: "/projects/drites.png",
+    createdAt: "2025",
+  },
+  {
+    id: "0111",
+    name: "ai chat website",
+    tags: [
+      "typescript",
+      "nextjs",
+      "gemini",
+      "tailwindcss",
+      "shadcn",
+      "zustand",
+    ],
+    description: `Simple 1-page implementation of an AI Chat application.
+      • Multiple chat session management (create, select, delete)
+      • Persistent storage using Zustand persistence
+      • Auto-generated chat titles based on conversation content`,
+    live: "https://chatappui.vercel.app",
+    github: "https://github.com/dey11/chatappui",
+    image: "/projects/aichat.png",
+    createdAt: "2025",
+  },
+  {
+    id: "1000",
+    name: "vidbox",
+    tags: ["typescript", "nextjs", "postgresql"],
+    description: `Movie and series streaming platform (freelance project).
+      • Comprehensive media streaming functionality
+      • User-friendly interface for content discovery
+      • Database-driven content management`,
+    live: "https://vidbox.to",
+    github: null,
+    image: "/projects/vidbox.png",
+    createdAt: "2024",
+  },
+  {
+    id: "1001",
+    name: "dashboard analytics ui",
+    tags: ["reactjs", "charts", "tailwindcss"],
+    description: `Comprehensive dashboard interface with data visualization.
+      • Interactive charts and statistics visualization
+      • User management and custom sidebar navigation
+      • Designed for desktop screens (1200px+)`,
+    live: "https://dey-dashboard.vercel.app",
+    github: "https://github.com/Dey11/dashboard-analytics-ui",
+    image: "/projects/dashboard.png",
+    createdAt: "2025",
+  },
+  {
+    id: "1010",
+    name: "chat backend socketio",
+    tags: ["nodejs", "socketio", "redis", "jwt", "mongodb", "docker"],
+    description: `Real-time chat system backend with authentication and rate limiting.
+      • User authentication with JWT and bcrypt password hashing
+      • Real-time messaging with Socket.io authentication
+      • Rate limiting and caching with Redis, Docker containerization`,
+    live: null,
+    github: "https://github.com/Dey11/Chat-System-Backend-with-Socketio",
+    image: "/projects/placeholder.png",
+    createdAt: "2025",
+  },
+  {
+    id: "1011",
+    name: "yunami discord bot",
+    tags: ["discordjs", "mongodb", "cron"],
+    description: `Discord bot for tracking currencies in Anigame discord game.
+      • Automated currency tracking and notifications
+      • Used by 200+ users daily before shutdown
+      • Scheduled tasks with cron jobs for regular updates`,
+    live: null,
+    github: "https://github.com/Dey11/yunami",
+    image: "/projects/placeholder.png",
+    createdAt: "2023",
+  },
+];

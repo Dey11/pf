@@ -48,13 +48,15 @@ export default function Home() {
                 alt="GitHub logo"
                 className="absolute -top-4.5 right-2 -z-10 size-5 translate-y-0 transition-all duration-300 group-hover:translate-y-2"
               />
-              <button
-                aria-label="Read more about me"
-                className="bg-background flex cursor-pointer items-center justify-center gap-1 rounded-full border border-white px-5 pt-1 pb-2 text-sm leading-none md:text-base"
-              >
-                read more
-                <span>→</span>
-              </button>
+              <Link href="https://github.com/dey11" target="_blank">
+                <button
+                  aria-label="Read more about me"
+                  className="bg-background flex cursor-pointer items-center justify-center gap-1 rounded-full border border-white px-5 pt-1 pb-2 text-sm leading-none md:text-base"
+                >
+                  read more
+                  <span>→</span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
