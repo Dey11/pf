@@ -49,7 +49,7 @@ export default function Page() {
   };
 
   return (
-    <div className="relative pb-10">
+    <div className="relative py-10">
       <Link
         href="/blogs"
         className="hover:text-secondary mb-8 inline-flex items-center gap-2 text-white/60 no-underline! transition-colors hover:underline!"

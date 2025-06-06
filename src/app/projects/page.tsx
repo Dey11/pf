@@ -105,11 +105,11 @@ function ProjectCard({ project }: ProjectCardProps) {
 export default function ProjectsPage() {
   return (
     <section>
-      <div className="mb-10 px-2">
-        <h1 className="pt-10 text-2xl font-semibold md:pt-20 md:text-3xl lg:text-5xl">
+      <div className="mb-10 pt-10">
+        <h1 className="text-5xl font-semibold md:text-3xl lg:text-5xl">
           projects<span className="text-secondary">.</span>
         </h1>
-        <p className="mt-4 max-w-2xl text-lg text-white/80">
+        <p className="mt-4 max-w-2xl text-lg">
           a collection of my work spanning web applications, ai integrations,
           and full-stack solutions
         </p>

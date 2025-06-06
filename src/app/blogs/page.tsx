@@ -58,7 +58,7 @@ export default function BlogsPage() {
   return (
     <section className="">
       <div className="mb-10">
-        <h1 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
+        <h1 className="pt-2 text-2xl font-semibold md:text-3xl lg:text-5xl">
           thoughts & insights<span className="text-secondary">.</span>
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-white/80">
