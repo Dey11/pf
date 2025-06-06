@@ -28,14 +28,14 @@ export default function ContactForm() {
             type="text"
             id="name"
             placeholder="full name*"
-            className="w-full rounded-md border border-gray-300 p-2"
+            className="w-full rounded-md border-2 border-gray-300 p-2"
             name="name"
           />
           <input
             type="tel"
             id="phone"
             placeholder="phone"
-            className="w-full rounded-md border border-gray-300 p-2"
+            className="w-full rounded-md border-2 border-gray-300 p-2"
             name="phone"
           />
         </div>
@@ -43,13 +43,13 @@ export default function ContactForm() {
           type="email"
           id="email"
           placeholder="email*"
-          className="w-full rounded-md border border-gray-300 p-2"
+          className="w-full rounded-md border-2 border-gray-300 p-2"
           name="email"
         />
         <textarea
           id="subject"
           placeholder="subject*"
-          className="w-full rounded-md border border-gray-300 p-2"
+          className="w-full rounded-md border-2 border-gray-300 p-2"
           name="subject"
         />
 
