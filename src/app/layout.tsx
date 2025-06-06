@@ -5,6 +5,7 @@ import Container from "@/components/container";
 import Navbar from "@/components/navbar";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import ScrollToTop from "@/components/scroll-to-top";
+import { Analytics } from "@vercel/analytics/next";
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body
         className={`${darkerGrotesque.className} bg-background text-foreground antialiased`}
       >
+        <Analytics />
         <ScrollToTop />
         <Container>
           <ViewTransition>
