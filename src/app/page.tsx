@@ -35,10 +35,11 @@ export default function Home() {
 
           <div className="order-1 ml-auto flex max-w-md flex-col items-end justify-between gap-10 lg:order-2 lg:ml-0">
             <p className="grow text-end text-lg sm:text-xl md:text-2xl">
-              im a passionate cs undergrad always keen to learn about new
+              im a passionate cs undergrad, always keen to learn about new
               technology<span className="text-secondary">.</span> currently
-              trying to get my foundations right also a quick learner with
-              unwavering determination
+              trying to get my foundations right
+              <span className="text-secondary">.</span> also a quick learner
+              with unwavering determination
               {/* <span className="text-secondary">.</span> */}
             </p>
 
