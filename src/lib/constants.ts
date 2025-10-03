@@ -34,15 +34,26 @@ export const heroItems = [
     techStack: ["typescript", "nextjs", "tailwind", "framer-motion"],
     readMore: "/projects#wabisabi",
   },
+  // {
+  //   title: "drites",
+  //   titleLogo: "/landing-images/drites-logo.png",
+  //   imageUrl: "/landing-images/drites.png",
+  //   description: "a simple blogging platform.",
+  //   live: "https://drites.site",
+  //   github: "https://github.com/dey11/drites",
+  //   techStack: ["typescript", "nextjs", "prisma", "postgresql", "clerk"],
+  //   readMore: "/projects#drites",
+  // },
   {
-    title: "drites",
-    titleLogo: "/landing-images/drites-logo.png",
-    imageUrl: "/landing-images/drites.png",
-    description: "a simple blogging platform.",
-    live: "https://drites.site",
-    github: "https://github.com/dey11/drites",
-    techStack: ["typescript", "nextjs", "prisma", "postgresql", "clerk"],
-    readMore: "/projects#drites",
+    title: "ballarat box sports landing",
+    titleLogo: "/landing-images/ballarat-logo.png",
+    imageUrl: "/landing-images/ballarat.png",
+    description:
+      "a landing page for an indoor sports facility in ballarat. a freelance project.",
+    live: "https://ballaratsports.vercel.app",
+    github: "https://github.com/dey11/ballarat",
+    techStack: ["nextjs", "tailwindcss", "typescript", "framer-motion"],
+    readMore: "/projects#ballarat",
   },
 ];
 
@@ -143,6 +154,19 @@ export const projects = [
   },
   {
     id: "0010",
+    name: "ballarat box sports landing",
+    tags: ["typescript", "nextjs", "tailwindcss", "framer-motion"],
+    description: `A landing page for an indoor sports facility in ballarat. a freelance project.
+      • Clean, modern design showcasing agency work
+      • Custom animations and micro-interactions throughout
+      • Built from scratch without heavy dependencies`,
+    live: "https://ballaratsports.vercel.app",
+    github: "https://github.com/dey11/ballarat",
+    image: "/projects/ballarat.png",
+    createdAt: "2025",
+  },
+  {
+    id: "0011",
     name: "clarityhub",
     tags: ["typescript", "nextjs", "gemini", "tailwindcss", "clerk", "prisma"],
     description: `Generates roadmaps and quizzes using AI for learning purposes.
@@ -155,7 +179,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "0011",
+    id: "0100",
     name: "wabisabi",
     tags: ["typescript", "nextjs", "tailwind", "framer-motion", "shadcn"],
     description: `A design agency's portfolio site with micro-interactions and animations.
@@ -168,7 +192,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "0100",
+    id: "0101",
     name: "real estate agent",
     tags: ["typescript", "nextjs", "tailwind", "gemini", "pinecone"],
     description: `A voice-based chatbot for real estate sales and property information.
@@ -181,7 +205,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "0101",
+    id: "0110",
     name: "tinder scraper",
     tags: ["typescript", "nextjs", "nodejs", "express", "postgresql", "prisma"],
     description: `Reverse engineered Tinder API for educational profile scraping.
@@ -194,7 +218,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "0110",
+    id: "0111",
     name: "drites",
     tags: ["typescript", "nextjs", "prisma", "postgresql", "clerk"],
     description: `A personal blogging platform with markdown support.
@@ -207,7 +231,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "0111",
+    id: "1000",
     name: "ai chat website",
     tags: [
       "typescript",
@@ -227,7 +251,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "1000",
+    id: "1001",
     name: "vidbox",
     tags: ["typescript", "nextjs", "postgresql"],
     description: `Movie and series streaming platform (freelance project).
@@ -240,7 +264,7 @@ export const projects = [
     createdAt: "2024",
   },
   {
-    id: "1001",
+    id: "1010",
     name: "dashboard analytics ui",
     tags: ["reactjs", "charts", "tailwindcss"],
     description: `Comprehensive dashboard interface with data visualization.
@@ -253,7 +277,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "1010",
+    id: "1011",
     name: "chat backend socketio",
     tags: ["nodejs", "socketio", "redis", "jwt", "mongodb", "docker"],
     description: `Real-time chat system backend with authentication and rate limiting.
@@ -266,7 +290,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "1011",
+    id: "1100",
     name: "yunami discord bot",
     tags: ["discordjs", "mongodb", "cron"],
     description: `Discord bot for tracking currencies in Anigame discord game.

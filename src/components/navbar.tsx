@@ -32,7 +32,7 @@ export default function Navbar() {
         backgroundColor: isScrolled ? "rgba(0, 0, 0, 0.5)" : "rgba(0, 0, 0, 0)",
         padding: isScrolled ? "0px 20px 5px 20px" : "",
         borderRadius: isScrolled ? "20px" : "",
-        backdropFilter: isScrolled ? "blur(2px)" : "",
+        backdropFilter: isScrolled ? "blur(5px)" : "",
       }}
       transition={{
         duration: 0.2,
@@ -42,14 +42,15 @@ export default function Navbar() {
     >
       <ul className="flex items-center justify-between">
         {navItems.map((item) => (
-          <Link href={item.href} key={item.href}>
+          <Link href={item.href} key={item.href} className="group">
             <li
               className={cn(
-                "text-2xl font-medium hover:underline",
+                "relative text-2xl font-medium",
                 item.href === pathname && "text-secondary",
               )}
             >
               {item.title}
+              <span className="bg-secondary absolute bottom-0 left-0 z-100 h-0.5 w-full scale-x-0 transition-all duration-150 group-hover:scale-x-100" />
             </li>
           </Link>
         ))}

@@ -1,5 +1,8 @@
 import ContactForm from "@/components/contact-form";
 import HeroSection from "@/components/hero-section";
+import ExperienceSection from "@/components/experience-section";
+import HobbiesSection from "@/components/hobbies-section";
+import NowSection from "@/components/now-section";
 import { techStackItems } from "@/lib/constants";
 import Link from "next/link";
 import { Mail } from "lucide-react";
@@ -30,17 +33,15 @@ export default function Home() {
               <br />
               ourselves
             </span>
-            {/* <span className="text-secondary">.</span> */}
           </p>
 
           <div className="order-1 ml-auto flex max-w-md flex-col items-end justify-between gap-10 lg:order-2 lg:ml-0">
             <p className="grow text-end text-lg sm:text-xl md:text-2xl">
-              im a passionate cs undergrad, always keen to learn about new
-              technology<span className="text-secondary">.</span> currently
-              trying to get my foundations right
-              <span className="text-secondary">.</span> also a quick learner
-              with unwavering determination
-              {/* <span className="text-secondary">.</span> */}
+              i write code, collect domains i'll probably never use, and
+              over-engineer projects until they stop feeling like side projects
+              <span className="text-secondary">.</span> always learning, always
+              shipping<span className="text-secondary">.</span> looking for
+              like-minded people to collab with
             </p>
 
             <div className="group relative">
@@ -195,8 +196,14 @@ export default function Home() {
         </div>
       </section>
 
+      <NowSection />
+
+      <ExperienceSection />
+
+      <HobbiesSection />
+
       <section id="contact" className="py-10 md:py-20 md:pt-0">
-        <p className="pb-2 text-sm md:text-base">(011)</p>
+        <p className="pb-2 text-sm md:text-base">(110)</p>
 
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
           <div className="flex flex-col gap-5 pb-5 md:gap-8 md:pb-0">
