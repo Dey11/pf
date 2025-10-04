@@ -167,15 +167,24 @@ export const projects = [
   },
   {
     id: "0011",
-    name: "clarityhub",
-    tags: ["typescript", "nextjs", "gemini", "tailwindcss", "clerk", "prisma"],
-    description: `Generates roadmaps and quizzes using AI for learning purposes.
-      • AI-powered roadmap generation for structured learning paths
-      • Interactive quizzes with intelligent question generation
-      • User authentication and progress tracking`,
-    live: "https://clarityhub.vercel.app",
-    github: "https://github.com/dey11/clarity-hub",
-    image: "/projects/clarityhub.png",
+    name: "venturassist",
+    tags: [
+      "typescript",
+      "nextjs",
+      "tailwindcss",
+      "better-auth",
+      "prisma",
+      "postgresql",
+      "bullmq",
+      "ai sdk",
+    ],
+    description: `AI-powered platform for automating and enhancing VC due diligence, risk assessment, and competitive analysis.
+      • Multi-agent system processes pitch decks and documents for deep insights and risk scoring
+      • RedLens agent delivers forensic, market, talent, and contrarian risk analysis
+      • Automated competitor discovery, market positioning, and interactive chat for real-time insights`,
+    live: "https://venturassist.xyz",
+    github: "https://github.com/dey11/VenturAssist",
+    image: "/projects/venturassist.png",
     createdAt: "2025",
   },
   {
@@ -193,6 +202,19 @@ export const projects = [
   },
   {
     id: "0101",
+    name: "clarityhub",
+    tags: ["typescript", "nextjs", "gemini", "tailwindcss", "clerk", "prisma"],
+    description: `Generates roadmaps and quizzes using AI for learning purposes.
+      • AI-powered roadmap generation for structured learning paths
+      • Interactive quizzes with intelligent question generation
+      • User authentication and progress tracking`,
+    live: "https://clarityhub.vercel.app",
+    github: "https://github.com/dey11/clarity-hub",
+    image: "/projects/clarityhub.png",
+    createdAt: "2025",
+  },
+  {
+    id: "0110",
     name: "real estate agent",
     tags: ["typescript", "nextjs", "tailwind", "gemini", "pinecone"],
     description: `A voice-based chatbot for real estate sales and property information.
@@ -205,7 +227,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "0110",
+    id: "0111",
     name: "tinder scraper",
     tags: ["typescript", "nextjs", "nodejs", "express", "postgresql", "prisma"],
     description: `Reverse engineered Tinder API for educational profile scraping.
@@ -218,7 +240,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "0111",
+    id: "1000",
     name: "drites",
     tags: ["typescript", "nextjs", "prisma", "postgresql", "clerk"],
     description: `A personal blogging platform with markdown support.
@@ -231,7 +253,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "1000",
+    id: "1001",
     name: "ai chat website",
     tags: [
       "typescript",
@@ -251,7 +273,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "1001",
+    id: "1010",
     name: "vidbox",
     tags: ["typescript", "nextjs", "postgresql"],
     description: `Movie and series streaming platform (freelance project).
@@ -264,7 +286,7 @@ export const projects = [
     createdAt: "2024",
   },
   {
-    id: "1010",
+    id: "1011",
     name: "dashboard analytics ui",
     tags: ["reactjs", "charts", "tailwindcss"],
     description: `Comprehensive dashboard interface with data visualization.
@@ -277,7 +299,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "1011",
+    id: "1100",
     name: "chat backend socketio",
     tags: ["nodejs", "socketio", "redis", "jwt", "mongodb", "docker"],
     description: `Real-time chat system backend with authentication and rate limiting.
@@ -290,7 +312,7 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "1100",
+    id: "1101",
     name: "yunami discord bot",
     tags: ["discordjs", "mongodb", "cron"],
     description: `Discord bot for tracking currencies in Anigame discord game.

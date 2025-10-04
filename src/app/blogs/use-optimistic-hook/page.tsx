@@ -17,6 +17,9 @@ export async function generateMetadata() {
     description: blog.description,
     keywords: blog.tags.join(", "),
     authors: [{ name: "Shreyan Dey" }],
+    alternates: {
+      canonical: `/blogs/${blog.slug}`,
+    },
     openGraph: {
       title: blog.title,
       description: blog.description,
@@ -50,6 +53,22 @@ export default function Page() {
 
   return (
     <div className="relative py-10">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: blog.title,
+            description: blog.description,
+            datePublished: blog.publishedAt,
+            author: { "@type": "Person", name: "Shreyan Dey" },
+            mainEntityOfPage: `https://sdey.me/blogs/${blog.slug}`,
+            image: ["https://sdey.me/og.jpg"],
+          }),
+        }}
+      />
       <Link
         href="/blogs"
         className="hover:text-secondary mb-8 inline-flex items-center gap-2 text-white/60 no-underline! transition-colors hover:underline!"

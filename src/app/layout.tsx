@@ -14,7 +14,7 @@ const darkerGrotesque = Darker_Grotesque({
 
 export const metadata: Metadata = {
   title: {
-    default: "dey's portfolio",
+    default: "dey",
     template: "%s | dey",
   },
   description: "just another cs grad.",
@@ -52,6 +52,9 @@ export const metadata: Metadata = {
     title: "dey's portfolio",
     description: "just another cs grad.",
     siteName: "dey's portfolio",
+    images: [
+      { url: "/og.jpg", width: 1200, height: 630, alt: "Dey Portfolio" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -59,6 +62,7 @@ export const metadata: Metadata = {
     description: "just another cs grad.",
     creator: "@dey_twts",
     site: "@dey_twts",
+    images: ["/og.jpg"],
   },
   robots: {
     index: true,
@@ -84,6 +88,34 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ scrollBehavior: "smooth" }}>
+      <head>
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Shreyan Dey",
+              url: "https://sdey.me",
+              sameAs: ["https://github.com/dey11", "https://x.com/dey_twts"],
+              jobTitle: "Full‑stack Developer",
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "dey's portfolio",
+              url: "https://sdey.me",
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${darkerGrotesque.className} bg-background text-foreground antialiased`}
       >
@@ -91,8 +123,10 @@ export default function RootLayout({
         <ScrollToTop />
         <Container>
           <ViewTransition>
-            <Navbar />
-            {children}
+            <header>
+              <Navbar />
+            </header>
+            <main>{children}</main>
           </ViewTransition>
         </Container>
       </body>
