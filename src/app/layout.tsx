@@ -131,6 +131,7 @@ export default function RootLayout({
             <main>{children}</main>
           </ViewTransition>
         </Container>
+        <p className="text-background text-xs">designed by krish</p>
       </body>
     </html>
   );
