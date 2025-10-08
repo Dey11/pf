@@ -1,7 +1,7 @@
 export default function ExperienceSection() {
   const experiences = [
     {
-      role: "fullstack web developer (freelance)",
+      role: "fullstack web developer - freelance",
       period: "2024",
       bullets: [
         "developed a full-featured streaming platform, handling all aspects of the web application from backend to frontend, with a focus on seamless user experience and robust content delivery.",
@@ -10,7 +10,7 @@ export default function ExperienceSection() {
       ],
     },
     {
-      role: "frontend web developer (freelance)",
+      role: "frontend web developer - freelance",
       period: "2024",
       bullets: [
         "designed and built interactive crate-opening animations and ui for a gaming rewards platform, inspired by popular digital marketplaces.",
@@ -19,7 +19,7 @@ export default function ExperienceSection() {
       ],
     },
     {
-      role: "fullstack web developer (freelance)",
+      role: "fullstack web developer - freelance",
       period: "2025",
       bullets: [
         "developed and launched ballarat sports, a comprehensive booking and management platform for an australian indoor sports facility.",
@@ -28,7 +28,7 @@ export default function ExperienceSection() {
       ],
     },
     {
-      role: "fullstack web developer (freelance)",
+      role: "fullstack web developer - freelance",
       period: "2025 - present",
       bullets: [
         "building a trade journal application for stock traders, providing tools for strategy tracking, analytics, and note-taking.",
@@ -37,7 +37,7 @@ export default function ExperienceSection() {
       ],
     },
     {
-      role: "fullstack web developer (contract)",
+      role: "fullstack web developer - contract",
       period: "2025 - present",
       bullets: [
         "developing a modern booking and food delivery platform for a restaurant, covering both customer-facing and admin interfaces.",
@@ -46,7 +46,7 @@ export default function ExperienceSection() {
       ],
     },
     {
-      role: "fullstack web developer (job)",
+      role: "fullstack web developer",
       period: "2025",
       bullets: [
         "contributed to frontend react components, focusing on onboarding flows, bulk password reset features, and rbac role management.",
