@@ -47,7 +47,7 @@ export default function ExperienceSection() {
     },
     {
       role: "fullstack web developer (job)",
-      period: "june 2025 – september 2025",
+      period: "2025",
       bullets: [
         "contributed to frontend react components, focusing on onboarding flows, bulk password reset features, and rbac role management.",
         "collaborated on ui/ux improvements and platform stability initiatives, addressing bugs and enhancing user experience.",
