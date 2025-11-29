@@ -280,7 +280,7 @@ export const projects = [
       • Comprehensive media streaming functionality
       • User-friendly interface for content discovery
       • Database-driven content management`,
-    live: "https://vidbox.to",
+    live: "https://vidbox.cc",
     github: null,
     image: "/projects/vidbox.png",
     createdAt: "2024",
