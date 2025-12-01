@@ -4,14 +4,16 @@ export default function NowSection() {
       category: "building",
       items: [
         "working on freelance projects",
-        "developing v2 of pdx – aiming to make it an all-in-one ai-powered study app, including gamified group study sessions",
+        "a story/coop based discord gaming bot",
+        // "developing v2 of pdx – aiming to make it an all-in-one ai-powered study app, including gamified group study sessions",
       ],
     },
     {
       category: "learning",
       items: [
-        "rag and chunking techniques, exploring their different forms and understanding which works best in various scenarios",
-        "python for production and its various nuances",
+        "rag and chunking techniques, exploring their different forms",
+        "new techniques for building ai agents",
+        "new devops tools and techniques",
         "internals of how web2 works – discovering new aspects of caching and related topics every day",
         "learning new animations daily – passionate about microanimations and often pick up ideas from different sites and tutorials",
       ],
@@ -19,8 +21,7 @@ export default function NowSection() {
     {
       category: "exploring",
       items: [
-        "diving into web3, aiming to break into the space",
-        "brainstorming small ai utilities that can be built and sold",
+        "web3",
         "performance optimization techniques for large-scale applications",
       ],
     },

@@ -1,5 +1,5 @@
 export default function HobbiesSection() {
-  const nowWatching = ["Severance", "The Bear"];
+  const nowWatching = ["stranger things"];
 
   const favorites = ["Better Call Saul", "Breaking Bad", "The Office"];
 
