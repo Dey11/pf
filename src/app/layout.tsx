@@ -3,7 +3,7 @@ import { Darker_Grotesque } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/container";
 import Navbar from "@/components/navbar";
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 import ScrollToTop from "@/components/scroll-to-top";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
