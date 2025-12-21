@@ -28,15 +28,6 @@ export default function ExperienceSection() {
       ],
     },
     {
-      role: "fullstack web developer - freelance",
-      period: "present",
-      bullets: [
-        "building a trade journal application for stock traders, providing tools for strategy tracking, analytics, and note-taking.",
-        "designed and implemented a rich text editor, data visualization dashboards, and secure user authentication.",
-        "impact: empowered traders to analyze and refine strategies, supporting better decision-making and learning.",
-      ],
-    },
-    {
       role: "fullstack web developer",
       period: "2025",
       bullets: [
@@ -47,11 +38,29 @@ export default function ExperienceSection() {
     },
     {
       role: "fullstack web developer - freelance",
-      period: "present",
+      period: "2025",
       bullets: [
         "building an ai-powered collaborative whiteboard application for a stealth startup, enabling real-time visual ideation and smart drawing assistance.",
         "integrated intelligent shape recognition, seamless multi-user collaboration, and dynamic canvas scaling for a smooth user experience.",
         "impact: delivered a novel platform for teams and individuals to co-create and brainstorm more effectively with the help of generative ai.",
+      ],
+    },
+    {
+      role: "fullstack web developer - freelance",
+      period: "present",
+      bullets: [
+        "building a trade journal application for stock traders, providing tools for strategy tracking, analytics, and note-taking.",
+        "designed and implemented a rich text editor, data visualization dashboards, and secure user authentication.",
+        "impact: empowered traders to analyze and refine strategies, supporting better decision-making and learning.",
+      ],
+    },
+    {
+      role: "fullstack web developer - freelance",
+      period: "present",
+      bullets: [
+        "building a scalable ecommerce application.",
+        "devops to optimize the deployment, logging and monitoring.",
+        "impact: enabling a smooth, reliable, and scalable platform for e-commerce operations.",
       ],
     },
   ];

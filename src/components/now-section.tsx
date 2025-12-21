@@ -11,18 +11,16 @@ export default function NowSection() {
     {
       category: "learning",
       items: [
+        "app development",
         "rag and chunking techniques, exploring their different forms",
         "new techniques for building ai agents",
-        "new devops tools and techniques",
-        "internals of how web2 works – discovering new aspects of caching and related topics every day",
         "learning new animations daily – passionate about microanimations and often pick up ideas from different sites and tutorials",
       ],
     },
     {
       category: "exploring",
       items: [
-        "web3",
-        "performance optimization techniques for large-scale applications",
+        "performance optimization techniques",
       ],
     },
   ];

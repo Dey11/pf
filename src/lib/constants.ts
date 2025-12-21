@@ -167,6 +167,19 @@ export const projects = [
   },
   {
     id: "0011",
+    name: "voice ai agent landing",
+    tags: ["typescript", "nextjs", "tailwindcss", "framer-motion"],
+    description: `A landing page for a real estate voice ai agent. a freelance project.
+      • Clean, modern design showcasing agency work
+      • Custom animations and micro-interactions throughout
+      • Built from scratch without heavy dependencies`,
+    live: "https://doublesalesai.vercel.app",
+    // github: "https://github.com/dey11/ballarat",
+    image: "/projects/doublesalesai.png",
+    createdAt: "2025",
+  },
+  {
+    id: "0011",
     name: "venturassist",
     tags: [
       "typescript",
