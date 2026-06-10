@@ -5,7 +5,7 @@ export default function HobbiesSection() {
 
   return (
     <section className="pb-20 text-start">
-      <p className="pb-2 text-sm md:text-base">(101)</p>
+      <p className="pb-2 text-sm md:text-base">(110)</p>
 
       <h1 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
         hobbies / personal corner<span className="text-secondary">.</span>

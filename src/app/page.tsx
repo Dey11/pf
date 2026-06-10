@@ -1,4 +1,5 @@
 import ContactForm from "@/components/contact-form";
+import BentoSection from "@/components/bento-section";
 import HeroSection from "@/components/hero-section";
 import ExperienceSection from "@/components/experience-section";
 import HobbiesSection from "@/components/hobbies-section";
@@ -198,12 +199,14 @@ export default function Home() {
 
       <ExperienceSection />
 
+      <BentoSection />
+
       <NowSection />
 
       <HobbiesSection />
 
       <section id="contact" className="py-10 md:py-20 md:pt-0">
-        <p className="pb-2 text-sm md:text-base">(110)</p>
+        <p className="pb-2 text-sm md:text-base">(111)</p>
 
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
           <div className="flex flex-col gap-5 pb-5 md:gap-8 md:pb-0">
