@@ -27,7 +27,7 @@ export default function NowSection() {
 
   return (
     <section className="pb-20 text-start">
-      <p className="pb-2 text-sm md:text-base">(011)</p>
+      <p className="pb-2 text-sm md:text-base">(100)</p>
 
       <h1 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
         now<span className="text-secondary">.</span>

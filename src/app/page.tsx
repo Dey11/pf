@@ -85,15 +85,15 @@ export default function Home() {
             <div className="flex flex-wrap justify-center gap-2 lg:-mr-5">
               {techStackItems.languages.map((item) => (
                 <li key={item.id} className="group">
-                  <div className="relative size-20 sm:size-24 md:size-32 lg:-skew-x-[15deg]">
-                    <p className="absolute pl-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:skew-x-[15deg] lg:text-xl">
+                  <div className="relative size-14 sm:size-16 md:size-24 lg:-skew-x-[15deg]">
+                    <p className="absolute pl-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:skew-x-[15deg] lg:text-sm">
                       {item.name}
                       <span className="text-secondary">.</span>
                     </p>
                     <img
                       src={item.icon}
                       alt={item.name}
-                      className="size-20 sm:size-24 md:size-32"
+                      className="size-14 sm:size-16 md:size-24"
                     />
                   </div>
                 </li>
@@ -116,15 +116,15 @@ export default function Home() {
             <div className="flex flex-wrap gap-2 lg:-ml-5">
               {techStackItems.frontend.map((item) => (
                 <li key={item.id} className="group">
-                  <div className="relative size-20 sm:size-24 md:size-32 lg:skew-x-[15deg]">
-                    <p className="absolute right-0 pr-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:-skew-x-[15deg] lg:text-xl">
+                  <div className="relative size-14 sm:size-16 md:size-24 lg:skew-x-[15deg]">
+                    <p className="absolute right-0 pr-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:-skew-x-[15deg] lg:text-sm">
                       {item.name}
                       <span className="text-secondary">.</span>
                     </p>
                     <img
                       src={item.icon}
                       alt={item.name}
-                      className="size-20 sm:size-24 md:size-32"
+                      className="size-14 sm:size-16 md:size-24"
                     />
                   </div>
                 </li>
@@ -147,15 +147,15 @@ export default function Home() {
             <div className="flex flex-wrap justify-center gap-2 lg:-mr-5">
               {techStackItems.backend.map((item) => (
                 <li key={item.id} className="group">
-                  <div className="relative size-20 sm:size-24 md:size-32 lg:-skew-x-[15deg]">
-                    <p className="absolute pl-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:skew-x-[15deg] lg:text-xl">
+                  <div className="relative size-14 sm:size-16 md:size-24 lg:-skew-x-[15deg]">
+                    <p className="absolute pl-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:skew-x-[15deg] lg:text-sm">
                       {item.name}
                       <span className="text-secondary">.</span>
                     </p>
                     <img
                       src={item.icon}
                       alt={item.name}
-                      className="size-20 sm:size-24 md:size-32"
+                      className="size-14 sm:size-16 md:size-24"
                     />
                   </div>
                 </li>
@@ -178,15 +178,15 @@ export default function Home() {
             <div className="flex flex-wrap justify-center gap-2 lg:-ml-5">
               {techStackItems.miscellaneous.map((item) => (
                 <li key={item.id} className="group">
-                  <div className="relative size-20 sm:size-24 md:size-32 lg:skew-x-[15deg]">
-                    <p className="absolute right-0 pr-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:-skew-x-[15deg] lg:text-xl">
+                  <div className="relative size-14 sm:size-16 md:size-24 lg:skew-x-[15deg]">
+                    <p className="absolute right-0 pr-1 text-xs font-semibold group-odd:top-0 group-even:bottom-0 lg:-skew-x-[15deg] lg:text-sm">
                       {item.name}
                       <span className="text-secondary">.</span>
                     </p>
                     <img
                       src={item.icon}
                       alt={item.name}
-                      className="size-20 sm:size-24 md:size-32"
+                      className="size-14 sm:size-16 md:size-24"
                     />
                   </div>
                 </li>
@@ -196,9 +196,9 @@ export default function Home() {
         </div>
       </section>
 
-      <NowSection />
-
       <ExperienceSection />
+
+      <NowSection />
 
       <HobbiesSection />
 
