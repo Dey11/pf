@@ -3,31 +3,31 @@ export default function NowSection() {
     {
       category: "building",
       items: [
-        "working on freelance projects",
-        "a story/coop based discord gaming bot",
-        // "developing v2 of pdx – aiming to make it an all-in-one ai-powered study app, including gamified group study sessions",
+        "Working on freelance projects",
+        "A story/coop based Discord gaming bot",
+        // "Developing v2 of PDX – aiming to make it an all-in-one AI-powered study app, including gamified group study sessions",
       ],
     },
     {
       category: "learning",
       items: [
-        "app development",
-        "rag and chunking techniques, exploring their different forms",
-        "new techniques for building ai agents",
-        "learning new animations daily – passionate about microanimations and often pick up ideas from different sites and tutorials",
+        "App development",
+        "RAG and chunking techniques, exploring their different forms",
+        "New techniques for building AI agents",
+        "Learning new animations daily – passionate about microanimations and often pick up ideas from different sites and tutorials",
       ],
     },
     {
       category: "exploring",
       items: [
-        "performance optimization techniques",
+        "Performance optimization techniques",
       ],
     },
   ];
 
   return (
     <section className="pb-20 text-start">
-      <p className="pb-2 text-base md:text-lg">(101)</p>
+      <p className="font-display pb-2 text-base md:text-lg">(101)</p>
 
       <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
         now<span className="text-secondary">.</span>

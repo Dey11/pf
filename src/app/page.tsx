@@ -1,28 +1,29 @@
-import ContactForm from "@/components/contact-form";
 import BentoSection from "@/components/bento-section";
 import HeroSection from "@/components/hero-section";
 import ExperienceSection from "@/components/experience-section";
-import HobbiesSection from "@/components/hobbies-section";
-import NowSection from "@/components/now-section";
 import { techStackItems } from "@/lib/constants";
 import Link from "next/link";
-import { Mail } from "lucide-react";
+// commented out — sections below are being revamped
+// import ContactForm from "@/components/contact-form";
+// import HobbiesSection from "@/components/hobbies-section";
+// import NowSection from "@/components/now-section";
+// import { Mail } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="mt-5">
       <HeroSection />
 
-      <section className="mb-20 flex flex-col overflow-hidden">
-        <p className="pb-2 text-base md:text-lg">(001)</p>
+      <section className="mb-40 flex flex-col overflow-hidden">
+        <p className="font-display pb-2 text-base md:text-lg">(000)</p>
 
         <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
           about me<span className="text-secondary">.</span>
         </h1>
 
         <div className="flex flex-col justify-between gap-10 pt-10 lg:flex-row">
-          <p className="order-2 text-2xl font-bold sm:text-3xl md:text-4xl lg:order-1 lg:text-5xl">
-            it is{" "}
+          <p className="order-2 text-xl font-bold sm:text-2xl md:text-3xl lg:order-1 lg:text-4xl">
+            It is{" "}
             <span className="bg-gradient-to-r from-[#576265] via-[#757A7B] to-[#576265] bg-clip-text text-transparent">
               not in the stars
             </span>{" "}
@@ -38,25 +39,25 @@ export default function Home() {
 
           <div className="order-1 ml-auto flex max-w-md flex-col items-end justify-between gap-10 lg:order-2 lg:ml-0">
             <p className="grow text-end text-lg sm:text-xl md:text-2xl">
-              i write code, collect domains i'll probably never use, and
+              I write code, collect domains I'll probably never use, and
               over-engineer projects until they stop feeling like side projects
-              <span className="text-secondary">.</span> always learning, always
-              shipping<span className="text-secondary">.</span> looking for
+              <span className="text-secondary">.</span> Always learning, always
+              shipping<span className="text-secondary">.</span> Looking for
               like-minded people to collab with
             </p>
 
-            <div className="group relative">
+            <div className="group relative w-fit">
               <img
                 src="/logos/github.svg"
                 alt="GitHub logo"
-                className="absolute -top-4.5 right-2 -z-10 size-5 translate-y-0 transition-all duration-300 group-hover:translate-y-2"
+                className="absolute top-0 right-3 -z-10 size-5 translate-y-0 transition-transform duration-300 group-hover:-translate-y-5"
               />
               <Link href="https://github.com/dey11" target="_blank">
                 <button
-                  aria-label="Read more about me"
+                  aria-label="Visit my GitHub"
                   className="bg-background flex cursor-pointer items-center justify-center gap-1 rounded-full border border-white px-5 pt-1 pb-2 text-sm leading-none md:text-base"
                 >
-                  read more
+                  GitHub
                   <span>→</span>
                 </button>
               </Link>
@@ -65,8 +66,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pb-20 text-end">
-        <p className="pb-2 text-base md:text-lg">(010)</p>
+      <section className="pb-40 text-end">
+        <p className="font-display pb-2 text-base md:text-lg">(001)</p>
 
         <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
           tech stack {"<>"} skills<span className="text-secondary">.</span>
@@ -201,12 +202,17 @@ export default function Home() {
 
       <BentoSection />
 
-      <NowSection />
+      {/* ----------------------------------------------------------------
+          The sections below (now / hobbies / contact) are being revamped.
+          Commented out for now — renumber the binary indices when restored:
+          now -> (100), hobbies -> (101), contact -> (110).
+      ------------------------------------------------------------------- */}
+      {/* <NowSection /> */}
 
-      <HobbiesSection />
+      {/* <HobbiesSection /> */}
 
-      <section id="contact" className="py-10 md:py-20 md:pt-0">
-        <p className="pb-2 text-base md:text-lg">(111)</p>
+      {/* <section id="contact" className="py-10 md:py-20 md:pt-0">
+        <p className="font-display pb-2 text-base md:text-lg">(110)</p>
 
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
           <div className="flex flex-col gap-5 pb-5 md:gap-8 md:pb-0">
@@ -216,7 +222,7 @@ export default function Home() {
             </h1>
 
             <p className="max-w-sm text-lg">
-              i’m always open to new opportunities and conversations. drop me a
+              I’m always open to new opportunities and conversations. Drop me a
               message, and let’s connect about your role, ideas or projects!
             </p>
 
@@ -243,7 +249,7 @@ export default function Home() {
 
           <ContactForm />
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

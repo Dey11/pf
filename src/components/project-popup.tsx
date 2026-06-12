@@ -146,7 +146,7 @@ export default function ProjectPopup({
               {/* mobile-only Images tab — the left pane on desktop */}
               <button
                 onClick={() => setTab("images")}
-                className={`relative py-4 text-base font-medium transition-colors md:hidden ${
+                className={`relative pt-3 pb-2 text-base font-medium transition-colors md:hidden ${
                   tab === "images"
                     ? "text-white"
                     : "text-white/45 hover:text-white/70"
@@ -168,7 +168,7 @@ export default function ProjectPopup({
                   <button
                     key={t.id}
                     onClick={() => setTab(t.id)}
-                    className={`relative py-4 text-base font-medium transition-colors ${
+                    className={`relative pt-3 pb-2 text-base font-medium transition-colors ${
                       active
                         ? "text-white"
                         : "text-white/45 hover:text-white/70"

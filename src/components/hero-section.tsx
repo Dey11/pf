@@ -6,12 +6,22 @@ import Link from "next/link";
 import Signature from "./signature";
 import { motion } from "motion/react";
 
+// below lg the boxes scale with the viewport (svh); from laptop up the width is
+// fixed (370px) so we freeze the height too — keeps the framing constant and
+// stops `background-size: cover` from zooming the image in on taller screens.
+const heroHeights = [
+  "h-[60svh] lg:h-[520px]",
+  "h-[50svh] lg:h-[435px]",
+  "h-[40svh] lg:h-[350px]",
+];
+
 export default function HeroSection() {
   return (
-    <section className="mb-[13svh] flex min-h-[87svh] flex-col overflow-hidden">
-      <p className="pb-2 text-base md:text-lg">(000)</p>
-
-      <div className="flex flex-row-reverse justify-center gap-2">
+    <section
+      className="mb-[13svh] flex min-h-[87svh] flex-col overflow-hidden pb-[6svh]"
+      style={{ fontFamily: "var(--font-darker-grotesque)" }}
+    >
+      <div className="flex flex-row-reverse justify-center gap-2 pt-2">
         {heroItems.map((item, idx) => (
           <motion.div
             key={item.title}
@@ -19,7 +29,6 @@ export default function HeroSection() {
               backgroundImage: `url(${item.imageUrl})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              height: `calc(60svh - ${idx * 10}svh)`,
             }}
             initial={{
               opacity: 0,
@@ -33,7 +42,10 @@ export default function HeroSection() {
               duration: idx === 0 ? 0.5 : idx === 1 ? 0.4 : 0.3,
               ease: "easeInOut",
             }}
-            className={`group relative w-full last:hidden even:hidden sm:even:block lg:w-[341px] lg:first:block lg:last:block`}
+            className={cn(
+              "group relative w-full last:hidden even:hidden sm:even:block lg:w-[370px] lg:first:block lg:last:block",
+              heroHeights[idx],
+            )}
           >
             <div className="absolute inset-x-0 bottom-0 flex h-full flex-col justify-end gap-3 bg-gradient-to-t from-black/80 to-black/0 p-4 text-white opacity-100 backdrop-blur-[2px] transition-opacity delay-75 duration-300 group-hover:opacity-100 lg:opacity-0">
               <img
@@ -65,9 +77,13 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="flex h-full grow flex-col items-center gap-4 lg:flex-row lg:justify-between">
-        <p className="pt-4 text-lg font-semibold md:text-xl lg:block">
-          currently open for work
+      <div className="mt-auto flex flex-col items-center gap-4 pt-8 lg:flex-row lg:justify-between">
+        <p className="flex items-center gap-2 text-lg font-semibold md:text-xl">
+          <span className="relative flex size-2.5 translate-y-[2px]">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+            <span className="relative inline-flex size-2.5 rounded-full bg-green-500" />
+          </span>
+          open for work
         </p>
         <Signature />
         <Link

@@ -15,26 +15,26 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
-    role: "fullstack web developer - freelance",
+    role: "fullstack web developer – freelance",
     period: "2024",
     description:
-      "developed a full-featured streaming platform, handling all aspects of the web application from backend to frontend, with a focus on seamless user experience and robust content delivery. implemented secure authentication, scalable infrastructure, and custom video player integrations, delivering a performant, end-to-end solution for high-traffic media consumption.",
+      "Developed a full-featured streaming platform, handling all aspects of the web application from backend to frontend, with a focus on seamless user experience and robust content delivery. Implemented secure authentication, scalable infrastructure, and custom video player integrations, delivering a performant, end-to-end solution for high-traffic media consumption.",
     tags: ["nextjs", "typescript", "postgresql"],
     images: ["/projects/vidbox.png", "/projects/dashboard.png"],
   },
   {
-    role: "frontend web developer - freelance",
+    role: "frontend web developer – freelance",
     period: "2024",
     description:
-      "designed and built interactive crate-opening animations and ui for a gaming rewards platform, inspired by popular digital marketplaces. leveraged react and advanced css/js animation techniques to create engaging, responsive user flows that enhanced user engagement and retention through visually compelling frontend experiences.",
+      "Designed and built interactive crate-opening animations and UI for a gaming rewards platform, inspired by popular digital marketplaces. Leveraged React and advanced CSS/JS animation techniques to create engaging, responsive user flows that enhanced user engagement and retention through visually compelling frontend experiences.",
     tags: ["react", "tailwindcss", "motion"],
     images: ["/projects/clarityhub.png", "/projects/realestate.png"],
   },
   {
-    role: "fullstack web developer - freelance",
+    role: "fullstack web developer – freelance",
     period: "2025",
     description:
-      "developed and launched ballarat sports, a comprehensive booking and management platform for an australian indoor sports facility. built landing pages, integrated crm and stripe for seamless customer bookings and payments, and architected scalable backend services that enabled automated scheduling and payments, improving operational efficiency and customer satisfaction.",
+      "Developed and launched Ballarat Sports, a comprehensive booking and management platform for an Australian indoor sports facility. Built landing pages, integrated CRM and Stripe for seamless customer bookings and payments, and architected scalable backend services that enabled automated scheduling and payments, improving operational efficiency and customer satisfaction.",
     tags: ["nextjs", "stripe", "postgresql"],
     images: ["/projects/ballarat.png", "/projects/realestate.png"],
   },
@@ -42,31 +42,31 @@ const experiences: Experience[] = [
     role: "fullstack web developer",
     period: "2025",
     description:
-      "contributed to frontend react components, focusing on onboarding flows, bulk password reset features, and rbac role management. collaborated on ui/ux improvements and platform stability initiatives, addressing bugs and enhancing user experience to support platform reliability and usability through targeted feature enhancements and maintenance.",
+      "Contributed to frontend React components, focusing on onboarding flows, bulk password reset features, and RBAC role management. Collaborated on UI/UX improvements and platform stability initiatives, addressing bugs and enhancing user experience to support platform reliability and usability through targeted feature enhancements and maintenance.",
     tags: ["react", "typescript", "tailwindcss"],
     images: ["/projects/clarityhub.png", "/projects/dashboard.png"],
   },
   {
-    role: "fullstack web developer - freelance",
+    role: "fullstack web developer – freelance",
     period: "2025",
     description:
-      "building an ai-powered collaborative whiteboard application for a stealth startup, enabling real-time visual ideation and smart drawing assistance. integrated intelligent shape recognition, seamless multi-user collaboration, and dynamic canvas scaling for a smooth user experience, delivering a novel platform for teams and individuals to co-create and brainstorm more effectively with the help of generative ai.",
+      "Building an AI-powered collaborative whiteboard application for a stealth startup, enabling real-time visual ideation and smart drawing assistance. Integrated intelligent shape recognition, seamless multi-user collaboration, and dynamic canvas scaling for a smooth user experience, delivering a novel platform for teams and individuals to co-create and brainstorm more effectively with the help of generative AI.",
     tags: ["nextjs", "websockets", "aisdk"],
     images: ["/projects/aichat.png", "/projects/doublesalesai.png"],
   },
   {
-    role: "fullstack web developer - freelance",
+    role: "fullstack web developer – freelance",
     period: "present",
     description:
-      "building a trade journal application for stock traders, providing tools for strategy tracking, analytics, and note-taking. designed and implemented a rich text editor, data visualization dashboards, and secure user authentication that empowered traders to analyze and refine strategies, supporting better decision-making and learning.",
+      "Building a trade journal application for stock traders, providing tools for strategy tracking, analytics, and note-taking. Designed and implemented a rich text editor, data visualization dashboards, and secure user authentication that empowered traders to analyze and refine strategies, supporting better decision-making and learning.",
     tags: ["nextjs", "typescript", "prisma"],
     images: ["/projects/dashboard.png", "/projects/venturassist.png"],
   },
   {
-    role: "fullstack web developer - freelance",
+    role: "fullstack web developer – freelance",
     period: "present",
     description:
-      "building a scalable ecommerce application, with devops to optimize the deployment, logging and monitoring. focused on enabling a smooth, reliable, and scalable platform for high-volume e-commerce operations.",
+      "Building a scalable ecommerce application, with DevOps to optimize the deployment, logging and monitoring. Focused on enabling a smooth, reliable, and scalable platform for high-volume e-commerce operations.",
     tags: ["nextjs", "docker", "postgresql"],
     images: ["/projects/realestate.png", "/projects/drites.png"],
   },
@@ -82,8 +82,8 @@ export default function ExperienceSection() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="pb-20 text-start">
-      <p className="pb-2 text-base md:text-lg">(011)</p>
+    <section className="pb-40 text-start">
+      <p className="font-display pb-2 text-base md:text-lg">(010)</p>
 
       <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
         experience<span className="text-secondary">.</span>

@@ -75,7 +75,7 @@ export default function Container({
   }, [children]);
 
   return (
-    <div className={cn("container mx-auto max-w-5xl px-2 py-2", className)}>
+    <div className={cn("container mx-auto max-w-6xl px-2 pt-4 pb-1", className)}>
       {children}
     </div>
   );

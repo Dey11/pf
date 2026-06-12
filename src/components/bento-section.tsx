@@ -5,22 +5,22 @@ import { useState } from "react";
 import ProjectPopup, { type ProjectBox } from "./project-popup";
 
 const placeholderDescription =
-  "a short description of this project goes here — what it does and the problem it solves.";
+  "A short description of this project goes here — what it does and the problem it solves.";
 
 // markdown — h1/h2/lists/links all render in the Details tab
-const placeholderContent = `## overview
+const placeholderContent = `## Overview
 
-this is **markdown** content. write headings, lists, \`code\`, and [links](https://example.com) — it all renders.
+This is **markdown** content. Write headings, lists, \`code\`, and [links](https://example.com) — it all renders.
 
-## what i did
+## What I Did
 
-- built the full application end-to-end, frontend to backend
-- implemented authentication, payments, and a custom dashboard
-- shipped and deployed with logging and monitoring in place
+- Built the full application end-to-end, frontend to backend
+- Implemented authentication, payments, and a custom dashboard
+- Shipped and deployed with logging and monitoring in place
 
-## notes
+## Notes
 
-add any extra detail here — challenges, learnings, architecture decisions.`;
+Add any extra detail here — challenges, learnings, architecture decisions.`;
 
 // each inner array is one masonry column (top -> bottom). `weight` is the box's
 // `flexGrow` share of the column height (every column sums to 50 so the three
@@ -136,8 +136,8 @@ function makeBox(id: string, color: string, images: string[]): ProjectBox {
   return {
     id,
     color,
-    name: "project name",
-    tagline: "a one-line description of what this project does",
+    name: "Project Name",
+    tagline: "A one-line description of what this project does",
     description: placeholderDescription,
     content: placeholderContent,
     url: "https://example.com",
@@ -155,8 +155,8 @@ export default function BentoSection() {
   const [selected, setSelected] = useState<ProjectBox | null>(null);
 
   return (
-    <section className="pb-20 text-start">
-      <p className="pb-2 text-end text-base md:text-lg">(100)</p>
+    <section className="pb-40 text-start">
+      <p className="font-display pb-2 text-end text-base md:text-lg">(011)</p>
 
       <h1 className="text-end text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
         projects<span className="text-secondary">.</span>

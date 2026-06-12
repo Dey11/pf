@@ -1,11 +1,11 @@
 export default function HobbiesSection() {
-  const nowWatching = ["stranger things"];
+  const nowWatching = ["Stranger Things"];
 
   const favorites = ["Better Call Saul", "Breaking Bad", "The Office"];
 
   return (
     <section className="pb-20 text-start">
-      <p className="pb-2 text-base md:text-lg">(110)</p>
+      <p className="font-display pb-2 text-base md:text-lg">(110)</p>
 
       <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
         hobbies / personal corner<span className="text-secondary">.</span>
@@ -13,8 +13,8 @@ export default function HobbiesSection() {
 
       <div className="space-y-6">
         <p className="text-lg leading-relaxed text-white/80 md:text-xl">
-          i'm a cinephile who finds joy in every story
-          <span className="text-secondary">.</span> not a critic, just someone
+          I'm a cinephile who finds joy in every story
+          <span className="text-secondary">.</span> Not a critic, just someone
           who loves getting lost in good narratives and appreciating the craft
           behind every frame
           <span className="text-secondary">.</span>

@@ -40,7 +40,7 @@ function ProjectCard({ project }: ProjectCardProps) {
                   rel="noopener noreferrer"
                   className="hover:text-secondary flex items-center gap-2 text-sm font-medium text-white underline underline-offset-2 transition-colors"
                 >
-                  live preview
+                  Live Preview
                   <ExternalLink className="h-4 w-4" />
                 </Link>
               )}
@@ -51,7 +51,7 @@ function ProjectCard({ project }: ProjectCardProps) {
                   rel="noopener noreferrer"
                   className="hover:text-secondary flex items-center gap-2 text-sm font-medium text-white underline underline-offset-2 transition-colors"
                 >
-                  github repo
+                  GitHub Repo
                   <Github className="h-4 w-4" />
                 </Link>
               )}
@@ -110,7 +110,7 @@ export default function ProjectsPage() {
           projects<span className="text-secondary">.</span>
         </h1>
         <p className="mt-4 max-w-2xl text-lg">
-          a collection of my work spanning web applications, ai integrations,
+          A collection of my work spanning web applications, AI integrations,
           and full-stack solutions
         </p>
       </div>

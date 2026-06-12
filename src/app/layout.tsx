@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
-import { Darker_Grotesque } from "next/font/google";
+import { Darker_Grotesque, Inter } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/container";
-import Navbar from "@/components/navbar";
 import { ViewTransition } from "react";
 import ScrollToTop from "@/components/scroll-to-top";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Agentation } from "agentation";
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-darker-grotesque",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -118,20 +124,19 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${darkerGrotesque.className} bg-background text-foreground antialiased`}
+        className={`${darkerGrotesque.variable} ${inter.variable} bg-background text-foreground antialiased`}
+        style={{ fontFamily: "var(--font-inter)" }}
       >
         <SpeedInsights />
         <Analytics />
         <ScrollToTop />
         <Container>
           <ViewTransition>
-            <header>
-              <Navbar />
-            </header>
             <main>{children}</main>
           </ViewTransition>
         </Container>
         <p className="text-background text-xs">designed by krish</p>
+        {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>
   );

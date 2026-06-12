@@ -62,7 +62,7 @@ export default function BlogsPage() {
           thoughts & insights<span className="text-secondary">.</span>
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-white/80">
-          exploring my learnings, and diving deep into the technologies that
+          Exploring my learnings, and diving deep into the technologies that
           shape our digital world
         </p>
       </div>

@@ -27,14 +27,14 @@ export default function ContactForm() {
           <input
             type="text"
             id="name"
-            placeholder="full name*"
+            placeholder="Full name*"
             className="w-full rounded-md border-2 border-gray-300 p-2"
             name="name"
           />
           <input
             type="tel"
             id="phone"
-            placeholder="phone"
+            placeholder="Phone"
             className="w-full rounded-md border-2 border-gray-300 p-2"
             name="phone"
           />
@@ -42,13 +42,13 @@ export default function ContactForm() {
         <input
           type="email"
           id="email"
-          placeholder="email*"
+          placeholder="Email*"
           className="w-full rounded-md border-2 border-gray-300 p-2"
           name="email"
         />
         <textarea
           id="subject"
-          placeholder="subject*"
+          placeholder="Subject*"
           className="w-full rounded-md border-2 border-gray-300 p-2"
           name="subject"
         />
@@ -58,7 +58,7 @@ export default function ContactForm() {
           className="bg-secondary hover:bg-secondary/80 h-8 cursor-pointer rounded-md disabled:opacity-50"
           disabled={isPending}
         >
-          submit
+          Submit
         </button>
       </form>
       {error && <p className="pt-2 text-center text-red-500">{error}</p>}
