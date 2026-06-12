@@ -14,9 +14,9 @@ export default function Home() {
       <HeroSection />
 
       <section className="mb-20 flex flex-col overflow-hidden">
-        <p className="pb-2 text-sm md:text-base">(001)</p>
+        <p className="pb-2 text-base md:text-lg">(001)</p>
 
-        <h1 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
+        <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
           about me<span className="text-secondary">.</span>
         </h1>
 
@@ -66,9 +66,9 @@ export default function Home() {
       </section>
 
       <section className="pb-20 text-end">
-        <p className="pb-2 text-sm md:text-base">(010)</p>
+        <p className="pb-2 text-base md:text-lg">(010)</p>
 
-        <h1 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
+        <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
           tech stack {"<>"} skills<span className="text-secondary">.</span>
         </h1>
 
@@ -206,11 +206,11 @@ export default function Home() {
       <HobbiesSection />
 
       <section id="contact" className="py-10 md:py-20 md:pt-0">
-        <p className="pb-2 text-sm md:text-base">(111)</p>
+        <p className="pb-2 text-base md:text-lg">(111)</p>
 
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
           <div className="flex flex-col gap-5 pb-5 md:gap-8 md:pb-0">
-            <h1 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
+            <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
               connect with{" "}
               <span className="text-secondary tracking-tighter">dey.</span>
             </h1>

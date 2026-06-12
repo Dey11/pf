@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { Plus } from "lucide-react";
 import { useState } from "react";
+import { techMeta, type TechKey } from "@/lib/tech-stack";
 
 type Experience = {
   role: string;
@@ -11,23 +12,6 @@ type Experience = {
   tags: TechKey[];
   images: [string, string];
 };
-
-// svgl.app logos (baked to render on a dark pill), with a display label
-const techMeta = {
-  nextjs: { label: "Next.js", logo: "/logos/stack/nextjs.svg" },
-  typescript: { label: "TypeScript", logo: "/logos/stack/typescript.svg" },
-  postgresql: { label: "PostgreSQL", logo: "/logos/stack/postgresql.svg" },
-  react: { label: "React", logo: "/logos/stack/react.svg" },
-  tailwindcss: { label: "Tailwind CSS", logo: "/logos/stack/tailwindcss.svg" },
-  motion: { label: "Motion", logo: "/logos/stack/motion.svg" },
-  stripe: { label: "Stripe", logo: "/logos/stack/stripe.svg" },
-  websockets: { label: "WebSockets", logo: "/logos/stack/socketio.svg" },
-  aisdk: { label: "AI SDK", logo: "/logos/stack/vercel.svg" },
-  prisma: { label: "Prisma", logo: "/logos/stack/prisma.svg" },
-  docker: { label: "Docker", logo: "/logos/stack/docker.svg" },
-} as const;
-
-type TechKey = keyof typeof techMeta;
 
 const experiences: Experience[] = [
   {
@@ -99,9 +83,9 @@ export default function ExperienceSection() {
 
   return (
     <section className="pb-20 text-start">
-      <p className="pb-2 text-sm md:text-base">(011)</p>
+      <p className="pb-2 text-base md:text-lg">(011)</p>
 
-      <h1 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
+      <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
         experience<span className="text-secondary">.</span>
       </h1>
 
@@ -165,7 +149,7 @@ export default function ExperienceSection() {
                             return (
                               <span
                                 key={tag}
-                                className="inset-shadow-2xs inset-shadow-white/10 text-shadow-2xs inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 shadow-sm backdrop-blur-sm sm:text-base"
+                                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm text-shadow-2xs sm:text-base"
                               >
                                 <img
                                   src={tech.logo}
@@ -188,7 +172,11 @@ export default function ExperienceSection() {
                               key={src}
                               src={src}
                               alt={`${exp.role} preview`}
-                              initial={{ y: 90, opacity: 0, rotate: pos.rotate }}
+                              initial={{
+                                y: 90,
+                                opacity: 0,
+                                rotate: pos.rotate,
+                              }}
                               animate={{ y: 0, opacity: 1, rotate: pos.rotate }}
                               transition={{
                                 type: "spring",

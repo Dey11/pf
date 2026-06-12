@@ -9,7 +9,7 @@ import { motion } from "motion/react";
 export default function HeroSection() {
   return (
     <section className="mb-[13svh] flex min-h-[87svh] flex-col overflow-hidden">
-      <p className="pb-2 text-sm md:text-base">(000)</p>
+      <p className="pb-2 text-base md:text-lg">(000)</p>
 
       <div className="flex flex-row-reverse justify-center gap-2">
         {heroItems.map((item, idx) => (

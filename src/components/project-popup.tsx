@@ -2,24 +2,48 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { ArrowUp, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { ArrowUp, Github, Globe, X } from "lucide-react";
+import { motion } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { techMeta, type TechKey } from "@/lib/tech-stack";
 
 export type ProjectBox = {
   id: string;
   color: string;
   name: string;
+  tagline: string;
   description: string;
+  content: string; // markdown
   url: string;
+  github: string | null;
   tags: string[];
-  images: [string, string];
+  type: string; // Freelance / Personal / Client
+  status: string; // Live / Archived / WIP
+  duration: string;
+  year: string;
+  images: string[];
 };
 
-const imagePositions = [
-  { className: "left-[8%] top-[16%] z-10 w-[58%]", rotate: -7 },
-  { className: "right-[8%] bottom-[12%] w-[60%]", rotate: 6 },
-] as const;
+type Tab = "images" | "details" | "chat";
+
+const TABS: { id: Tab; label: string }[] = [
+  { id: "details", label: "Details" },
+  { id: "chat", label: "Chat" },
+];
+
+const statusColor: Record<string, string> = {
+  Live: "bg-emerald-400",
+  WIP: "bg-amber-400",
+  Archived: "bg-white/40",
+};
+
+const suggestions = [
+  "What does this project do?",
+  "What's the tech stack?",
+  "What did you build here?",
+];
 
 export default function ProjectPopup({
   box,
@@ -28,6 +52,7 @@ export default function ProjectPopup({
   box: ProjectBox;
   onClose: () => void;
 }) {
+  const [tab, setTab] = useState<Tab>("details");
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -38,27 +63,24 @@ export default function ProjectPopup({
         body: {
           project: {
             name: box.name,
-            description: box.description,
+            description: `${box.description}\n\n${box.content}`,
             tags: box.tags,
             live: box.url,
           },
         },
       }),
-    [box.name, box.description, box.tags, box.url],
+    [box.name, box.description, box.content, box.tags, box.url],
   );
 
   const { messages, sendMessage, status } = useChat({ transport });
 
-  const chatActive = messages.length > 0;
   const isBusy = status === "submitted" || status === "streaming";
-
-  // v4-flash reasons before answering — keep the typing indicator up until the
-  // assistant has actually produced visible answer text (not just reasoning).
   const lastMessage = messages[messages.length - 1];
   const assistantHasText =
     lastMessage?.role === "assistant" &&
     lastMessage.parts.some((p) => p.type === "text" && p.text.length > 0);
   const showThinking = isBusy && !assistantHasText;
+  const hasMessages = messages.length > 0;
 
   // lock background scroll + close on escape while the popup is open
   useEffect(() => {
@@ -74,14 +96,17 @@ export default function ProjectPopup({
 
   // keep the chat pinned to the latest message
   useEffect(() => {
-    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
-  }, [messages, isBusy]);
+    if (tab !== "chat") return;
+    scrollRef.current?.scrollTo({
+      top: scrollRef.current.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [messages, isBusy, tab]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const text = input.trim();
-    if (!text || isBusy) return;
-    sendMessage({ text });
+  const send = (text: string) => {
+    const trimmed = text.trim();
+    if (!trimmed || isBusy) return;
+    sendMessage({ text: trimmed });
     setInput("");
   };
 
@@ -90,147 +115,396 @@ export default function ProjectPopup({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-3 backdrop-blur-md sm:p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-3 backdrop-blur-md sm:p-5"
     >
       <motion.div
-        layoutId={`box-${box.id}`}
+        initial={{ opacity: 0, scale: 0.95, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.97, y: 8 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative flex h-[88vh] max-h-[760px] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-white/15 bg-[#0b0b0d] p-1.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_24px_60px_-12px_rgba(0,0,0,0.8)] sm:rounded-3xl"
+        data-lenis-prevent
+        className="relative flex h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0c] md:flex-row"
       >
-        {/* close */}
-        <button
-          onClick={onClose}
-          aria-label="Close"
-          className="absolute top-4 right-4 z-30 flex size-8 items-center justify-center rounded-full border border-white/15 bg-black/40 text-white/80 backdrop-blur-sm transition-colors hover:text-white"
+        {/* LEFT — project images (desktop). on mobile this becomes a tab. */}
+        <div
+          data-lenis-prevent
+          className={`hidden shrink-0 overflow-y-auto overscroll-contain md:block md:w-2/5 md:border-r md:border-white/10 ${box.color}`}
         >
-          <X className="size-4" />
-        </button>
+          <div className="p-3">
+            <ImageList box={box} />
+          </div>
+        </div>
 
-        {/* content area: project view + chat overlay stacked */}
-        <div className="relative min-h-0 flex-1">
-          {/* project view — blurs when the chat is active */}
-          <motion.div
-            animate={{
-              filter: chatActive ? "blur(12px)" : "blur(0px)",
-              scale: chatActive ? 1.03 : 1,
-            }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="absolute inset-0 overflow-y-auto"
-          >
-            {/* top: project images */}
-            <div
-              className={`${box.color} relative h-56 overflow-hidden rounded-[1.1rem] sm:h-72 sm:rounded-[1.25rem]`}
-            >
-              {box.images.map((src, i) => {
-                const pos = imagePositions[i];
-                return (
-                  <motion.img
-                    key={src + i}
-                    src={src}
-                    alt=""
-                    aria-hidden
-                    initial={{ y: 80, opacity: 0, rotate: pos.rotate }}
-                    animate={{ y: 0, opacity: 1, rotate: pos.rotate }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 180,
-                      damping: 22,
-                      delay: 0.18 + i * 0.12,
-                    }}
-                    className={`absolute rounded-xl border border-white/20 object-cover shadow-2xl ${pos.className}`}
+        {/* RIGHT — tabs + content */}
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+          {/* tab bar (with the close button, vertically centered) */}
+          <div className="flex items-end justify-between gap-6 border-b border-white/10 px-6">
+            <div className="flex items-center gap-6">
+              {/* mobile-only Images tab — the left pane on desktop */}
+              <button
+                onClick={() => setTab("images")}
+                className={`relative py-4 text-base font-medium transition-colors md:hidden ${
+                  tab === "images"
+                    ? "text-white"
+                    : "text-white/45 hover:text-white/70"
+                }`}
+              >
+                Images
+                {tab === "images" && (
+                  <motion.span
+                    layoutId="tab-underline"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                    className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-white"
                   />
+                )}
+              </button>
+
+              {TABS.map((t) => {
+                const active = tab === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    onClick={() => setTab(t.id)}
+                    className={`relative py-4 text-base font-medium transition-colors ${
+                      active
+                        ? "text-white"
+                        : "text-white/45 hover:text-white/70"
+                    }`}
+                  >
+                    {t.label}
+                    {active && (
+                      <motion.span
+                        layoutId="tab-underline"
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 32,
+                        }}
+                        className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-white"
+                      />
+                    )}
+                  </button>
                 );
               })}
             </div>
 
-            {/* name + description */}
-            <div className="px-3 pt-5 pb-20 sm:px-4 sm:pt-6 sm:pb-24">
-              <h3 className="text-xl font-semibold sm:text-2xl md:text-3xl">
-                {box.name}
-                <span className="text-secondary">.</span>
-              </h3>
-              <p className="pt-3 text-sm leading-relaxed text-white/75 sm:text-base">
-                {box.description}
-              </p>
-            </div>
-          </motion.div>
+            <button
+              onClick={onClose}
+              aria-label="Close"
+              className="mb-2 flex size-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+            >
+              <X className="size-5" />
+            </button>
+          </div>
 
-          {/* chat overlay — frosted, sits above the blurred project view */}
-          <AnimatePresence>
-            {chatActive && (
-              <motion.div
-                ref={scrollRef}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0 overflow-y-auto px-4 pt-14 pb-6"
-              >
-                <div className="flex flex-col gap-3">
-                  {messages.map((m) => (
-                    <div
-                      key={m.id}
-                      className={
-                        m.role === "user"
-                          ? "max-w-[82%] self-end rounded-2xl rounded-br-md border border-white/10 bg-white/15 px-4 py-2.5 text-sm text-white shadow-sm backdrop-blur-sm"
-                          : "max-w-[88%] self-start rounded-2xl rounded-bl-md border border-white/10 bg-black/30 px-4 py-2.5 text-sm leading-relaxed text-white/90 backdrop-blur-sm"
-                      }
-                    >
-                      {m.parts.map((part, i) =>
-                        part.type === "text" ? (
-                          <span key={i} className="whitespace-pre-wrap">
-                            {part.text}
-                          </span>
-                        ) : null,
-                      )}
-                    </div>
-                  ))}
-
-                  {showThinking && (
-                    <div className="max-w-[88%] self-start rounded-2xl rounded-bl-md border border-white/10 bg-black/30 px-4 py-3 backdrop-blur-sm">
-                      <span className="flex gap-1">
-                        {[0, 1, 2].map((d) => (
-                          <motion.span
-                            key={d}
-                            animate={{ opacity: [0.3, 1, 0.3] }}
-                            transition={{
-                              duration: 1,
-                              repeat: Infinity,
-                              delay: d * 0.2,
-                            }}
-                            className="size-1.5 rounded-full bg-white/70"
-                          />
-                        ))}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* input — pinned to the absolute bottom, never blurred */}
-        <form
-          onSubmit={handleSubmit}
-          className="relative z-20 flex shrink-0 items-center gap-2 rounded-2xl border border-white/15 bg-white/[0.04] p-1.5 pl-4 backdrop-blur-sm"
-        >
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder={`ask anything about ${box.name}`}
-            className="min-w-0 flex-1 bg-transparent py-2 text-sm text-white placeholder:text-white/40 focus:outline-none"
-          />
-          <button
-            type="submit"
-            disabled={!input.trim() || isBusy}
-            aria-label="Send"
-            className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white text-black transition-opacity disabled:opacity-30"
+          {/* content */}
+          <div
+            ref={scrollRef}
+            data-lenis-prevent
+            className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-6"
           >
-            <ArrowUp className="size-4.5" strokeWidth={2.4} />
-          </button>
-        </form>
+            {tab === "images" ? (
+              <ImageList box={box} />
+            ) : tab === "details" ? (
+              <Details box={box} />
+            ) : (
+              <ChatMessages
+                messages={messages}
+                showThinking={showThinking}
+                name={box.name}
+              />
+            )}
+          </div>
+
+          {/* chat composer — only on the chat tab, pinned to the bottom */}
+          {tab === "chat" && (
+            <div className="shrink-0">
+              {!hasMessages && (
+                <div className="flex flex-wrap gap-2 px-3 pb-1">
+                  {suggestions.map((s) => (
+                    <button
+                      key={s}
+                      onClick={() => send(s)}
+                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  send(input);
+                }}
+                className="m-3 mt-2 flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 p-1.5 pl-4"
+              >
+                <input
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder={`ask anything about ${box.name}`}
+                  className="min-w-0 flex-1 bg-transparent py-2 text-sm text-white placeholder:text-white/40 focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  disabled={!input.trim() || isBusy}
+                  aria-label="Send"
+                  className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white text-black transition-opacity disabled:opacity-30"
+                >
+                  <ArrowUp className="size-4.5" strokeWidth={2.4} />
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
       </motion.div>
     </motion.div>
+  );
+}
+
+function ImageList({ box }: { box: ProjectBox }) {
+  return (
+    <div className="flex flex-col gap-3">
+      {box.images.map((src, i) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={src + i}
+          src={src}
+          alt={`${box.name} screenshot ${i + 1}`}
+          className="w-full rounded-lg border border-black/10 object-cover shadow-lg"
+        />
+      ))}
+    </div>
+  );
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <h4 className="pb-2 text-xs font-semibold tracking-wider text-white/40 uppercase">
+      {children}
+    </h4>
+  );
+}
+
+function Details({ box }: { box: ProjectBox }) {
+  return (
+    <div className="space-y-7">
+      <div>
+        <h3 className="text-2xl font-semibold text-white sm:text-3xl">
+          {box.name}
+          <span className="text-secondary">.</span>
+        </h3>
+        <p className="pt-1 text-white/60">{box.tagline}</p>
+      </div>
+
+      <p className="leading-relaxed text-white/80">{box.description}</p>
+
+      {/* meta row — plain text with dividers, no chips */}
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm leading-none text-white/60">
+        <span className="text-white/80">{box.type}</span>
+        <Divider />
+        <span className="inline-flex items-center gap-1.5 text-white/80">
+          <span
+            className={`size-2 rounded-full ${statusColor[box.status] ?? "bg-white/40"}`}
+          />
+          {box.status}
+        </span>
+        <Divider />
+        <span>{box.year}</span>
+        <Divider />
+        <span>{box.duration}</span>
+      </div>
+
+      {/* markdown body */}
+      <Markdown>{box.content}</Markdown>
+
+      <div>
+        <SectionLabel>tech stack</SectionLabel>
+        <div className="flex flex-wrap gap-2.5">
+          {box.tags.map((tag) => {
+            const tech = techMeta[tag as TechKey];
+            return (
+              <span
+                key={tag}
+                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm text-shadow-2xs"
+              >
+                {tech && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={tech.logo}
+                    alt=""
+                    aria-hidden
+                    className="size-4 shrink-0"
+                  />
+                )}
+                {tech?.label ?? tag}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-3">
+        {box.url && (
+          <a
+            href={box.url}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10"
+          >
+            <Globe className="size-4" />
+            live site
+          </a>
+        )}
+        {box.github && (
+          <a
+            href={box.github}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10"
+          >
+            <Github className="size-4" />
+            source
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function Divider() {
+  return <span className="h-3.5 w-px shrink-0 bg-white/20" />;
+}
+
+function Markdown({ children }: { children: string }) {
+  return (
+    <div className="space-y-3">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          h1: ({ children }) => (
+            <h2 className="pt-2 text-xl font-semibold text-white">
+              {children}
+            </h2>
+          ),
+          h2: ({ children }) => (
+            <h3 className="pt-2 text-lg font-semibold text-white">
+              {children}
+            </h3>
+          ),
+          h3: ({ children }) => (
+            <h4 className="pt-1 text-base font-semibold text-white/90">
+              {children}
+            </h4>
+          ),
+          p: ({ children }) => (
+            <p className="leading-relaxed text-white/75">{children}</p>
+          ),
+          ul: ({ children }) => (
+            <ul className="marker:text-secondary list-disc space-y-1.5 pl-5 text-white/75">
+              {children}
+            </ul>
+          ),
+          ol: ({ children }) => (
+            <ol className="list-decimal space-y-1.5 pl-5 text-white/75">
+              {children}
+            </ol>
+          ),
+          li: ({ children }) => <li className="leading-relaxed">{children}</li>,
+          a: ({ children, href }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              className="text-secondary underline underline-offset-2"
+            >
+              {children}
+            </a>
+          ),
+          strong: ({ children }) => (
+            <strong className="font-semibold text-white">{children}</strong>
+          ),
+          code: ({ children }) => (
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">
+              {children}
+            </code>
+          ),
+          blockquote: ({ children }) => (
+            <blockquote className="border-l-2 border-white/20 pl-3 text-white/60 italic">
+              {children}
+            </blockquote>
+          ),
+          hr: () => <hr className="border-white/10" />,
+        }}
+      >
+        {children}
+      </ReactMarkdown>
+    </div>
+  );
+}
+
+function ChatMessages({
+  messages,
+  showThinking,
+  name,
+}: {
+  messages: ReturnType<typeof useChat>["messages"];
+  showThinking: boolean;
+  name: string;
+}) {
+  if (messages.length === 0) {
+    return (
+      <div className="flex h-full flex-col items-center justify-center text-center">
+        <p className="text-lg font-medium text-white/80">ask about {name}</p>
+        <p className="max-w-xs pt-2 text-sm text-white/45">
+          the assistant knows this project&apos;s details, stack, and what i
+          built. pick a prompt below or type your own.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col gap-3">
+      {messages.map((m) => {
+        const text = m.parts
+          .filter((p) => p.type === "text")
+          .map((p) => p.text)
+          .join("");
+        // assistant message still reasoning (no text yet) — the dots cover it
+        if (m.role === "assistant" && text.length === 0) return null;
+        return (
+          <div
+            key={m.id}
+            className={
+              m.role === "user"
+                ? "max-w-[82%] self-end rounded-2xl rounded-br-md bg-white/15 px-4 py-2.5 text-sm whitespace-pre-wrap text-white"
+                : "max-w-[88%] self-start rounded-2xl rounded-bl-md border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap text-white/90"
+            }
+          >
+            {text}
+          </div>
+        );
+      })}
+
+      {showThinking && (
+        <div className="max-w-[88%] self-start rounded-2xl rounded-bl-md border border-white/10 bg-white/[0.04] px-4 py-3">
+          <span className="flex gap-1">
+            {[0, 1, 2].map((d) => (
+              <motion.span
+                key={d}
+                animate={{ opacity: [0.3, 1, 0.3] }}
+                transition={{ duration: 1, repeat: Infinity, delay: d * 0.2 }}
+                className="size-1.5 rounded-full bg-white/70"
+              />
+            ))}
+          </span>
+        </div>
+      )}
+    </div>
   );
 }
