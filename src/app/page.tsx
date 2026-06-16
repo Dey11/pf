@@ -1,6 +1,8 @@
 import BentoSection from "@/components/bento-section";
+import ConnectSection from "@/components/connect-section";
 import HeroSection from "@/components/hero-section";
 import ExperienceSection from "@/components/experience-section";
+import GithubContributions from "@/components/github-contributions";
 import { techStackItems } from "@/lib/constants";
 import Link from "next/link";
 // commented out — sections below are being revamped
@@ -15,7 +17,7 @@ export default function Home() {
       <HeroSection />
 
       <section className="mb-40 flex flex-col overflow-hidden">
-        <p className="font-display pb-2 text-base md:text-lg">(000)</p>
+        <p className="font-display pb-2 text-lg md:text-xl">(000)</p>
 
         <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
           about me<span className="text-secondary">.</span>
@@ -55,7 +57,7 @@ export default function Home() {
               <Link href="https://github.com/dey11" target="_blank">
                 <button
                   aria-label="Visit my GitHub"
-                  className="bg-background flex cursor-pointer items-center justify-center gap-1 rounded-full border border-white px-5 pt-1 pb-2 text-sm leading-none md:text-base"
+                  className="bg-background flex cursor-pointer items-center justify-center gap-1 rounded-full border border-white px-5 py-2 text-sm md:text-base"
                 >
                   GitHub
                   <span>→</span>
@@ -64,10 +66,14 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div className="pt-16">
+          <GithubContributions />
+        </div>
       </section>
 
       <section className="pb-40 text-end">
-        <p className="font-display pb-2 text-base md:text-lg">(001)</p>
+        <p className="font-display pb-2 text-lg md:text-xl">(001)</p>
 
         <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
           tech stack {"<>"} skills<span className="text-secondary">.</span>
@@ -172,7 +178,7 @@ export default function Home() {
               /04<span className="text-secondary">.</span>
             </p>
             <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl lg:text-5xl">
-              miscellaneous
+              others
             </h2>
           </div>
 
@@ -202,17 +208,19 @@ export default function Home() {
 
       <BentoSection />
 
+      <ConnectSection />
+
       {/* ----------------------------------------------------------------
-          The sections below (now / hobbies / contact) are being revamped.
+          The sections below (now / hobbies) are being revamped.
           Commented out for now — renumber the binary indices when restored:
-          now -> (100), hobbies -> (101), contact -> (110).
+          now -> (101), hobbies -> (110).
       ------------------------------------------------------------------- */}
       {/* <NowSection /> */}
 
       {/* <HobbiesSection /> */}
 
       {/* <section id="contact" className="py-10 md:py-20 md:pt-0">
-        <p className="font-display pb-2 text-base md:text-lg">(110)</p>
+        <p className="font-display pb-2 text-lg md:text-xl">(110)</p>
 
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
           <div className="flex flex-col gap-5 pb-5 md:gap-8 md:pb-0">

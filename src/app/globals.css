@@ -20,8 +20,52 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-darker-grotesque);
 }
 
+@utility font-handwriting {
+  font-family: var(--font-handwriting);
+}
+
+/* reserve the scrollbar gutter so locking body scroll (e.g. when the project
+   popup opens) doesn't remove the scrollbar and shift the layout. */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   overflow-x: hidden;
+}
+
+/* make the github contribution calendar span the full container width — the
+   main calendar svg carries a viewBox, so it scales fluidly. */
+.react-activity-calendar {
+  width: 100% !important;
+}
+.react-activity-calendar__scroll-container {
+  width: 100%;
+}
+.react-activity-calendar__calendar {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* slim, themed scrollbar — used inside the project popup so the default
+   chunky browser scrollbar doesn't show. */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(140, 140, 140, 0.5) transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(140, 140, 140, 0.5);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(160, 160, 160, 0.75);
 }
 
 html,

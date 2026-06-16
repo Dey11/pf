@@ -83,7 +83,7 @@ export default function ExperienceSection() {
 
   return (
     <section className="pb-40 text-start">
-      <p className="font-display pb-2 text-base md:text-lg">(010)</p>
+      <p className="font-display pb-2 text-lg md:text-xl">(010)</p>
 
       <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
         experience<span className="text-secondary">.</span>
@@ -149,15 +149,17 @@ export default function ExperienceSection() {
                             return (
                               <span
                                 key={tag}
-                                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm text-shadow-2xs sm:text-base"
+                                className="group/tag inline-flex items-center rounded-full bg-white/10 p-2.5 text-sm font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm transition-all duration-300 text-shadow-2xs hover:px-4 sm:text-base"
                               >
                                 <img
                                   src={tech.logo}
                                   alt=""
                                   aria-hidden
-                                  className="size-4 shrink-0 sm:size-5"
+                                  className="size-5 shrink-0"
                                 />
-                                {tech.label}
+                                <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover/tag:ml-2 group-hover/tag:max-w-[160px] group-hover/tag:opacity-100">
+                                  {tech.label}
+                                </span>
                               </span>
                             );
                           })}

@@ -1,6 +1,6 @@
 import { projects } from "@/lib/constants";
 import Link from "next/link";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 interface ProjectCardProps {
   project: {
@@ -52,7 +52,13 @@ function ProjectCard({ project }: ProjectCardProps) {
                   className="hover:text-secondary flex items-center gap-2 text-sm font-medium text-white underline underline-offset-2 transition-colors"
                 >
                   GitHub Repo
-                  <Github className="h-4 w-4" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/logos/github-form.svg"
+                    alt=""
+                    aria-hidden
+                    className="h-4 w-4"
+                  />
                 </Link>
               )}
             </div>

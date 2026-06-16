@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Darker_Grotesque, Inter } from "next/font/google";
+import { Darker_Grotesque, Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/container";
 import { ViewTransition } from "react";
@@ -17,6 +17,12 @@ const darkerGrotesque = Darker_Grotesque({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-handwriting",
 });
 
 export const metadata: Metadata = {
@@ -124,7 +130,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${darkerGrotesque.variable} ${inter.variable} bg-background text-foreground antialiased`}
+        className={`${darkerGrotesque.variable} ${inter.variable} ${caveat.variable} bg-background text-foreground antialiased`}
         style={{ fontFamily: "var(--font-inter)" }}
       >
         <SpeedInsights />

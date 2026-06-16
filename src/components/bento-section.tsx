@@ -156,7 +156,7 @@ export default function BentoSection() {
 
   return (
     <section className="pb-40 text-start">
-      <p className="font-display pb-2 text-end text-base md:text-lg">(011)</p>
+      <p className="font-display pb-2 text-end text-lg md:text-xl">(011)</p>
 
       <h1 className="text-end text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
         projects<span className="text-secondary">.</span>
@@ -177,15 +177,11 @@ export default function BentoSection() {
               >
                 {/* later: <img> of the project fills the block here */}
 
-                {/* hover mask + caption */}
-                <div className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/85 via-black/30 to-transparent p-2.5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:p-3">
-                  <p className="translate-y-2 truncate text-xs font-semibold text-white transition-transform duration-300 group-hover:translate-y-0 sm:text-sm">
-                    {box.name}
-                  </p>
-                  <p className="line-clamp-1 translate-y-2 text-[10px] text-white/75 transition-transform delay-50 duration-300 group-hover:translate-y-0 sm:text-xs">
-                    {box.tagline}
-                  </p>
-                </div>
+                {/* project name drops in from the top-right with an elastic
+                    overshoot on hover */}
+                <p className="pointer-events-none absolute top-0 right-3 max-w-[90%] -translate-y-full truncate text-right text-[32px] leading-none font-bold text-black transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:translate-y-2">
+                  {box.name}
+                </p>
               </div>
             ))}
           </div>

@@ -71,7 +71,7 @@ export const techStackItems = {
     },
     {
       id: 3,
-      name: "javascript",
+      name: "js",
       icon: "/logos/js.png",
     },
   ],
@@ -115,7 +115,7 @@ export const techStackItems = {
     },
     {
       id: 3,
-      name: "postgresql",
+      name: "postgres",
       icon: "/logos/postgresql.png",
     },
   ],

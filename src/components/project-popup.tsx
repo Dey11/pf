@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { ArrowUp, Github, Globe, X } from "lucide-react";
+import { ArrowUp, Globe, X } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
@@ -131,7 +131,7 @@ export default function ProjectPopup({
         {/* LEFT — project images (desktop). on mobile this becomes a tab. */}
         <div
           data-lenis-prevent
-          className={`hidden shrink-0 overflow-y-auto overscroll-contain md:block md:w-2/5 md:border-r md:border-white/10 ${box.color}`}
+          className={`custom-scrollbar hidden shrink-0 overflow-y-auto overscroll-contain md:block md:w-2/5 md:border-r md:border-white/10 ${box.color}`}
         >
           <div className="p-3">
             <ImageList box={box} />
@@ -194,7 +194,7 @@ export default function ProjectPopup({
             <button
               onClick={onClose}
               aria-label="Close"
-              className="mb-2 flex size-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              className="flex size-9 shrink-0 items-center justify-center self-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
             >
               <X className="size-5" />
             </button>
@@ -204,7 +204,7 @@ export default function ProjectPopup({
           <div
             ref={scrollRef}
             data-lenis-prevent
-            className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-6"
+            className="custom-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-6"
           >
             {tab === "images" ? (
               <ImageList box={box} />
@@ -367,7 +367,13 @@ function Details({ box }: { box: ProjectBox }) {
             rel="noreferrer"
             className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10"
           >
-            <Github className="size-4" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logos/github-form.svg"
+              alt=""
+              aria-hidden
+              className="size-4"
+            />
             source
           </a>
         )}
@@ -477,16 +483,22 @@ function ChatMessages({
           .join("");
         // assistant message still reasoning (no text yet) — the dots cover it
         if (m.role === "assistant" && text.length === 0) return null;
+        if (m.role === "user") {
+          return (
+            <div
+              key={m.id}
+              className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-white/15 px-4 py-2.5 text-sm whitespace-pre-wrap text-white"
+            >
+              {text}
+            </div>
+          );
+        }
         return (
           <div
             key={m.id}
-            className={
-              m.role === "user"
-                ? "max-w-[82%] self-end rounded-2xl rounded-br-md bg-white/15 px-4 py-2.5 text-sm whitespace-pre-wrap text-white"
-                : "max-w-[88%] self-start rounded-2xl rounded-bl-md border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap text-white/90"
-            }
+            className="max-w-[88%] self-start rounded-2xl rounded-bl-md border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm leading-relaxed text-white/90"
           >
-            {text}
+            <Markdown>{text}</Markdown>
           </div>
         );
       })}
