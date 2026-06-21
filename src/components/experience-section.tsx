@@ -41,7 +41,7 @@ const experiences: Experience[] = [
     kind: "FREELANCE",
     period: "2026",
     points: [
-      "Built a WIP trading journal that imports broker executions and reconstructs trades.",
+      "Building a trading journal that supports Fidelity imports for now.",
       "Tracks PnL with journaling, playbooks, and tags.",
       "Surfaces performance through dashboard and calendar analytics views.",
     ],

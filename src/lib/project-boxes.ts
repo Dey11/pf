@@ -9,7 +9,7 @@ export type ProjectBox = {
   github: string | null;
   tags: string[];
   type: string;
-  status: "Live" | "Archived" | "WIP";
+  status: "Live" | "Archived" | "WIP" | "In progress";
   duration: string;
   year: string;
   images: string[];
@@ -557,12 +557,12 @@ This was freelance solo work for a small business. I chose a headless WooCommerc
     color: "bg-[#d9e7ff]",
     name: "moai",
     tagline:
-      "wip trading journal with csv imports, trade reconstruction, and analytics",
+      "trading journal with Fidelity imports, trade reconstruction, and analytics",
     description:
-      "A WIP trading journal and performance analytics app for active traders, built around broker execution imports, trade reconstruction, PnL tracking, journaling, playbooks, tags, and dashboard/calendar analysis.",
+      "A trading journal and performance analytics app for active traders, built around Fidelity broker imports, trade reconstruction, PnL tracking, journaling, playbooks, tags, and dashboard/calendar analysis.",
     content: `## Overview
 
-Moai is a WIP trading journal and performance analytics app for active traders. It turns broker execution exports into reconstructed trades, then layers journaling, playbooks, tags, dashboard views, and calendar analysis on top.
+Moai is a trading journal and performance analytics app for active traders. It supports Fidelity imports for now, turning broker execution exports into reconstructed trades before layering journaling, playbooks, tags, dashboard views, and calendar analysis on top.
 
 ## Architecture
 
@@ -582,12 +582,12 @@ The app uses Next.js 16 App Router, React, TypeScript, Bun, Tailwind, TanStack Q
 
 ## Role and decisions
 
-This is freelance full-stack WIP work. I treated the import pipeline as the core product surface because a trading journal is only useful if raw broker rows become reliable trade-level insight. The matching flow is designed for rerun safety, while the dashboard and calendar views sit on derived trade data instead of raw CSV rows.`,
+This is freelance full-stack product work. I treated the import pipeline as the core product surface because a trading journal is only useful if raw broker rows become reliable trade-level insight. The matching flow is designed for rerun safety, while the dashboard and calendar views sit on derived trade data instead of raw CSV rows.`,
     url: "",
     github: "https://github.com/Dey11/moai",
     tags: ["nextjs", "typescript", "postgresql", "prisma", "tailwindcss"],
     type: "Freelance",
-    status: "WIP",
+    status: "In progress",
     duration: "Client product build",
     year: "2026",
     images: [

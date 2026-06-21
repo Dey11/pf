@@ -20,6 +20,7 @@ const TABS: { id: Tab; label: string }[] = [
 const statusColor: Record<string, string> = {
   Live: "bg-emerald-400",
   WIP: "bg-amber-400",
+  "In progress": "bg-amber-400",
   Archived: "bg-white/40",
 };
 

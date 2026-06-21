@@ -632,11 +632,11 @@ Only Horse Bedding appears active. Courier/tracking remains manual through WooCo
 ## 20. moai
 
 GitHub: https://github.com/Dey11/moai  
-Type: Freelance / WIP
+Type: Freelance / In progress
 
 ### Overview
 
-Moai is a WIP trading journal and performance analytics app for active traders. Users import broker executions, reconstruct trades, track PnL, journal decisions, manage playbooks and tags, and analyze performance through dashboard and calendar views.
+Moai is a trading journal and performance analytics app for active traders. It supports Fidelity imports for now, reconstructs trades from broker executions, tracks PnL, journals decisions, manages playbooks and tags, and analyzes performance through dashboard and calendar views.
 
 ### Client Requirement
 
