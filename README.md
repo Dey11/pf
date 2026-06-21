@@ -9,7 +9,9 @@ Personal portfolio built with Next.js and Bun.
 - Moai copy should describe it as a trading journal with Fidelity support for now, without WIP wording.
 - The homepage GitHub contribution chart is rendered below the About section by `src/components/github-contributions.tsx`.
 - Homepage project box content and priority ordering live in `src/lib/project-boxes.ts`.
+- Project box brand colors also live in `src/lib/project-boxes.ts`; darker card colors can set `foreground: "light"` so hover text remains readable.
 - Project modal screenshots are stored under `public/projects` and externally sourced project screenshots are stored under `public/projects/external`; each project's `images` array controls popup image order.
+- Project popup chat is grounded in each box's title, description, long-form content, tech tags, live URL, and GitHub URL. It can answer architecture questions from those maintained notes, but it does not browse GitHub or inspect repositories at request time.
 - VenturAssist uses the shared screenshot asset at `public/projects/venturassist.png`.
 - Hanabi's card thumbnail and first popup screenshot use the shared screenshot asset at `public/projects/external/hanabi-site-1.png`.
 - Ballarat's additional site-section screenshots use the `ballarat-site-*.webp` naming convention in `public/projects/external`.

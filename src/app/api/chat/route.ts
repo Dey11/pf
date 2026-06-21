@@ -110,6 +110,8 @@ ${project?.tags?.length ? `- Tech stack: ${project.tags.join(", ")}` : ""}
 ${project?.live ? `- Live URL: ${project.live}` : ""}
 ${project?.github ? `- Source: ${project.github}` : ""}
 
+Answer architectural questions from the supplied project notes. You do not have live browsing, GitHub API access, or repository-inspection tools in this chat; if a question requires current repo/file inspection beyond these notes, say so and point to the source link when available.
+
 Keep replies short (1-3 sentences unless asked for more). Stay focused on this project and its technology. If asked something unrelated, gently steer the conversation back to the project.`;
 
   const result = streamText({

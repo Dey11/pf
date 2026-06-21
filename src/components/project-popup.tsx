@@ -52,10 +52,11 @@ export default function ProjectPopup({
             description: `${box.description}\n\n${box.content}`,
             tags: box.tags,
             live: box.url,
+            github: box.github,
           },
         },
       }),
-    [box.name, box.description, box.content, box.tags, box.url],
+    [box.name, box.description, box.content, box.tags, box.url, box.github],
   );
 
   const { messages, sendMessage, status } = useChat({ transport });

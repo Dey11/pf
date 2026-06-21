@@ -1,6 +1,7 @@
 export type ProjectBox = {
   id: string;
   color: string;
+  foreground?: "dark" | "light";
   name: string;
   tagline: string;
   description: string;
@@ -28,7 +29,7 @@ export function projectSlug(box: ProjectBox): string {
 export const projectBoxesByInventoryId: Record<number, ProjectBox> = {
   1: {
     id: "project-01-pdx",
-    color: "bg-[#dce8df]",
+    color: "bg-[#F4C651]",
     name: "pdx",
     tagline:
       "ai study-material generation with credits, workers, and pdf delivery",
@@ -69,7 +70,7 @@ I built this as full-stack product engineering. The important decision was to tr
   },
   2: {
     id: "project-02-ballarat",
-    color: "bg-[#c8ef5f]",
+    color: "bg-[#36C279]",
     name: "ballarat box sports",
     tagline:
       "local sports venue website with seo, pricing, rules, and lead capture",
@@ -118,7 +119,8 @@ This was freelance client work. I optimized for a launch-stage local business: f
   },
   4: {
     id: "project-04-venturassist",
-    color: "bg-[#d9d8ff]",
+    color: "bg-[#246B8B]",
+    foreground: "light",
     name: "venturassist",
     tagline: "ai venture-capital analysis from decks, documents, and chat",
     description:
@@ -164,7 +166,7 @@ This was built in a hackathon/team context, and the repo credits me as Lead Deve
   },
   5: {
     id: "project-05-wabisabi",
-    color: "bg-[#e7ddc8]",
+    color: "bg-[#EDD1E3]",
     name: "wabisabi",
     tagline:
       "design-agency portfolio with galleries, services, and motion-heavy browsing",
@@ -462,7 +464,7 @@ This is a solo personal AI product. I designed it around persistent state and co
   },
   18: {
     id: "project-18-downthecove",
-    color: "bg-[#d9eee7]",
+    color: "bg-[#DDD4C1]",
     name: "downthecove",
     tagline:
       "bespoke ecommerce with medusa, payload, wholesale, affiliates, and royal mail",
@@ -516,7 +518,8 @@ This was substantial freelance full-stack work. I built it as a platform rather 
   },
   19: {
     id: "project-19-thomasbewick",
-    color: "bg-[#f1dfc8]",
+    color: "bg-[#8A6356]",
+    foreground: "light",
     name: "thomasbewick",
     tagline:
       "single-product ecommerce with stripe, woocommerce operations, and resend email",
@@ -561,7 +564,7 @@ This was freelance solo work for a small business. I chose a headless WooCommerc
   },
   20: {
     id: "project-20-moai",
-    color: "bg-[#d9e7ff]",
+    color: "bg-[#FFC107]",
     name: "moai",
     tagline:
       "trading journal with Fidelity imports, trade reconstruction, and analytics",
@@ -606,7 +609,7 @@ This is freelance full-stack product work. I treated the import pipeline as the 
   },
   21: {
     id: "project-21-hanabi",
-    color: "bg-[#ffd88a]",
+    color: "bg-[#F90]",
     name: "hanabi",
     tagline:
       "polished studio portfolio with handcrafted visuals, motion, gallery, and booking",
@@ -652,7 +655,8 @@ This was a frontend/product-design implementation for a studio brand. I kept pro
   },
   22: {
     id: "project-22-leadly",
-    color: "bg-[#d8edff]",
+    color: "bg-[#B7495F]",
+    foreground: "light",
     name: "leadly",
     tagline:
       "ai reddit lead-generation saas with workers, quotas, billing, and seo surfaces",
