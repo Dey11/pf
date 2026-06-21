@@ -25,6 +25,9 @@ export default function Container({
     });
 
     lenisRef.current = lenis;
+    // expose the instance so other components can smooth-scroll programmatically
+    // (e.g. clicking a hero box scrolls to its project in the bento grid)
+    (window as unknown as { lenis?: Lenis }).lenis = lenis;
 
     // Use requestAnimationFrame to continuously update the scroll
     function raf(time: number) {
@@ -49,6 +52,7 @@ export default function Container({
       window.removeEventListener("resize", handleResize);
       lenis.destroy();
       lenisRef.current = null;
+      delete (window as unknown as { lenis?: Lenis }).lenis;
     };
   }, []);
 

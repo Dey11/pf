@@ -1,13 +1,19 @@
 "use client";
 
 import { AnimatePresence } from "motion/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProjectPopup from "./project-popup";
 import {
   prioritizedProjectColumns,
   projectBoxesByInventoryId,
+  projectSlug,
   type ProjectBox,
 } from "@/lib/project-boxes";
+import {
+  PROJECT_EVENT,
+  clearProjectHighlight,
+  slugFromHash,
+} from "@/lib/project-highlight";
 
 type Slot = { weight: number; projectId: number };
 
@@ -34,20 +40,33 @@ function BentoCard({
   box,
   weight,
   onSelect,
+  highlight,
 }: {
   box: ProjectBox;
   weight: number;
   onSelect: (box: ProjectBox) => void;
+  highlight: string | null;
 }) {
   const thumbnail = box.thumbnail ?? box.images[0];
+  const slug = projectSlug(box);
+  const isActive = highlight === slug;
+  const isDimmed = highlight !== null && !isActive;
 
   return (
     <button
       type="button"
       onClick={() => onSelect(box)}
+      data-project-box
+      data-project-slug={slug}
       style={{ flexGrow: weight, flexBasis: 0 }}
       aria-label={`Open ${box.name} project details`}
-      className={`group relative min-h-0 w-full cursor-pointer overflow-hidden rounded-xl text-left sm:rounded-2xl ${box.color}`}
+      className={`group relative min-h-0 w-full cursor-pointer overflow-hidden rounded-xl text-left transition-all duration-300 sm:rounded-2xl ${box.color} ${
+        isActive
+          ? "ring-secondary ring-offset-background z-10 opacity-100 ring-2 ring-offset-2"
+          : isDimmed
+            ? "opacity-40"
+            : "opacity-100"
+      }`}
     >
       <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.38),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.22),transparent_46%)] opacity-80" />
 
@@ -78,9 +97,68 @@ function BentoCard({
 
 export default function BentoSection() {
   const [selected, setSelected] = useState<ProjectBox | null>(null);
+  // the slug of the project to highlight (from a hero-box click or a deep link)
+  const [highlight, setHighlight] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // smooth-scroll the projects section into view, preferring the shared Lenis
+  // instance so it matches the rest of the site's scrolling feel.
+  const scrollToProjects = () => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const lenis = (
+      window as unknown as {
+        lenis?: { scrollTo: (t: HTMLElement, o?: object) => void };
+      }
+    ).lenis;
+    if (lenis) lenis.scrollTo(el, { offset: -16, duration: 1.2 });
+    else el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  // deep link on load: /#downthecove-project -> scroll + highlight
+  useEffect(() => {
+    const slug = slugFromHash(window.location.hash);
+    if (!slug) return;
+    setHighlight(slug);
+    // give Lenis + layout a beat to settle before scrolling
+    const t = setTimeout(scrollToProjects, 350);
+    return () => clearTimeout(t);
+  }, []);
+
+  // react to hero-box clicks (custom event) and manual hash changes
+  useEffect(() => {
+    const onEvent = (e: Event) => {
+      const slug = (e as CustomEvent<{ slug: string | null }>).detail.slug;
+      setHighlight(slug);
+      if (slug) scrollToProjects();
+    };
+    const onHashChange = () => {
+      const slug = slugFromHash(window.location.hash);
+      setHighlight(slug);
+      if (slug) scrollToProjects();
+    };
+    window.addEventListener(PROJECT_EVENT, onEvent);
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      window.removeEventListener(PROJECT_EVENT, onEvent);
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, []);
+
+  // clicking anywhere that isn't a project box clears the highlight
+  useEffect(() => {
+    if (!highlight) return;
+    const onClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target?.closest("[data-project-box]")) return;
+      clearProjectHighlight();
+    };
+    document.addEventListener("click", onClickOutside);
+    return () => document.removeEventListener("click", onClickOutside);
+  }, [highlight]);
 
   return (
-    <section className="pb-40 text-start">
+    <section ref={sectionRef} className="scroll-mt-6 pb-40 text-start">
       <p className="font-display pb-2 text-end text-lg md:text-xl">(011)</p>
 
       <h1 className="text-end text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
@@ -100,6 +178,7 @@ export default function BentoSection() {
                 box={projectBoxesByInventoryId[projectId]}
                 weight={weight}
                 onSelect={setSelected}
+                highlight={highlight}
               />
             ))}
           </div>
@@ -116,6 +195,7 @@ export default function BentoSection() {
                 box={projectBoxesByInventoryId[projectId]}
                 weight={weight}
                 onSelect={setSelected}
+                highlight={highlight}
               />
             ))}
           </div>

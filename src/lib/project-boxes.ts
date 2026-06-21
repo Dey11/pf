@@ -18,6 +18,13 @@ export type ProjectBox = {
   thumbnail?: string;
 };
 
+// stable url-friendly slug for a project, e.g. "project-18-downthecove" ->
+// "downthecove". used for deep-link hashes (#downthecove-project) and to match
+// a hero box to its bento card for the click-to-highlight interaction.
+export function projectSlug(box: ProjectBox): string {
+  return box.id.replace(/^project-\d+-/, "");
+}
+
 export const projectBoxesByInventoryId: Record<number, ProjectBox> = {
   1: {
     id: "project-01-pdx",

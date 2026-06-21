@@ -1,7 +1,7 @@
 "use client";
 
 import { heroItems, locationUrl } from "@/lib/constants";
-import { techMeta, type TechKey } from "@/lib/tech-stack";
+import { highlightProject } from "@/lib/project-highlight";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Signature from "./signature";
@@ -131,6 +131,18 @@ export default function HeroSection() {
           return (
           <motion.div
             key={item.title}
+            role="link"
+            tabIndex={0}
+            aria-label={`View ${item.title} in projects`}
+            data-project-box
+            data-project-slug={item.title}
+            onClick={() => highlightProject(item.title)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                highlightProject(item.title);
+              }
+            }}
             onMouseEnter={() => setHovered(idx)}
             onMouseLeave={() => setHovered(null)}
             initial={{
@@ -146,7 +158,7 @@ export default function HeroSection() {
               ease: "easeInOut",
             }}
             className={cn(
-              "group relative w-full overflow-hidden bg-[#3a3d3e] last:hidden even:hidden sm:even:block lg:w-[370px] lg:first:block lg:last:block",
+              "group relative w-full cursor-pointer overflow-hidden bg-[#3a3d3e] last:hidden even:hidden sm:even:block lg:w-[370px] lg:first:block lg:last:block",
               heroHeights[idx],
             )}
           >
@@ -198,47 +210,6 @@ export default function HeroSection() {
                 />
               </>
             )}
-
-            {/* hover overlay — logo/name, description, live link, tech stack */}
-            <div className="absolute inset-x-0 bottom-0 z-10 flex h-full flex-col justify-end gap-3 bg-gradient-to-t from-black/85 via-black/45 to-black/0 p-4 text-white opacity-100 backdrop-blur-[2px] transition-opacity delay-75 duration-300 group-hover:opacity-100 lg:opacity-0">
-              {item.titleLogo ? (
-                <img
-                  src={item.titleLogo}
-                  alt={item.title}
-                  className="h-8 w-auto max-w-[60%] object-contain object-left"
-                />
-              ) : (
-                <p className="text-2xl font-semibold lowercase">{item.title}</p>
-              )}
-              <p className="cursor-default text-sm leading-tight md:text-base">
-                {item.description}
-              </p>
-
-              {item.live && (
-                <Link
-                  href={item.live}
-                  target="_blank"
-                  className="w-fit text-sm underline underline-offset-2 md:text-base"
-                >
-                  live preview <span className="text-xs md:text-sm">→</span>
-                </Link>
-              )}
-
-              <div className="flex flex-wrap items-center gap-2 pt-1">
-                {item.techStack.map((t) => {
-                  const tech = techMeta[t as TechKey];
-                  return tech ? (
-                    <img
-                      key={t}
-                      src={tech.logo}
-                      alt={tech.label}
-                      title={tech.label}
-                      className="size-5"
-                    />
-                  ) : null;
-                })}
-              </div>
-            </div>
           </motion.div>
           );
         })}
