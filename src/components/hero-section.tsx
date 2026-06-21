@@ -1,6 +1,7 @@
 "use client";
 
 import { heroItems, locationUrl } from "@/lib/constants";
+import { techMeta, type TechKey } from "@/lib/tech-stack";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Signature from "./signature";
@@ -88,12 +89,22 @@ function IstClock({ time }: { time: string | null }) {
 }
 
 // below lg the boxes scale with the viewport (svh); from laptop up the width is
-// fixed (370px) so we freeze the height too — keeps the framing constant and
-// stops `background-size: cover` from zooming the image in on taller screens.
+// fixed (370px) so we freeze the height too — keeps the framing constant. the
+// row renders reversed, so index 0 is the tallest box on the right.
 const heroHeights = [
   "h-[60svh] lg:h-[580px]",
   "h-[50svh] lg:h-[495px]",
   "h-[40svh] lg:h-[410px]",
+];
+
+// each box paints its own third of one shared wave background. all three boxes
+// are equal width at lg, so `background-size: 300% auto` makes the image span
+// the whole row and these positions slice it into seamless, gap-aware thirds
+// (right / middle / left, matching the reversed render order).
+const heroSlice = [
+  "lg:[background-position:100%_top]",
+  "lg:[background-position:50%_top]",
+  "lg:[background-position:0%_top]",
 ];
 
 export default function HeroSection() {
@@ -112,11 +123,7 @@ export default function HeroSection() {
         {heroItems.map((item, idx) => (
           <motion.div
             key={item.title}
-            style={{
-              backgroundImage: `url(${item.imageUrl})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
+            style={{ backgroundImage: "url(/landing-images/hero-bg.svg)" }}
             initial={{
               opacity: 0,
               y: 50,
@@ -130,35 +137,75 @@ export default function HeroSection() {
               ease: "easeInOut",
             }}
             className={cn(
-              "group relative w-full last:hidden even:hidden sm:even:block lg:w-[370px] lg:first:block lg:last:block",
+              "group relative w-full overflow-hidden bg-[#ff0004] bg-cover bg-center bg-no-repeat last:hidden even:hidden sm:even:block lg:w-[370px] lg:[background-size:300%_auto] lg:first:block lg:last:block",
               heroHeights[idx],
+              heroSlice[idx],
             )}
           >
-            <div className="absolute inset-x-0 bottom-0 flex h-full flex-col justify-end gap-3 bg-gradient-to-t from-black/80 to-black/0 p-4 text-white opacity-100 backdrop-blur-[2px] transition-opacity delay-75 duration-300 group-hover:opacity-100 lg:opacity-0">
+            {/* project screenshots layered on the shared wave background */}
+            {item.layout === "bottom" ? (
               <img
-                src={item.titleLogo}
-                alt={item.title}
+                src={item.screens[0]}
+                alt={`${item.title} screenshot`}
                 fetchPriority="high"
-                className={cn(
-                  "size-10",
-                  item.title === "clarityhub" && "h-8 w-28",
-                  item.title === "drites" && "h-6 w-24",
-                  item.title === "wabisabi design agency" && "h-8 w-36",
-                )}
+                className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto w-[94%] rounded-t-xl border-x border-t border-black/10 shadow-[0_-12px_40px_rgba(0,0,0,0.35)]"
               />
+            ) : (
+              <>
+                <img
+                  src={item.screens[0]}
+                  alt={`${item.title} screenshot 1`}
+                  fetchPriority="high"
+                  className="pointer-events-none absolute top-4 right-0 w-[80%] rounded-l-lg border-y border-l border-black/10 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+                />
+                <img
+                  src={item.screens[1]}
+                  alt={`${item.title} screenshot 2`}
+                  fetchPriority="high"
+                  className="pointer-events-none absolute bottom-4 left-0 w-[80%] rounded-r-lg border-y border-r border-black/10 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+                />
+              </>
+            )}
+
+            {/* hover overlay — logo/name, description, live link, tech stack */}
+            <div className="absolute inset-x-0 bottom-0 z-10 flex h-full flex-col justify-end gap-3 bg-gradient-to-t from-black/85 via-black/45 to-black/0 p-4 text-white opacity-100 backdrop-blur-[2px] transition-opacity delay-75 duration-300 group-hover:opacity-100 lg:opacity-0">
+              {item.titleLogo ? (
+                <img
+                  src={item.titleLogo}
+                  alt={item.title}
+                  className="h-8 w-auto max-w-[60%] object-contain object-left"
+                />
+              ) : (
+                <p className="text-2xl font-semibold lowercase">{item.title}</p>
+              )}
               <p className="cursor-default text-sm leading-tight md:text-base">
                 {item.description}
               </p>
 
-              <Link
-                href={item.live}
-                target="_blank"
-                className="w-fit text-sm underline underline-offset-2 md:text-base"
-              >
-                live preview <span className="text-xs md:text-sm">→</span>
-              </Link>
+              {item.live && (
+                <Link
+                  href={item.live}
+                  target="_blank"
+                  className="w-fit text-sm underline underline-offset-2 md:text-base"
+                >
+                  live preview <span className="text-xs md:text-sm">→</span>
+                </Link>
+              )}
 
-              <p className="cursor-default text-sm md:text-base">tech stack</p>
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                {item.techStack.map((t) => {
+                  const tech = techMeta[t as TechKey];
+                  return tech ? (
+                    <img
+                      key={t}
+                      src={tech.logo}
+                      alt={tech.label}
+                      title={tech.label}
+                      className="size-5"
+                    />
+                  ) : null;
+                })}
+              </div>
             </div>
           </motion.div>
         ))}

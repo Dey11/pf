@@ -1,59 +1,56 @@
 export const locationUrl =
   "https://earth.google.com/web/@22.58006218,88.3624072,29.07700058a,16012.63427221d,35y,294.87206119h,0t,0r/data=CgRCAggBOgMKATBCAggASg0I____________ARAA";
 
-export const heroItems = [
+// the three hero showcase boxes. they share one continuous wave background
+// (hero-bg.svg, sliced across the row) with project screenshots layered on top.
+// `layout: "bottom"` sits a single screenshot flush against the box bottom;
+// `layout: "split"` floats two screenshots (top-right + bottom-left).
+// order here is right -> middle -> left because the row renders reversed.
+// descriptions/urls/stacks mirror the projects section; titleLogo is filled in
+// later — until then the overlay falls back to the project name.
+export type HeroItem = {
+  title: string;
+  titleLogo: string;
+  description: string;
+  live: string;
+  techStack: string[];
+  layout: "bottom" | "split";
+  screens: string[];
+};
+
+export const heroItems: HeroItem[] = [
   {
-    title: "pdx",
-    titleLogo: "/landing-images/pdx-logo.png",
-    imageUrl: "/landing-images/pdx.png",
+    title: "downthecove",
+    titleLogo: "/landing-images/downthecove-logo.svg",
     description:
-      "a website that generates end to end study materials (theory/question banks) with ai, often a 100 page pdf.",
-    live: "https://usepdx.tech",
-    github: "https://github.com/dey11/pdx",
-    techStack: [
-      "nextjs",
-      "tailwindcss",
-      "typescript",
-      "dodopayments",
-      "upstash",
-      "gemini",
-      "vercel",
-      "docker",
-      "bullmq",
+      "a bespoke ecommerce platform for a uk coastal brand — retail + wholesale, subscriptions, a custom admin, payload cms, and royal mail shipping.",
+    live: "https://staging.fe.downthecove.com/",
+    techStack: ["nextjs", "typescript", "postgresql", "stripe", "docker"],
+    layout: "bottom",
+    screens: ["/landing-images/hero-downthecove.png"],
+  },
+  {
+    title: "moai",
+    titleLogo: "",
+    description:
+      "a wip trading journal for active traders — imports broker executions, reconstructs trades, and surfaces pnl through dashboard & calendar analytics.",
+    live: "",
+    techStack: ["nextjs", "typescript", "postgresql", "prisma", "tailwindcss"],
+    layout: "split",
+    screens: [
+      "/landing-images/hero-moai-1.png",
+      "/landing-images/hero-moai-2.png",
     ],
-    readMore: "/projects#pdx",
   },
   {
-    title: "wabisabi design agency",
-    titleLogo: "/landing-images/wabisabi-logo.png",
-    imageUrl: "/landing-images/wabisabi.png",
+    title: "hanabi",
+    titleLogo: "/landing-images/hanabi-logo.svg",
     description:
-      "a website for a design agency. it's a simple, clean, and modern website that showcases the agency's work. includes micro-interactions.",
-    live: "https://wabisabi.agency",
-    github: "https://github.com/dey11/wabisabi-agency",
-    techStack: ["typescript", "nextjs", "tailwind", "framer-motion"],
-    readMore: "/projects#wabisabi",
-  },
-  // {
-  //   title: "drites",
-  //   titleLogo: "/landing-images/drites-logo.png",
-  //   imageUrl: "/landing-images/drites.png",
-  //   description: "a simple blogging platform.",
-  //   live: "https://drites.site",
-  //   github: "https://github.com/dey11/drites",
-  //   techStack: ["typescript", "nextjs", "prisma", "postgresql", "clerk"],
-  //   readMore: "/projects#drites",
-  // },
-  {
-    title: "ballarat box sports landing",
-    titleLogo: "/landing-images/ballarat-logo.png",
-    imageUrl: "/landing-images/ballarat.png",
-    description:
-      "a landing page for an indoor sports facility in ballarat. a freelance project.",
-    live: "https://ballaratsports.vercel.app",
-    github: "https://github.com/dey11/ballarat",
-    techStack: ["nextjs", "tailwindcss", "typescript", "framer-motion"],
-    readMore: "/projects#ballarat",
+      "a studio website for a design & development brand — services, work, the studio story, and a booking flow wrapped in a handcrafted visual identity.",
+    live: "https://hanabi.works",
+    techStack: ["nextjs", "typescript", "tailwindcss", "motion", "react"],
+    layout: "bottom",
+    screens: ["/landing-images/hero-hanabi.png"],
   },
 ];
 
