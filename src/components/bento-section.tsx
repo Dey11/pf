@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence } from "motion/react";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import ProjectPopup from "./project-popup";
 import {
@@ -69,13 +70,16 @@ function BentoCard({
            with an elastic overshoot. clipped by the card's overflow-hidden. */
         <span
           aria-hidden
-          style={{
-            backgroundImage: `url(${thumbnail})`,
-            backgroundSize: "cover",
-            backgroundPosition: "top center",
-          }}
-          className="pointer-events-none absolute inset-x-2 bottom-0 h-[80%] translate-y-[17%] rounded-t-lg border border-black/10 shadow-[0_-10px_30px_rgba(0,0,0,0.28)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] sm:inset-x-3 sm:rounded-t-xl lg:translate-y-[50%] lg:group-hover:translate-y-[17%]"
-        />
+          className="pointer-events-none absolute inset-x-2 bottom-0 h-[80%] translate-y-[17%] overflow-hidden rounded-t-lg border border-black/10 shadow-[0_-10px_30px_rgba(0,0,0,0.28)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] sm:inset-x-3 sm:rounded-t-xl lg:translate-y-[50%] lg:group-hover:translate-y-[17%]"
+        >
+          <Image
+            src={thumbnail}
+            alt=""
+            fill
+            sizes="(max-width: 1023px) 50vw, 28vw"
+            className="object-cover object-top"
+          />
+        </span>
       ) : (
         <span
           className={`pointer-events-none absolute right-3 bottom-3 left-3 line-clamp-3 text-xs leading-snug opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:text-sm ${mutedTextClass}`}

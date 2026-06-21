@@ -3,8 +3,9 @@ import BentoSection from "@/components/bento-section";
 import ConnectSection from "@/components/connect-section";
 import HeroSection from "@/components/hero-section";
 import ExperienceSection from "@/components/experience-section";
-import GithubContributions from "@/components/github-contributions";
+import DeferredGithubContributions from "@/components/deferred-github-contributions";
 import { techStackItems } from "@/lib/constants";
+import Image from "next/image";
 // commented out — sections below are being revamped
 // import ContactForm from "@/components/contact-form";
 // import HobbiesSection from "@/components/hobbies-section";
@@ -19,7 +20,7 @@ export default function Home() {
       <AboutSection />
 
       <div className="pb-40">
-        <GithubContributions />
+        <DeferredGithubContributions />
       </div>
 
       <section className="pb-40 text-end">
@@ -48,9 +49,12 @@ export default function Home() {
                       {item.name}
                       <span className="text-secondary">.</span>
                     </p>
-                    <img
+                    <Image
                       src={item.icon}
                       alt={item.name}
+                      width={96}
+                      height={96}
+                      sizes="(max-width: 639px) 56px, (max-width: 767px) 64px, 96px"
                       className="size-14 sm:size-16 md:size-24"
                     />
                   </div>
@@ -79,9 +83,12 @@ export default function Home() {
                       {item.name}
                       <span className="text-secondary">.</span>
                     </p>
-                    <img
+                    <Image
                       src={item.icon}
                       alt={item.name}
+                      width={96}
+                      height={96}
+                      sizes="(max-width: 639px) 56px, (max-width: 767px) 64px, 96px"
                       className="size-14 sm:size-16 md:size-24"
                     />
                   </div>
@@ -110,9 +117,12 @@ export default function Home() {
                       {item.name}
                       <span className="text-secondary">.</span>
                     </p>
-                    <img
+                    <Image
                       src={item.icon}
                       alt={item.name}
+                      width={96}
+                      height={96}
+                      sizes="(max-width: 639px) 56px, (max-width: 767px) 64px, 96px"
                       className="size-14 sm:size-16 md:size-24"
                     />
                   </div>
@@ -141,9 +151,12 @@ export default function Home() {
                       {item.name}
                       <span className="text-secondary">.</span>
                     </p>
-                    <img
+                    <Image
                       src={item.icon}
                       alt={item.name}
+                      width={96}
+                      height={96}
+                      sizes="(max-width: 639px) 56px, (max-width: 767px) 64px, 96px"
                       className="size-14 sm:size-16 md:size-24"
                     />
                   </div>

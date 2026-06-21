@@ -10,9 +10,12 @@ Personal portfolio built with Next.js and Bun.
 - About project marks may use stable local copies of the live brand favicon; Thomas Bewick's favicon is stored at `public/logos/thomasbewick.png`.
 - Work experience is shown first, followed by a separate freelance experience section.
 - Moai copy should describe it as a trading journal with Fidelity support for now, without WIP wording.
-- The homepage GitHub contribution chart is rendered below the About section by `src/components/github-contributions.tsx`.
+- The homepage GitHub contribution chart is rendered below the About section through `src/components/deferred-github-contributions.tsx`, which loads `src/components/github-contributions.tsx` shortly before the chart scrolls into view.
 - Homepage project box content and priority ordering live in `src/lib/project-boxes.ts`.
 - Homepage bento layout lives in `src/components/bento-section.tsx`; desktop keeps weighted project boxes, while mobile uses equal medium cards with thumbnails and titles already revealed.
+- Homepage performance keeps above-the-fold hero screenshots eager via `next/image`, while below-fold bento thumbnails, project popup screenshots, and tech icons use responsive lazy `next/image` rendering.
+- The GitHub contribution chart is viewport-deferred by `src/components/deferred-github-contributions.tsx` so the chart and tooltip libraries load shortly before the section enters view instead of during the first viewport.
+- Standalone `/projects`, `/blogs`, and `/blogs/use-optimistic-hook` routes are intentionally disabled with `notFound()`; the homepage bento project section is the active projects surface.
 - Project box brand colors also live in `src/lib/project-boxes.ts`; darker card colors can set `foreground: "light"` so hover text remains readable.
 - Project modal screenshots are stored under `public/projects` and externally sourced project screenshots are stored under `public/projects/external`; each project's `images` array controls popup image order.
 - Project popup chat is grounded in each box's title, description, long-form content, tech tags, live URL, and GitHub URL. It can answer architecture questions from those maintained notes, but it does not browse GitHub or inspect repositories at request time.

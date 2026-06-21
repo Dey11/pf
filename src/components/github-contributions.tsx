@@ -1,6 +1,6 @@
 "use client";
 
-import { cloneElement, useEffect, useState, type ReactElement } from "react";
+import { cloneElement, type ReactElement } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
@@ -18,16 +18,6 @@ function formatDate(date: string) {
 }
 
 export default function GithubContributions() {
-  // the calendar fetches data on the client and its loading skeleton differs
-  // between server and client render — render it only after mount to avoid a
-  // hydration mismatch.
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) {
-    return <div className="h-[150px] w-full animate-pulse rounded-lg bg-white/5" />;
-  }
-
   return (
     <div className="w-full" style={{ color: "rgba(255,255,255,0.6)" }}>
       <GitHubCalendar

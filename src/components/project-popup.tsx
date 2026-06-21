@@ -4,6 +4,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { ArrowUp, Globe, X } from "lucide-react";
 import { motion } from "motion/react";
+import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -267,13 +268,18 @@ function ImageList({ box }: { box: ProjectBox }) {
   return (
     <div className="flex flex-col gap-3">
       {box.images.map((src, i) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <div
           key={src + i}
-          src={src}
-          alt={`${box.name} screenshot ${i + 1}`}
-          className="w-full rounded-lg object-cover"
-        />
+          className="relative aspect-video w-full overflow-hidden rounded-lg bg-white/5"
+        >
+          <Image
+            src={src}
+            alt={`${box.name} screenshot ${i + 1}`}
+            fill
+            sizes="(max-width: 767px) calc(100vw - 4.5rem), 380px"
+            className="object-cover object-top"
+          />
+        </div>
       ))}
     </div>
   );
@@ -332,10 +338,11 @@ function Details({ box }: { box: ProjectBox }) {
                 className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm text-shadow-2xs"
               >
                 {tech && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={tech.logo}
                     alt=""
+                    width={16}
+                    height={16}
                     aria-hidden
                     className="size-4 shrink-0"
                   />
@@ -366,10 +373,11 @@ function Details({ box }: { box: ProjectBox }) {
             rel="noreferrer"
             className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/logos/github-form.svg"
               alt=""
+              width={16}
+              height={16}
               aria-hidden
               className="size-4"
             />

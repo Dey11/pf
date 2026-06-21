@@ -4,6 +4,7 @@ import { heroItems, locationUrl } from "@/lib/constants";
 import { highlightProject } from "@/lib/project-highlight";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
 import Signature from "./signature";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
@@ -195,24 +196,33 @@ export default function HeroSection() {
 
               {/* project screenshots layered on the shared wave background */}
               {item.layout === "bottom" ? (
-                <img
+                <Image
                   src={item.screens[0]}
                   alt={`${item.title} screenshot`}
-                  fetchPriority="high"
+                  width={1200}
+                  height={900}
+                  priority
+                  sizes="(max-width: 1023px) 94vw, 348px"
                   className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto w-[94%] rounded-t-xl border-x border-t border-black/10 shadow-[0_-12px_40px_rgba(0,0,0,0.35)]"
                 />
               ) : (
                 <>
-                  <img
+                  <Image
                     src={item.screens[0]}
                     alt={`${item.title} screenshot 1`}
-                    fetchPriority="high"
+                    width={1200}
+                    height={900}
+                    priority
+                    sizes="(max-width: 1023px) 80vw, 296px"
                     className="pointer-events-none absolute top-4 right-0 w-[80%] rounded-l-lg border-y border-l border-black/10 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
                   />
-                  <img
+                  <Image
                     src={item.screens[1]}
                     alt={`${item.title} screenshot 2`}
-                    fetchPriority="high"
+                    width={1200}
+                    height={900}
+                    priority
+                    sizes="(max-width: 1023px) 80vw, 296px"
                     className="pointer-events-none absolute bottom-4 left-0 w-[80%] rounded-r-lg border-y border-r border-black/10 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
                   />
                 </>
