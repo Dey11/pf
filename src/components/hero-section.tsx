@@ -109,6 +109,10 @@ const heroSlice = [
 
 export default function HeroSection() {
   const { time, offset } = useIstTime();
+  // hovering any box turns every box's waves from gray to brand red. the colour
+  // spreads outward from the hovered box: each box's red layer is delayed by its
+  // distance (in boxes) from the one under the cursor, so the fill ripples out.
+  const [hovered, setHovered] = useState<number | null>(null);
 
   return (
     // fill the viewport (minus the mt-5 + container pt-4 offset above) so the
@@ -120,10 +124,15 @@ export default function HeroSection() {
       style={{ fontFamily: "var(--font-darker-grotesque)" }}
     >
       <div className="flex flex-row-reverse justify-center gap-2 pt-2">
-        {heroItems.map((item, idx) => (
+        {heroItems.map((item, idx) => {
+          const isHot = hovered !== null;
+          const redDelay = isHot ? Math.abs(idx - hovered) * 0.12 : 0;
+
+          return (
           <motion.div
             key={item.title}
-            style={{ backgroundImage: "url(/landing-images/hero-bg.svg)" }}
+            onMouseEnter={() => setHovered(idx)}
+            onMouseLeave={() => setHovered(null)}
             initial={{
               opacity: 0,
               y: 50,
@@ -137,11 +146,34 @@ export default function HeroSection() {
               ease: "easeInOut",
             }}
             className={cn(
-              "group relative w-full overflow-hidden bg-[#ff0004] bg-cover bg-center bg-no-repeat last:hidden even:hidden sm:even:block lg:w-[370px] lg:[background-size:300%_auto] lg:first:block lg:last:block",
+              "group relative w-full overflow-hidden bg-[#3a3d3e] last:hidden even:hidden sm:even:block lg:w-[370px] lg:first:block lg:last:block",
               heroHeights[idx],
-              heroSlice[idx],
             )}
           >
+            {/* shared wave background — gray base with a red layer that fades in
+                on hover (delayed per box so the colour ripples across the row) */}
+            <span
+              aria-hidden
+              style={{ backgroundImage: "url(/landing-images/hero-bg-gray.svg)" }}
+              className={cn(
+                "pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat lg:[background-size:300%_auto]",
+                heroSlice[idx],
+              )}
+            />
+            <span
+              aria-hidden
+              style={{
+                backgroundImage: "url(/landing-images/hero-bg.svg)",
+                opacity: isHot ? 1 : 0,
+                transition: "opacity 600ms ease",
+                transitionDelay: `${redDelay}s`,
+              }}
+              className={cn(
+                "pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat lg:[background-size:300%_auto]",
+                heroSlice[idx],
+              )}
+            />
+
             {/* project screenshots layered on the shared wave background */}
             {item.layout === "bottom" ? (
               <img
@@ -208,7 +240,8 @@ export default function HeroSection() {
               </div>
             </div>
           </motion.div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="mt-auto flex flex-col items-center gap-4 pt-8 lg:flex-row lg:justify-between">
