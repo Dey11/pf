@@ -12,6 +12,14 @@ export const techMeta = {
   aisdk: { label: "AI SDK", logo: "/logos/stack/vercel.svg" },
   prisma: { label: "Prisma", logo: "/logos/stack/prisma.svg" },
   docker: { label: "Docker", logo: "/logos/stack/docker.svg" },
+  supabase: { label: "Supabase", logo: "/logos/stack/supabase.svg" },
+  elevenlabs: { label: "ElevenLabs", logo: "/logos/stack/elevenlabs.svg" },
+  resend: { label: "Resend", logo: "/logos/stack/resend.svg" },
+  redis: { label: "Redis", logo: "/logos/stack/redis.svg" },
+  tanstackquery: { label: "TanStack Query", logo: "/logos/stack/tanstack.svg" },
+  woocommerce: { label: "WooCommerce", logo: "/logos/stack/woocommerce.svg" },
+  python: { label: "Python", logo: "/logos/stack/python.svg" },
+  zod: { label: "Zod", logo: "/logos/stack/zod.svg" },
 } as const;
 
 export type TechKey = keyof typeof techMeta;

@@ -7,24 +7,8 @@ import { motion } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import type { ProjectBox } from "@/lib/project-boxes";
 import { techMeta, type TechKey } from "@/lib/tech-stack";
-
-export type ProjectBox = {
-  id: string;
-  color: string;
-  name: string;
-  tagline: string;
-  description: string;
-  content: string; // markdown
-  url: string;
-  github: string | null;
-  tags: string[];
-  type: string; // Freelance / Personal / Client
-  status: string; // Live / Archived / WIP
-  duration: string;
-  year: string;
-  images: string[];
-};
 
 type Tab = "images" | "details" | "chat";
 
@@ -52,6 +36,7 @@ export default function ProjectPopup({
   box: ProjectBox;
   onClose: () => void;
 }) {
+  const hasImages = box.images.length > 0;
   const [tab, setTab] = useState<Tab>("details");
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -126,17 +111,21 @@ export default function ProjectPopup({
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         onClick={(e) => e.stopPropagation()}
         data-lenis-prevent
-        className="relative flex h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0c] md:flex-row"
+        className={`relative flex h-[90vh] w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0c] md:flex-row ${
+          hasImages ? "max-w-5xl" : "max-w-3xl"
+        }`}
       >
         {/* LEFT — project images (desktop). on mobile this becomes a tab. */}
-        <div
-          data-lenis-prevent
-          className={`custom-scrollbar hidden shrink-0 overflow-y-auto overscroll-contain md:block md:w-2/5 md:border-r md:border-white/10 ${box.color}`}
-        >
-          <div className="p-3">
-            <ImageList box={box} />
+        {hasImages && (
+          <div
+            data-lenis-prevent
+            className={`custom-scrollbar hidden shrink-0 overflow-y-auto overscroll-contain md:block md:w-2/5 md:border-r md:border-white/10 ${box.color}`}
+          >
+            <div className="p-3">
+              <ImageList box={box} />
+            </div>
           </div>
-        </div>
+        )}
 
         {/* RIGHT — tabs + content */}
         <div className="flex min-h-0 min-w-0 flex-1 flex-col">
@@ -144,23 +133,29 @@ export default function ProjectPopup({
           <div className="flex items-end justify-between gap-6 border-b border-white/10 px-6">
             <div className="flex items-center gap-6">
               {/* mobile-only Images tab — the left pane on desktop */}
-              <button
-                onClick={() => setTab("images")}
-                className={`relative pt-3 pb-2 text-base font-medium transition-colors md:hidden ${
-                  tab === "images"
-                    ? "text-white"
-                    : "text-white/45 hover:text-white/70"
-                }`}
-              >
-                Images
-                {tab === "images" && (
-                  <motion.span
-                    layoutId="tab-underline"
-                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                    className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-white"
-                  />
-                )}
-              </button>
+              {hasImages && (
+                <button
+                  onClick={() => setTab("images")}
+                  className={`relative pt-3 pb-2 text-base font-medium transition-colors md:hidden ${
+                    tab === "images"
+                      ? "text-white"
+                      : "text-white/45 hover:text-white/70"
+                  }`}
+                >
+                  Images
+                  {tab === "images" && (
+                    <motion.span
+                      layoutId="tab-underline"
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 32,
+                      }}
+                      className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-white"
+                    />
+                  )}
+                </button>
+              )}
 
               {TABS.map((t) => {
                 const active = tab === t.id;
@@ -206,7 +201,7 @@ export default function ProjectPopup({
             data-lenis-prevent
             className="custom-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-6"
           >
-            {tab === "images" ? (
+            {tab === "images" && hasImages ? (
               <ImageList box={box} />
             ) : tab === "details" ? (
               <Details box={box} />
@@ -275,7 +270,7 @@ function ImageList({ box }: { box: ProjectBox }) {
           key={src + i}
           src={src}
           alt={`${box.name} screenshot ${i + 1}`}
-          className="w-full rounded-lg border border-black/10 object-cover shadow-lg"
+          className="w-full rounded-lg object-cover"
         />
       ))}
     </div>

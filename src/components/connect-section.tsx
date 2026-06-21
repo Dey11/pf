@@ -2,6 +2,9 @@ import Link from "next/link";
 
 const email = "deydevelops@gmail.com";
 
+// bump this when the site changes (dd/mm/yy)
+const lastUpdated = "17/06/26";
+
 const socials = [
   {
     label: "twitter",
@@ -15,7 +18,7 @@ const socials = [
   },
   {
     label: "email",
-    handle: "deydevelops",
+    handle: email,
     href: `mailto:${email}`,
   },
 ];
@@ -25,21 +28,21 @@ export default function ConnectSection() {
     <section id="connect" className="pb-24 text-start">
       <p className="font-display pb-2 text-lg md:text-xl">(100)</p>
 
-      <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
-        connect with me<span className="text-secondary">.</span>
-      </h1>
-
-      <div className="flex flex-col gap-12 pt-10 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
-        {/* left — pitch */}
-        <div className="flex max-w-xl flex-col gap-8">
-          <p className="text-lg text-white/80 sm:text-xl md:text-2xl">
-            Got an idea, a role, or just want to say hi? My inbox is always open.
-            The fastest way to reach me is a quick email.
+      {/* two columns: heading + pitch on the left, links on the right. */}
+      <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+        {/* col 1 — heading + pitch */}
+        <div className="flex flex-col gap-6">
+          <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
+            connect with me<span className="text-secondary">.</span>
+          </h1>
+          <p className="max-w-md text-lg text-white/80 sm:text-xl">
+            Got an idea, a role, or just want to say hi? My inbox is always
+            open. The fastest way to reach me is a quick email.
           </p>
         </div>
 
-        {/* right — social rows with sliding arrow */}
-        <ul className="flex w-full flex-col lg:max-w-sm">
+        {/* col 2 — social rows with sliding arrow */}
+        <ul className="flex flex-col">
           {socials.map((social) => (
             <li key={social.label}>
               <Link
@@ -66,8 +69,11 @@ export default function ConnectSection() {
       </div>
 
       {/* footer line */}
-      <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-white/15 pt-6 text-sm text-white/50 sm:flex-row sm:items-center md:text-base">
-        <p>© {new Date().getFullYear()} shreyan dey</p>
+      <div className="mt-8 flex flex-col items-start justify-between gap-4 pt-2 text-sm text-white/50 sm:flex-row sm:items-center md:text-base">
+        <p>
+          Last updated on {lastUpdated} by dey
+          <span className="text-secondary">.</span>
+        </p>
         <p className="flex items-center gap-2">
           <span className="relative flex size-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />

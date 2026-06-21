@@ -24,7 +24,7 @@ export default function Home() {
         </h1>
 
         <div className="flex flex-col justify-between gap-10 pt-10 lg:flex-row">
-          <p className="order-2 text-xl font-bold sm:text-2xl md:text-3xl lg:order-1 lg:text-4xl">
+          <p className="order-2 hidden text-xl font-bold sm:text-2xl md:text-3xl lg:order-1 lg:block lg:text-4xl">
             It is{" "}
             <span className="bg-gradient-to-r from-[#576265] via-[#757A7B] to-[#576265] bg-clip-text text-transparent">
               not in the stars
@@ -79,7 +79,7 @@ export default function Home() {
           tech stack {"<>"} skills<span className="text-secondary">.</span>
         </h1>
 
-        <div className="flex flex-col items-end gap-5 pt-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
+        <div className="flex flex-col items-end gap-5 pt-6 lg:flex-row lg:items-center lg:justify-between lg:gap-0 lg:pt-10">
           <div className="flex items-end gap-2">
             <p className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
               /01<span className="text-secondary">.</span>
@@ -110,7 +110,7 @@ export default function Home() {
           </ul>
         </div>
 
-        <div className="flex flex-col items-start gap-5 pt-10 lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-0">
+        <div className="flex flex-col items-start gap-5 pt-6 lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-0 lg:pt-10">
           <div className="flex items-end gap-2">
             <p className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
               /02<span className="text-secondary">.</span>
@@ -141,7 +141,7 @@ export default function Home() {
           </ul>
         </div>
 
-        <div className="flex flex-col items-end gap-5 pt-10 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
+        <div className="flex flex-col items-end gap-5 pt-6 lg:flex-row lg:items-center lg:justify-between lg:gap-0 lg:pt-10">
           <div className="flex items-end gap-2">
             <p className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
               /03<span className="text-secondary">.</span>
@@ -172,7 +172,7 @@ export default function Home() {
           </ul>
         </div>
 
-        <div className="flex flex-col items-start gap-5 pt-10 lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-0">
+        <div className="flex flex-col items-start gap-5 pt-6 lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-0 lg:pt-10">
           <div className="flex items-end gap-2">
             <p className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
               /04<span className="text-secondary">.</span>
