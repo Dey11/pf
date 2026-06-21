@@ -10,5 +10,6 @@ Personal portfolio built with Next.js and Bun.
 - Homepage project box content and priority ordering live in `src/lib/project-boxes.ts`.
 - Project modal screenshots are stored under `public/projects` and externally sourced project screenshots are stored under `public/projects/external`; each project's `images` array controls popup image order.
 - VenturAssist uses the shared screenshot asset at `public/projects/venturassist.png`.
+- Hanabi's card thumbnail and first popup screenshot use the shared screenshot asset at `public/projects/external/hanabi-site-1.png`.
 - Ballarat's additional site-section screenshots use the `ballarat-site-*.webp` naming convention in `public/projects/external`.
 - Project blog/source notes are drafted in `PROJECT_BLOG_DRAFTS.md` and the project selection inventory is in `PROJECTS_INVENTORY.md`.
