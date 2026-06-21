@@ -3,7 +3,7 @@ import Link from "next/link";
 const email = "deydevelops@gmail.com";
 
 // bump this when the site changes (dd/mm/yy)
-const lastUpdated = "17/06/26";
+const lastUpdated = "21/06/26";
 
 const socials = [
   {

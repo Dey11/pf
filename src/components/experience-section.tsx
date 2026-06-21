@@ -11,7 +11,6 @@ type Experience = {
   period: string;
   points: string[];
   tags: string[];
-  images: [string, string];
 };
 
 // one flat list, ordered newest -> oldest (present first, then 2026 -> 2024)
@@ -23,8 +22,8 @@ const experiences: Experience[] = [
     period: "present",
     points: [
       "Build and operate voice AI systems that have handled 200k+ calls across client campaigns.",
-      "Own agent prompt design, CRM integration, lead-batch workflows, transcript extraction, and post-call automation.",
-      "Building a fantasy sports auction platform (IPL, FIFA, Women's T20) for a 130k+ user base.",
+      "Own agent prompt design, custom CRM integration, lead-batch workflows, transcript extraction, and post-call automation.",
+      "Build and operate a free to play fantasy sports auction platform (IPL, FIFA, Women's T20) for a 130k+ user base.",
     ],
     tags: [
       "Next.js",
@@ -36,7 +35,6 @@ const experiences: Experience[] = [
       "Resend",
       "Redis",
     ],
-    images: ["/projects/doublesalesai.png", "/projects/dashboard.png"],
   },
   {
     title: "moai",
@@ -48,10 +46,6 @@ const experiences: Experience[] = [
       "Surfaces performance through dashboard and calendar analytics views.",
     ],
     tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "TanStack Query"],
-    images: [
-      "/projects/external/krish-trade-moai-1.jpg",
-      "/projects/external/krish-trade-moai-2.jpg",
-    ],
   },
   {
     title: "downthecove",
@@ -63,10 +57,6 @@ const experiences: Experience[] = [
       "Handled retail/wholesale channels, subscriptions, Royal Mail shipping, and Cloudflare R2 media.",
     ],
     tags: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Docker"],
-    images: [
-      "/projects/external/krish-downthecove-1.jpg",
-      "/projects/external/krish-downthecove-3.jpg",
-    ],
   },
   {
     title: "thomasbewick",
@@ -78,10 +68,6 @@ const experiences: Experience[] = [
       "Stripe PaymentIntents with webhook-driven order creation and Resend transactional emails.",
     ],
     tags: ["Next.js", "TypeScript", "Stripe", "WooCommerce", "Resend"],
-    images: [
-      "/projects/external/hanabi-thomasbewick-1.png",
-      "/projects/external/hanabi-thomasbewick-2.png",
-    ],
   },
   {
     title: "rudra cybersecurity",
@@ -101,7 +87,6 @@ const experiences: Experience[] = [
       "Redis",
       "Tailwind CSS",
     ],
-    images: ["/projects/dashboard.png", "/projects/realestate.png"],
   },
   {
     title: "ballarat box sports",
@@ -113,17 +98,8 @@ const experiences: Experience[] = [
       "Added local-business SEO, structured data, and validated lead capture.",
     ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Motion", "Zod"],
-    images: [
-      "/projects/external/hanabi-ballarat-1.png",
-      "/projects/external/hanabi-ballarat-2.png",
-    ],
   },
 ];
-
-const imagePositions = [
-  { className: "left-[6%] top-6 z-10 w-[62%]", rotate: -6 },
-  { className: "bottom-0 right-[6%] w-[62%]", rotate: 6 },
-] as const;
 
 function getTech(tag: string) {
   const key = tag
@@ -174,7 +150,7 @@ export default function ExperienceSection() {
                     {exp.title}
                     <span className="text-secondary">.</span>
                   </span>
-                  <span className="font-display rounded-full border border-white/25 px-2.5 py-0.5 text-xs text-white/60 md:text-sm">
+                  <span className="rounded-full border border-white/25 px-2 py-0.5 text-[10px] font-medium tracking-[0.08em] text-white/60 lowercase md:text-xs">
                     {exp.kind}
                   </span>
                 </span>
@@ -207,8 +183,8 @@ export default function ExperienceSection() {
                     }}
                     className="overflow-hidden"
                   >
-                    <div className="grid gap-8 pb-12 lg:grid-cols-2">
-                      <div className="flex flex-col gap-6">
+                    <div className="pb-12">
+                      <div className="flex w-full flex-col gap-6">
                         <ul className="marker:text-secondary flex list-disc flex-col gap-2.5 pl-5 text-lg leading-relaxed text-white/85 md:text-xl">
                           {exp.points.map((point) => (
                             <li key={point}>{point}</li>
@@ -245,36 +221,6 @@ export default function ExperienceSection() {
                             );
                           })}
                         </div>
-                      </div>
-
-                      <div className="relative mx-auto min-h-[240px] w-full max-w-sm lg:max-w-md">
-                        {exp.images.map((src, imageIndex) => {
-                          const pos = imagePositions[imageIndex];
-                          return (
-                            <motion.img
-                              key={src}
-                              src={src}
-                              alt={`${exp.title} preview`}
-                              initial={{
-                                y: 90,
-                                opacity: 0,
-                                rotate: pos.rotate,
-                              }}
-                              animate={{
-                                y: 0,
-                                opacity: 1,
-                                rotate: pos.rotate,
-                              }}
-                              transition={{
-                                type: "spring",
-                                stiffness: 180,
-                                damping: 22,
-                                delay: 0.12 + imageIndex * 0.12,
-                              }}
-                              className={`absolute rounded-xl border border-white/10 shadow-2xl ${pos.className}`}
-                            />
-                          );
-                        })}
                       </div>
                     </div>
                   </motion.div>
