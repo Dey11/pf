@@ -5,13 +5,18 @@ Personal portfolio built with Next.js and Bun.
 ## Content Notes
 
 - Homepage experience content lives in `src/components/experience-section.tsx`; expanded experience rows render full-width text points and tech tags without preview images.
+- Homepage hero project cards live in `src/components/hero-section.tsx`; their shared SVG wave background uses a gray base and a slower red opacity layer on desktop hover, with staggered delay by card distance to make the color progress readable. On mobile, the red brand layer is shown by default because there is no hover interaction.
+- Homepage About content lives in `src/components/about-section.tsx`; it uses a single-column editorial layout, compact scale callouts, and project mentions that preview their project image from the mention center on desktop hover/focus before scrolling to and highlighting the matching bento project on click. Inline About reveals keep hover-only overlays hidden on mobile; project thumbnails fade and scale from 90% to 100% with a faster exit, and edge mentions align their thumbnail start/end to avoid clipping.
+- About project marks may use stable local copies of the live brand favicon; Thomas Bewick's favicon is stored at `public/logos/thomasbewick.png`.
 - Work experience is shown first, followed by a separate freelance experience section.
 - Moai copy should describe it as a trading journal with Fidelity support for now, without WIP wording.
 - The homepage GitHub contribution chart is rendered below the About section by `src/components/github-contributions.tsx`.
 - Homepage project box content and priority ordering live in `src/lib/project-boxes.ts`.
+- Homepage bento layout lives in `src/components/bento-section.tsx`; desktop keeps weighted project boxes, while mobile uses equal medium cards with thumbnails and titles already revealed.
 - Project box brand colors also live in `src/lib/project-boxes.ts`; darker card colors can set `foreground: "light"` so hover text remains readable.
 - Project modal screenshots are stored under `public/projects` and externally sourced project screenshots are stored under `public/projects/external`; each project's `images` array controls popup image order.
 - Project popup chat is grounded in each box's title, description, long-form content, tech tags, live URL, and GitHub URL. It can answer architecture questions from those maintained notes, but it does not browse GitHub or inspect repositories at request time.
+- Project popup mobile behavior hides prompt suggestions, keeps the lightweight body overflow lock used by the modal, and keeps detail headings visually larger than body copy.
 - VenturAssist uses the shared screenshot asset at `public/projects/venturassist.png`.
 - Hanabi's card thumbnail and first popup screenshot use the shared screenshot asset at `public/projects/external/hanabi-site-1.png`.
 - Ballarat's additional site-section screenshots use the `ballarat-site-*.webp` naming convention in `public/projects/external`.

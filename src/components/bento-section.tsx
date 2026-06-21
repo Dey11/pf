@@ -17,23 +17,14 @@ import {
 
 type Slot = { weight: number; projectId: number };
 
-// mobile shows 2 columns and only the projects that have an image. distribute
-// those projects across two columns, greedily balancing total weight so the
-// two columns end up with roughly equal combined height.
-const mobileColumns: Slot[][] = (() => {
-  const withImages = prioritizedProjectColumns.flat().filter(({ projectId }) => {
+// mobile shows a uniform two-column grid with only image-backed projects. since
+// touch devices do not have a reliable hover state, every card renders with its
+// thumbnail/title already in the revealed position.
+const mobileProjects: Slot[] = (() => {
+  return prioritizedProjectColumns.flat().filter(({ projectId }) => {
     const box = projectBoxesByInventoryId[projectId];
     return Boolean(box.thumbnail ?? box.images[0]);
   });
-
-  const cols: Slot[][] = [[], []];
-  const totals = [0, 0];
-  for (const slot of withImages) {
-    const target = totals[0] <= totals[1] ? 0 : 1;
-    cols[target].push(slot);
-    totals[target] += slot.weight;
-  }
-  return cols;
 })();
 
 function BentoCard({
@@ -63,7 +54,7 @@ function BentoCard({
       data-project-slug={slug}
       style={{ flexGrow: weight, flexBasis: 0 }}
       aria-label={`Open ${box.name} project details`}
-      className={`group relative min-h-0 w-full cursor-pointer overflow-hidden rounded-xl text-left transition-all duration-300 sm:rounded-2xl ${box.color} ${
+      className={`group relative h-full min-h-0 w-full cursor-pointer overflow-hidden rounded-xl text-left transition-all duration-300 sm:rounded-2xl ${box.color} ${
         isActive
           ? "ring-secondary ring-offset-background z-10 opacity-100 ring-2 ring-offset-2"
           : isDimmed
@@ -83,7 +74,7 @@ function BentoCard({
             backgroundSize: "cover",
             backgroundPosition: "top center",
           }}
-          className="pointer-events-none absolute inset-x-2 bottom-0 h-[80%] translate-y-[50%] rounded-t-lg border border-black/10 shadow-[0_-10px_30px_rgba(0,0,0,0.28)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:translate-y-[17%] sm:inset-x-3 sm:rounded-t-xl"
+          className="pointer-events-none absolute inset-x-2 bottom-0 h-[80%] translate-y-[17%] rounded-t-lg border border-black/10 shadow-[0_-10px_30px_rgba(0,0,0,0.28)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] sm:inset-x-3 sm:rounded-t-xl lg:translate-y-[50%] lg:group-hover:translate-y-[17%]"
         />
       ) : (
         <span
@@ -94,7 +85,7 @@ function BentoCard({
       )}
 
       <span
-        className={`font-display pointer-events-none absolute top-0 right-3 z-10 max-w-[90%] -translate-y-full truncate text-right text-[32px] leading-none font-semibold lowercase transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:translate-y-2 ${textClass}`}
+        className={`font-display pointer-events-none absolute top-0 right-3 z-10 max-w-[90%] translate-y-2 truncate text-right text-[28px] leading-none font-semibold lowercase transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] sm:text-[32px] lg:-translate-y-full lg:group-hover:translate-y-2 ${textClass}`}
       >
         {box.name}
       </span>
@@ -174,22 +165,16 @@ export default function BentoSection() {
         projects<span className="text-secondary">.</span>
       </h1>
 
-      {/* mobile / tablet — 2 columns, image projects only */}
-      <div className="flex h-[760px] gap-3 pt-10 sm:h-[1000px] sm:gap-4 lg:hidden">
-        {mobileColumns.map((column, columnIndex) => (
-          <div
-            key={columnIndex}
-            className="flex h-full flex-1 flex-col gap-3 sm:gap-4"
-          >
-            {column.map(({ weight, projectId }) => (
-              <BentoCard
-                key={projectId}
-                box={projectBoxesByInventoryId[projectId]}
-                weight={weight}
-                onSelect={setSelected}
-                highlight={highlight}
-              />
-            ))}
+      {/* mobile / tablet — uniform 2-column grid, image projects only */}
+      <div className="grid grid-cols-2 gap-3 pt-10 sm:gap-4 lg:hidden">
+        {mobileProjects.map(({ projectId }) => (
+          <div key={projectId} className="h-48 sm:h-60">
+            <BentoCard
+              box={projectBoxesByInventoryId[projectId]}
+              weight={1}
+              onSelect={setSelected}
+              highlight={highlight}
+            />
           </div>
         ))}
       </div>

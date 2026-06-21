@@ -142,11 +142,11 @@ export default function ExperienceSection() {
                 aria-expanded={isOpen}
                 className="flex w-full cursor-pointer items-center gap-4 py-6 text-left md:gap-8"
               >
-                <span className="text-3xl font-semibold tabular-nums md:text-5xl">
+                <span className="text-2xl font-semibold tabular-nums sm:text-3xl md:text-5xl">
                   {number}
                 </span>
                 <span className="flex grow flex-wrap items-center gap-x-3 gap-y-1">
-                  <span className="text-xl font-semibold md:text-3xl lg:text-4xl">
+                  <span className="text-lg font-semibold sm:text-xl md:text-3xl lg:text-4xl">
                     {exp.title}
                     <span className="text-secondary">.</span>
                   </span>
@@ -185,7 +185,7 @@ export default function ExperienceSection() {
                   >
                     <div className="pb-12">
                       <div className="flex w-full flex-col gap-6">
-                        <ul className="marker:text-secondary flex list-disc flex-col gap-2.5 pl-5 text-lg leading-relaxed text-white/85 md:text-xl">
+                        <ul className="marker:text-secondary flex list-disc flex-col gap-2.5 pl-5 text-base leading-relaxed text-white/85 sm:text-lg md:text-xl">
                           {exp.points.map((point) => (
                             <li key={point}>{point}</li>
                           ))}

@@ -41,10 +41,15 @@ function useIstTime() {
         hour12: false,
       }).format(new Date());
 
-    setTime(format());
-    setOffset(istOffsetLabel());
+    const frame = requestAnimationFrame(() => {
+      setTime(format());
+      setOffset(istOffsetLabel());
+    });
     const id = setInterval(() => setTime(format()), 1000);
-    return () => clearInterval(id);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearInterval(id);
+    };
   }, []);
 
   return { time, offset };
@@ -126,91 +131,93 @@ export default function HeroSection() {
       <div className="flex flex-row-reverse justify-center gap-2 pt-2">
         {heroItems.map((item, idx) => {
           const isHot = hovered !== null;
-          const redDelay = isHot ? Math.abs(idx - hovered) * 0.12 : 0;
+          const redDelay = isHot ? Math.abs(idx - hovered) * 0.18 : 0;
 
           return (
-          <motion.div
-            key={item.title}
-            role="link"
-            tabIndex={0}
-            aria-label={`View ${item.title} in projects`}
-            data-project-box
-            data-project-slug={item.title}
-            onClick={() => highlightProject(item.title)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                highlightProject(item.title);
-              }
-            }}
-            onMouseEnter={() => setHovered(idx)}
-            onMouseLeave={() => setHovered(null)}
-            initial={{
-              opacity: 0,
-              y: 50,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: idx === 0 ? 0.5 : idx === 1 ? 0.4 : 0.3,
-              ease: "easeInOut",
-            }}
-            className={cn(
-              "group relative w-full cursor-pointer overflow-hidden bg-[#3a3d3e] last:hidden even:hidden sm:even:block lg:w-[370px] lg:first:block lg:last:block",
-              heroHeights[idx],
-            )}
-          >
-            {/* shared wave background — gray base with a red layer that fades in
-                on hover (delayed per box so the colour ripples across the row) */}
-            <span
-              aria-hidden
-              style={{ backgroundImage: "url(/landing-images/hero-bg-gray.svg)" }}
-              className={cn(
-                "pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat lg:[background-size:300%_auto]",
-                heroSlice[idx],
-              )}
-            />
-            <span
-              aria-hidden
-              style={{
-                backgroundImage: "url(/landing-images/hero-bg.svg)",
-                opacity: isHot ? 1 : 0,
-                transition: "opacity 600ms ease",
-                transitionDelay: `${redDelay}s`,
+            <motion.div
+              key={item.title}
+              role="link"
+              tabIndex={0}
+              aria-label={`View ${item.title} in projects`}
+              data-project-box
+              data-project-slug={item.title}
+              onClick={() => highlightProject(item.title)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  highlightProject(item.title);
+                }
+              }}
+              onMouseEnter={() => setHovered(idx)}
+              onMouseLeave={() => setHovered(null)}
+              initial={{
+                opacity: 0,
+                y: 50,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: idx === 0 ? 0.5 : idx === 1 ? 0.4 : 0.3,
+                ease: "easeInOut",
               }}
               className={cn(
-                "pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat lg:[background-size:300%_auto]",
-                heroSlice[idx],
+                "group relative w-full cursor-pointer overflow-hidden bg-[#3a3d3e] last:hidden even:hidden sm:even:block lg:w-[370px] lg:first:block lg:last:block",
+                heroHeights[idx],
               )}
-            />
-
-            {/* project screenshots layered on the shared wave background */}
-            {item.layout === "bottom" ? (
-              <img
-                src={item.screens[0]}
-                alt={`${item.title} screenshot`}
-                fetchPriority="high"
-                className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto w-[94%] rounded-t-xl border-x border-t border-black/10 shadow-[0_-12px_40px_rgba(0,0,0,0.35)]"
+            >
+              {/* shared wave background — gray base with a red layer that fades in
+                on hover (delayed per box so the colour ripples across the row) */}
+              <span
+                aria-hidden
+                style={{
+                  backgroundImage: "url(/landing-images/hero-bg-gray.svg)",
+                }}
+                className={cn(
+                  "pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat lg:[background-size:300%_auto]",
+                  heroSlice[idx],
+                )}
               />
-            ) : (
-              <>
+              <span
+                aria-hidden
+                style={{
+                  backgroundImage: "url(/landing-images/hero-bg.svg)",
+                  transition: "opacity 950ms ease",
+                  transitionDelay: `${redDelay}s`,
+                }}
+                className={cn(
+                  "pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 lg:[background-size:300%_auto] lg:opacity-0",
+                  isHot && "lg:opacity-100",
+                  heroSlice[idx],
+                )}
+              />
+
+              {/* project screenshots layered on the shared wave background */}
+              {item.layout === "bottom" ? (
                 <img
                   src={item.screens[0]}
-                  alt={`${item.title} screenshot 1`}
+                  alt={`${item.title} screenshot`}
                   fetchPriority="high"
-                  className="pointer-events-none absolute top-4 right-0 w-[80%] rounded-l-lg border-y border-l border-black/10 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto w-[94%] rounded-t-xl border-x border-t border-black/10 shadow-[0_-12px_40px_rgba(0,0,0,0.35)]"
                 />
-                <img
-                  src={item.screens[1]}
-                  alt={`${item.title} screenshot 2`}
-                  fetchPriority="high"
-                  className="pointer-events-none absolute bottom-4 left-0 w-[80%] rounded-r-lg border-y border-r border-black/10 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
-                />
-              </>
-            )}
-          </motion.div>
+              ) : (
+                <>
+                  <img
+                    src={item.screens[0]}
+                    alt={`${item.title} screenshot 1`}
+                    fetchPriority="high"
+                    className="pointer-events-none absolute top-4 right-0 w-[80%] rounded-l-lg border-y border-l border-black/10 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+                  />
+                  <img
+                    src={item.screens[1]}
+                    alt={`${item.title} screenshot 2`}
+                    fetchPriority="high"
+                    className="pointer-events-none absolute bottom-4 left-0 w-[80%] rounded-r-lg border-y border-r border-black/10 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+                  />
+                </>
+              )}
+            </motion.div>
           );
         })}
       </div>
@@ -233,7 +240,7 @@ export default function HeroSection() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="[stroke-dasharray:160] [stroke-dashoffset:160] transition-[stroke-dashoffset] delay-100 duration-700 ease-out group-hover:[stroke-dashoffset:0]"
+                  className="transition-[stroke-dashoffset] delay-100 duration-700 ease-out [stroke-dasharray:160] [stroke-dashoffset:160] group-hover:[stroke-dashoffset:0]"
                 />
               </svg>
               <span className="font-handwriting max-w-[150px] -translate-y-1 text-base leading-[1.05] font-medium opacity-0 transition-opacity delay-300 duration-300 group-hover:opacity-100 md:text-lg">

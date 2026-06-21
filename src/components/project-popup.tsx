@@ -104,7 +104,7 @@ export default function ProjectPopup({
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-3 backdrop-blur-md sm:p-5"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden overscroll-none bg-black/60 p-3 backdrop-blur-md sm:p-5"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 16 }}
@@ -220,7 +220,7 @@ export default function ProjectPopup({
           {tab === "chat" && (
             <div className="shrink-0">
               {!hasMessages && (
-                <div className="flex flex-wrap gap-2 px-3 pb-1">
+                <div className="hidden flex-wrap gap-2 px-3 pb-1 sm:flex">
                   {suggestions.map((s) => (
                     <button
                       key={s}
@@ -295,10 +295,12 @@ function Details({ box }: { box: ProjectBox }) {
           {box.name}
           <span className="text-secondary">.</span>
         </h3>
-        <p className="pt-1 text-white/60">{box.tagline}</p>
+        <p className="pt-1 text-sm text-white/60 sm:text-base">{box.tagline}</p>
       </div>
 
-      <p className="leading-relaxed text-white/80">{box.description}</p>
+      <p className="text-sm leading-relaxed text-white/80 sm:text-base">
+        {box.description}
+      </p>
 
       {/* meta row — plain text with dividers, no chips */}
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm leading-none text-white/60">
@@ -390,30 +392,32 @@ function Markdown({ children }: { children: string }) {
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children }) => (
-            <h2 className="pt-2 text-xl font-semibold text-white">
+            <h2 className="pt-2 text-2xl leading-none font-semibold text-white sm:text-2xl">
               {children}
             </h2>
           ),
           h2: ({ children }) => (
-            <h3 className="pt-2 text-lg font-semibold text-white">
+            <h3 className="pt-2 text-xl leading-tight font-semibold text-white sm:text-xl">
               {children}
             </h3>
           ),
           h3: ({ children }) => (
-            <h4 className="pt-1 text-base font-semibold text-white/90">
+            <h4 className="pt-2 text-lg leading-tight font-semibold text-white/90 sm:text-lg">
               {children}
             </h4>
           ),
           p: ({ children }) => (
-            <p className="leading-relaxed text-white/75">{children}</p>
+            <p className="text-sm leading-relaxed text-white/75 sm:text-base">
+              {children}
+            </p>
           ),
           ul: ({ children }) => (
-            <ul className="marker:text-secondary list-disc space-y-1.5 pl-5 text-white/75">
+            <ul className="marker:text-secondary list-disc space-y-1.5 pl-5 text-sm text-white/75 sm:text-base">
               {children}
             </ul>
           ),
           ol: ({ children }) => (
-            <ol className="list-decimal space-y-1.5 pl-5 text-white/75">
+            <ol className="list-decimal space-y-1.5 pl-5 text-sm text-white/75 sm:text-base">
               {children}
             </ol>
           ),
@@ -465,7 +469,7 @@ function ChatMessages({
         <p className="text-lg font-medium text-white/80">ask about {name}</p>
         <p className="max-w-xs pt-2 text-sm text-white/45">
           the assistant knows this project&apos;s details, stack, and what i
-          built. pick a prompt below or type your own.
+          built.
         </p>
       </div>
     );

@@ -1,10 +1,10 @@
+import AboutSection from "@/components/about-section";
 import BentoSection from "@/components/bento-section";
 import ConnectSection from "@/components/connect-section";
 import HeroSection from "@/components/hero-section";
 import ExperienceSection from "@/components/experience-section";
 import GithubContributions from "@/components/github-contributions";
 import { techStackItems } from "@/lib/constants";
-import Link from "next/link";
 // commented out — sections below are being revamped
 // import ContactForm from "@/components/contact-form";
 // import HobbiesSection from "@/components/hobbies-section";
@@ -16,61 +16,11 @@ export default function Home() {
     <div className="mt-5">
       <HeroSection />
 
-      <section className="mb-40 flex flex-col overflow-hidden">
-        <p className="font-display pb-2 text-lg md:text-xl">(000)</p>
+      <AboutSection />
 
-        <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
-          about me<span className="text-secondary">.</span>
-        </h1>
-
-        <div className="flex flex-col justify-between gap-10 pt-10 lg:flex-row">
-          <p className="order-2 hidden text-xl font-bold sm:text-2xl md:text-3xl lg:order-1 lg:block lg:text-4xl">
-            It is{" "}
-            <span className="bg-gradient-to-r from-[#576265] via-[#757A7B] to-[#576265] bg-clip-text text-transparent">
-              not in the stars
-            </span>{" "}
-            to
-            <br />
-            hold our destiny{" "}
-            <span className="bg-gradient-to-r from-[#576265] via-[#757A7B] to-[#576265] bg-clip-text text-transparent">
-              but in
-              <br />
-              ourselves
-            </span>
-          </p>
-
-          <div className="order-1 ml-auto flex max-w-md flex-col items-end justify-between gap-10 lg:order-2 lg:ml-0">
-            <p className="grow text-end text-lg sm:text-xl md:text-2xl">
-              I write code, collect domains I'll probably never use, and
-              over-engineer projects until they stop feeling like side projects
-              <span className="text-secondary">.</span> Always learning, always
-              shipping<span className="text-secondary">.</span> Looking for
-              like-minded people to collab with
-            </p>
-
-            <div className="group relative w-fit">
-              <img
-                src="/logos/github.svg"
-                alt="GitHub logo"
-                className="absolute top-0 right-3 -z-10 size-5 translate-y-0 transition-transform duration-300 group-hover:-translate-y-5"
-              />
-              <Link href="https://github.com/dey11" target="_blank">
-                <button
-                  aria-label="Visit my GitHub"
-                  className="bg-background flex cursor-pointer items-center justify-center gap-1 rounded-full border border-white px-5 py-2 text-sm md:text-base"
-                >
-                  GitHub
-                  <span>→</span>
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="pt-16">
-          <GithubContributions />
-        </div>
-      </section>
+      <div className="pb-40">
+        <GithubContributions />
+      </div>
 
       <section className="pb-40 text-end">
         <p className="font-display pb-2 text-lg md:text-xl">(001)</p>
