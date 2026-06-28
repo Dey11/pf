@@ -18,7 +18,7 @@ Personal portfolio built with Next.js and Bun.
 - Standalone `/projects`, `/blogs`, and `/blogs/use-optimistic-hook` routes are intentionally disabled with `notFound()`; the homepage bento project section is the active projects surface.
 - Project box brand colors also live in `src/lib/project-boxes.ts`; darker card colors can set `foreground: "light"` so hover text remains readable.
 - Project modal screenshots are stored under `public/projects` and externally sourced project screenshots are stored under `public/projects/external`; each project's `images` array controls popup image order.
-- Project popup chat is grounded in each box's title, description, long-form content, tech tags, live URL, and GitHub URL. It can answer architecture questions from those maintained notes, but it does not browse GitHub or inspect repositories at request time.
+- Project popup chat is grounded in each box's title, description, long-form content, tech tags, live URL, and GitHub URL. For `github.com/owner/repo` links, the API also fetches a bounded public GitHub snapshot through `src/lib/github-repo-context.ts` so source-aware questions can use README/docs/package/schema snippets at request time. It does not inspect private repositories or arbitrary external URLs.
 - Project popup mobile behavior hides prompt suggestions, keeps the lightweight body overflow lock used by the modal, and keeps detail headings visually larger than body copy.
 - VenturAssist uses the shared screenshot asset at `public/projects/venturassist.png`.
 - Hanabi's card thumbnail and first popup screenshot use the shared screenshot asset at `public/projects/external/hanabi-site-1.png`.

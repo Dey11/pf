@@ -1,5 +1,6 @@
 import { deepseek } from "@ai-sdk/deepseek";
 import { convertToModelMessages, streamText, type UIMessage } from "ai";
+import { getGithubRepoContext } from "@/lib/github-repo-context";
 
 export const maxDuration = 30;
 
@@ -94,12 +95,17 @@ export async function POST(req: Request) {
       headers: { "content-type": "application/json" },
     });
   }
-  if (messages.length > MAX_MESSAGES || textLength(messages) > MAX_INPUT_CHARS) {
+  if (
+    messages.length > MAX_MESSAGES ||
+    textLength(messages) > MAX_INPUT_CHARS
+  ) {
     return new Response(
       JSON.stringify({ error: "Conversation too long. Start a new chat." }),
       { status: 413, headers: { "content-type": "application/json" } },
     );
   }
+
+  const githubContext = await getGithubRepoContext(project?.github, messages);
 
   const system = `You are a concise, friendly assistant embedded in Dey's portfolio. You help visitors learn about the project below by answering their questions.
 
@@ -110,7 +116,18 @@ ${project?.tags?.length ? `- Tech stack: ${project.tags.join(", ")}` : ""}
 ${project?.live ? `- Live URL: ${project.live}` : ""}
 ${project?.github ? `- Source: ${project.github}` : ""}
 
-Answer architectural questions from the supplied project notes. You do not have live browsing, GitHub API access, or repository-inspection tools in this chat; if a question requires current repo/file inspection beyond these notes, say so and point to the source link when available.
+Answer architectural questions from the supplied project notes. ${
+    githubContext
+      ? "You also have a compact snapshot from the linked public GitHub repository below; use it for source-aware answers, but do not claim you inspected files that are not present in the snapshot."
+      : "You do not currently have repository contents available; if a question requires file-level inspection beyond the notes, say so and point to the source link when available."
+  }
+
+${
+  githubContext
+    ? `Public GitHub repository context:
+${githubContext}`
+    : ""
+}
 
 Keep replies short (1-3 sentences unless asked for more). Stay focused on this project and its technology. If asked something unrelated, gently steer the conversation back to the project.`;
 
