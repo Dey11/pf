@@ -2,6 +2,37 @@
 
 Personal portfolio built with Next.js and Bun.
 
+## Deployment
+
+This app is deployable on Vercel as a standard Next.js project.
+
+- Install command: `bun install`
+- Build command: `bun run build`
+- Start command: Vercel's default Next.js runtime
+
+Required runtime environment variables:
+
+- `DEEPSEEK_API_KEY`: used by the project popup chat route.
+
+Recommended runtime environment variables:
+
+- `GITHUB_TOKEN`: used by `src/lib/github-repo-context.ts` for higher GitHub API rate limits when fetching public repository context. The app can still try unauthenticated public GitHub requests without it.
+
+The production build runs `bunx prisma generate && next build`. Vercel must have any Prisma/database environment variables required by `prisma generate` if that command starts depending on a live connection in the future.
+
+## Project Chat Runtime
+
+Project popup chat is not wired as a DeepSeek tool call. The server checks the latest user message, fetches a bounded public GitHub snapshot for source-aware questions when the selected project has a `github.com/owner/repo` link, and inserts that compact context into the system prompt before calling DeepSeek.
+
+Use this hosted smoke test after deployment:
+
+1. Open the homepage.
+2. Open the Leadly project card.
+3. Go to the Chat tab.
+4. Ask: `From the GitHub source, what services make up Leadly and how do the scheduler/worker pieces fit together?`
+
+If GitHub context is being fetched, the answer should mention source-backed details from the Leadly repo, such as the Next.js frontend, Express backend, worker service, Reddit monitoring, BullMQ/Redis, quotas, and billing/webhooks.
+
 ## Content Notes
 
 - Homepage experience content lives in `src/components/experience-section.tsx`; expanded experience rows render full-width text points and tech tags without preview images.
