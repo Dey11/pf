@@ -13,7 +13,7 @@ export default function HobbiesSection() {
 
       <div className="space-y-6">
         <p className="text-lg leading-relaxed text-white/80 md:text-xl">
-          I'm a cinephile who finds joy in every story
+          I&apos;m a cinephile who finds joy in every story
           <span className="text-secondary">.</span> Not a critic, just someone
           who loves getting lost in good narratives and appreciating the craft
           behind every frame
