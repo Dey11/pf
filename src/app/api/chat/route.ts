@@ -1,6 +1,6 @@
-import { deepseek } from "@ai-sdk/deepseek";
 import { convertToModelMessages, streamText, type UIMessage } from "ai";
 import { getGithubRepoContext } from "@/lib/github-repo-context";
+import { getProjectChatModel } from "@/lib/nebius";
 
 export const maxDuration = 30;
 
@@ -62,6 +62,15 @@ type ProjectContext = {
 };
 
 export async function POST(req: Request) {
+  const model = getProjectChatModel();
+
+  if (!model) {
+    return new Response(
+      JSON.stringify({ error: "Project chat is not configured." }),
+      { status: 503, headers: { "content-type": "application/json" } },
+    );
+  }
+
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     req.headers.get("x-real-ip") ||
@@ -132,7 +141,7 @@ ${githubContext}`
 Keep replies short (1-3 sentences unless asked for more). Stay focused on this project and its technology. If asked something unrelated, gently steer the conversation back to the project.`;
 
   const result = streamText({
-    model: deepseek("deepseek-v4-flash"),
+    model,
     system,
     messages: await convertToModelMessages(messages),
     maxOutputTokens: MAX_OUTPUT_TOKENS,

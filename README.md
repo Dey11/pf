@@ -12,17 +12,20 @@ This app is deployable on Vercel as a standard Next.js project.
 
 Required runtime environment variables:
 
-- `DEEPSEEK_API_KEY`: used by the project popup chat route.
+- `DATABASE_URL`: Neon PostgreSQL connection used by the contact form.
+- `NEBIUS_API_KEY`: Nebius Token Factory credential used by project chat.
 
 Recommended runtime environment variables:
 
 - `GITHUB_TOKEN`: used by `src/lib/github-repo-context.ts` for higher GitHub API rate limits when fetching public repository context. The app can still try unauthenticated public GitHub requests without it.
 
-The production build runs `bunx prisma generate && next build`. Vercel must have any Prisma/database environment variables required by `prisma generate` if that command starts depending on a live connection in the future.
+Copy `.env.example` to `.env.local` and replace its placeholders for local development. Never commit `.env.local`.
+
+The production build runs `bunx prisma generate && next build`. Prisma CLI configuration lives in `prisma.config.ts`, and the runtime client connects to Neon through `@prisma/adapter-neon`.
 
 ## Project Chat Runtime
 
-Project popup chat is not wired as a DeepSeek tool call. The server checks the latest user message, fetches a bounded public GitHub snapshot for source-aware questions when the selected project has a `github.com/owner/repo` link, and inserts that compact context into the system prompt before calling DeepSeek.
+Project popup chat uses `deepseek-ai/DeepSeek-V4-Flash-0731` through Nebius Token Factory's OpenAI-compatible API. It is not wired as a model tool call. The server checks the latest user message, fetches a bounded public GitHub snapshot for source-aware questions when the selected project has a `github.com/owner/repo` link, and inserts that compact context into the system prompt before calling the model.
 
 Use this hosted smoke test after deployment:
 

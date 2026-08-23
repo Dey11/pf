@@ -19,7 +19,7 @@ User instructions take precedence over this file. Keep changes focused on the re
 - **Homepage:** The active portfolio experience rendered from `src/app/page.tsx` and its section components.
 - **Project box:** Canonical project content and display metadata defined in `src/lib/project-boxes.ts`.
 - **Project popup:** The modal project detail and chat experience implemented in `src/components/project-popup.tsx`.
-- **Project chat:** The `/api/chat` route backed by DeepSeek and optional public GitHub repository context.
+- **Project chat:** The `/api/chat` route backed by DeepSeek V4 Flash through Nebius Token Factory, with optional public GitHub repository context.
 - **GitHub context:** A bounded snapshot fetched by `src/lib/github-repo-context.ts` for source-aware project questions.
 - **Contact form:** The server action and Prisma-backed persistence path for portfolio contact submissions.
 
@@ -32,9 +32,9 @@ User instructions take precedence over this file. Keep changes focused on the re
   - `bun run lint` runs ESLint.
   - `bun run build` generates the Prisma client and creates the production Next.js build.
 - Use TypeScript throughout. Keep server-only concerns in server modules or route/action boundaries, and do not expose environment variables through client components.
-- Required local and hosted variables are `DATABASE_URL` and `DEEPSEEK_API_KEY`. `GITHUB_TOKEN` is optional and only raises the public GitHub API rate limit.
+- Required local and hosted variables are `DATABASE_URL` and `NEBIUS_API_KEY`. `GITHUB_TOKEN` is optional and only raises the public GitHub API rate limit.
 - Keep `.env*`, `.vercel/`, generated Prisma output, Next.js output, and caches untracked.
-- The Prisma schema is `prisma/schema.prisma`; generated client code belongs in `src/generated/prisma` and must not be edited or committed.
+- Prisma CLI configuration is `prisma.config.ts`, the schema is `prisma/schema.prisma`, and the Neon runtime adapter is initialized in `src/lib/prisma.ts`. Generated client code belongs in `src/generated/prisma` and must not be edited or committed.
 - Preserve the existing component patterns, Tailwind setup, and motion vocabulary. Reuse current primitives before adding dependencies or new abstractions.
 - Update `README.md` when setup, deployment, environment requirements, routes, or visible behavior changes.
 - Before handing off a change, inspect the diff and run lint plus a production build when relevant. For frontend work, also report the routes and interactions that need visual verification.
