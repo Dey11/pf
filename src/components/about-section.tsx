@@ -1,5 +1,6 @@
 "use client";
 
+import { assetUrl } from "@/lib/assets";
 import { projectBoxesByInventoryId, projectSlug } from "@/lib/project-boxes";
 import { hashForSlug, highlightProject } from "@/lib/project-highlight";
 import Image from "next/image";
@@ -10,9 +11,9 @@ type ProjectId = keyof typeof projectBoxesByInventoryId;
 
 const projectLogos: Partial<Record<ProjectId, string | null>> = {
   1: null,
-  18: "/landing-images/downthecove-logo.svg",
-  19: "/logos/thomasbewick.png",
-  21: "/landing-images/hanabi-logo.svg",
+  18: assetUrl("/landing-images/downthecove-logo.svg"),
+  19: assetUrl("/logos/thomasbewick.png"),
+  21: assetUrl("/landing-images/hanabi-logo.svg"),
 };
 
 function InlineFact({
@@ -178,14 +179,14 @@ export default function AboutSection() {
         <p>
           At work, I build and operate voice AI systems that have handled{" "}
           <InlineFact
-            icon="/logos/stack/elevenlabs.svg"
+            icon={assetUrl("/logos/stack/elevenlabs.svg")}
             detail="Outbound voice agents, batch orchestration, transcript extraction, and custom CRM workflows."
           >
             200k+ calls
           </InlineFact>
           , and help run a free-to-play fantasy auction product used by{" "}
           <InlineFact
-            icon="/logos/stack/supabase.svg"
+            icon={assetUrl("/logos/stack/supabase.svg")}
             detail="Auction rooms across IPL, FIFA, and the Women's T20 World Cup."
           >
             130k+ players

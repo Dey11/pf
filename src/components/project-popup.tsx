@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { assetUrl } from "@/lib/assets";
 import type { ProjectBox } from "@/lib/project-boxes";
 import { techMeta, type TechKey } from "@/lib/tech-stack";
 
@@ -374,7 +375,7 @@ function Details({ box }: { box: ProjectBox }) {
             className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10"
           >
             <Image
-              src="/logos/github-form.svg"
+              src={assetUrl("/logos/github-form.svg")}
               alt=""
               width={16}
               height={16}

@@ -7,6 +7,7 @@ import ScrollToTop from "@/components/scroll-to-top";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Agentation } from "agentation";
+import { assetUrl } from "@/lib/assets";
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ["latin"],
@@ -58,6 +59,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [{ url: assetUrl("/favicon.ico"), type: "image/x-icon" }],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -66,7 +70,12 @@ export const metadata: Metadata = {
     description: "just another cs grad.",
     siteName: "dey's portfolio",
     images: [
-      { url: "/og.jpg", width: 1200, height: 630, alt: "Dey Portfolio" },
+      {
+        url: assetUrl("/og.jpg"),
+        width: 1200,
+        height: 630,
+        alt: "Dey Portfolio",
+      },
     ],
   },
   twitter: {
@@ -75,7 +84,7 @@ export const metadata: Metadata = {
     description: "just another cs grad.",
     creator: "@dey_twts",
     site: "@dey_twts",
-    images: ["/og.jpg"],
+    images: [assetUrl("/og.jpg")],
   },
   robots: {
     index: true,

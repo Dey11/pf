@@ -1,3 +1,5 @@
+import { assetUrl } from "./assets";
+
 export const locationUrl =
   "https://earth.google.com/web/@22.58006218,88.3624072,29.07700058a,16012.63427221d,35y,294.87206119h,0t,0r/data=CgRCAggBOgMKATBCAggASg0I____________ARAA";
 
@@ -21,13 +23,13 @@ export type HeroItem = {
 export const heroItems: HeroItem[] = [
   {
     title: "downthecove",
-    titleLogo: "/landing-images/downthecove-logo.svg",
+    titleLogo: assetUrl("/landing-images/downthecove-logo.svg"),
     description:
       "a bespoke ecommerce platform for a uk coastal brand — retail + wholesale, subscriptions, a custom admin, payload cms, and royal mail shipping.",
     live: "https://staging.fe.downthecove.com/",
     techStack: ["nextjs", "typescript", "postgresql", "stripe", "docker"],
     layout: "bottom",
-    screens: ["/landing-images/hero-downthecove.png"],
+    screens: [assetUrl("/landing-images/hero-downthecove.png")],
   },
   {
     title: "moai",
@@ -38,19 +40,19 @@ export const heroItems: HeroItem[] = [
     techStack: ["nextjs", "typescript", "postgresql", "prisma", "tailwindcss"],
     layout: "split",
     screens: [
-      "/landing-images/hero-moai-1.png",
-      "/landing-images/hero-moai-2.png",
+      assetUrl("/landing-images/hero-moai-1.png"),
+      assetUrl("/landing-images/hero-moai-2.png"),
     ],
   },
   {
     title: "hanabi",
-    titleLogo: "/landing-images/hanabi-logo.svg",
+    titleLogo: assetUrl("/landing-images/hanabi-logo.svg"),
     description:
       "a studio website for a design & development brand — services, work, the studio story, and a booking flow wrapped in a handcrafted visual identity.",
     live: "https://hanabi.works",
     techStack: ["nextjs", "typescript", "tailwindcss", "motion", "react"],
     layout: "bottom",
-    screens: ["/landing-images/hero-hanabi.png"],
+    screens: [assetUrl("/landing-images/hero-hanabi.png")],
   },
 ];
 
@@ -59,78 +61,78 @@ export const techStackItems = {
     {
       id: 1,
       name: "typescript",
-      icon: "/logos/ts.png",
+      icon: assetUrl("/logos/ts.png"),
     },
     {
       id: 2,
       name: "cpp",
-      icon: "/logos/c++.png",
+      icon: assetUrl("/logos/c++.png"),
     },
     {
       id: 3,
       name: "js",
-      icon: "/logos/js.png",
+      icon: assetUrl("/logos/js.png"),
     },
   ],
   frontend: [
     {
       id: 1,
       name: "html",
-      icon: "/logos/html.png",
+      icon: assetUrl("/logos/html.png"),
     },
     {
       id: 2,
       name: "nextjs",
-      icon: "/logos/nextjs.png",
+      icon: assetUrl("/logos/nextjs.png"),
     },
     {
       id: 3,
       name: "react",
-      icon: "/logos/react.png",
+      icon: assetUrl("/logos/react.png"),
     },
     {
       id: 4,
       name: "tailwindcss",
-      icon: "/logos/tailwindcss.png",
+      icon: assetUrl("/logos/tailwindcss.png"),
     },
     {
       id: 5,
       name: "css",
-      icon: "/logos/css.png",
+      icon: assetUrl("/logos/css.png"),
     },
   ],
   backend: [
     {
       id: 1,
       name: "express",
-      icon: "/logos/express.png",
+      icon: assetUrl("/logos/express.png"),
     },
     {
       id: 2,
       name: "nodejs",
-      icon: "/logos/nodejs.png",
+      icon: assetUrl("/logos/nodejs.png"),
     },
     {
       id: 3,
       name: "postgres",
-      icon: "/logos/postgresql.png",
+      icon: assetUrl("/logos/postgresql.png"),
     },
   ],
   miscellaneous: [
     {
       id: 1,
       name: "github",
-      icon: "/logos/Github.png",
+      icon: assetUrl("/logos/Github.png"),
     },
     {
       id: 2,
       name: "docker",
-      icon: "/logos/docker.png",
+      icon: assetUrl("/logos/docker.png"),
     },
     {
       id: 3,
       name: "git",
-      icon: "/logos/git.png",
+      icon: assetUrl("/logos/git.png"),
     },
   ],
 };
@@ -146,7 +148,7 @@ export const projects = [
       • AI-powered content generation with comprehensive study materials`,
     live: "https://usepdx.tech",
     github: "https://github.com/dey11/pdx",
-    image: "/projects/pdx.png",
+    image: assetUrl("/projects/pdx.png"),
     createdAt: "2025",
   },
   {
@@ -159,7 +161,7 @@ export const projects = [
       • Built from scratch without heavy dependencies`,
     live: "https://ballaratsports.vercel.app",
     github: "https://github.com/dey11/ballarat",
-    image: "/projects/ballarat.png",
+    image: assetUrl("/projects/ballarat.png"),
     createdAt: "2025",
   },
   {
@@ -172,7 +174,7 @@ export const projects = [
       • Built from scratch without heavy dependencies`,
     live: "https://doublesalesai.vercel.app",
     // github: "https://github.com/dey11/ballarat",
-    image: "/projects/doublesalesai.png",
+    image: assetUrl("/projects/doublesalesai.png"),
     createdAt: "2025",
   },
   {
@@ -194,7 +196,7 @@ export const projects = [
       • Automated competitor discovery, market positioning, and interactive chat for real-time insights`,
     live: "https://venturassist.xyz",
     github: "https://github.com/dey11/VenturAssist",
-    image: "/projects/venturassist.png",
+    image: assetUrl("/projects/venturassist.png"),
     createdAt: "2025",
   },
   {
@@ -207,7 +209,7 @@ export const projects = [
       • Built from scratch without heavy dependencies`,
     live: "https://wabisabi.agency",
     github: "https://github.com/dey11/wabisabi-agency",
-    image: "/landing-images/wabisabi.png",
+    image: assetUrl("/landing-images/wabisabi.png"),
     createdAt: "2025",
   },
   {
@@ -220,7 +222,7 @@ export const projects = [
       • User authentication and progress tracking`,
     live: "https://clarityhub.vercel.app",
     github: "https://github.com/dey11/clarity-hub",
-    image: "/projects/clarityhub.png",
+    image: assetUrl("/projects/clarityhub.png"),
     createdAt: "2025",
   },
   {
@@ -233,7 +235,7 @@ export const projects = [
       • Real-time streaming voice API through websockets`,
     live: "https://convoagent.vercel.app/",
     github: "https://github.com/Dey11/gemini-conversational-agent",
-    image: "/projects/realestate.png",
+    image: assetUrl("/projects/realestate.png"),
     createdAt: "2025",
   },
   {
@@ -246,7 +248,7 @@ export const projects = [
       • Location-based scraping with 7-day caching mechanism`,
     live: null,
     github: "https://github.com/Dey11/Tinder-scraper",
-    image: "/projects/placeholder.png",
+    image: assetUrl("/projects/placeholder.png"),
     createdAt: "2025",
   },
   {
@@ -259,7 +261,7 @@ export const projects = [
       • Clean, minimalist design for reading experience`,
     live: "https://www.drites.site",
     github: "https://github.com/dey11/drites",
-    image: "/projects/drites.png",
+    image: assetUrl("/projects/drites.png"),
     createdAt: "2025",
   },
   {
@@ -279,7 +281,7 @@ export const projects = [
       • Auto-generated chat titles based on conversation content`,
     live: "https://chatappui.vercel.app",
     github: "https://github.com/dey11/chatappui",
-    image: "/projects/aichat.png",
+    image: assetUrl("/projects/aichat.png"),
     createdAt: "2025",
   },
   {
@@ -292,7 +294,7 @@ export const projects = [
       • Database-driven content management`,
     live: "https://vidbox.cc",
     github: null,
-    image: "/projects/vidbox.png",
+    image: assetUrl("/projects/vidbox.png"),
     createdAt: "2024",
   },
   {
@@ -305,7 +307,7 @@ export const projects = [
       • Designed for desktop screens (1200px+)`,
     live: "https://dey-dashboard.vercel.app",
     github: "https://github.com/Dey11/dashboard-analytics-ui",
-    image: "/projects/dashboard.png",
+    image: assetUrl("/projects/dashboard.png"),
     createdAt: "2025",
   },
   {
@@ -318,7 +320,7 @@ export const projects = [
       • Rate limiting and caching with Redis, Docker containerization`,
     live: null,
     github: "https://github.com/Dey11/Chat-System-Backend-with-Socketio",
-    image: "/projects/placeholder.png",
+    image: assetUrl("/projects/placeholder.png"),
     createdAt: "2025",
   },
   {
@@ -331,7 +333,7 @@ export const projects = [
       • Scheduled tasks with cron jobs for regular updates`,
     live: null,
     github: "https://github.com/Dey11/yunami",
-    image: "/projects/placeholder.png",
+    image: assetUrl("/projects/placeholder.png"),
     createdAt: "2023",
   },
 ];

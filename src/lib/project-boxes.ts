@@ -1,3 +1,5 @@
+import { assetUrl } from "./assets";
+
 export type ProjectBox = {
   id: string;
   color: string;
@@ -66,7 +68,7 @@ I built this as full-stack product engineering. The important decision was to tr
     status: "Live",
     duration: "Product build",
     year: "2025",
-    images: ["/projects/pdx.png"],
+    images: [assetUrl("/projects/pdx.png")],
   },
   2: {
     id: "project-02-ballarat",
@@ -106,15 +108,15 @@ This was freelance client work. I optimized for a launch-stage local business: f
     duration: "Client build",
     year: "2025",
     images: [
-      "/projects/external/hanabi-ballarat-1.png",
-      "/projects/external/hanabi-ballarat-2.png",
-      "/projects/external/ballarat-site-sports.webp",
-      "/projects/external/ballarat-site-features.webp",
-      "/projects/external/ballarat-site-formats.webp",
-      "/projects/external/ballarat-site-about.webp",
-      "/projects/external/ballarat-site-contact.webp",
-      "/projects/external/ballarat-site-pricing.webp",
-      "/projects/external/hanabi-ballarat-3.png",
+      assetUrl("/projects/external/hanabi-ballarat-1.png"),
+      assetUrl("/projects/external/hanabi-ballarat-2.png"),
+      assetUrl("/projects/external/ballarat-site-sports.webp"),
+      assetUrl("/projects/external/ballarat-site-features.webp"),
+      assetUrl("/projects/external/ballarat-site-formats.webp"),
+      assetUrl("/projects/external/ballarat-site-about.webp"),
+      assetUrl("/projects/external/ballarat-site-contact.webp"),
+      assetUrl("/projects/external/ballarat-site-pricing.webp"),
+      assetUrl("/projects/external/hanabi-ballarat-3.png"),
     ],
   },
   4: {
@@ -162,7 +164,7 @@ This was built in a hackathon/team context, and the repo credits me as Lead Deve
     status: "Live",
     duration: "Hackathon build",
     year: "2025",
-    images: ["/projects/venturassist.png"],
+    images: [assetUrl("/projects/venturassist.png")],
   },
   5: {
     id: "project-05-wabisabi",
@@ -202,12 +204,12 @@ This was freelance frontend work for a visual agency. I kept the project as a fa
     duration: "Agency site",
     year: "2025",
     images: [
-      "/landing-images/wabisabi.png",
-      "/projects/external/hanabi-wabisabi-1.png",
-      "/projects/external/hanabi-wabisabi-2.png",
-      "/projects/external/hanabi-wabisabi-3.png",
+      assetUrl("/landing-images/wabisabi.png"),
+      assetUrl("/projects/external/hanabi-wabisabi-1.png"),
+      assetUrl("/projects/external/hanabi-wabisabi-2.png"),
+      assetUrl("/projects/external/hanabi-wabisabi-3.png"),
     ],
-    thumbnail: "/projects/external/hanabi-wabisabi-1.png",
+    thumbnail: assetUrl("/projects/external/hanabi-wabisabi-1.png"),
   },
   8: {
     id: "project-08-tinder-scraper",
@@ -247,7 +249,7 @@ This was a solo take-home style systems project. I separated controllers, servic
     status: "Archived",
     duration: "Assignment",
     year: "2025",
-    images: ["/projects/external/tinder-architecture.png"],
+    images: [assetUrl("/projects/external/tinder-architecture.png")],
   },
   11: {
     id: "project-11-vidbox",
@@ -294,7 +296,7 @@ This was freelance full-stack work. I used server-side catalog fetching for disc
     status: "Live",
     duration: "Client build",
     year: "2024",
-    images: ["/projects/vidbox.png"],
+    images: [assetUrl("/projects/vidbox.png")],
   },
   13: {
     id: "project-13-chat-backend",
@@ -508,13 +510,13 @@ This was substantial freelance full-stack work. I built it as a platform rather 
     duration: "Full-stack client platform",
     year: "2026",
     images: [
-      "/projects/external/krish-downthecove-1.jpg",
-      "/projects/external/krish-downthecove-2.jpg",
-      "/projects/external/krish-downthecove-3.jpg",
-      "/projects/external/hanabi-dtc-1.png",
-      "/projects/external/hanabi-dtc-3.png",
+      assetUrl("/projects/external/krish-downthecove-1.jpg"),
+      assetUrl("/projects/external/krish-downthecove-2.jpg"),
+      assetUrl("/projects/external/krish-downthecove-3.jpg"),
+      assetUrl("/projects/external/hanabi-dtc-1.png"),
+      assetUrl("/projects/external/hanabi-dtc-3.png"),
     ],
-    thumbnail: "/projects/external/krish-downthecove-2.jpg",
+    thumbnail: assetUrl("/projects/external/krish-downthecove-2.jpg"),
   },
   19: {
     id: "project-19-thomasbewick",
@@ -558,8 +560,8 @@ This was freelance solo work for a small business. I chose a headless WooCommerc
     duration: "Small-business commerce",
     year: "2026",
     images: [
-      "/projects/external/hanabi-thomasbewick-2.png",
-      "/projects/external/hanabi-thomasbewick-1.png",
+      assetUrl("/projects/external/hanabi-thomasbewick-2.png"),
+      assetUrl("/projects/external/hanabi-thomasbewick-1.png"),
     ],
   },
   20: {
@@ -601,10 +603,10 @@ This is freelance full-stack product work. I treated the import pipeline as the 
     duration: "Client product build",
     year: "2026",
     images: [
-      "/projects/external/krish-trade-moai-1.jpg",
-      "/projects/external/krish-trade-moai-2.jpg",
-      "/projects/external/krish-trade-moai-3.jpg",
-      "/projects/external/krish-trade-moai-4.jpg",
+      assetUrl("/projects/external/krish-trade-moai-1.jpg"),
+      assetUrl("/projects/external/krish-trade-moai-2.jpg"),
+      assetUrl("/projects/external/krish-trade-moai-3.jpg"),
+      assetUrl("/projects/external/krish-trade-moai-4.jpg"),
     ],
   },
   21: {
@@ -646,12 +648,12 @@ This was a frontend/product-design implementation for a studio brand. I kept pro
     duration: "Studio site",
     year: "2026",
     images: [
-      "/projects/external/hanabi-site-1.png",
-      "/projects/external/hanabi-site-2.png",
-      "/projects/external/hanabi-site-3.png",
-      "/projects/external/hanabi-site-4.png",
+      assetUrl("/projects/external/hanabi-site-1.png"),
+      assetUrl("/projects/external/hanabi-site-2.png"),
+      assetUrl("/projects/external/hanabi-site-3.png"),
+      assetUrl("/projects/external/hanabi-site-4.png"),
     ],
-    thumbnail: "/projects/external/hanabi-site-1.png",
+    thumbnail: assetUrl("/projects/external/hanabi-site-1.png"),
   },
   22: {
     id: "project-22-leadly",
@@ -695,8 +697,8 @@ This is a solo or very small-team SaaS build. I designed it around async workers
     duration: "SaaS build",
     year: "2026",
     images: [
-      "/projects/external/hanabi-leadly-2.png",
-      "/projects/external/hanabi-leadly-1.png",
+      assetUrl("/projects/external/hanabi-leadly-2.png"),
+      assetUrl("/projects/external/hanabi-leadly-1.png"),
     ],
   },
 };

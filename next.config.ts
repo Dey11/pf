@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
+import { ASSET_BASE_URL } from "./src/lib/assets";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  images: {
+    remotePatterns: [new URL(`${ASSET_BASE_URL}/**`)],
+  },
 };
 
 const withMDX = createMDX({

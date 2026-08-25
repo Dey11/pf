@@ -1,5 +1,6 @@
 "use client";
 
+import { assetUrl } from "@/lib/assets";
 import { heroItems, locationUrl } from "@/lib/constants";
 import { highlightProject } from "@/lib/project-highlight";
 import { cn } from "@/lib/utils";
@@ -173,7 +174,7 @@ export default function HeroSection() {
               <span
                 aria-hidden
                 style={{
-                  backgroundImage: "url(/landing-images/hero-bg-gray.svg)",
+                  backgroundImage: `url(${assetUrl("/landing-images/hero-bg-gray.svg")})`,
                 }}
                 className={cn(
                   "pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat lg:[background-size:300%_auto]",
@@ -183,7 +184,7 @@ export default function HeroSection() {
               <span
                 aria-hidden
                 style={{
-                  backgroundImage: "url(/landing-images/hero-bg.svg)",
+                  backgroundImage: `url(${assetUrl("/landing-images/hero-bg.svg")})`,
                   transition: "opacity 950ms ease",
                   transitionDelay: `${redDelay}s`,
                 }}

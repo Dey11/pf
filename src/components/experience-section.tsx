@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { Plus } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import { techMeta, type TechKey } from "@/lib/tech-stack";
 
@@ -201,9 +202,11 @@ export default function ExperienceSection() {
                                 className="group/tag inline-flex items-center rounded-full bg-white/10 p-2.5 text-sm font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm transition-all duration-300 text-shadow-2xs hover:px-4 sm:text-base"
                               >
                                 {tech && (
-                                  <img
+                                  <Image
                                     src={tech.logo}
                                     alt=""
+                                    width={20}
+                                    height={20}
                                     aria-hidden
                                     className="size-5 shrink-0"
                                   />
