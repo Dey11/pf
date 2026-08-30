@@ -7,6 +7,7 @@ import ProjectPopup from "./project-popup";
 import {
   prioritizedProjectColumns,
   projectBoxesByInventoryId,
+  projectImageSource,
   projectSlug,
   type ProjectBox,
 } from "@/lib/project-boxes";
@@ -39,7 +40,9 @@ function BentoCard({
   onSelect: (box: ProjectBox) => void;
   highlight: string | null;
 }) {
-  const thumbnail = box.thumbnail ?? box.images[0];
+  const firstImage = box.images[0];
+  const thumbnail =
+    box.thumbnail ?? (firstImage ? projectImageSource(firstImage) : undefined);
   const slug = projectSlug(box);
   const isActive = highlight === slug;
   const isDimmed = highlight !== null && !isActive;

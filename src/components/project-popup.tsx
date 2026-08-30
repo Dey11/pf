@@ -9,7 +9,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { assetUrl } from "@/lib/assets";
-import type { ProjectBox } from "@/lib/project-boxes";
+import { projectImageSource, type ProjectBox } from "@/lib/project-boxes";
 import { techMeta, type TechKey } from "@/lib/tech-stack";
 
 type Tab = "images" | "details" | "chat";
@@ -268,20 +268,43 @@ export default function ProjectPopup({
 function ImageList({ box }: { box: ProjectBox }) {
   return (
     <div className="flex flex-col gap-3">
-      {box.images.map((src, i) => (
-        <div
-          key={src + i}
-          className="relative aspect-video w-full overflow-hidden rounded-lg bg-white/5"
-        >
-          <Image
-            src={src}
-            alt={`${box.name} screenshot ${i + 1}`}
-            fill
-            sizes="(max-width: 767px) calc(100vw - 4.5rem), 380px"
-            className="object-cover object-top"
-          />
-        </div>
-      ))}
+      {box.images.map((image, i) => {
+        const src = projectImageSource(image);
+        const alt = `${box.name} screenshot ${i + 1}`;
+
+        if (typeof image !== "string") {
+          return (
+            <div
+              key={src}
+              className="w-full overflow-hidden rounded-lg bg-white/5"
+            >
+              <Image
+                src={src}
+                alt={alt}
+                width={image.width}
+                height={image.height}
+                sizes="(max-width: 767px) calc(100vw - 4.5rem), 380px"
+                className="h-auto w-full"
+              />
+            </div>
+          );
+        }
+
+        return (
+          <div
+            key={src}
+            className="relative aspect-video w-full overflow-hidden rounded-lg bg-white/5"
+          >
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              sizes="(max-width: 767px) calc(100vw - 4.5rem), 380px"
+              className="object-cover object-top"
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }

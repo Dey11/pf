@@ -1,5 +1,13 @@
 import { assetUrl } from "./assets";
 
+export type ProjectImage =
+  | string
+  | {
+      src: string;
+      width: number;
+      height: number;
+    };
+
 export type ProjectBox = {
   id: string;
   color: string;
@@ -15,11 +23,16 @@ export type ProjectBox = {
   status: "Live" | "Archived" | "WIP" | "In progress";
   duration: string;
   year: string;
-  images: string[];
+  images: ProjectImage[];
   // peeking thumbnail shown on the bento card. defaults to images[0] when
   // omitted; set it explicitly to use a different screenshot.
   thumbnail?: string;
 };
+
+/** Returns the URL for either a standard screenshot or a natural-ratio image. */
+export function projectImageSource(image: ProjectImage): string {
+  return typeof image === "string" ? image : image.src;
+}
 
 // stable url-friendly slug for a project, e.g. "project-18-downthecove" ->
 // "downthecove". used for deep-link hashes (#downthecove-project) and to match
@@ -504,7 +517,7 @@ The repo is split into a Medusa 2 backend and a Next.js 16 frontend/custom admin
 ## Role and decisions
 
 This was substantial freelance full-stack work. I built it as a platform rather than a storefront because the business needed commerce operations, editorial content, support workflows, B2B pricing, shipping state, and admin control to evolve independently. Medusa handles transactional primitives, Payload handles coastal/editorial content, and custom modules/API routes fill the gaps where default commerce behavior was too broad, too slow, or too generic.`,
-    url: "https://staging.fe.downthecove.com/",
+    url: "https://dtc.cooldash.xyz/",
     github: "https://github.com/Dey11/downthecove-pvt",
     tags: [
       "nextjs",
@@ -519,13 +532,24 @@ This was substantial freelance full-stack work. I built it as a platform rather 
     duration: "Full-stack client platform",
     year: "2026",
     images: [
-      assetUrl("/projects/external/krish-downthecove-1.jpg"),
-      assetUrl("/projects/external/krish-downthecove-2.jpg"),
-      assetUrl("/projects/external/krish-downthecove-3.jpg"),
-      assetUrl("/projects/external/hanabi-dtc-1.png"),
-      assetUrl("/projects/external/hanabi-dtc-3.png"),
+      assetUrl("/projects/external/downthecove-home-desktop-2026-08-30.png"),
+      assetUrl("/projects/external/downthecove-pdp-desktop-2026-08-30.png"),
+      {
+        src: assetUrl(
+          "/projects/external/downthecove-pdp-mobile-full-2026-08-30.png",
+        ),
+        width: 780,
+        height: 10940,
+      },
+      assetUrl(
+        "/projects/external/downthecove-cove-club-desktop-2026-08-30.png",
+      ),
+      assetUrl("/projects/external/downthecove-sign-in-desktop-2026-08-30.png"),
+      assetUrl("/projects/external/downthecove-cart-desktop-2026-08-30.png"),
     ],
-    thumbnail: assetUrl("/projects/external/krish-downthecove-2.jpg"),
+    thumbnail: assetUrl(
+      "/projects/external/downthecove-home-desktop-2026-08-30.png",
+    ),
   },
   19: {
     id: "project-19-thomasbewick",
@@ -571,6 +595,24 @@ This was freelance solo work for a small business. I chose a headless WooCommerc
     images: [
       assetUrl("/projects/external/hanabi-thomasbewick-2.png"),
       assetUrl("/projects/external/hanabi-thomasbewick-1.png"),
+      assetUrl("/projects/external/thomasbewick-pdp-desktop-2026-08-30.png"),
+      {
+        src: assetUrl(
+          "/projects/external/thomasbewick-pdp-mobile-full-2026-08-30.png",
+        ),
+        width: 780,
+        height: 8366,
+      },
+      assetUrl(
+        "/projects/external/thomasbewick-checkout-desktop-2026-08-30.png",
+      ),
+      {
+        src: assetUrl(
+          "/projects/external/thomasbewick-checkout-mobile-full-2026-08-30.png",
+        ),
+        width: 780,
+        height: 5488,
+      },
     ],
   },
   20: {
@@ -708,6 +750,13 @@ This is a solo or very small-team SaaS build. I designed it around async workers
     images: [
       assetUrl("/projects/external/hanabi-leadly-2.png"),
       assetUrl("/projects/external/hanabi-leadly-1.png"),
+      assetUrl("/projects/external/leadly-leads-desktop-2026-08-30.png"),
+      assetUrl("/projects/external/leadly-icps-desktop-2026-08-30.png"),
+      assetUrl("/projects/external/leadly-monitors-desktop-2026-08-30.png"),
+      assetUrl("/projects/external/leadly-schedule-desktop-2026-08-30.png"),
+      assetUrl(
+        "/projects/external/leadly-settings-billing-desktop-2026-08-30.png",
+      ),
     ],
   },
 };

@@ -1,7 +1,11 @@
 "use client";
 
 import { assetUrl } from "@/lib/assets";
-import { projectBoxesByInventoryId, projectSlug } from "@/lib/project-boxes";
+import {
+  projectBoxesByInventoryId,
+  projectImageSource,
+  projectSlug,
+} from "@/lib/project-boxes";
 import { hashForSlug, highlightProject } from "@/lib/project-highlight";
 import Image from "next/image";
 import Link from "next/link";
@@ -56,7 +60,10 @@ function ProjectMention({ projectId }: { projectId: ProjectId }) {
   );
   const project = projectBoxesByInventoryId[projectId];
   const slug = projectSlug(project);
-  const preview = project.thumbnail ?? project.images[0];
+  const firstImage = project.images[0];
+  const preview =
+    project.thumbnail ??
+    (firstImage ? projectImageSource(firstImage) : undefined);
   const configuredLogo = projectLogos[projectId];
   const logo = configuredLogo === null ? null : (configuredLogo ?? preview);
   const previewPosition =
