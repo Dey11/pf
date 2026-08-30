@@ -33,42 +33,52 @@ export const projectBoxesByInventoryId: Record<number, ProjectBox> = {
     id: "project-01-pdx",
     color: "bg-[#F4C651]",
     name: "pdx",
-    tagline:
-      "ai study-material generation with credits, workers, and pdf delivery",
+    tagline: "free byok study-material generation with async pdf delivery",
     description:
-      "An AI study-material platform that turns a syllabus or study goal into structured PDFs, with auth, credits, async generation, object storage, and download history.",
+      "A free BYOK study-material platform that turns a syllabus into structured PDFs through user-selected OpenAI-compatible providers, background workers, and durable download history.",
     content: `## Overview
 
-PDX is a study-material generation product, not just a prompt wrapper. The app takes a syllabus or study requirement, turns it into a structured plan, lets the user confirm the direction, then runs the heavier generation and PDF delivery outside the request path.
+PDX is a free BYOK study-material generator. You connect an OpenAI-compatible provider, paste a syllabus, review the proposed topics, and let background workers produce and combine the final PDF. PDX does not sell credits or provide a paid AI plan.
 
 ## Architecture
 
-The product is built around Next.js 16, React 19, TypeScript, Tailwind, Prisma/Postgres, Better Auth, BullMQ/Redis, Cloudflare R2 through S3-compatible endpoints, the AI SDK with DeepSeek/Gemini generation, Dodo billing, Resend, Bun, and Docker/Coolify deployment. The web app owns marketing, pricing, policies, auth, dashboard, history, settings, generation APIs, credit flows, and callback routes. The worker process handles theoryQueue, qbankQueue, mergePdfQueue, and completionQueue jobs, then posts progress and completion updates back to the web app.
+The product uses Next.js 16, React 19, TypeScript, Tailwind, Prisma/Postgres, Better Auth, BullMQ/Redis, Cloudflare R2, the AI SDK, Puppeteer/Chromium, Resend, Bun, and Docker Compose on Coolify. The web app owns the public pages, email/password and social authentication, BYOK settings, dashboard, history, generation APIs, and worker callbacks. The worker resolves each user's encrypted provider credential through an authenticated server callback, calls the selected model, renders topic PDFs, stores them in R2, and combines them into the final material.
 
 ## What I built
 
-- Authenticated dashboard, generation flow, history, settings, and account surfaces
-- Public marketing, pricing, policy, and auth pages
-- Study-material planning flow before final generation
-- Credit and subscription billing with Dodo transactions, coupon codes, and redemption tracking
-- AI generation workflows for theory notes and question banks
+- Email/password, GitHub, and Google authentication
+- Encrypted BYOK settings for OpenAI-compatible providers and editable model IDs
+- Topic planning and review before final generation
+- Theory-note and question-bank generation workflows
 - Topic-level task tracking with progress, partial outputs, merged PDFs, and signed downloads
-- BullMQ-backed fan-out workers for long-running generation, PDF creation, upload, merge, and completion aggregation
-- Cloudflare R2 upload and signed download delivery through object-storage utilities
-- Email surfaces around product communication
-- Docker/Coolify-oriented deployment separation for web, worker, Postgres, and Redis
+- BullMQ fan-out workers for provider calls, PDF rendering, upload, merge, and completion aggregation
+- Cloudflare R2 storage with signed application downloads
+- A production Compose stack with migration, Redis, web, and worker roles backed by Neon Postgres
+- A restored pricing page that explains the free BYOK model without active purchases
 
 ## Role and decisions
 
-I built this as full-stack product engineering. The important decision was to treat generation as a workflow instead of a chat response. AI calls and PDF work are slow, failure-prone, and need resumable state, so I split the user-facing confirmation and tracking flow from isolated workers that handle model calls, PDF output, queue aggregation, and R2 uploads. That made credits, progress, history, and downloads easier to reason about as product features rather than afterthoughts.`,
-    url: "https://usepdx.tech",
+I built PDX as a full-stack product and treated generation as a durable workflow instead of a long HTTP request. Provider keys never enter browser responses, queue payloads, logs, or generated documents. The web process decrypts a key only when the worker requests it for an active material. Deterministic queue jobs, task-level callbacks, and R2-backed artifacts make retries and progress tracking explicit.
+
+## Demo material
+
+[View or download the 101-page Computer Networks study guide](${assetUrl("/projects/pdx/computer-networks-study-guide-v1.pdf")})`,
+    url: "https://pdx.sdey.me",
     github: "https://github.com/dey11/pdx",
     tags: ["nextjs", "typescript", "postgresql", "prisma", "aisdk", "docker"],
     type: "Personal",
     status: "Live",
-    duration: "Product build",
-    year: "2025",
-    images: [assetUrl("/projects/pdx.png")],
+    duration: "Product build and BYOK relaunch",
+    year: "2025-2026",
+    images: [
+      assetUrl("/projects/pdx/landing-v1.png"),
+      assetUrl("/projects/pdx/dashboard-v1.png"),
+      assetUrl("/projects/pdx/generate-theory-v1.png"),
+      assetUrl("/projects/pdx/byok-settings-v1.png"),
+      assetUrl("/projects/pdx/materials-v1.png"),
+      assetUrl("/projects/pdx/pricing-byok-v1.png"),
+      assetUrl("/projects/pdx/computer-networks-output-v1.png"),
+    ],
   },
   2: {
     id: "project-02-ballarat",
