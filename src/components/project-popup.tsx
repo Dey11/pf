@@ -140,7 +140,7 @@ export default function ProjectPopup({
               {hasImages && (
                 <button
                   onClick={() => setTab("images")}
-                  className={`relative pt-3 pb-2 text-base font-medium transition-colors md:hidden ${
+                  className={`relative cursor-pointer pt-3 pb-2 text-base font-medium transition-colors md:hidden ${
                     tab === "images"
                       ? "text-white"
                       : "text-white/45 hover:text-white/70"
@@ -167,7 +167,7 @@ export default function ProjectPopup({
                   <button
                     key={t.id}
                     onClick={() => setTab(t.id)}
-                    className={`relative pt-3 pb-2 text-base font-medium transition-colors ${
+                    className={`relative cursor-pointer pt-3 pb-2 text-base font-medium transition-colors ${
                       active
                         ? "text-white"
                         : "text-white/45 hover:text-white/70"
@@ -193,7 +193,7 @@ export default function ProjectPopup({
             <button
               onClick={onClose}
               aria-label="Close"
-              className="flex size-9 shrink-0 items-center justify-center self-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              className="flex size-9 shrink-0 cursor-pointer items-center justify-center self-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
             >
               <X className="size-5" />
             </button>
@@ -227,7 +227,7 @@ export default function ProjectPopup({
                     <button
                       key={s}
                       onClick={() => send(s)}
-                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                      className="cursor-pointer rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-colors hover:bg-white/10 hover:text-white"
                     >
                       {s}
                     </button>
@@ -252,7 +252,7 @@ export default function ProjectPopup({
                   type="submit"
                   disabled={!input.trim() || isBusy}
                   aria-label="Send"
-                  className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white text-black transition-opacity disabled:opacity-30"
+                  className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-xl bg-white text-black transition-opacity disabled:cursor-not-allowed disabled:opacity-30"
                 >
                   <ArrowUp className="size-4.5" strokeWidth={2.4} />
                 </button>
