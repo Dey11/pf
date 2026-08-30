@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import ProjectPopup from "./project-popup";
 import {
+  projectCardHeightByWeight,
   prioritizedProjectColumns,
   projectBoxesByInventoryId,
   projectImageSource,
@@ -17,12 +18,10 @@ import {
   slugFromHash,
 } from "@/lib/project-highlight";
 
-type Slot = { weight: number; projectId: number };
-
 // mobile shows a uniform two-column grid with only image-backed projects. since
 // touch devices do not have a reliable hover state, every card renders with its
 // thumbnail/title already in the revealed position.
-const mobileProjects: Slot[] = (() => {
+const mobileProjects = (() => {
   return prioritizedProjectColumns.flat().filter(({ projectId }) => {
     const box = projectBoxesByInventoryId[projectId];
     return Boolean(box.thumbnail ?? box.images[0]);
@@ -31,12 +30,10 @@ const mobileProjects: Slot[] = (() => {
 
 function BentoCard({
   box,
-  weight,
   onSelect,
   highlight,
 }: {
   box: ProjectBox;
-  weight: number;
   onSelect: (box: ProjectBox) => void;
   highlight: string | null;
 }) {
@@ -56,7 +53,6 @@ function BentoCard({
       onClick={() => onSelect(box)}
       data-project-box
       data-project-slug={slug}
-      style={{ flexGrow: weight, flexBasis: 0 }}
       aria-label={`Open ${box.name} project details`}
       className={`group relative h-full min-h-0 w-full cursor-pointer overflow-hidden rounded-xl text-left transition-all duration-300 sm:rounded-2xl ${box.color} ${
         isActive
@@ -176,7 +172,6 @@ export default function BentoSection() {
           <div key={projectId} className="h-48 sm:h-60">
             <BentoCard
               box={projectBoxesByInventoryId[projectId]}
-              weight={1}
               onSelect={setSelected}
               highlight={highlight}
             />
@@ -185,17 +180,21 @@ export default function BentoSection() {
       </div>
 
       {/* desktop — 3 columns, all projects */}
-      <div className="hidden h-[1200px] gap-4 pt-10 lg:flex">
+      <div className="hidden items-start gap-4 pt-10 lg:flex">
         {prioritizedProjectColumns.map((column, columnIndex) => (
-          <div key={columnIndex} className="flex h-full flex-1 flex-col gap-4">
+          <div key={columnIndex} className="flex flex-1 flex-col gap-4">
             {column.map(({ weight, projectId }) => (
-              <BentoCard
+              <div
                 key={projectId}
-                box={projectBoxesByInventoryId[projectId]}
-                weight={weight}
-                onSelect={setSelected}
-                highlight={highlight}
-              />
+                className="shrink-0"
+                style={{ height: projectCardHeightByWeight[weight] }}
+              >
+                <BentoCard
+                  box={projectBoxesByInventoryId[projectId]}
+                  onSelect={setSelected}
+                  highlight={highlight}
+                />
+              </div>
             ))}
           </div>
         ))}
