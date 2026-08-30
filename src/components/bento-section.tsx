@@ -76,10 +76,10 @@ function BentoCard({
 
       {thumbnail ? (
         /* The panel is 4/5 of the card. A 25% downward offset leaves exactly
-           3/5 visible, and hover or keyboard focus reveals the full 4/5. */
+           3/5 visible; a 12.5% offset reveals 3.5/5 on hover or keyboard focus. */
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-x-2 bottom-0 h-[80%] translate-y-[25%] overflow-hidden rounded-t-lg border border-black/10 shadow-[0_-10px_30px_rgba(0,0,0,0.28)] transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] motion-reduce:transition-none sm:inset-x-3 sm:rounded-t-xl motion-safe:lg:group-hover:translate-y-0 motion-safe:lg:group-focus-visible:translate-y-0"
+          className="pointer-events-none absolute inset-x-2 bottom-0 h-[80%] translate-y-[25%] overflow-hidden rounded-t-lg border border-black/10 shadow-[0_-10px_30px_rgba(0,0,0,0.28)] transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] motion-reduce:transition-none sm:inset-x-3 sm:rounded-t-xl motion-safe:lg:group-hover:translate-y-[12.5%] motion-safe:lg:group-focus-visible:translate-y-[12.5%]"
         >
           <Image
             src={thumbnail}
