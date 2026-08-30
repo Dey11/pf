@@ -66,8 +66,6 @@ function BentoCard({
             : "opacity-100"
       }`}
     >
-      <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.38),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.22),transparent_46%)] opacity-80" />
-
       {thumbnail ? (
         /* peeking thumbnail — ~3/6 visible by default, rising to ~5/6 on hover
            with an elastic overshoot. clipped by the card's overflow-hidden. */

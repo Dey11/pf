@@ -285,19 +285,6 @@ export const projects = [
     createdAt: "2025",
   },
   {
-    id: "1010",
-    name: "vidbox",
-    tags: ["typescript", "nextjs", "postgresql"],
-    description: `Movie and series streaming platform (freelance project).
-      • Comprehensive media streaming functionality
-      • User-friendly interface for content discovery
-      • Database-driven content management`,
-    live: "https://vidbox.cc",
-    github: null,
-    image: assetUrl("/projects/vidbox.png"),
-    createdAt: "2024",
-  },
-  {
     id: "1011",
     name: "dashboard analytics ui",
     tags: ["reactjs", "charts", "tailwindcss"],

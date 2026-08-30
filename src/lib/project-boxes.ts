@@ -273,53 +273,6 @@ This was a solo take-home style systems project. I separated controllers, servic
     year: "2025",
     images: [assetUrl("/projects/external/tinder-architecture.png")],
   },
-  11: {
-    id: "project-11-vidbox",
-    color: "bg-[#d8f0ff]",
-    name: "vidbox",
-    tagline:
-      "media discovery portal with auth, metadata, watch pages, and provider fallback",
-    description:
-      "A movie, TV, and anime discovery and streaming portal combining metadata APIs, watch pages, provider embeds, signed-in user features, SEO pages, and responsive navigation.",
-    content: `## Overview
-
-Vidbox is a media discovery and watch experience for movies, TV, and anime. It combines catalog browsing, detail pages, provider-based watch pages, watchlist/history personalization, and SEO metadata around a streaming-style interface.
-
-## Architecture
-
-The app uses Next.js App Router, React, TypeScript, Tailwind, Clerk auth, Prisma/Postgres, TMDB APIs for movie/TV metadata, AniList GraphQL for anime, Clerk Svix webhooks for user sync, provider arrays for iframe watch sources, localStorage fallback behavior for history/watchlist interactions, and metadata helpers for Open Graph/Twitter/SEO surfaces.
-
-## What I built
-
-- Landing/search entry page and /home explore experience
-- Trending, discover, and provider-specific media rows
-- Movie, TV, and anime detail pages with metadata, cast, trailers, recommendations, and watch actions
-- Watch pages for movies, TV episodes, and anime episodes
-- Multi-provider server selector with persisted provider choice
-- Clerk-protected watchlist API and UI
-- Watch-history API and local behavior with season/episode support
-- Clerk webhook that upserts authenticated users into Prisma
-- SEO, Open Graph, Twitter metadata, and public media assets
-
-## Role and decisions
-
-This was freelance full-stack work. I used server-side catalog fetching for discoverability and metadata-heavy pages, while keeping player controls, provider switching, sharing, bookmarking, and history interactions client-side where quick feedback mattered. The third-party provider/embed area should be described as technical integration work, not as ownership of content rights.`,
-    url: "https://vidbox.dev",
-    github: "https://github.com/Dey11/cinego",
-    tags: [
-      "nextjs",
-      "typescript",
-      "postgresql",
-      "prisma",
-      "tailwindcss",
-      "motion",
-    ],
-    type: "Freelance",
-    status: "Live",
-    duration: "Client build",
-    year: "2024",
-    images: [assetUrl("/projects/vidbox.png")],
-  },
   13: {
     id: "project-13-chat-backend",
     color: "bg-[#e6dbff]",
@@ -781,7 +734,6 @@ export const prioritizedProjectColumns: {
   [
     { weight: 12, projectId: 1 },
     { weight: 12, projectId: 8 },
-    { weight: 9, projectId: 11 },
     { weight: 12, projectId: 19 },
     { weight: 5, projectId: 14 },
   ],
