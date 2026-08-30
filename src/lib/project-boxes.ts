@@ -214,7 +214,6 @@ This was freelance frontend work for a visual agency. I kept the project as a fa
     duration: "Agency site",
     year: "2025",
     images: [
-      assetUrl("/landing-images/wabisabi.png"),
       assetUrl("/projects/external/hanabi-wabisabi-1.png"),
       assetUrl("/projects/external/hanabi-wabisabi-2.png"),
       assetUrl("/projects/external/hanabi-wabisabi-3.png"),
