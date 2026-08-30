@@ -715,8 +715,6 @@ This is a solo or very small-team SaaS build. I designed it around async workers
 };
 
 export const projectCardHeightByWeight = {
-  1: 160,
-  2: 208,
   3: 256,
   4: 304,
   5: 400,
@@ -730,11 +728,11 @@ export const prioritizedProjectColumns: {
 }[][] = [
   // Temporarily hidden, with their full records kept above for restoration.
   // Their legacy flex weights were directorscut (15, 6), puckchat (17, 7), and
-  // yunami (14, 5). Map them to one of the five current weights when restoring.
+  // yunami (14, 5). Map them to weight 3, 4, or 5 when restoring.
   [
     { weight: 3, projectId: 18 },
-    { weight: 2, projectId: 20 },
-    { weight: 1, projectId: 4 },
+    { weight: 3, projectId: 20 },
+    { weight: 3, projectId: 4 },
     { weight: 5, projectId: 21 },
   ],
   [
