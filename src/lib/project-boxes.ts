@@ -739,12 +739,12 @@ export const prioritizedProjectColumns: {
   ],
   [
     { weight: 3, projectId: 2 },
-    { weight: 5, projectId: 5 },
+    { weight: 5, projectId: 8 },
     { weight: 4, projectId: 22 },
   ],
   [
     { weight: 5, projectId: 1 },
-    { weight: 4, projectId: 8 },
+    { weight: 4, projectId: 5 },
     { weight: 3, projectId: 19 },
   ],
 ];
