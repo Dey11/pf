@@ -718,6 +718,8 @@ export const prioritizedProjectColumns: {
   weight: number;
   projectId: keyof typeof projectBoxesByInventoryId;
 }[][] = [
+  // Temporarily hidden, with their full records kept above for restoration:
+  // directorscut (15, weight 6), puckchat (17, weight 7), yunami (14, weight 5).
   [
     { weight: 12, projectId: 18 },
     { weight: 10, projectId: 20 },
@@ -725,16 +727,13 @@ export const prioritizedProjectColumns: {
     { weight: 20, projectId: 21 },
   ],
   [
-    { weight: 6, projectId: 15 },
     { weight: 12, projectId: 2 },
     { weight: 12, projectId: 5 },
-    { weight: 7, projectId: 17 },
     { weight: 13, projectId: 22 },
   ],
   [
     { weight: 12, projectId: 1 },
     { weight: 12, projectId: 8 },
     { weight: 12, projectId: 19 },
-    { weight: 5, projectId: 14 },
   ],
 ];
