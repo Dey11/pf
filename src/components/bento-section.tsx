@@ -57,7 +57,7 @@ function BentoCard({
       data-project-box
       data-project-slug={slug}
       aria-label={`Open ${box.name} project details`}
-      className={`group relative h-full min-h-0 w-full cursor-pointer overflow-hidden rounded-xl text-left transition-all duration-300 sm:rounded-2xl ${box.color} ${
+      className={`group relative h-full min-h-0 w-full cursor-pointer overflow-hidden rounded-xl text-left transition-[opacity,box-shadow] duration-300 sm:rounded-2xl ${box.color} ${
         isActive
           ? "ring-secondary ring-offset-background z-10 opacity-100 ring-2 ring-offset-2"
           : isDimmed
@@ -75,11 +75,11 @@ function BentoCard({
       )}
 
       {thumbnail ? (
-        /* peeking thumbnail — ~3/6 visible by default, rising to ~5/6 on hover
-           with an elastic overshoot. clipped by the card's overflow-hidden. */
+        /* The panel is 4/5 of the card. A 25% downward offset leaves exactly
+           3/5 visible, and hover or keyboard focus reveals the full 4/5. */
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-x-2 bottom-0 h-[80%] translate-y-[17%] overflow-hidden rounded-t-lg border border-black/10 shadow-[0_-10px_30px_rgba(0,0,0,0.28)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] sm:inset-x-3 sm:rounded-t-xl lg:translate-y-[50%] lg:group-hover:translate-y-[17%]"
+          className="pointer-events-none absolute inset-x-2 bottom-0 h-[80%] translate-y-[25%] overflow-hidden rounded-t-lg border border-black/10 shadow-[0_-10px_30px_rgba(0,0,0,0.28)] transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] motion-reduce:transition-none sm:inset-x-3 sm:rounded-t-xl motion-safe:lg:group-hover:translate-y-0 motion-safe:lg:group-focus-visible:translate-y-0"
         >
           <Image
             src={thumbnail}
@@ -98,7 +98,7 @@ function BentoCard({
       )}
 
       <span
-        className={`font-display pointer-events-none absolute top-0 right-3 z-10 max-w-[90%] translate-y-2 truncate text-right text-[28px] leading-none font-semibold lowercase transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] sm:text-[32px] lg:-translate-y-full lg:group-hover:translate-y-2 ${textClass}`}
+        className={`font-display pointer-events-none absolute top-0 right-3 z-10 max-w-[90%] translate-y-2 truncate text-right text-[28px] leading-none font-semibold lowercase transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] motion-reduce:transition-none sm:text-[32px] lg:-translate-y-full motion-safe:lg:group-hover:translate-y-2 motion-safe:lg:group-focus-visible:translate-y-2 motion-reduce:lg:translate-y-2 ${textClass}`}
       >
         {box.name}
       </span>
