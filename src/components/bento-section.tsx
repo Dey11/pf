@@ -11,6 +11,7 @@ import {
   projectImageSource,
   projectSlug,
   type ProjectBox,
+  type ProjectCardWeight,
 } from "@/lib/project-boxes";
 import {
   PROJECT_EVENT,
@@ -30,10 +31,12 @@ const mobileProjects = (() => {
 
 function BentoCard({
   box,
+  size,
   onSelect,
   highlight,
 }: {
   box: ProjectBox;
+  size?: ProjectCardWeight;
   onSelect: (box: ProjectBox) => void;
   highlight: string | null;
 }) {
@@ -62,6 +65,15 @@ function BentoCard({
             : "opacity-100"
       }`}
     >
+      {size && (
+        <span
+          aria-hidden
+          className={`font-display pointer-events-none absolute top-3 left-3 z-10 text-xs leading-none font-medium tabular-nums opacity-55 ${textClass}`}
+        >
+          {size}
+        </span>
+      )}
+
       {thumbnail ? (
         /* peeking thumbnail — ~3/6 visible by default, rising to ~5/6 on hover
            with an elastic overshoot. clipped by the card's overflow-hidden. */
@@ -191,6 +203,7 @@ export default function BentoSection() {
               >
                 <BentoCard
                   box={projectBoxesByInventoryId[projectId]}
+                  size={weight}
                   onSelect={setSelected}
                   highlight={highlight}
                 />
