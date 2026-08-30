@@ -729,20 +729,22 @@ export const prioritizedProjectColumns: {
   // Temporarily hidden, with their full records kept above for restoration.
   // Their legacy flex weights were directorscut (15, 6), puckchat (17, 7), and
   // yunami (14, 5). Map them to weight 3, 4, or 5 when restoring.
+  // Each column currently has one 4 and one 5; the first column carries the
+  // extra size 3 because it has four cards.
   [
-    { weight: 3, projectId: 18 },
+    { weight: 4, projectId: 18 },
     { weight: 3, projectId: 20 },
     { weight: 3, projectId: 4 },
     { weight: 5, projectId: 21 },
   ],
   [
     { weight: 3, projectId: 2 },
-    { weight: 3, projectId: 5 },
+    { weight: 5, projectId: 5 },
     { weight: 4, projectId: 22 },
   ],
   [
-    { weight: 3, projectId: 1 },
-    { weight: 3, projectId: 8 },
+    { weight: 5, projectId: 1 },
+    { weight: 4, projectId: 8 },
     { weight: 3, projectId: 19 },
   ],
 ];
