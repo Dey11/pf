@@ -712,6 +712,94 @@ This is a solo or very small-team SaaS build. I designed it around async workers
       ),
     ],
   },
+  23: {
+    id: "project-23-mahindra-beaconhill",
+    color: "bg-[#D10A2C]",
+    foreground: "light",
+    name: "mahindra beaconhill",
+    tagline:
+      "luxury property launch site with interactive plans and enquiry capture",
+    description:
+      "A freelance property marketing website for Mahindra BeaconHill in Mahalaxmi, designed and developed end to end with interactive residence plans, amenity browsing, location context, and a Resend-backed enquiry flow.",
+    content: `## Overview
+
+Mahindra BeaconHill is a responsive property marketing and lead-generation website for a residential launch in Mahalaxmi, Mumbai. The site takes prospective buyers through the project story, sustainability commitments, residence configurations, amenities, connectivity, developer background, frequently asked questions, and enquiry flow.
+
+## Architecture
+
+The website uses Next.js 16 App Router, React 19, TypeScript, Tailwind CSS 4, Vercel Analytics, and Resend. Project facts, unit configurations, amenities, location details, specifications, and FAQs live in a typed content model. Interactive client components handle the residence-plan and amenity selectors, while a server API route validates enquiries and sends them to the configured sales inbox through Resend.
+
+## What I designed and built
+
+- Complete visual and interaction design for the website
+- Responsive two-level navigation and image-led launch hero
+- Editorial overview and project-stat sections
+- Sustainability section covering energy, water, waste, and biodiversity commitments
+- Interactive unit-plan selector with unit, floor, and master-plan views
+- Custom SVG plan illustrations and configuration details
+- Tabbed amenity browser with category-specific imagery and facilities
+- Location section with connectivity details and an embedded Google map
+- Developer profile, specification list, and accessible FAQ section
+- Responsive enquiry form with client feedback, server validation, and Resend delivery
+- Metadata, analytics, and production deployment setup
+
+## Role and decisions
+
+This was a freelance engagement that I owned from design through development. I created the visual direction, information hierarchy, responsive behavior, interactive states, and production implementation. The restrained black, white, and Mahindra-red system keeps the property imagery prominent, while typed content and focused interactive components make the long landing page easier to maintain and update.
+
+Commercial figures on the site are presented as indicative project information and remain subject to the client's final legal and sales review.`,
+    url: "https://www.mahindranewlaunch.in",
+    github: null,
+    tags: ["nextjs", "typescript", "react", "tailwindcss", "resend"],
+    type: "Freelance",
+    status: "Live",
+    duration: "Full website design and development",
+    year: "2026",
+    images: [
+      {
+        src: assetUrl(
+          "/projects/external/mahindra-hero-desktop-2026-08-30.png",
+        ),
+        width: 1440,
+        height: 900,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/mahindra-overview-desktop-2026-08-30.png",
+        ),
+        width: 1440,
+        height: 900,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/mahindra-plans-desktop-2026-08-30.png",
+        ),
+        width: 1440,
+        height: 900,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/mahindra-location-desktop-2026-08-30.png",
+        ),
+        width: 1440,
+        height: 900,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/mahindra-overview-mobile-2026-08-30.png",
+        ),
+        width: 780,
+        height: 1688,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/mahindra-plans-mobile-2026-08-30.png",
+        ),
+        width: 780,
+        height: 1688,
+      },
+    ],
+  },
 };
 
 export const projectCardHeightByWeight = {
@@ -729,8 +817,8 @@ export const prioritizedProjectColumns: {
   // Temporarily hidden, with their full records kept above for restoration.
   // Their legacy flex weights were directorscut (15, 6), puckchat (17, 7), and
   // yunami (14, 5). Map them to weight 3, 4, or 5 when restoring.
-  // Each column currently has one 4 and one 5; the first column carries the
-  // extra size 3 because it has four cards.
+  // Each column has at least one 4 and one 5. Across the grid, sizes 3 and 4
+  // appear four times each, while size 5 appears three times.
   [
     { weight: 4, projectId: 18 },
     { weight: 3, projectId: 20 },
@@ -745,6 +833,7 @@ export const prioritizedProjectColumns: {
   [
     { weight: 5, projectId: 1 },
     { weight: 4, projectId: 5 },
+    { weight: 4, projectId: 23 },
     { weight: 3, projectId: 19 },
   ],
 ];
