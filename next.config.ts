@@ -3,6 +3,7 @@ import createMDX from "@next/mdx";
 import { ASSET_BASE_URL } from "./src/lib/assets";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ["codevps.tailc7cd0f.ts.net"],
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
     remotePatterns: [new URL(`${ASSET_BASE_URL}/**`)],
