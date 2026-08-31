@@ -1,15 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import GithubContributionsSkeleton from "./github-contributions-skeleton";
 
 type GithubContributionsComponent =
   typeof import("./github-contributions").default;
-
-function GithubContributionsSkeleton() {
-  return (
-    <div className="h-[150px] w-full animate-pulse rounded-lg bg-white/5" />
-  );
-}
 
 export default function DeferredGithubContributions() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -48,7 +43,7 @@ export default function DeferredGithubContributions() {
   }, [Component, shouldLoad]);
 
   return (
-    <div ref={rootRef}>
+    <div ref={rootRef} data-github-contributions-root>
       {Component ? <Component /> : <GithubContributionsSkeleton />}
     </div>
   );
