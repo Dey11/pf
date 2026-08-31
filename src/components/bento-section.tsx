@@ -88,16 +88,15 @@ function BentoCard({
       <span
         className={`pointer-events-none absolute top-0 right-3 z-10 flex max-w-[68%] translate-y-2 flex-col items-end transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] motion-reduce:transition-none sm:max-w-[90%] lg:-translate-y-full motion-safe:lg:group-hover:translate-y-2 motion-safe:lg:group-focus-visible:translate-y-2 motion-reduce:lg:translate-y-2 ${textClass}`}
       >
-        <span className="flex max-w-full items-center justify-end gap-2">
-          <span className="bg-secondary size-2 shrink-0 rounded-full" />
+        <span className="flex max-w-full items-center justify-end">
           <span className="font-display truncate text-right text-[22px] leading-none font-semibold lowercase sm:text-[28px] lg:text-[32px]">
             {box.name}
           </span>
         </span>
         <span
-          className={`mt-1 max-w-full truncate text-right text-[10px] leading-tight font-medium normal-case sm:text-xs ${mutedTextClass}`}
+          className={`mt-1 max-w-full text-right text-[10px] leading-tight font-medium text-balance normal-case sm:text-xs ${mutedTextClass}`}
         >
-          {box.tagline}
+          {box.cardSummary}
         </span>
       </span>
     </button>

@@ -13,6 +13,7 @@ export type ProjectBox = {
   color: string;
   foreground?: "dark" | "light";
   name: string;
+  cardSummary: string;
   tagline: string;
   description: string;
   content: string;
@@ -46,6 +47,7 @@ export const projectBoxesByInventoryId: Record<number, ProjectBox> = {
     id: "project-01-pdx",
     color: "bg-[#F4C651]",
     name: "pdx",
+    cardSummary: "AI-generated study material workflows",
     tagline: "free byok study-material generation with async pdf delivery",
     description:
       "A free BYOK study-material platform that turns a syllabus into structured PDFs through user-selected OpenAI-compatible providers, background workers, and durable download history.",
@@ -97,6 +99,7 @@ I built PDX as a full-stack product and treated generation as a durable workflow
     id: "project-02-ballarat",
     color: "bg-[#36C279]",
     name: "ballarat box sports",
+    cardSummary: "Local sports venue launch",
     tagline:
       "local sports venue website with seo, pricing, rules, and lead capture",
     description:
@@ -147,6 +150,7 @@ This was freelance client work. I optimized for a launch-stage local business: f
     color: "bg-[#246B8B]",
     foreground: "light",
     name: "venturassist",
+    cardSummary: "AI venture diligence workspace",
     tagline: "ai venture-capital analysis from decks, documents, and chat",
     description:
       "An AI-powered venture capital analysis platform that ingests startup documents, extracts structured company data, runs risk analysis, researches competitors, and supports chat over the investment dossier.",
@@ -193,6 +197,7 @@ This was built in a hackathon/team context, and the repo credits me as Lead Deve
     id: "project-05-wabisabi",
     color: "bg-[#EDD1E3]",
     name: "wabisabi",
+    cardSummary: "Motion-led design agency portfolio",
     tagline:
       "design-agency portfolio with galleries, services, and motion-heavy browsing",
     description:
@@ -237,6 +242,7 @@ This was freelance frontend work for a visual agency. I kept the project as a fa
     id: "project-08-tinder-scraper",
     color: "bg-[#fde1ea]",
     name: "tinder scraper",
+    cardSummary: "Automated Tinder profile collection",
     tagline:
       "async profile indexing with scraping, fuzzy search, vectors, and storage",
     description:
@@ -277,6 +283,7 @@ This was a solo take-home style systems project. I separated controllers, servic
     id: "project-13-chat-backend",
     color: "bg-[#e6dbff]",
     name: "chat backend socketio",
+    cardSummary: "Realtime Socket.IO chat backend",
     tagline:
       "real-time chat backend with auth, sockets, mongodb, redis, and rate limits",
     description:
@@ -318,6 +325,7 @@ This was a solo backend systems/API assignment. Redis is used where low-latency 
     id: "project-14-yunami",
     color: "bg-[#e7e0d6]",
     name: "yunami discord bot",
+    cardSummary: "Story-driven Discord adventure bot",
     tagline:
       "discord community bot for clan registration, donations, and leaderboards",
     description:
@@ -358,6 +366,7 @@ This was a personal/community bot project. The architecture is event-driven beca
     id: "project-15-directorscut",
     color: "bg-[#ffe1ed]",
     name: "directorscut",
+    cardSummary: "Collaborative video production workspace",
     tagline:
       "wip ai pipeline for series bibles, scenes, assets, dialogue, and video output",
     description:
@@ -398,6 +407,7 @@ This is a solo WIP systems prototype where my role is best framed as AI systems 
     id: "project-17-puckchat",
     color: "bg-[#d7e8ff]",
     name: "puckchat",
+    cardSummary: "AI study planning workspace",
     tagline:
       "ai study planner and research chat with persistent threads and byok settings",
     description:
@@ -473,6 +483,7 @@ This is a solo personal AI product. I designed it around persistent state and co
     id: "project-18-downthecove",
     color: "bg-[#DDD4C1]",
     name: "downthecove",
+    cardSummary: "Bespoke coastal commerce platform",
     tagline:
       "bespoke ecommerce with medusa, payload, wholesale, affiliates, and royal mail",
     description:
@@ -539,6 +550,7 @@ This was substantial freelance full-stack work. I built it as a platform rather 
     color: "bg-[#8A6356]",
     foreground: "light",
     name: "thomasbewick",
+    cardSummary: "Single-product horse bedding storefront",
     tagline:
       "single-product ecommerce with stripe, woocommerce operations, and resend email",
     description:
@@ -602,6 +614,7 @@ This was freelance solo work for a small business. I chose a headless WooCommerc
     id: "project-20-moai",
     color: "bg-[#FFC107]",
     name: "moai",
+    cardSummary: "Fidelity-powered trading journal",
     tagline:
       "trading journal with Fidelity imports, trade reconstruction, and analytics",
     description:
@@ -647,6 +660,7 @@ This is freelance full-stack product work. I treated the import pipeline as the 
     id: "project-21-hanabi",
     color: "bg-[#F90]",
     name: "hanabi",
+    cardSummary: "Handcrafted creative studio portfolio",
     tagline:
       "polished studio portfolio with handcrafted visuals, motion, gallery, and booking",
     description:
@@ -694,6 +708,7 @@ This was a frontend/product-design implementation for a studio brand. I kept pro
     color: "bg-[#B7495F]",
     foreground: "light",
     name: "leadly",
+    cardSummary: "AI-scored social lead discovery",
     tagline:
       "ai reddit lead-generation saas with workers, quotas, billing, and seo surfaces",
     description:
@@ -747,6 +762,7 @@ This is a solo or very small-team SaaS build. I designed it around async workers
     color: "bg-[#D10A2C]",
     foreground: "light",
     name: "mahindra beaconhill",
+    cardSummary: "Interactive luxury property launch",
     tagline:
       "luxury property launch site with interactive plans and enquiry capture",
     description:
@@ -834,6 +850,7 @@ Commercial figures on the site are presented as indicative project information a
     id: "project-24-drites",
     color: "bg-[#F07AAF]",
     name: "drites",
+    cardSummary: "Community publishing and conversation",
     tagline:
       "community publishing for markdown posts, profiles, and conversation",
     description:
