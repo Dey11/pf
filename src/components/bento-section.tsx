@@ -11,7 +11,6 @@ import {
   projectImageSource,
   projectSlug,
   type ProjectBox,
-  type ProjectCardWeight,
 } from "@/lib/project-boxes";
 import {
   PROJECT_EVENT,
@@ -29,16 +28,12 @@ const mobileProjects = (() => {
   });
 })();
 
-const projectCount = prioritizedProjectColumns.flat().length;
-
 function BentoCard({
   box,
-  size,
   onSelect,
   highlight,
 }: {
   box: ProjectBox;
-  size?: ProjectCardWeight;
   onSelect: (box: ProjectBox) => void;
   highlight: string | null;
 }) {
@@ -67,14 +62,11 @@ function BentoCard({
             : "opacity-100"
       }`}
     >
-      {size && (
-        <span
-          aria-hidden
-          className={`font-display pointer-events-none absolute top-3 left-3 z-10 text-xs leading-none font-medium tabular-nums opacity-55 ${textClass}`}
-        >
-          {size}
-        </span>
-      )}
+      <span
+        className={`font-display pointer-events-none absolute top-3 left-3 z-10 text-xs leading-none font-medium tabular-nums opacity-55 ${textClass}`}
+      >
+        {box.year}
+      </span>
 
       {thumbnail ? (
         /* The panel is 4/5 of the card. A 25% downward offset leaves exactly
@@ -91,18 +83,22 @@ function BentoCard({
             className="object-cover object-top"
           />
         </span>
-      ) : (
+      ) : null}
+
+      <span
+        className={`pointer-events-none absolute top-0 right-3 z-10 flex max-w-[68%] translate-y-2 flex-col items-end transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] motion-reduce:transition-none sm:max-w-[90%] lg:-translate-y-full motion-safe:lg:group-hover:translate-y-2 motion-safe:lg:group-focus-visible:translate-y-2 motion-reduce:lg:translate-y-2 ${textClass}`}
+      >
+        <span className="flex max-w-full items-center justify-end gap-2">
+          <span className="bg-secondary size-2 shrink-0 rounded-full" />
+          <span className="font-display truncate text-right text-[22px] leading-none font-semibold lowercase sm:text-[28px] lg:text-[32px]">
+            {box.name}
+          </span>
+        </span>
         <span
-          className={`pointer-events-none absolute right-3 bottom-3 left-3 line-clamp-3 text-xs leading-snug opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:text-sm ${mutedTextClass}`}
+          className={`mt-1 max-w-full truncate text-right text-[10px] leading-tight font-medium normal-case sm:text-xs ${mutedTextClass}`}
         >
           {box.tagline}
         </span>
-      )}
-
-      <span
-        className={`font-display pointer-events-none absolute top-0 right-3 z-10 max-w-[90%] translate-y-2 truncate text-right text-[28px] leading-none font-semibold lowercase transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] motion-reduce:transition-none sm:text-[32px] lg:-translate-y-full motion-safe:lg:group-hover:translate-y-2 motion-safe:lg:group-focus-visible:translate-y-2 motion-reduce:lg:translate-y-2 ${textClass}`}
-      >
-        {box.name}
       </span>
     </button>
   );
@@ -174,9 +170,7 @@ export default function BentoSection() {
 
   return (
     <section ref={sectionRef} className="scroll-mt-6 pb-40 text-start">
-      <p className="font-display pb-2 text-end text-lg md:text-xl">
-        ({String(projectCount).padStart(3, "0")})
-      </p>
+      <p className="font-display pb-2 text-end text-lg md:text-xl">(011)</p>
 
       <h1 className="text-end text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
         projects<span className="text-secondary">.</span>
@@ -207,7 +201,6 @@ export default function BentoSection() {
               >
                 <BentoCard
                   box={projectBoxesByInventoryId[projectId]}
-                  size={weight}
                   onSelect={setSelected}
                   highlight={highlight}
                 />

@@ -150,7 +150,17 @@ export default function RootLayout({
             <main>{children}</main>
           </ViewTransition>
         </Container>
-        <p className="text-background text-xs">designed by krish</p>
+        <footer
+          aria-label="Shreyan"
+          className="group/footer h-[clamp(3.5rem,13vw,11rem)] overflow-hidden"
+        >
+          <p
+            aria-hidden
+            className="font-display group-hover/footer:text-secondary translate-y-[0.08em] text-center text-[clamp(5.75rem,23vw,24rem)] leading-[0.68] font-bold tracking-[-0.08em] text-transparent uppercase transition-colors duration-200 ease-[cubic-bezier(0.19,1,0.22,1)] [-webkit-text-stroke:1.5px_rgba(255,255,255,0.9)] motion-reduce:transition-none"
+          >
+            Shreyan
+          </p>
+        </footer>
         {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>

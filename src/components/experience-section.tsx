@@ -199,7 +199,7 @@ export default function ExperienceSection() {
                             return (
                               <span
                                 key={tag}
-                                className="group/tag inline-flex items-center rounded-full bg-white/10 p-2.5 text-sm font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm transition-all duration-300 text-shadow-2xs hover:px-4 sm:text-base"
+                                className="group/tag inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-white/10 px-2.5 py-0 text-sm leading-none font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm transition-[padding] duration-200 ease-[cubic-bezier(0.19,1,0.22,1)] text-shadow-2xs motion-reduce:transition-none hover:px-4 sm:text-base"
                               >
                                 {tech && (
                                   <Image
@@ -214,7 +214,7 @@ export default function ExperienceSection() {
                                 <span
                                   className={
                                     tech
-                                      ? "max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover/tag:ml-2 group-hover/tag:max-w-[180px] group-hover/tag:opacity-100"
+                                      ? "max-w-0 overflow-hidden leading-none whitespace-nowrap opacity-0 transition-[max-width,margin,opacity] duration-200 ease-[cubic-bezier(0.19,1,0.22,1)] motion-reduce:transition-none group-hover/tag:ml-2 group-hover/tag:max-w-[180px] group-hover/tag:opacity-100"
                                       : "px-1 whitespace-nowrap"
                                   }
                                 >

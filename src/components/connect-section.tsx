@@ -76,7 +76,7 @@ export default function ConnectSection() {
         </p>
         <p className="flex items-center gap-2">
           <span className="relative flex size-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 [animation-duration:1.6s] motion-reduce:animate-none" />
             <span className="relative inline-flex size-2 rounded-full bg-green-500" />
           </span>
           open for work
