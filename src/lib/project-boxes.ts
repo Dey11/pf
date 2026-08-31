@@ -401,30 +401,33 @@ This is a solo WIP systems prototype where my role is best framed as AI systems 
     tagline:
       "ai study planner and research chat with persistent threads and byok settings",
     description:
-      "An AI-first study planner and research chat app where users generate a plan, edit and confirm it, then continue studying inside persistent AI threads.",
+      "A public-beta AI study planner and research chat app where users turn a syllabus into an editable plan, generate material module by module, and continue learning inside persistent threads.",
     content: `## Overview
 
 PuckChat is an AI study planner and research chat product. It expands the PDX idea from one-off material generation into a persistent workspace where users can plan, confirm, discuss, annotate, and continue study threads.
 
 ## Architecture
 
-The product uses Next.js 16 App Router, React, Bun, Tailwind, shadcn/ui, AI Elements, AI SDK v6, Better Auth, Prisma/PostgreSQL, many provider adapters, encrypted BYOK provider credentials, thread runtime snapshots, settings modules, tools, subagents, annotations, checkpoints, and plan drafts. Prisma models persistent threads, messages, annotations, checkpoints, hierarchical plan drafts, user settings, provider credentials, tools, and subagents.
+The product uses Next.js 16 App Router, React 19, Bun, Tailwind CSS 4, shadcn/ui, AI Elements, AI SDK 7, Better Auth, and Prisma 7 with PostgreSQL. Its model runtime supports server-managed and BYOK providers, encrypted credentials, thread snapshots, tools, and subagents. Prisma models persistent threads, messages, annotations, checkpoints, hierarchical plan drafts, user settings, provider credentials, tools, and subagent runs.
 
 ## What I built
 
 - Thread bootstrap and persistent study-chat workspace
+- Guest drafts that resume after OAuth sign-in
 - Plan-generation mode and chat mode
 - Threaded chat UX with composer, attachments, markdown, code copy/download, suggestions, stop/cancel, checkpoints, and annotations
 - Plan generation, plan revision, confirmation, and sequential material generation from confirmed plans
+- Resumable module-level material generation with durable checkpoints
 - Streamed AI replies with structured message parts
 - Runtime model/provider selection across Google, Gateway, OpenAI, Anthropic, xAI, Groq, Mistral, DeepSeek, Perplexity, Cohere, Fireworks, Together, Cerebras, DeepInfra, and OpenAI-compatible providers
 - Encrypted BYOK settings, custom provider base URLs, prompt templates, tools, and nested subagent tools
+- Temporary chat, appearance presets, pinned threads, and persisted quick-ask annotations
 
 ## Role and decisions
 
 This is a solo personal AI product. I designed it around persistent state and configurable model runtime because study workflows are long-running: users revise plans, ask follow-ups, switch providers, and return to previous threads. Runtime snapshots make outputs easier to reproduce, while the provider registry and BYOK design keep the product flexible across model vendors without hardcoding one backend.`,
     url: "https://puckchat.vercel.app",
-    github: "https://github.com/Dey11/deychat",
+    github: null,
     tags: [
       "nextjs",
       "typescript",
@@ -434,10 +437,37 @@ This is a solo personal AI product. I designed it around persistent state and co
       "tailwindcss",
     ],
     type: "Personal",
-    status: "WIP",
-    duration: "Product build",
+    status: "Live",
+    duration: "Solo product build and public beta",
     year: "2026",
-    images: [],
+    images: [
+      {
+        src: assetUrl(
+          "/projects/external/puckchat-home-desktop-2026-08-30.png",
+        ),
+        width: 1440,
+        height: 916,
+      },
+      {
+        src: assetUrl("/projects/external/puckchat-home-mobile-2026-08-30.png"),
+        width: 780,
+        height: 1688,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/puckchat-sign-in-desktop-2026-08-30.png",
+        ),
+        width: 1440,
+        height: 900,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/puckchat-sign-in-mobile-2026-08-30.png",
+        ),
+        width: 780,
+        height: 1688,
+      },
+    ],
   },
   18: {
     id: "project-18-downthecove",
@@ -599,7 +629,7 @@ The app uses Next.js 16 App Router, React, TypeScript, Bun, Tailwind, TanStack Q
 ## Role and decisions
 
 This is freelance full-stack product work. I treated the import pipeline as the core product surface because a trading journal is only useful if raw broker rows become reliable trade-level insight. The matching flow is designed for rerun safety, while the dashboard and calendar views sit on derived trade data instead of raw CSV rows.`,
-    url: "",
+    url: "https://moai.cooldash.xyz",
     github: "https://github.com/Dey11/moai",
     tags: ["nextjs", "typescript", "postgresql", "prisma", "tailwindcss"],
     type: "Freelance",
@@ -800,6 +830,93 @@ Commercial figures on the site are presented as indicative project information a
       },
     ],
   },
+  24: {
+    id: "project-24-drites",
+    color: "bg-[#F07AAF]",
+    name: "drites",
+    tagline:
+      "community publishing for markdown posts, profiles, and conversation",
+    description:
+      "A full-stack community publishing app where readers discover Markdown articles and profiles, while signed-in writers publish posts and take part through likes, bookmarks, and comments.",
+    content: `## Overview
+
+Drites is a community publishing product for readers and writers. Public visitors can browse the latest posts, read long-form Markdown articles, and explore author profiles. Signed-in members can publish their own work, like and bookmark posts, leave comments, and manage what they have written.
+
+## Architecture
+
+The application is a single Next.js 16 App Router deployment with React 19, TypeScript, Tailwind CSS 4, Better Auth, Prisma 7, PostgreSQL, Zod, and React Markdown. Server Components perform reads, Server Actions validate and authorize writes, and client components handle forms and optimistic interactions. The production app runs as a Docker Compose workload on Coolify.
+
+## What I built
+
+- Editorial landing, about, contact, feed, article, profile, authentication, and publishing pages
+- Email-and-password authentication with database-backed Better Auth sessions
+- Markdown post creation and server-rendered article pages
+- Public profiles with posts, likes, and bookmarks
+- Optimistic like and bookmark controls backed by compound database constraints
+- Authenticated comments and author-only post deletion
+- Zod-validated Server Actions for posts, comments, interactions, and feedback
+- Dynamic metadata, robots rules, and a database-backed sitemap
+- Prisma/PostgreSQL domain model with cascading ownership relationships
+- Docker packaging and a Coolify production deployment
+
+## Role and decisions
+
+I designed and built Drites as a full-stack personal publishing product. I kept it as one deployable Next.js application because its reads, authenticated writes, and publishing flows share one domain and database. PostgreSQL remains the source of article content, authorization is repeated at every write boundary, and optimistic controls rely on database uniqueness so retries cannot create duplicate likes or bookmarks.
+
+The product started in 2024 and was later modernized around Better Auth, Prisma 7, current Next.js conventions, and a documented production deployment workflow.`,
+    url: "https://drites.sdey.me",
+    github: "https://github.com/Dey11/drites",
+    tags: ["nextjs", "typescript", "postgresql", "prisma", "tailwindcss"],
+    type: "Personal",
+    status: "Live",
+    duration: "Product build and modernization",
+    year: "2024-2026",
+    images: [
+      {
+        src: assetUrl("/projects/external/drites-home-desktop-2026-08-30.png"),
+        width: 1440,
+        height: 900,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/drites-home-full-desktop-2026-08-30.png",
+        ),
+        width: 1440,
+        height: 2431,
+      },
+      {
+        src: assetUrl("/projects/external/drites-posts-desktop-2026-08-30.png"),
+        width: 1440,
+        height: 1071,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/drites-article-desktop-2026-08-30.png",
+        ),
+        width: 1440,
+        height: 900,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/drites-sign-in-desktop-2026-08-30.png",
+        ),
+        width: 1440,
+        height: 900,
+      },
+      {
+        src: assetUrl("/projects/external/drites-home-mobile-2026-08-30.png"),
+        width: 780,
+        height: 1688,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/drites-article-mobile-2026-08-30.png",
+        ),
+        width: 780,
+        height: 1688,
+      },
+    ],
+  },
 };
 
 export const projectCardHeightByWeight = {
@@ -815,20 +932,22 @@ export const prioritizedProjectColumns: {
   projectId: keyof typeof projectBoxesByInventoryId;
 }[][] = [
   // Temporarily hidden, with their full records kept above for restoration.
-  // Their legacy flex weights were directorscut (15, 6), puckchat (17, 7), and
-  // yunami (14, 5). Map them to weight 3, 4, or 5 when restoring.
-  // Each column has at least one 4 and one 5. Across the grid, sizes 3 and 4
-  // appear four times each, while size 5 appears three times.
+  // Directorscut and Yunami previously used legacy flex weights 6 and 5.
+  // Map them to weight 3, 4, or 5 when restoring.
+  // Every column includes sizes 3, 4, and 5. Across the grid, size 3 appears
+  // five times, while sizes 4 and 5 appear four times each.
   [
     { weight: 4, projectId: 18 },
     { weight: 3, projectId: 20 },
     { weight: 3, projectId: 4 },
     { weight: 5, projectId: 21 },
+    { weight: 3, projectId: 17 },
   ],
   [
     { weight: 3, projectId: 2 },
     { weight: 5, projectId: 8 },
     { weight: 4, projectId: 22 },
+    { weight: 5, projectId: 24 },
   ],
   [
     { weight: 5, projectId: 1 },

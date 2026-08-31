@@ -29,6 +29,8 @@ const mobileProjects = (() => {
   });
 })();
 
+const projectCount = prioritizedProjectColumns.flat().length;
+
 function BentoCard({
   box,
   size,
@@ -172,7 +174,9 @@ export default function BentoSection() {
 
   return (
     <section ref={sectionRef} className="scroll-mt-6 pb-40 text-start">
-      <p className="font-display pb-2 text-end text-lg md:text-xl">(011)</p>
+      <p className="font-display pb-2 text-end text-lg md:text-xl">
+        ({String(projectCount).padStart(3, "0")})
+      </p>
 
       <h1 className="text-end text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
         projects<span className="text-secondary">.</span>
