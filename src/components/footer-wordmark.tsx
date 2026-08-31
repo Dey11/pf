@@ -13,21 +13,28 @@ const desktopWord = "SHREYAN";
 const mobileWord = "DEY";
 
 function CustomOutline({ letter }: { letter: string }) {
-  if (letter !== "H" && letter !== "A") return null;
+  if (letter !== "H" && letter !== "A" && letter !== "Y") return null;
 
   const path =
     letter === "H"
-      ? "M 1 0 V 100 M 18 0 V 100 M 82 0 V 100 M 99 0 V 100 M 18 52 H 82"
-      : "M 1 100 L 42 0 M 20 100 L 49 0 M 51 0 L 80 100 M 58 0 L 99 100 M 27 63 H 73";
+      ? "M 1 1 H 18 M 1 1 V 100 M 18 1 V 100 M 82 1 H 99 M 82 1 V 100 M 99 1 V 100 M 18 52 H 82"
+      : letter === "A"
+        ? "M 42 1 H 58 M 1 100 L 42 1 M 20 100 L 49 1 M 51 1 L 80 100 M 58 1 L 99 100 M 27 63 H 73"
+        : "M 1 1 H 22 M 78 1 H 99";
+
+  const widthClass =
+    letter === "H"
+      ? "left-[10%] w-[80%]"
+      : letter === "A"
+        ? "left-[1%] w-[98%]"
+        : "left-0 w-full";
 
   return (
     <svg
       aria-hidden
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
-      className={`pointer-events-none absolute top-[31.5%] h-[57%] overflow-visible text-white/45 ${
-        letter === "H" ? "left-[10%] w-[80%]" : "left-[1%] w-[98%]"
-      }`}
+      className={`pointer-events-none absolute top-[31.5%] h-[57%] overflow-visible text-white/45 ${widthClass}`}
     >
       <path
         d={path}
@@ -54,7 +61,10 @@ function WordLetters({
   return (
     <span className="inline-flex whitespace-nowrap">
       {[...word].map((letter, index) => {
-        const usesCustomOutline = outline && (letter === "H" || letter === "A");
+        const replacesNativeOutline =
+          outline && (letter === "H" || letter === "A");
+        const hasOutlineAdjustment =
+          outline && (letter === "H" || letter === "A" || letter === "Y");
 
         return (
           <span
@@ -63,11 +73,11 @@ function WordLetters({
             onPointerEnter={onEnter}
             onPointerLeave={onLeave}
             className={`relative -mr-[0.02em] inline-block last:mr-0 ${
-              usesCustomOutline ? "[-webkit-text-stroke:0]" : ""
+              replacesNativeOutline ? "[-webkit-text-stroke:0]" : ""
             } ${onEnter ? "[clip-path:inset(24%_0_0_0)]" : ""}`}
           >
             {letter}
-            {usesCustomOutline ? <CustomOutline letter={letter} /> : null}
+            {hasOutlineAdjustment ? <CustomOutline letter={letter} /> : null}
           </span>
         );
       })}
@@ -160,7 +170,7 @@ export default function FooterWordmark() {
             initial={false}
             data-footer-fill
             style={{ clipPath }}
-            className="text-secondary pointer-events-none absolute inset-0"
+            className="text-secondary pointer-events-none absolute inset-0 [-webkit-text-stroke:2px_var(--secondary)]"
           >
             <ResponsiveWord />
           </motion.span>
