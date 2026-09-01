@@ -12,52 +12,18 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 const desktopWord = "SHREYAN";
 const mobileWord = "DEY";
 
-function CustomOutline({ letter }: { letter: string }) {
-  if (letter !== "H" && letter !== "A") return null;
-
-  const path =
-    letter === "H"
-      ? "M 1 1 H 18 M 1 1 V 100 M 18 1 V 100 M 82 1 H 99 M 82 1 V 100 M 99 1 V 100 M 18 52 H 82"
-      : "M 38 1 H 62 M 1 100 L 38 1 M 20 100 L 46 1 M 54 1 L 80 100 M 62 1 L 99 100 M 27 63 H 73";
-
-  const widthClass =
-    letter === "H" ? "left-[10%] w-[80%]" : "left-[1%] w-[98%]";
-
-  return (
-    <svg
-      aria-hidden
-      viewBox="0 0 100 100"
-      preserveAspectRatio="none"
-      className={`pointer-events-none absolute top-[31.5%] h-[57%] overflow-visible text-white/45 ${widthClass}`}
-    >
-      <path
-        d={path}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.25"
-        vectorEffect="non-scaling-stroke"
-      />
-    </svg>
-  );
-}
-
 function WordLetters({
   word,
-  outline = false,
   onEnter,
   onLeave,
 }: {
   word: string;
-  outline?: boolean;
   onEnter?: (event: PointerEvent<HTMLSpanElement>) => void;
   onLeave?: () => void;
 }) {
   return (
     <span className="inline-flex whitespace-nowrap">
       {[...word].map((letter, index) => {
-        const replacesNativeOutline =
-          outline && (letter === "H" || letter === "A");
-        const hasOutlineAdjustment = replacesNativeOutline;
         const tightensYA = word === desktopWord && letter === "Y";
 
         return (
@@ -68,12 +34,9 @@ function WordLetters({
             onPointerLeave={onLeave}
             className={`relative inline-block last:mr-0 ${
               tightensYA ? "-mr-[0.12em] translate-y-px" : "-mr-[0.02em]"
-            } ${
-              replacesNativeOutline ? "[-webkit-text-stroke:0]" : ""
-            } ${onEnter ? "[clip-path:inset(24%_0_0_0)]" : ""}`}
+            }`}
           >
             {letter}
-            {hasOutlineAdjustment ? <CustomOutline letter={letter} /> : null}
           </span>
         );
       })}
@@ -82,31 +45,19 @@ function WordLetters({
 }
 
 function ResponsiveWord({
-  outline = false,
   onEnter,
   onLeave,
 }: {
-  outline?: boolean;
   onEnter?: (event: PointerEvent<HTMLSpanElement>) => void;
   onLeave?: () => void;
 }) {
   return (
     <>
       <span className="md:hidden">
-        <WordLetters
-          word={mobileWord}
-          outline={outline}
-          onEnter={onEnter}
-          onLeave={onLeave}
-        />
+        <WordLetters word={mobileWord} onEnter={onEnter} onLeave={onLeave} />
       </span>
       <span className="hidden md:inline">
-        <WordLetters
-          word={desktopWord}
-          outline={outline}
-          onEnter={onEnter}
-          onLeave={onLeave}
-        />
+        <WordLetters word={desktopWord} onEnter={onEnter} onLeave={onLeave} />
       </span>
     </>
   );
@@ -156,10 +107,10 @@ export default function FooterWordmark() {
           ref={wordRef}
           data-footer-wordmark
           aria-hidden
-          className="font-display relative w-full translate-y-[0.04em] text-[clamp(8rem,62vw,15.25rem)] leading-none font-semibold uppercase md:text-[clamp(12rem,27.9vw,20.1rem)]"
+          className="font-display relative w-full -translate-y-[0.015em] text-[clamp(8rem,62vw,15.25rem)] leading-none font-semibold uppercase md:text-[clamp(12rem,27.9vw,20.1rem)]"
         >
           <span className="text-transparent [-webkit-text-stroke:1.25px_rgba(255,255,255,0.46)]">
-            <ResponsiveWord outline onEnter={beginReveal} onLeave={endReveal} />
+            <ResponsiveWord onEnter={beginReveal} onLeave={endReveal} />
           </span>
 
           <motion.span

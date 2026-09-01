@@ -26,7 +26,7 @@ const socials = [
 export default function ConnectSection() {
   return (
     <section id="connect" className="pb-24 text-start">
-      <p className="font-display pb-2 text-lg md:text-xl">(110)</p>
+      <p className="font-display pb-2 text-lg md:text-xl">(101)</p>
 
       {/* two columns: heading + pitch on the left, links on the right. */}
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">

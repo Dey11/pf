@@ -4,7 +4,6 @@ import ConnectSection from "@/components/connect-section";
 import HeroSection from "@/components/hero-section";
 import ExperienceSection from "@/components/experience-section";
 import DeferredGithubContributions from "@/components/deferred-github-contributions";
-import FieldNotesSection from "@/components/field-notes-section";
 import ScreeningRoomSection from "@/components/screening-room-section";
 import { techStackItems } from "@/lib/constants";
 import Image from "next/image";
@@ -175,18 +174,16 @@ export default function Home() {
 
       <ScreeningRoomSection />
 
-      <FieldNotesSection />
-
       <ConnectSection />
 
-      {/* Legacy Now and Hobbies sections remain unmounted while their best
-          material is developed through Screening Room and Field Notes. */}
+      {/* Legacy Now, Hobbies, and Field Notes sections remain unmounted while
+          their strongest material is developed through Screening Room. */}
       {/* <NowSection /> */}
 
       {/* <HobbiesSection /> */}
 
       {/* <section id="contact" className="py-10 md:py-20 md:pt-0">
-        <p className="font-display pb-2 text-lg md:text-xl">(111)</p>
+        <p className="font-display pb-2 text-lg md:text-xl">(110)</p>
 
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
           <div className="flex flex-col gap-5 pb-5 md:gap-8 md:pb-0">

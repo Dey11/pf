@@ -1,6 +1,6 @@
 # Screening Room and Field Notes
 
-Status: first homepage implementation
+Status: Screening Room mounted; Field Notes retained but unmounted
 
 ## Goal
 
@@ -17,9 +17,21 @@ Initial content comes from the dormant hobbies section:
 
 Keep the content local and manually curated. If the list grows, preserve one current title and a small favorites edit rather than turning the section into a complete watch history.
 
+### Prototype round
+
+Three replacement directions are available at `/prototypes/screening-room`. They stay isolated from the homepage until one is explicitly selected:
+
+- **Index:** a dense editorial ledger with a selected-title reading pane.
+- **Channel:** a broadcast tuner where each title occupies a channel.
+- **Tickets:** a tactile stack of selectable cinema stubs and a title marquee.
+
+The route accepts `?v=1`, `?v=2`, or `?v=3` and includes the standard prototype picker. After a direction is chosen, promote only that version and remove the prototype surface unless asked to retain it.
+
 ## Field Notes
 
 Field Notes is a loose stack of editorial slips. The slight offsets make it read like working material on a desk, while the solid neutral and brand-red treatments connect it to the project bento.
+
+The section is currently unmounted from the homepage. Keep the component available for a later editorial pass rather than presenting it before the writing surface is ready.
 
 Initial entries:
 
