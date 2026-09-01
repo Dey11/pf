@@ -27,16 +27,6 @@ Three replacement directions are available at `/prototypes/screening-room`. They
 
 The route accepts `?v=1`, `?v=2`, or `?v=3` and includes the standard prototype picker. After a direction is chosen, promote only that version and remove the prototype surface unless asked to retain it.
 
-### Refined poster round
-
-The first round remains available unchanged. A quieter second round lives at `/prototypes/screening-room/refined` and uses original abstract poster studies rather than third-party key art:
-
-- **Gallery:** four equal poster studies with restrained captions and selection detail.
-- **Focus:** one dominant poster paired with a slim title index.
-- **Shelf:** a lightly overlapping poster archive with a small hover lift.
-
-This round deliberately limits motion to 1–2% poster scaling and a four-pixel lift. The visual hierarchy must remain complete without hover, and reduced-motion users receive no movement.
-
 ## Field Notes
 
 Field Notes is a loose stack of editorial slips. The slight offsets make it read like working material on a desk, while the solid neutral and brand-red treatments connect it to the project bento.
