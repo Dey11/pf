@@ -1,5 +1,9 @@
 # R2 asset migration
 
+## Status
+
+Complete. The tracked image tree was migrated to the `pf-assets` bucket, runtime references now pass through `assetUrl()`, and the local image copies were removed.
+
 ## Goal
 
 Move every tracked portfolio image from the application bundle into a dedicated Cloudflare R2 bucket, then make the application load those objects through one configurable public base URL.

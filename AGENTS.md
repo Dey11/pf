@@ -39,5 +39,16 @@ User instructions take precedence over this file. Keep changes focused on the re
 - Keep portfolio images in the `pf-assets` R2 bucket rather than `public/`. Resolve repository-style object keys with `assetUrl()`, and use a new object key whenever image content changes because uploaded assets use immutable caching.
 - Preserve the existing component patterns, Tailwind setup, and motion vocabulary. Reuse current primitives before adding dependencies or new abstractions.
 - Homepage section labels are a sequential binary index, not decimal item counts. The active order is About `(000)`, tech stack `(001)`, experience `(010)`, projects `(011)`, Screening Room `(100)`, and Connect `(101)`; renumber the sequence when mounted sections change.
-- Update `README.md` when setup, deployment, environment requirements, routes, or visible behavior changes.
+- Use `docs/architecture.md` for runtime and ownership boundaries, `docs/content-and-assets.md` for editorial and R2 workflows, and `docs/maintenance/component-map.md` as the baseline for component cleanup. Keep them current when those boundaries change.
+- Update `README.md` when setup, deployment, environment requirements, routes, or visible behavior changes. Keep unpublished research under `docs/content/` and material implementation records under `docs/plans/`.
 - Before handing off a change, inspect the diff and run lint plus a production build when relevant. For frontend work, also report the routes and interactions that need visual verification.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

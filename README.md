@@ -1,67 +1,78 @@
 # Portfolio
 
-Personal portfolio built with Next.js and Bun.
+Dey's public portfolio is a Next.js application centered on a single editorial homepage. It presents selected work and experience, and gives each featured project a source-aware AI chat grounded in curated project copy plus a bounded snapshot of its public GitHub repository.
+
+The homepage is the only active public page. `/projects`, `/blogs`, and `/blogs/use-optimistic-hook` intentionally return `404` until a future product decision restores them.
+
+## Local development
+
+Requirements:
+
+- Bun
+- PostgreSQL, through a `DATABASE_URL` compatible with the Neon Prisma adapter
+- A Nebius Token Factory API key if project chat needs to run locally
+
+```bash
+cp .env.example .env.local
+bun install --frozen-lockfile
+bun run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). The development layout also enables Agentation; it is excluded from production.
+
+## Commands
+
+| Command             | Purpose                                                 |
+| ------------------- | ------------------------------------------------------- |
+| `bun run dev`       | Start the Next.js development server                    |
+| `bun run lint`      | Run ESLint across the repository                        |
+| `bunx tsc --noEmit` | Run a standalone TypeScript check                       |
+| `bun run build`     | Generate the Prisma client and build the production app |
+| `bun run start`     | Start a completed production build                      |
+
+## Environment variables
+
+| Variable                     | Required     | Used by                                                             |
+| ---------------------------- | ------------ | ------------------------------------------------------------------- |
+| `DATABASE_URL`               | Yes          | Prisma and the dormant contact-form server action                   |
+| `NEBIUS_API_KEY`             | Yes for chat | The `/api/chat` model provider; missing configuration returns `503` |
+| `GITHUB_TOKEN`               | No           | Raises GitHub's API rate limit for public repository context        |
+| `NEXT_PUBLIC_ASSET_BASE_URL` | No           | Replaces the default public R2 asset origin                         |
+
+Copy `.env.example` to `.env.local` and replace the placeholders. Never commit local environment files.
+
+## Architecture at a glance
+
+- `src/app/page.tsx` composes the active homepage sections.
+- `src/lib/project-boxes.ts` is the canonical project-content and bento-layout source.
+- `src/components/project-popup.tsx` renders project details and owns the project-chat client.
+- `src/app/api/chat/route.ts` enforces request limits, assembles bounded context, and streams the model response.
+- `src/lib/github-repo-context.ts` conditionally fetches compact context from linked public GitHub repositories.
+- `src/lib/assets.ts` resolves all portfolio-owned images through the public `pf-assets` R2 bucket.
+- Prisma stores contact submissions, although the contact form is not currently mounted on the homepage.
+
+See [docs/architecture.md](docs/architecture.md) for the runtime and component boundaries.
+
+## Documentation
+
+Start with [docs/README.md](docs/README.md). It separates durable architecture and maintenance guidance from historical plans and unpublished content research.
+
+- [Architecture](docs/architecture.md): routes, component ownership, data flow, server boundaries, and known cleanup seams.
+- [Content and assets](docs/content-and-assets.md): where portfolio copy lives and how to update projects, screenshots, technology labels, and R2 objects.
+- [Component map](docs/maintenance/component-map.md): current component responsibilities and constraints for the upcoming cleanup/revamp.
+- [Project research](docs/content/): internal inventory and unpublished long-form drafts; these are working material, not verified public claims.
+- [Plans](docs/plans/): living or completed implementation records for material changes.
+
+Repository-specific operating rules live in [AGENTS.md](AGENTS.md).
 
 ## Deployment
 
-This app is deployable on Vercel as a standard Next.js project.
+The app is deployable as a standard Next.js project on Vercel:
 
-- Install command: `bun install`
+- Install command: `bun install --frozen-lockfile`
 - Build command: `bun run build`
 - Start command: Vercel's default Next.js runtime
 
-Required runtime environment variables:
+Set `DATABASE_URL` and `NEBIUS_API_KEY` for every environment that needs the corresponding runtime. `GITHUB_TOKEN` and `NEXT_PUBLIC_ASSET_BASE_URL` remain optional.
 
-- `DATABASE_URL`: Neon PostgreSQL connection used by the contact form.
-- `NEBIUS_API_KEY`: Nebius Token Factory credential used by project chat.
-
-Recommended runtime environment variables:
-
-- `GITHUB_TOKEN`: used by `src/lib/github-repo-context.ts` for higher GitHub API rate limits when fetching public repository context. The app can still try unauthenticated public GitHub requests without it.
-- `NEXT_PUBLIC_ASSET_BASE_URL`: overrides the default public R2 origin. Set this to a custom asset domain when one becomes available.
-
-Copy `.env.example` to `.env.local` and replace its placeholders for local development. Never commit `.env.local`.
-
-The production build runs `bunx prisma generate && next build`. Prisma CLI configuration lives in `prisma.config.ts`, and the runtime client connects to Neon through `@prisma/adapter-neon`.
-
-## Image storage
-
-Portfolio images live in the `pf-assets` Cloudflare R2 bucket and are publicly served from `https://pub-ebb1e004d4fb42dd90caf81433c0b1b4.r2.dev`. The repository no longer ships a local `public/` image tree. Object keys preserve the former public paths without the leading slash, such as `projects/pdx.png` and `logos/stack/react.svg`.
-
-All application references go through `assetUrl()` in `src/lib/assets.ts`. Keep that boundary intact so a future custom domain only requires changing `NEXT_PUBLIC_ASSET_BASE_URL`. Uploaded objects use one-year immutable caching, so replace changed images with a new object key rather than overwriting an existing key.
-
-## Project Chat Runtime
-
-Project popup chat uses `deepseek-ai/DeepSeek-V4-Flash-0731` through Nebius Token Factory's OpenAI-compatible API. It is not wired as a model tool call. The server checks the latest user message, fetches a bounded public GitHub snapshot for source-aware questions when the selected project has a `github.com/owner/repo` link, and inserts that compact context into the system prompt before calling the model.
-
-Use this hosted smoke test after deployment:
-
-1. Open the homepage.
-2. Open the Leadly project card.
-3. Go to the Chat tab.
-4. Ask: `From the GitHub source, what services make up Leadly and how do the scheduler/worker pieces fit together?`
-
-If GitHub context is being fetched, the answer should mention source-backed details from the Leadly repo, such as the Next.js frontend, Express backend, worker service, Reddit monitoring, BullMQ/Redis, quotas, and billing/webhooks.
-
-## Content Notes
-
-- Homepage experience content lives in `src/components/experience-section.tsx`; expanded experience rows render full-width text points and tech tags without preview images.
-- Homepage hero project cards live in `src/components/hero-section.tsx`; their shared SVG wave background uses a gray base and a slower red opacity layer on desktop hover, with staggered delay by card distance to make the color progress readable. On mobile, the red brand layer is shown by default because there is no hover interaction.
-- Homepage About content lives in `src/components/about-section.tsx`; it uses a single-column editorial layout, compact scale callouts, and project mentions that preview their project image from the mention center on desktop hover/focus before scrolling to and highlighting the matching bento project on click. Inline About reveals keep hover-only overlays hidden on mobile; project thumbnails fade and scale from 90% to 100% with a faster exit, and edge mentions align their thumbnail start/end to avoid clipping.
-- About project marks may use stable R2 copies of the live brand favicon; Thomas Bewick's favicon uses the `logos/thomasbewick.png` object.
-- Work experience is shown first, followed by a separate freelance experience section.
-- Moai copy should describe it as a trading journal with Fidelity support for now, without WIP wording.
-- The homepage GitHub contribution chart is rendered below the About section through `src/components/deferred-github-contributions.tsx`, which loads `src/components/github-contributions.tsx` shortly before the chart scrolls into view.
-- Homepage project box content and priority ordering live in `src/lib/project-boxes.ts`.
-- Homepage bento layout lives in `src/components/bento-section.tsx`; desktop keeps weighted project boxes, while mobile uses equal medium cards with thumbnails and titles already revealed.
-- Homepage performance keeps above-the-fold hero screenshots eager via `next/image`, while below-fold bento thumbnails, project popup screenshots, and tech icons use responsive lazy `next/image` rendering.
-- The GitHub contribution chart is viewport-deferred by `src/components/deferred-github-contributions.tsx` so the chart and tooltip libraries load shortly before the section enters view instead of during the first viewport.
-- Standalone `/projects`, `/blogs`, and `/blogs/use-optimistic-hook` routes are intentionally disabled with `notFound()`; the homepage bento project section is the active projects surface.
-- Project box brand colors also live in `src/lib/project-boxes.ts`; darker card colors can set `foreground: "light"` so hover text remains readable.
-- Project modal screenshots use `projects/*` objects in R2, with externally sourced screenshots under `projects/external/*`; each project's `images` array controls popup image order.
-- Project popup chat is grounded in each box's title, description, long-form content, tech tags, live URL, and GitHub URL. For `github.com/owner/repo` links, the API also fetches a bounded public GitHub snapshot through `src/lib/github-repo-context.ts` so source-aware questions can use README/docs/package/schema snippets at request time. It does not inspect private repositories or arbitrary external URLs.
-- Project popup mobile behavior hides prompt suggestions, keeps the lightweight body overflow lock used by the modal, and keeps detail headings visually larger than body copy.
-- VenturAssist uses the shared `projects/venturassist.png` R2 object.
-- Hanabi's card thumbnail and first popup screenshot use the shared `projects/external/hanabi-site-1.png` R2 object.
-- Ballarat's additional site-section screenshots use the `projects/external/ballarat-site-*.webp` R2 naming convention.
-- Project blog/source notes are drafted in `PROJECT_BLOG_DRAFTS.md` and the project selection inventory is in `PROJECTS_INVENTORY.md`.
+After a hosted change, verify the homepage, a project details popup, and a source-aware project chat request. Deployment or hosted-environment changes require explicit authorization.
