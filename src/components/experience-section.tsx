@@ -127,7 +127,7 @@ export default function ExperienceSection() {
         {experiences.map((exp, index) => {
           const isOpen = openIndex === index;
           const isDimmed = hovered !== null && hovered !== index;
-          const number = (index + 1).toString(2).padStart(4, "0");
+          const number = (index + 1).toString(2).padStart(3, "0");
 
           return (
             <motion.div

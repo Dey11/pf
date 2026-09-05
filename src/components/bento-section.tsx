@@ -28,6 +28,33 @@ const mobileProjects = (() => {
   });
 })();
 
+const wipTapeInk = "#171717";
+const wipTapeYellow = "#FFEE00";
+const wipTapeStripe = `repeating-linear-gradient(-45deg, ${wipTapeInk} 0 0.45rem, ${wipTapeYellow} 0.45rem 0.9rem)`;
+const wipTapeBandShadow = `inset 0 0 0 1px ${wipTapeInk}, 0 0 0 1px ${wipTapeInk}, 0 0 0 2px ${wipTapeYellow}, 0 1px 2px rgba(0,0,0,0.45)`;
+
+const wipTapeBandClassName =
+  "pointer-events-none absolute left-[-45%] h-[0.95rem] w-[190%] -translate-y-1/2 sm:h-[1.15rem]";
+
+function isWorkInProgress(status: ProjectBox["status"]) {
+  return status === "WIP" || status === "In progress";
+}
+
+function WipTape() {
+  return (
+    <span aria-hidden className="pointer-events-none absolute inset-0 z-[1]">
+      <span
+        className={`${wipTapeBandClassName} top-[70%] rotate-[13deg]`}
+        style={{ backgroundImage: wipTapeStripe, boxShadow: wipTapeBandShadow }}
+      />
+      <span
+        className={`${wipTapeBandClassName} top-[67%] -rotate-[8deg]`}
+        style={{ backgroundImage: wipTapeStripe, boxShadow: wipTapeBandShadow }}
+      />
+    </span>
+  );
+}
+
 function BentoCard({
   box,
   onSelect,
@@ -46,6 +73,7 @@ function BentoCard({
   const textClass = box.foreground === "light" ? "text-white" : "text-black";
   const mutedTextClass =
     box.foreground === "light" ? "text-white/70" : "text-black/45";
+  const showWipTape = isWorkInProgress(box.status);
 
   return (
     <button
@@ -62,6 +90,8 @@ function BentoCard({
             : "opacity-100"
       }`}
     >
+      {showWipTape ? <WipTape /> : null}
+
       <span
         className={`font-display pointer-events-none absolute top-3 left-3 z-10 text-xs leading-none font-medium tabular-nums opacity-55 ${textClass}`}
       >

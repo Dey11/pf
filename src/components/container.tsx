@@ -14,6 +14,7 @@ export default function Container({
 }) {
   const lenisRef = useRef<Lenis | null>(null);
   const rafRef = useRef<number | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -37,6 +38,19 @@ export default function Container({
 
     rafRef.current = requestAnimationFrame(raf);
 
+    // Lenis observes the document root, whose box does not reliably resize when
+    // an animated descendant grows. Watch the rendered page container so its
+    // final height always refreshes the scroll limit.
+    let contentResizeTimer: ReturnType<typeof setTimeout> | null = null;
+    const contentResizeObserver = new ResizeObserver(() => {
+      if (contentResizeTimer) clearTimeout(contentResizeTimer);
+      contentResizeTimer = setTimeout(() => lenis.resize(), 100);
+    });
+
+    if (containerRef.current) {
+      contentResizeObserver.observe(containerRef.current);
+    }
+
     // Handle window resize to recalculate scroll bounds
     const handleResize = () => {
       lenis.resize();
@@ -50,6 +64,8 @@ export default function Container({
         cancelAnimationFrame(rafRef.current);
       }
       window.removeEventListener("resize", handleResize);
+      contentResizeObserver.disconnect();
+      if (contentResizeTimer) clearTimeout(contentResizeTimer);
       lenis.destroy();
       lenisRef.current = null;
       delete (window as unknown as { lenis?: Lenis }).lenis;
@@ -67,19 +83,11 @@ export default function Container({
     }
   }, [pathname]);
 
-  // Force resize when content changes
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (lenisRef.current) {
-        lenisRef.current.resize();
-      }
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [children]);
-
   return (
-    <div className={cn("container mx-auto max-w-6xl px-2 pt-4 pb-1", className)}>
+    <div
+      ref={containerRef}
+      className={cn("container mx-auto max-w-6xl px-2 pt-4 pb-1", className)}
+    >
       {children}
     </div>
   );

@@ -458,25 +458,6 @@ This is a solo personal AI product. I designed it around persistent state and co
         width: 1440,
         height: 916,
       },
-      {
-        src: assetUrl("/projects/external/puckchat-home-mobile-2026-08-30.png"),
-        width: 780,
-        height: 1688,
-      },
-      {
-        src: assetUrl(
-          "/projects/external/puckchat-sign-in-desktop-2026-08-30.png",
-        ),
-        width: 1440,
-        height: 900,
-      },
-      {
-        src: assetUrl(
-          "/projects/external/puckchat-sign-in-mobile-2026-08-30.png",
-        ),
-        width: 780,
-        height: 1688,
-      },
     ],
   },
   18: {
@@ -658,7 +639,7 @@ This is freelance full-stack product work. I treated the import pipeline as the 
   },
   21: {
     id: "project-21-hanabi",
-    color: "bg-[#F90]",
+    color: "bg-[#EE4823]",
     name: "hanabi",
     cardSummary: "Handcrafted creative studio portfolio",
     tagline:
@@ -854,7 +835,7 @@ Commercial figures on the site are presented as indicative project information a
     tagline:
       "community publishing for markdown posts, profiles, and conversation",
     description:
-      "A full-stack community publishing app where readers discover Markdown articles and profiles, while signed-in writers publish posts and take part through likes, bookmarks, and comments.",
+      "A full-stack community publishing app I built before AI-assisted development became part of my workflow. Readers discover Markdown articles and profiles, and signed-in writers publish posts and take part through likes, bookmarks, and comments.",
     content: `## Overview
 
 Drites is a community publishing product for readers and writers. Public visitors can browse the latest posts, read long-form Markdown articles, and explore author profiles. Signed-in members can publish their own work, like and bookmark posts, leave comments, and manage what they have written.
@@ -957,12 +938,12 @@ export const prioritizedProjectColumns: {
     { weight: 4, projectId: 18 },
     { weight: 3, projectId: 20 },
     { weight: 3, projectId: 4 },
-    { weight: 5, projectId: 21 },
+    { weight: 5, projectId: 8 },
     { weight: 3, projectId: 17 },
   ],
   [
     { weight: 3, projectId: 2 },
-    { weight: 5, projectId: 8 },
+    { weight: 5, projectId: 21 },
     { weight: 4, projectId: 22 },
     { weight: 5, projectId: 24 },
   ],

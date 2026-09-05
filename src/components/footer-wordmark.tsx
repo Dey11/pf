@@ -23,23 +23,17 @@ function WordLetters({
 }) {
   return (
     <span className="inline-flex whitespace-nowrap">
-      {[...word].map((letter, index) => {
-        const tightensYA = word === desktopWord && letter === "Y";
-
-        return (
-          <span
-            key={`${letter}-${index}`}
-            data-footer-letter={letter}
-            onPointerEnter={onEnter}
-            onPointerLeave={onLeave}
-            className={`relative inline-block last:mr-0 ${
-              tightensYA ? "-mr-[0.12em] translate-y-px" : "-mr-[0.02em]"
-            }`}
-          >
-            {letter}
-          </span>
-        );
-      })}
+      {[...word].map((letter, index) => (
+        <span
+          key={`${letter}-${index}`}
+          data-footer-letter={letter}
+          onPointerEnter={onEnter}
+          onPointerLeave={onLeave}
+          className="relative inline-block pr-[0.03em] last:pr-0"
+        >
+          {letter}
+        </span>
+      ))}
     </span>
   );
 }
@@ -75,7 +69,7 @@ export default function FooterWordmark() {
 
   useEffect(() => {
     const controls = animate(radius, isRevealed ? 150 : 0, {
-      duration: shouldReduceMotion ? 0 : isRevealed ? 1.05 : 0.35,
+      duration: shouldReduceMotion ? 0 : isRevealed ? 1.05 : 0.5,
       ease: isRevealed ? [0.65, 0, 0.35, 1] : [0.19, 1, 0.22, 1],
     });
 
@@ -107,9 +101,9 @@ export default function FooterWordmark() {
           ref={wordRef}
           data-footer-wordmark
           aria-hidden
-          className="font-display relative w-full -translate-y-[0.015em] text-[clamp(8rem,62vw,15.25rem)] leading-none font-semibold uppercase md:text-[clamp(12rem,27.9vw,20.1rem)]"
+          className="font-display relative w-full -translate-y-[0.015em] text-[clamp(8rem,62vw,15.25rem)] leading-none font-semibold uppercase md:text-[clamp(12rem,25.1vw,18.1rem)]"
         >
-          <span className="text-transparent [-webkit-text-stroke:1.25px_rgba(255,255,255,0.46)]">
+          <span className="text-background [-webkit-text-fill-color:var(--background)] [paint-order:stroke_fill] [-webkit-text-stroke:2px_rgba(255,255,255,0.4)]">
             <ResponsiveWord onEnter={beginReveal} onLeave={endReveal} />
           </span>
 
