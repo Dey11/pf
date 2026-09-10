@@ -14,6 +14,7 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-darker-grotesque);
+  text-wrap: balance;
 }
 
 @utility font-display {
@@ -22,6 +23,32 @@ h1, h2, h3, h4, h5, h6 {
 
 @utility font-handwriting {
   font-family: var(--font-handwriting);
+}
+
+/* Dark glass pill: top lip highlight, faint ring, slight bottom shade.
+   Matches the expanded tech-stack chips (e.g. Resend). */
+@utility inset-pill {
+  background-image: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 0.12) 0%,
+    rgb(255 255 255 / 0.05) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.22),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.45),
+    0 0 0 1px rgb(255 255 255 / 0.08);
+}
+
+@utility inset-pill-muted {
+  background-image: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 0.07) 0%,
+    rgb(255 255 255 / 0.03) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.12),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.35),
+    0 0 0 1px rgb(255 255 255 / 0.05);
 }
 
 /* reserve the scrollbar gutter so locking body scroll (e.g. when the project
@@ -38,6 +65,7 @@ body {
    main calendar svg carries a viewBox, so it scales fluidly. */
 .react-activity-calendar {
   width: 100% !important;
+  font-variant-numeric: tabular-nums;
 }
 .react-activity-calendar__scroll-container {
   width: 100%;
@@ -45,6 +73,39 @@ body {
 .react-activity-calendar__calendar {
   width: 100% !important;
   height: auto !important;
+}
+
+/* The calendar package renders nothing while its client-side request starts.
+   Reserve the same footprint and indicate progress without animating layout. */
+.github-contributions-skeleton-grid {
+  background-color: #101013;
+  background-image:
+    linear-gradient(to right, transparent 12px, var(--background) 12px 16px),
+    linear-gradient(to bottom, transparent 12px, var(--background) 12px 16px);
+  background-size: 16px 16px;
+}
+
+.github-contributions-skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  animation: github-contributions-shimmer 1.6s linear infinite;
+  transform: translateX(-100%);
+}
+
+@keyframes github-contributions-shimmer {
+  to {
+    transform: translateX(300%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .github-contributions-skeleton-shimmer {
+    display: none;
+  }
 }
 
 /* slim, themed scrollbar — used inside the project popup so the default

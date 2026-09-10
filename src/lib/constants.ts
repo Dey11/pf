@@ -10,6 +10,8 @@ export const locationUrl =
 // order here is right -> middle -> left because the row renders reversed.
 // descriptions/urls/stacks mirror the projects section; titleLogo is filled in
 // later — until then the overlay falls back to the project name.
+// Hero screenshots are served from `public/` so the first viewport does not
+// wait on R2. Logos and other assets still go through assetUrl().
 export type HeroItem = {
   title: string;
   titleLogo: string;
@@ -29,7 +31,7 @@ export const heroItems: HeroItem[] = [
     live: "https://staging.fe.downthecove.com/",
     techStack: ["nextjs", "typescript", "postgresql", "stripe", "docker"],
     layout: "bottom",
-    screens: [assetUrl("/landing-images/hero-downthecove.png")],
+    screens: ["/landing-images/hero-downthecove.png"],
   },
   {
     title: "moai",
@@ -40,8 +42,8 @@ export const heroItems: HeroItem[] = [
     techStack: ["nextjs", "typescript", "postgresql", "prisma", "tailwindcss"],
     layout: "split",
     screens: [
-      assetUrl("/landing-images/hero-moai-1.png"),
-      assetUrl("/landing-images/hero-moai-2.png"),
+      "/landing-images/hero-moai-1.png",
+      "/landing-images/hero-moai-2.png",
     ],
   },
   {
@@ -52,7 +54,7 @@ export const heroItems: HeroItem[] = [
     live: "https://hanabi.works",
     techStack: ["nextjs", "typescript", "tailwindcss", "motion", "react"],
     layout: "bottom",
-    screens: [assetUrl("/landing-images/hero-hanabi.png")],
+    screens: ["/landing-images/hero-hanabi.png"],
   },
 ];
 
@@ -283,19 +285,6 @@ export const projects = [
     github: "https://github.com/dey11/chatappui",
     image: assetUrl("/projects/aichat.png"),
     createdAt: "2025",
-  },
-  {
-    id: "1010",
-    name: "vidbox",
-    tags: ["typescript", "nextjs", "postgresql"],
-    description: `Movie and series streaming platform (freelance project).
-      • Comprehensive media streaming functionality
-      • User-friendly interface for content discovery
-      • Database-driven content management`,
-    live: "https://vidbox.cc",
-    github: null,
-    image: assetUrl("/projects/vidbox.png"),
-    createdAt: "2024",
   },
   {
     id: "1011",

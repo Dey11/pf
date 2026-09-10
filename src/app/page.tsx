@@ -173,11 +173,7 @@ export default function Home() {
 
       <ConnectSection />
 
-      {/* ----------------------------------------------------------------
-          The sections below (now / hobbies) are being revamped.
-          Commented out for now — renumber the binary indices when restored:
-          now -> (101), hobbies -> (110).
-      ------------------------------------------------------------------- */}
+      {/* Screening Room, Now, Hobbies, and Field Notes remain unmounted. */}
       {/* <NowSection /> */}
 
       {/* <HobbiesSection /> */}

@@ -21,7 +21,7 @@ User instructions take precedence over this file. Keep changes focused on the re
 - **Project popup:** The modal project detail and chat experience implemented in `src/components/project-popup.tsx`.
 - **Project chat:** The `/api/chat` route backed by DeepSeek V4 Flash through Nebius Token Factory, with optional public GitHub repository context.
 - **GitHub context:** A bounded snapshot fetched by `src/lib/github-repo-context.ts` for source-aware project questions.
-- **Portfolio assets:** Public images stored in the `pf-assets` Cloudflare R2 bucket and resolved through `src/lib/assets.ts`.
+- **Portfolio assets:** Public images stored in the `pf-assets` Cloudflare R2 bucket and resolved through `src/lib/assets.ts`, except the three hero-card screenshots in `public/landing-images/`.
 - **Contact form:** The server action and Prisma-backed persistence path for portfolio contact submissions.
 
 ## Development & Execution Rules
@@ -36,7 +36,19 @@ User instructions take precedence over this file. Keep changes focused on the re
 - Required local and hosted variables are `DATABASE_URL` and `NEBIUS_API_KEY`. `GITHUB_TOKEN` is optional and only raises the public GitHub API rate limit. `NEXT_PUBLIC_ASSET_BASE_URL` optionally replaces the checked-in R2 origin when the bucket gets a custom domain.
 - Keep `.env*`, `.vercel/`, generated Prisma output, Next.js output, and caches untracked.
 - Prisma CLI configuration is `prisma.config.ts`, the schema is `prisma/schema.prisma`, and the Neon runtime adapter is initialized in `src/lib/prisma.ts`. Generated client code belongs in `src/generated/prisma` and must not be edited or committed.
-- Keep portfolio images in the `pf-assets` R2 bucket rather than `public/`. Resolve repository-style object keys with `assetUrl()`, and use a new object key whenever image content changes because uploaded assets use immutable caching.
+- Keep portfolio images in the `pf-assets` R2 bucket rather than `public/`, except the three hero-card screenshots in `public/landing-images/` (`hero-downthecove.png`, `hero-moai-1.png`, `hero-moai-2.png`, `hero-hanabi.png`). Resolve every other repository-style object key with `assetUrl()`, and use a new object key whenever image content changes because uploaded assets use immutable caching.
 - Preserve the existing component patterns, Tailwind setup, and motion vocabulary. Reuse current primitives before adding dependencies or new abstractions.
-- Update `README.md` when setup, deployment, environment requirements, routes, or visible behavior changes.
+- Homepage section labels are a sequential binary index, not decimal item counts. The active order is About `(000)`, tech stack `(001)`, experience `(010)`, projects `(011)`, and Connect `(100)`; renumber the sequence when mounted sections change.
+- Use `docs/architecture.md` for runtime and ownership boundaries, `docs/content-and-assets.md` for editorial and R2 workflows, and `docs/maintenance/component-map.md` as the baseline for component cleanup. Keep them current when those boundaries change.
+- Update `README.md` when setup, deployment, environment requirements, routes, or visible behavior changes. Keep unpublished research under `docs/content/` and material implementation records under `docs/plans/`.
 - Before handing off a change, inspect the diff and run lint plus a production build when relevant. For frontend work, also report the routes and interactions that need visual verification.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

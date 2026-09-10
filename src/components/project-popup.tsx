@@ -140,7 +140,7 @@ export default function ProjectPopup({
               {hasImages && (
                 <button
                   onClick={() => setTab("images")}
-                  className={`relative pt-3 pb-2 text-base font-medium transition-colors md:hidden ${
+                  className={`relative cursor-pointer pt-3 pb-2 text-base font-medium transition-colors md:hidden ${
                     tab === "images"
                       ? "text-white"
                       : "text-white/45 hover:text-white/70"
@@ -167,7 +167,7 @@ export default function ProjectPopup({
                   <button
                     key={t.id}
                     onClick={() => setTab(t.id)}
-                    className={`relative pt-3 pb-2 text-base font-medium transition-colors ${
+                    className={`relative cursor-pointer pt-3 pb-2 text-base font-medium transition-colors ${
                       active
                         ? "text-white"
                         : "text-white/45 hover:text-white/70"
@@ -193,7 +193,7 @@ export default function ProjectPopup({
             <button
               onClick={onClose}
               aria-label="Close"
-              className="flex size-9 shrink-0 items-center justify-center self-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              className="flex size-9 shrink-0 cursor-pointer items-center justify-center self-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
             >
               <X className="size-5" />
             </button>
@@ -227,7 +227,7 @@ export default function ProjectPopup({
                     <button
                       key={s}
                       onClick={() => send(s)}
-                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                      className="inset-pill cursor-pointer rounded-full px-3 py-1.5 text-xs text-white/90 text-shadow-2xs transition-[filter,transform] duration-150 ease-out hover:brightness-110 active:scale-[0.96]"
                     >
                       {s}
                     </button>
@@ -252,9 +252,9 @@ export default function ProjectPopup({
                   type="submit"
                   disabled={!input.trim() || isBusy}
                   aria-label="Send"
-                  className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white text-black transition-opacity disabled:opacity-30"
+                  className="inset-pill flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-[filter,opacity,transform] duration-150 ease-out hover:brightness-110 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-30 disabled:active:scale-100"
                 >
-                  <ArrowUp className="size-4.5" strokeWidth={2.4} />
+                  <ArrowUp className="size-4.5 translate-y-px" strokeWidth={2.4} />
                 </button>
               </form>
             </div>
@@ -284,7 +284,7 @@ function ImageList({ box }: { box: ProjectBox }) {
                 width={image.width}
                 height={image.height}
                 sizes="(max-width: 767px) calc(100vw - 4.5rem), 380px"
-                className="h-auto w-full"
+                className="h-auto w-full outline outline-1 -outline-offset-1 outline-white/10"
               />
             </div>
           );
@@ -300,7 +300,7 @@ function ImageList({ box }: { box: ProjectBox }) {
               alt={alt}
               fill
               sizes="(max-width: 767px) calc(100vw - 4.5rem), 380px"
-              className="object-cover object-top"
+              className="object-cover object-top outline outline-1 -outline-offset-1 outline-white/10"
             />
           </div>
         );
@@ -318,6 +318,8 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function Details({ box }: { box: ProjectBox }) {
+  const hasLinks = Boolean(box.url || box.github);
+
   return (
     <div className="space-y-7">
       <div>
@@ -326,6 +328,69 @@ function Details({ box }: { box: ProjectBox }) {
           <span className="text-secondary">.</span>
         </h3>
         <p className="pt-1 text-sm text-white/60 sm:text-base">{box.tagline}</p>
+      </div>
+
+      <div className="space-y-4">
+        <div>
+          <SectionLabel>tech stack</SectionLabel>
+          <div className="flex flex-wrap gap-2.5">
+            {box.tags.map((tag) => {
+              const tech = techMeta[tag as TechKey];
+              return (
+                <span
+                  key={tag}
+                  className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm text-shadow-2xs"
+                >
+                  {tech && (
+                    <Image
+                      src={tech.logo}
+                      alt=""
+                      width={16}
+                      height={16}
+                      aria-hidden
+                      className="size-4 shrink-0"
+                    />
+                  )}
+                  {tech?.label ?? tag}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+
+        {hasLinks ? (
+          <div className="flex flex-wrap gap-3">
+            {box.url && (
+              <a
+                href={box.url}
+                target="_blank"
+                rel="noreferrer"
+                className="inset-pill flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium text-white transition-[filter,transform] duration-150 ease-out hover:brightness-110 active:scale-[0.96]"
+              >
+                <Globe className="size-4" />
+                live site
+              </a>
+            )}
+            {box.github && (
+              <a
+                href={box.github}
+                target="_blank"
+                rel="noreferrer"
+                className="inset-pill flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium text-white transition-[filter,transform] duration-150 ease-out hover:brightness-110 active:scale-[0.96]"
+              >
+                <Image
+                  src={assetUrl("/logos/github-form.svg")}
+                  alt=""
+                  width={16}
+                  height={16}
+                  aria-hidden
+                  className="size-4"
+                />
+                source
+              </a>
+            )}
+          </div>
+        ) : null}
       </div>
 
       <p className="text-sm leading-relaxed text-white/80 sm:text-base">
@@ -348,67 +413,7 @@ function Details({ box }: { box: ProjectBox }) {
         <span>{box.duration}</span>
       </div>
 
-      {/* markdown body */}
       <Markdown>{box.content}</Markdown>
-
-      <div>
-        <SectionLabel>tech stack</SectionLabel>
-        <div className="flex flex-wrap gap-2.5">
-          {box.tags.map((tag) => {
-            const tech = techMeta[tag as TechKey];
-            return (
-              <span
-                key={tag}
-                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm text-shadow-2xs"
-              >
-                {tech && (
-                  <Image
-                    src={tech.logo}
-                    alt=""
-                    width={16}
-                    height={16}
-                    aria-hidden
-                    className="size-4 shrink-0"
-                  />
-                )}
-                {tech?.label ?? tag}
-              </span>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="flex flex-wrap gap-3">
-        {box.url && (
-          <a
-            href={box.url}
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10"
-          >
-            <Globe className="size-4" />
-            live site
-          </a>
-        )}
-        {box.github && (
-          <a
-            href={box.github}
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10"
-          >
-            <Image
-              src={assetUrl("/logos/github-form.svg")}
-              alt=""
-              width={16}
-              height={16}
-              aria-hidden
-              className="size-4"
-            />
-            source
-          </a>
-        )}
-      </div>
     </div>
   );
 }

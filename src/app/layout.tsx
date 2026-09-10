@@ -4,6 +4,7 @@ import "./globals.css";
 import Container from "@/components/container";
 import { ViewTransition } from "react";
 import ScrollToTop from "@/components/scroll-to-top";
+import FooterWordmark from "@/components/footer-wordmark";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Agentation } from "agentation";
@@ -150,7 +151,7 @@ export default function RootLayout({
             <main>{children}</main>
           </ViewTransition>
         </Container>
-        <p className="text-background text-xs">designed by krish</p>
+        <FooterWordmark />
         {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>

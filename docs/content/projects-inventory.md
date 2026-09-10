@@ -27,3 +27,29 @@ Baseline: previous `/projects` page from `origin/master` at commit `005a9c0`, da
 21. hanabi - https://github.com/Dey11/hanabi
 22. leadly - https://github.com/Dey11/leadly
 23. yunami-bot - https://github.com/Dey11/yunami-bot
+
+Added after the baseline inventory:
+
+24. mahindra beaconhill - https://github.com/Dey11/real-estate-web2/tree/original-design-replica
+
+## Current homepage status
+
+The homepage bento intentionally shows only a selected subset of this inventory. Keep omitted records here so a card removal does not erase the project from future editorial planning.
+
+Explicitly removed or temporarily hidden:
+
+- Vidbox
+- Yunami Discord Bot
+
+Other historic inventory entries that are not in the current bento:
+
+- Voice AI Agent Landing
+- ClarityHub
+- Real Estate Agent
+- AI Chat Website
+- Dashboard Analytics UI
+- Chat Backend Socket.IO
+- Reserve Monitoring P2
+- Yunami Bot
+
+PuckChat was previously hidden and has since been restored. Directorscut is on the homepage bento with landing and create screenshots; the create screen is the card thumbnail. Moai, PuckChat, and Directorscut sit at the bottom of the three desktop columns. The inventory has separate Yunami and Yunami Bot repositories; keep both entries until their relationship is verified rather than merging them by name.

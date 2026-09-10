@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import ProjectPopup from "./project-popup";
 import {
+  projectCardHeightByWeight,
   prioritizedProjectColumns,
   projectBoxesByInventoryId,
   projectImageSource,
@@ -17,26 +18,49 @@ import {
   slugFromHash,
 } from "@/lib/project-highlight";
 
-type Slot = { weight: number; projectId: number };
-
 // mobile shows a uniform two-column grid with only image-backed projects. since
 // touch devices do not have a reliable hover state, every card renders with its
 // thumbnail/title already in the revealed position.
-const mobileProjects: Slot[] = (() => {
+const mobileProjects = (() => {
   return prioritizedProjectColumns.flat().filter(({ projectId }) => {
     const box = projectBoxesByInventoryId[projectId];
     return Boolean(box.thumbnail ?? box.images[0]);
   });
 })();
 
+const wipTapeInk = "#171717";
+const wipTapeYellow = "#FFEE00";
+const wipTapeStripe = `repeating-linear-gradient(-45deg, ${wipTapeInk} 0 0.28rem, ${wipTapeYellow} 0.28rem 0.56rem)`;
+const wipTapeBandShadow = `inset 0 0 0 1px ${wipTapeInk}, 0 0 0 1px ${wipTapeInk}, 0 0 0 1px ${wipTapeYellow}, 0 1px 2px rgba(0,0,0,0.45)`;
+
+const wipTapeBandClassName =
+  "pointer-events-none absolute left-[-48%] h-[0.65rem] w-[205%] -translate-y-1/2 sm:h-[0.8rem]";
+
+function isWorkInProgress(status: ProjectBox["status"]) {
+  return status === "WIP" || status === "In progress";
+}
+
+function WipTape() {
+  return (
+    <span aria-hidden className="pointer-events-none absolute inset-0 z-[1]">
+      <span
+        className={`${wipTapeBandClassName} top-[70%] rotate-[13deg]`}
+        style={{ backgroundImage: wipTapeStripe, boxShadow: wipTapeBandShadow }}
+      />
+      <span
+        className={`${wipTapeBandClassName} top-[67%] -rotate-[8deg]`}
+        style={{ backgroundImage: wipTapeStripe, boxShadow: wipTapeBandShadow }}
+      />
+    </span>
+  );
+}
+
 function BentoCard({
   box,
-  weight,
   onSelect,
   highlight,
 }: {
   box: ProjectBox;
-  weight: number;
   onSelect: (box: ProjectBox) => void;
   highlight: string | null;
 }) {
@@ -49,6 +73,7 @@ function BentoCard({
   const textClass = box.foreground === "light" ? "text-white" : "text-black";
   const mutedTextClass =
     box.foreground === "light" ? "text-white/70" : "text-black/45";
+  const showWipTape = isWorkInProgress(box.status);
 
   return (
     <button
@@ -56,9 +81,8 @@ function BentoCard({
       onClick={() => onSelect(box)}
       data-project-box
       data-project-slug={slug}
-      style={{ flexGrow: weight, flexBasis: 0 }}
       aria-label={`Open ${box.name} project details`}
-      className={`group relative h-full min-h-0 w-full cursor-pointer overflow-hidden rounded-xl text-left transition-all duration-300 sm:rounded-2xl ${box.color} ${
+      className={`group relative h-full min-h-0 w-full cursor-pointer overflow-hidden rounded-xl text-left transition-[opacity,box-shadow] duration-300 sm:rounded-2xl ${box.color} ${
         isActive
           ? "ring-secondary ring-offset-background z-10 opacity-100 ring-2 ring-offset-2"
           : isDimmed
@@ -66,35 +90,44 @@ function BentoCard({
             : "opacity-100"
       }`}
     >
-      <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.38),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.22),transparent_46%)] opacity-80" />
+      {showWipTape ? <WipTape /> : null}
+
+      <span
+        className={`font-display pointer-events-none absolute top-3 left-3 z-10 text-xs leading-none font-medium tabular-nums opacity-55 ${textClass}`}
+      >
+        {box.year}
+      </span>
 
       {thumbnail ? (
-        /* peeking thumbnail — ~3/6 visible by default, rising to ~5/6 on hover
-           with an elastic overshoot. clipped by the card's overflow-hidden. */
+        /* The panel is 4/5 of the card. A 25% downward offset leaves exactly
+           3/5 visible; a 12.5% offset reveals 3.5/5 on hover or keyboard focus. */
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-x-2 bottom-0 h-[80%] translate-y-[17%] overflow-hidden rounded-t-lg border border-black/10 shadow-[0_-10px_30px_rgba(0,0,0,0.28)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] sm:inset-x-3 sm:rounded-t-xl lg:translate-y-[50%] lg:group-hover:translate-y-[17%]"
+          className="pointer-events-none absolute inset-x-2 bottom-0 h-[80%] translate-y-[25%] overflow-hidden rounded-t-lg border border-black/10 shadow-[0_-10px_30px_rgba(0,0,0,0.28)] transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] motion-reduce:transition-none sm:inset-x-3 sm:rounded-t-xl motion-safe:lg:group-hover:translate-y-[12.5%] motion-safe:lg:group-focus-visible:translate-y-[12.5%]"
         >
           <Image
             src={thumbnail}
             alt=""
             fill
             sizes="(max-width: 1023px) 50vw, 28vw"
-            className="object-cover object-top"
+            className="object-cover object-top outline outline-1 -outline-offset-1 outline-white/10"
           />
         </span>
-      ) : (
-        <span
-          className={`pointer-events-none absolute right-3 bottom-3 left-3 line-clamp-3 text-xs leading-snug opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:text-sm ${mutedTextClass}`}
-        >
-          {box.tagline}
-        </span>
-      )}
+      ) : null}
 
       <span
-        className={`font-display pointer-events-none absolute top-0 right-3 z-10 max-w-[90%] translate-y-2 truncate text-right text-[28px] leading-none font-semibold lowercase transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] sm:text-[32px] lg:-translate-y-full lg:group-hover:translate-y-2 ${textClass}`}
+        className={`pointer-events-none absolute top-0 right-3 z-10 flex max-w-[68%] translate-y-2 flex-col items-end transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] motion-reduce:transition-none sm:max-w-[90%] lg:-translate-y-full motion-safe:lg:group-hover:translate-y-2 motion-safe:lg:group-focus-visible:translate-y-2 motion-reduce:lg:translate-y-2 ${textClass}`}
       >
-        {box.name}
+        <span className="flex max-w-full items-center justify-end">
+          <span className="font-display truncate text-right text-[22px] leading-none font-semibold lowercase sm:text-[28px] lg:text-[32px]">
+            {box.name}
+          </span>
+        </span>
+        <span
+          className={`mt-1 max-w-full text-right text-[10px] leading-tight font-medium text-balance normal-case sm:text-xs ${mutedTextClass}`}
+        >
+          {box.cardSummary}
+        </span>
       </span>
     </button>
   );
@@ -178,7 +211,6 @@ export default function BentoSection() {
           <div key={projectId} className="h-48 sm:h-60">
             <BentoCard
               box={projectBoxesByInventoryId[projectId]}
-              weight={1}
               onSelect={setSelected}
               highlight={highlight}
             />
@@ -186,18 +218,27 @@ export default function BentoSection() {
         ))}
       </div>
 
-      {/* desktop — 3 columns, all projects */}
-      <div className="hidden h-[1200px] gap-4 pt-10 lg:flex">
+      {/* desktop — 3 columns, all projects. Preset weights are the flex
+          basis; leftover height is shared so the columns share a bottom. */}
+      <div className="hidden items-stretch gap-4 pt-10 lg:flex">
         {prioritizedProjectColumns.map((column, columnIndex) => (
-          <div key={columnIndex} className="flex h-full flex-1 flex-col gap-4">
+          <div key={columnIndex} className="flex min-h-0 flex-1 flex-col gap-4">
             {column.map(({ weight, projectId }) => (
-              <BentoCard
+              <div
                 key={projectId}
-                box={projectBoxesByInventoryId[projectId]}
-                weight={weight}
-                onSelect={setSelected}
-                highlight={highlight}
-              />
+                className="min-h-0"
+                style={{
+                  flexGrow: weight,
+                  flexShrink: 0,
+                  flexBasis: projectCardHeightByWeight[weight],
+                }}
+              >
+                <BentoCard
+                  box={projectBoxesByInventoryId[projectId]}
+                  onSelect={setSelected}
+                  highlight={highlight}
+                />
+              </div>
             ))}
           </div>
         ))}
