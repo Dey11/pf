@@ -134,7 +134,13 @@ This was freelance client work. I optimized for a launch-stage local business: f
     duration: "Client build",
     year: "2025",
     images: [
-      assetUrl("/projects/external/hanabi-ballarat-1.png"),
+      {
+        src: assetUrl(
+          "/projects/external/ballarat-landing-desktop-2026-09-10.jpg",
+        ),
+        width: 1440,
+        height: 896,
+      },
       assetUrl("/projects/external/hanabi-ballarat-2.png"),
       assetUrl("/projects/external/ballarat-site-sports.webp"),
       assetUrl("/projects/external/ballarat-site-features.webp"),
@@ -144,8 +150,6 @@ This was freelance client work. I optimized for a launch-stage local business: f
       assetUrl("/projects/external/ballarat-site-pricing.webp"),
       assetUrl("/projects/external/hanabi-ballarat-3.png"),
     ],
-    // Landing PNG is large and green-on-green in the peek; use a lighter shot.
-    thumbnail: assetUrl("/projects/external/hanabi-ballarat-2.png"),
   },
   4: {
     id: "project-04-venturassist",
