@@ -90,12 +90,13 @@ The rate limiter and GitHub cache are process-local. They are adequate for the c
 | Featured hero content and tech lists | `src/lib/constants.ts`                             | None at render time                 |
 | Technology labels and icons          | `src/lib/tech-stack.ts`                            | Public R2 assets                    |
 | Portfolio images                     | `src/lib/assets.ts`, `public/landing-images/`      | R2 public origin; hero screenshots are local |
+| Favicon and app icons                | `src/app/favicon.ico`, `icon.svg`, `apple-icon.png`, `manifest.ts` | Same-origin Next metadata files; Android chrome PNGs in `public/` |
 | Project chat model                   | `src/lib/nebius.ts`                                | Nebius Token Factory                |
 | Optional source context              | `src/lib/github-repo-context.ts`                   | Public GitHub API                   |
 | Contact submissions                  | `src/lib/prisma.ts`, `src/actions/contact-form.ts` | Neon PostgreSQL                     |
 | Usage telemetry                      | `src/app/layout.tsx`                               | Vercel Analytics and Speed Insights |
 
-All portfolio-owned image paths must pass through `assetUrl()`, except the three hero-card screenshots, which are served from `public/landing-images/`. The default `assetUrl()` origin is the managed `r2.dev` domain and can be replaced with `NEXT_PUBLIC_ASSET_BASE_URL`.
+All portfolio-owned image paths must pass through `assetUrl()`, except the three hero-card screenshots (served from `public/landing-images/`) and the site favicon set (Next metadata files under `src/app/` plus Android chrome PNGs in `public/`). The default `assetUrl()` origin is the managed `r2.dev` domain and can be replaced with `NEXT_PUBLIC_ASSET_BASE_URL`.
 
 ## Styling and motion
 

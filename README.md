@@ -48,7 +48,7 @@ Copy `.env.example` to `.env.local` and replace the placeholders. Never commit l
 - `src/components/project-popup.tsx` renders project details and owns the project-chat client.
 - `src/app/api/chat/route.ts` enforces request limits, assembles bounded context, and streams the model response.
 - `src/lib/github-repo-context.ts` conditionally fetches compact context from linked public GitHub repositories.
-- `src/lib/assets.ts` resolves portfolio-owned images through the public `pf-assets` R2 bucket. Hero-card screenshots are an exception and live in `public/landing-images/`.
+- `src/lib/assets.ts` resolves portfolio-owned images through the public `pf-assets` R2 bucket. Hero-card screenshots live in `public/landing-images/`. Favicons are Next metadata files in `src/app/`.
 - Prisma stores contact submissions, although the contact form is not currently mounted on the homepage.
 
 See [docs/architecture.md](docs/architecture.md) for the runtime and component boundaries.
