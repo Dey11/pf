@@ -51,7 +51,7 @@ export const heroItems: HeroItem[] = [
     titleLogo: assetUrl("/landing-images/hanabi-logo.svg"),
     description:
       "a studio website for a design & development brand — services, work, the studio story, and a booking flow wrapped in a handcrafted visual identity.",
-    live: "https://hanabi.works",
+    live: "https://tryhanabi.com",
     techStack: ["nextjs", "typescript", "tailwindcss", "motion", "react"],
     layout: "bottom",
     screens: ["/landing-images/hero-hanabi.png"],
