@@ -30,11 +30,11 @@ const mobileProjects = (() => {
 
 const wipTapeInk = "#171717";
 const wipTapeYellow = "#FFEE00";
-const wipTapeStripe = `repeating-linear-gradient(-45deg, ${wipTapeInk} 0 0.45rem, ${wipTapeYellow} 0.45rem 0.9rem)`;
-const wipTapeBandShadow = `inset 0 0 0 1px ${wipTapeInk}, 0 0 0 1px ${wipTapeInk}, 0 0 0 2px ${wipTapeYellow}, 0 1px 2px rgba(0,0,0,0.45)`;
+const wipTapeStripe = `repeating-linear-gradient(-45deg, ${wipTapeInk} 0 0.28rem, ${wipTapeYellow} 0.28rem 0.56rem)`;
+const wipTapeBandShadow = `inset 0 0 0 1px ${wipTapeInk}, 0 0 0 1px ${wipTapeInk}, 0 0 0 1px ${wipTapeYellow}, 0 1px 2px rgba(0,0,0,0.45)`;
 
 const wipTapeBandClassName =
-  "pointer-events-none absolute left-[-45%] h-[0.95rem] w-[190%] -translate-y-1/2 sm:h-[1.15rem]";
+  "pointer-events-none absolute left-[-48%] h-[0.65rem] w-[205%] -translate-y-1/2 sm:h-[0.8rem]";
 
 function isWorkInProgress(status: ProjectBox["status"]) {
   return status === "WIP" || status === "In progress";
@@ -110,7 +110,7 @@ function BentoCard({
             alt=""
             fill
             sizes="(max-width: 1023px) 50vw, 28vw"
-            className="object-cover object-top"
+            className="object-cover object-top outline outline-1 -outline-offset-1 outline-white/10"
           />
         </span>
       ) : null}
@@ -218,15 +218,20 @@ export default function BentoSection() {
         ))}
       </div>
 
-      {/* desktop — 3 columns, all projects */}
-      <div className="hidden items-start gap-4 pt-10 lg:flex">
+      {/* desktop — 3 columns, all projects. Preset weights are the flex
+          basis; leftover height is shared so the columns share a bottom. */}
+      <div className="hidden items-stretch gap-4 pt-10 lg:flex">
         {prioritizedProjectColumns.map((column, columnIndex) => (
-          <div key={columnIndex} className="flex flex-1 flex-col gap-4">
+          <div key={columnIndex} className="flex min-h-0 flex-1 flex-col gap-4">
             {column.map(({ weight, projectId }) => (
               <div
                 key={projectId}
-                className="shrink-0"
-                style={{ height: projectCardHeightByWeight[weight] }}
+                className="min-h-0"
+                style={{
+                  flexGrow: weight,
+                  flexShrink: 0,
+                  flexBasis: projectCardHeightByWeight[weight],
+                }}
               >
                 <BentoCard
                   box={projectBoxesByInventoryId[projectId]}

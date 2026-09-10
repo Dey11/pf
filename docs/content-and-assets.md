@@ -24,9 +24,9 @@ The `projects` export at the end of `src/lib/constants.ts` is legacy data and ha
 2. Keep the numeric inventory key stable if About mentions or other source material refer to it.
 3. Keep `ProjectBox.id` stable unless changing its public deep-link slug is intentional.
 4. Use concise card copy in `tagline` and `description`; keep evidence-based long-form copy in `content`.
-5. Resolve every portfolio-owned image with `assetUrl()`.
+5. Resolve every portfolio-owned image with `assetUrl()`, except the three hero-card screenshots, which stay in `public/landing-images/`.
 6. Use `thumbnail` only when the bento card should differ from the first popup image.
-7. Add the project to `prioritizedProjectColumns` if it should appear. Desktop weights control relative height; mobile flattens this configuration into equal image-backed cards.
+7. Add the project to `prioritizedProjectColumns` if it should appear. Desktop weights still use the 3/4/5 presets as each card's flex basis; columns stretch so their bottoms align. Mobile flattens this configuration into equal image-backed cards.
 8. Add or update entries in `techMeta` before introducing a new normalized technology tag.
 9. If the project should be featured in the hero, update `heroItems` and preserve its `projectId` mapping to the canonical project record.
 
@@ -45,7 +45,7 @@ Treat ID and slug changes as migrations. Verify direct page load with the old an
 
 ## Asset storage
 
-Portfolio-owned images are not stored under `public/`. They live in the Cloudflare R2 bucket named `pf-assets` and use repository-style keys without a leading slash:
+Portfolio-owned images live in the Cloudflare R2 bucket named `pf-assets` and use repository-style keys without a leading slash, with one exception: the three hero-card screenshots are checked in under `public/landing-images/` so the first viewport does not depend on R2.
 
 ```ts
 assetUrl("/projects/pdx.png");
@@ -58,7 +58,7 @@ Uploaded assets use long-lived immutable caching. When image contents change, up
 
 Use these key families consistently:
 
-- `landing-images/` for hero and brand treatment assets;
+- `landing-images/` for hero logos, wave backgrounds, and other brand treatment assets. The three hero-card screenshots themselves live in `public/landing-images/` instead of this R2 prefix;
 - `logos/` for general logos and `logos/stack/` for technology icons;
 - `projects/` for portfolio screenshots;
 - `projects/external/` for screenshots originating from other public project sites or collaborators;

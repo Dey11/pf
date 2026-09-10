@@ -39,7 +39,6 @@ The homepage bento intentionally shows only a selected subset of this inventory.
 Explicitly removed or temporarily hidden:
 
 - Vidbox
-- DirectorsCut
 - Yunami Discord Bot
 
 Other historic inventory entries that are not in the current bento:
@@ -53,4 +52,4 @@ Other historic inventory entries that are not in the current bento:
 - Reserve Monitoring P2
 - Yunami Bot
 
-PuckChat was previously hidden and has since been restored. The inventory has separate Yunami and Yunami Bot repositories; keep both entries until their relationship is verified rather than merging them by name.
+PuckChat was previously hidden and has since been restored. Directorscut is on the homepage bento with landing and create screenshots; the create screen is the card thumbnail. Moai, PuckChat, and Directorscut sit at the bottom of the three desktop columns. The inventory has separate Yunami and Yunami Bot repositories; keep both entries until their relationship is verified rather than merging them by name.

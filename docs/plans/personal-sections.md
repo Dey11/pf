@@ -1,6 +1,6 @@
 # Screening Room and Field Notes
 
-Status: Screening Room mounted; Field Notes retained but unmounted
+Status: Screening Room and Field Notes retained but unmounted
 
 ## Goal
 

@@ -49,7 +49,7 @@ RootLayout
 The following code is present but does not participate in the active homepage:
 
 - `components/navbar.tsx` links to the disabled `/projects` route.
-- `components/now-section.tsx` and `components/hobbies-section.tsx` are commented out of `app/page.tsx`.
+- `components/now-section.tsx`, `components/hobbies-section.tsx`, `components/screening-room-section.tsx`, and `components/field-notes-section.tsx` are unmounted from `app/page.tsx`.
 - `components/contact-form.tsx` and `actions/contact-form.ts` remain implemented, but the form is commented out of `app/page.tsx`.
 - `app/projects/` and `app/blogs/` keep route placeholders that intentionally return `404`.
 - `lib/constants.ts` exports a legacy `projects` array that is not imported anywhere.
@@ -73,7 +73,7 @@ The revamp should not introduce a generic component layer before repeated behavi
 - The homepage remains the only indexed page.
 - Hero and About project links scroll to and highlight the correct bento card.
 - Mobile cards are equal-sized, image-backed, and readable without hover.
-- Desktop bento weights and project ordering remain intentional.
+- Desktop bento weights and project ordering remain intentional. Preset heights are the flex basis; columns stretch to one shared bottom edge.
 - The project popup preserves its current body-scroll lock, backdrop/close-button behavior, and Escape-key close path. If it is split or redesigned, add proper dialog semantics and focus management rather than assuming the current modal is complete.
 - Project screenshots stay responsive and lazy below the fold.
 - The GitHub contribution package loads only shortly before its section enters the viewport.

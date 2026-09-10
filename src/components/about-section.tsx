@@ -128,7 +128,7 @@ function ProjectMention({ projectId }: { projectId: ProjectId }) {
               alt={`${project.name} project preview`}
               fill
               sizes="256px"
-              className="object-cover object-top"
+              className="object-cover object-top outline outline-1 -outline-offset-1 outline-white/10"
             />
           </span>
           <span className="flex items-center justify-between gap-3 px-3 py-2 text-left">
@@ -173,7 +173,7 @@ export default function AboutSection() {
         about me<span className="text-secondary">.</span>
       </h1>
 
-      <div className="w-full space-y-6 pt-10 text-lg leading-[1.5] text-white/58 sm:space-y-7 sm:text-2xl md:text-[1.75rem] md:leading-[1.38]">
+      <div className="w-full space-y-6 pt-10 text-lg leading-[1.5] text-pretty text-white/58 sm:space-y-7 sm:text-2xl md:text-[1.75rem] md:leading-[1.38]">
         <p>
           Hey, I&apos;m Shreyan (or you can call me just <DeyNickname />
           ), a full-stack product engineer from India. I like the messy stretch

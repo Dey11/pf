@@ -84,7 +84,7 @@ I built PDX as a full-stack product and treated generation as a durable workflow
     type: "Personal",
     status: "Live",
     duration: "Product build and BYOK relaunch",
-    year: "2025-2026",
+    year: "2024",
     images: [
       assetUrl("/projects/pdx/landing-v1.png"),
       assetUrl("/projects/pdx/dashboard-v1.png"),
@@ -377,7 +377,7 @@ Directorscut is a WIP AI video/story generation system. Instead of asking a mode
 
 ## Architecture
 
-The repo is structured as a Bun/Turborepo monorepo with an Express API, a web app, shared Prisma database package, shared AI package, Bun S3/R2 storage package, UI/config packages, and a product model centered on projects, series bibles, episodes, characters, scenes, and dialogue-grid cells. Server routes orchestrate DeepSeek story planning, Replicate/Nano Banana image generation, R2 artifact storage, Sharp-based image rendering, and local zero-shot speaker detection through Xenova/owlvit-base-patch32.
+The repo is structured as a Bun/Turborepo monorepo with an Express API, a web app, an admin app, shared Prisma database package, shared AI package, video package, Bun S3/R2 storage package, UI/config packages, and a product model centered on projects, series bibles, episodes, characters, scenes, and dialogue-grid cells. Server routes orchestrate DeepSeek story planning, Replicate/Nano Banana image generation, R2 artifact storage, Sharp-based image rendering, and local zero-shot speaker detection through Xenova/owlvit-base-patch32.
 
 ## What I built
 
@@ -401,7 +401,21 @@ This is a solo WIP systems prototype where my role is best framed as AI systems 
     status: "WIP",
     duration: "Ongoing",
     year: "2026",
-    images: [],
+    images: [
+      {
+        src: assetUrl("/projects/directorscut/landing-desktop-2026-09-10.png"),
+        width: 2856,
+        height: 1780,
+      },
+      {
+        src: assetUrl("/projects/directorscut/create-desktop-2026-09-10.png"),
+        width: 2852,
+        height: 1774,
+      },
+    ],
+    thumbnail: assetUrl(
+      "/projects/directorscut/create-desktop-2026-09-10.png",
+    ),
   },
   17: {
     id: "project-17-puckchat",
@@ -447,7 +461,7 @@ This is a solo personal AI product. I designed it around persistent state and co
       "tailwindcss",
     ],
     type: "Personal",
-    status: "Live",
+    status: "WIP",
     duration: "Solo product build and public beta",
     year: "2026",
     images: [
@@ -868,7 +882,7 @@ The product started in 2024 and was later modernized around Better Auth, Prisma 
     type: "Personal",
     status: "Live",
     duration: "Product build and modernization",
-    year: "2024-2026",
+    year: "2024",
     images: [
       {
         src: assetUrl("/projects/external/drites-home-desktop-2026-08-30.png"),
@@ -929,28 +943,28 @@ export const prioritizedProjectColumns: {
   weight: ProjectCardWeight;
   projectId: keyof typeof projectBoxesByInventoryId;
 }[][] = [
-  // Temporarily hidden, with their full records kept above for restoration.
-  // Directorscut and Yunami previously used legacy flex weights 6 and 5.
-  // Map them to weight 3, 4, or 5 when restoring.
-  // Every column includes sizes 3, 4, and 5. Across the grid, size 3 appears
-  // five times, while sizes 4 and 5 appear four times each.
+  // Weights still use the 3/4/5 presets as flex-basis. Each column sums to
+  // the same weight so the desktop grid can stretch to one shared bottom
+  // edge. Moai, PuckChat, and Directorscut sit at the foot of the columns
+  // because they are still in progress.
   [
     { weight: 4, projectId: 18 },
-    { weight: 3, projectId: 20 },
     { weight: 3, projectId: 4 },
     { weight: 5, projectId: 8 },
+    { weight: 3, projectId: 19 },
+    { weight: 3, projectId: 20 },
+  ],
+  [
+    { weight: 4, projectId: 22 },
+    { weight: 4, projectId: 5 },
+    { weight: 4, projectId: 23 },
+    { weight: 3, projectId: 2 },
     { weight: 3, projectId: 17 },
   ],
   [
-    { weight: 3, projectId: 2 },
-    { weight: 5, projectId: 21 },
-    { weight: 4, projectId: 22 },
-    { weight: 5, projectId: 24 },
-  ],
-  [
     { weight: 5, projectId: 1 },
-    { weight: 4, projectId: 5 },
-    { weight: 4, projectId: 23 },
-    { weight: 3, projectId: 19 },
+    { weight: 5, projectId: 21 },
+    { weight: 5, projectId: 24 },
+    { weight: 3, projectId: 15 },
   ],
 ];

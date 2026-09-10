@@ -151,7 +151,7 @@ export default function ExperienceSection() {
                     {exp.title}
                     <span className="text-secondary">.</span>
                   </span>
-                  <span className="rounded-full border border-white/25 px-2 py-0.5 text-[10px] font-medium tracking-[0.08em] text-white/60 lowercase md:text-xs">
+                  <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1.5 text-sm font-medium text-white/90 lowercase shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm text-shadow-2xs">
                     {exp.kind}
                   </span>
                 </span>
@@ -160,11 +160,7 @@ export default function ExperienceSection() {
                 </span>
                 <motion.span
                   animate={{ rotate: isOpen ? 45 : 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 20,
-                  }}
+                  transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
                   className="flex size-8 shrink-0 items-center justify-center md:size-10"
                 >
                   <Plus className="size-6 md:size-8" strokeWidth={1.5} />
@@ -178,15 +174,20 @@ export default function ExperienceSection() {
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 30,
+                      height: {
+                        duration: 0.18,
+                        ease: [0.23, 1, 0.32, 1],
+                      },
+                      opacity: {
+                        duration: 0.12,
+                        ease: [0.23, 1, 0.32, 1],
+                      },
                     }}
                     className="overflow-hidden"
                   >
                     <div className="pb-12">
                       <div className="flex w-full flex-col gap-6">
-                        <ul className="marker:text-secondary flex list-disc flex-col gap-2.5 pl-5 text-base leading-relaxed text-white/85 sm:text-lg md:text-xl">
+                        <ul className="marker:text-secondary flex list-disc flex-col gap-2.5 pl-5 text-base leading-relaxed text-pretty text-white/85 sm:text-lg md:text-xl">
                           {exp.points.map((point) => (
                             <li key={point}>{point}</li>
                           ))}
@@ -199,7 +200,7 @@ export default function ExperienceSection() {
                             return (
                               <span
                                 key={tag}
-                                className="group/tag inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-white/10 px-2.5 py-0 text-sm leading-none font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm transition-[padding] duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] text-shadow-2xs hover:px-4 motion-reduce:transition-none sm:text-base"
+                                className="group/tag inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-white/10 px-2.5 py-0 text-sm leading-none font-medium text-white/90 shadow-sm inset-shadow-2xs inset-shadow-white/10 backdrop-blur-sm transition-[padding] duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] text-shadow-2xs hover:px-4 hover:duration-500 motion-reduce:transition-none sm:text-base"
                               >
                                 {tech && (
                                   <Image
@@ -214,7 +215,7 @@ export default function ExperienceSection() {
                                 <span
                                   className={
                                     tech
-                                      ? "max-w-0 overflow-hidden leading-none whitespace-nowrap opacity-0 transition-[max-width,margin,opacity] duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover/tag:ml-2 group-hover/tag:max-w-[180px] group-hover/tag:opacity-100 motion-reduce:transition-none"
+                                      ? "max-w-0 overflow-hidden leading-none whitespace-nowrap opacity-0 transition-[max-width,margin,opacity] duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover/tag:ml-2 group-hover/tag:max-w-[180px] group-hover/tag:opacity-100 group-hover/tag:duration-500 motion-reduce:transition-none"
                                       : "px-1 whitespace-nowrap"
                                   }
                                 >

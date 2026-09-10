@@ -4,7 +4,6 @@ import ConnectSection from "@/components/connect-section";
 import HeroSection from "@/components/hero-section";
 import ExperienceSection from "@/components/experience-section";
 import DeferredGithubContributions from "@/components/deferred-github-contributions";
-import ScreeningRoomSection from "@/components/screening-room-section";
 import { techStackItems } from "@/lib/constants";
 import Image from "next/image";
 // commented out — sections below are being revamped
@@ -172,12 +171,9 @@ export default function Home() {
 
       <BentoSection />
 
-      <ScreeningRoomSection />
-
       <ConnectSection />
 
-      {/* Legacy Now, Hobbies, and Field Notes sections remain unmounted while
-          their strongest material is developed through Screening Room. */}
+      {/* Screening Room, Now, Hobbies, and Field Notes remain unmounted. */}
       {/* <NowSection /> */}
 
       {/* <HobbiesSection /> */}
