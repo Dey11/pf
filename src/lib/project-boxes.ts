@@ -683,7 +683,7 @@ The app uses Next.js 16, React 19, Tailwind 4, Bun, Motion, Lenis smooth scrolli
 ## Role and decisions
 
 This was a frontend/product-design implementation for a studio brand. I kept project, hero, team, services, and contact content in small data-driven structures so the site can evolve as the studio adds work. The visual system is intentionally detailed, but the page composition stays modular so the brand layer does not make the code hard to maintain.`,
-    url: "https://hanabi.works",
+    url: "https://tryhanabi.com",
     github: "https://github.com/Dey11/hanabi",
     tags: ["nextjs", "typescript", "tailwindcss", "motion", "react"],
     type: "Personal",
