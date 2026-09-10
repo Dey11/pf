@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Darker_Grotesque, Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/container";
@@ -60,9 +60,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  icons: {
-    icon: [{ url: assetUrl("/favicon.ico"), type: "image/x-icon" }],
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -102,6 +99,10 @@ export const metadata: Metadata = {
     google: "",
   },
   category: "technology",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
 };
 
 export default function RootLayout({

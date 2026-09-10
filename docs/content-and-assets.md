@@ -45,7 +45,7 @@ Treat ID and slug changes as migrations. Verify direct page load with the old an
 
 ## Asset storage
 
-Portfolio-owned images live in the Cloudflare R2 bucket named `pf-assets` and use repository-style keys without a leading slash, with one exception: the three hero-card screenshots are checked in under `public/landing-images/` so the first viewport does not depend on R2.
+Portfolio-owned images live in the Cloudflare R2 bucket named `pf-assets` and use repository-style keys without a leading slash. Two exceptions stay in the repo: the three hero-card screenshots under `public/landing-images/` so the first viewport does not depend on R2, and the favicon set so browsers can request same-origin `/favicon.ico`.
 
 ```ts
 assetUrl("/projects/pdx.png");
@@ -62,7 +62,9 @@ Use these key families consistently:
 - `logos/` for general logos and `logos/stack/` for technology icons;
 - `projects/` for portfolio screenshots;
 - `projects/external/` for screenshots originating from other public project sites or collaborators;
-- `favicon.ico` at the bucket root, and a versioned `og-*.png` for social previews (currently `og-2026-09-10.png`);
+- a versioned `og-*.png` for social previews (currently `og-2026-09-10.png`).
+
+Favicons are same-origin Next metadata files (`src/app/favicon.ico`, `src/app/icon.svg`, `src/app/apple-icon.png`) plus Android chrome PNGs in `public/`.
 
 The managed `r2.dev` domain is the checked-in fallback. A future custom domain should be introduced through `NEXT_PUBLIC_ASSET_BASE_URL`, not by rewriting every asset reference.
 
