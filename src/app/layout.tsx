@@ -72,10 +72,10 @@ export const metadata: Metadata = {
     siteName: "dey's portfolio",
     images: [
       {
-        url: assetUrl("/og.jpg"),
-        width: 1200,
-        height: 630,
-        alt: "Dey Portfolio",
+        url: assetUrl("/og-2026-09-10.png"),
+        width: 2400,
+        height: 1260,
+        alt: "i'm shreyan dey, a fullstack dev",
       },
     ],
   },
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
     description: "just another cs grad.",
     creator: "@dey_twts",
     site: "@dey_twts",
-    images: [assetUrl("/og.jpg")],
+    images: [assetUrl("/og-2026-09-10.png")],
   },
   robots: {
     index: true,
