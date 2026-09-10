@@ -62,7 +62,7 @@ Use these key families consistently:
 - `logos/` for general logos and `logos/stack/` for technology icons;
 - `projects/` for portfolio screenshots;
 - `projects/external/` for screenshots originating from other public project sites or collaborators;
-- `favicon.ico` and `og.jpg` at the bucket root for global metadata.
+- `favicon.ico` at the bucket root, and a versioned `og-*.png` for social previews (currently `og-2026-09-10.png`);
 
 The managed `r2.dev` domain is the checked-in fallback. A future custom domain should be introduced through `NEXT_PUBLIC_ASSET_BASE_URL`, not by rewriting every asset reference.
 
