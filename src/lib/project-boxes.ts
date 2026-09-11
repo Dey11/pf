@@ -739,7 +739,7 @@ Leadly is a Bun monorepo with an Express 5 backend, Prisma 7/Postgres, Redis/Bul
 ## Role and decisions
 
 This is a solo or very small-team SaaS build. I designed it around async workers and server-side quota enforcement because lead generation is noisy, rate-limited, and expensive if every user action triggers immediate scraping. The product separates signal collection from AI scoring so keyword noise, ICP fit, billing limits, and outreach generation can each be controlled independently.`,
-    url: "https://leadly.live",
+    url: "https://leadly.tryhanabi.com",
     github: "https://github.com/Dey11/leadly",
     tags: ["nextjs", "typescript", "postgresql", "prisma", "aisdk", "docker"],
     type: "Personal",
