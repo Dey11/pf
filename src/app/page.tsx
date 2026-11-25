@@ -5,6 +5,7 @@ import HeroSection from "@/components/hero-section";
 import ExperienceSection from "@/components/experience-section";
 import DeferredGithubContributions from "@/components/deferred-github-contributions";
 import { techStackItems } from "@/lib/constants";
+import { isPreSizedAsset } from "@/lib/assets";
 import Image from "next/image";
 // commented out — sections below are being revamped
 // import ContactForm from "@/components/contact-form";
@@ -52,6 +53,7 @@ export default function Home() {
                     <Image
                       src={item.icon}
                       alt={item.name}
+                      unoptimized={isPreSizedAsset(item.icon)}
                       width={96}
                       height={96}
                       sizes="(max-width: 639px) 56px, (max-width: 767px) 64px, 96px"
@@ -86,6 +88,7 @@ export default function Home() {
                     <Image
                       src={item.icon}
                       alt={item.name}
+                      unoptimized={isPreSizedAsset(item.icon)}
                       width={96}
                       height={96}
                       sizes="(max-width: 639px) 56px, (max-width: 767px) 64px, 96px"
@@ -120,6 +123,7 @@ export default function Home() {
                     <Image
                       src={item.icon}
                       alt={item.name}
+                      unoptimized={isPreSizedAsset(item.icon)}
                       width={96}
                       height={96}
                       sizes="(max-width: 639px) 56px, (max-width: 767px) 64px, 96px"
@@ -154,6 +158,7 @@ export default function Home() {
                     <Image
                       src={item.icon}
                       alt={item.name}
+                      unoptimized={isPreSizedAsset(item.icon)}
                       width={96}
                       height={96}
                       sizes="(max-width: 639px) 56px, (max-width: 767px) 64px, 96px"

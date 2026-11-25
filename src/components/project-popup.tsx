@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { assetUrl } from "@/lib/assets";
+import { assetUrl, isPreSizedAsset } from "@/lib/assets";
 import { projectImageSource, type ProjectBox } from "@/lib/project-boxes";
 import { techMeta, type TechKey } from "@/lib/tech-stack";
 
@@ -281,6 +281,7 @@ function ImageList({ box }: { box: ProjectBox }) {
               <Image
                 src={src}
                 alt={alt}
+                unoptimized={isPreSizedAsset(src)}
                 width={image.width}
                 height={image.height}
                 sizes="(max-width: 767px) calc(100vw - 4.5rem), 380px"
@@ -299,6 +300,7 @@ function ImageList({ box }: { box: ProjectBox }) {
               src={src}
               alt={alt}
               fill
+              unoptimized={isPreSizedAsset(src)}
               sizes="(max-width: 767px) calc(100vw - 4.5rem), 380px"
               className="object-cover object-top outline outline-1 -outline-offset-1 outline-white/10"
             />

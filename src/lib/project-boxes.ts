@@ -980,31 +980,31 @@ This is my main work at Genesis AI, built with a small team. I own most of the m
     duration: "Web and mobile product",
     year: "2026",
     images: [
-      assetUrl("/projects/external/11auction-home-desktop-2026-11-25.png"),
+      assetUrl("/projects/external/11auction-home-desktop-2026-11-25.webp"),
       {
         src: assetUrl(
-          "/projects/external/11auction-app-store-01-2026-11-25.png",
+          "/projects/external/11auction-app-store-01-2026-11-25.webp",
         ),
         width: 780,
         height: 1695,
       },
       {
         src: assetUrl(
-          "/projects/external/11auction-app-store-02-2026-11-25.png",
+          "/projects/external/11auction-app-store-02-2026-11-25.webp",
         ),
         width: 780,
         height: 1695,
       },
       {
         src: assetUrl(
-          "/projects/external/11auction-app-store-03-2026-11-25.png",
+          "/projects/external/11auction-app-store-03-2026-11-25.webp",
         ),
         width: 780,
         height: 1695,
       },
       {
         src: assetUrl(
-          "/projects/external/11auction-app-store-04-2026-11-25.png",
+          "/projects/external/11auction-app-store-04-2026-11-25.webp",
         ),
         width: 780,
         height: 1695,
@@ -1050,33 +1050,33 @@ Monkeep is in TestFlight and being prepared for its first App Store release.`,
     duration: "Mobile product build",
     year: "2026",
     images: [
-      assetUrl("/projects/monkeep-header-2026-11-25.png"),
+      assetUrl("/projects/monkeep-header-2026-11-25.webp"),
       {
-        src: assetUrl("/projects/monkeep-app-01-home-2026-11-25.png"),
+        src: assetUrl("/projects/monkeep-app-01-home-2026-11-25.webp"),
         width: 780,
         height: 1696,
       },
       {
-        src: assetUrl("/projects/monkeep-app-02-budget-2026-11-25.png"),
+        src: assetUrl("/projects/monkeep-app-02-budget-2026-11-25.webp"),
         width: 780,
         height: 1696,
       },
       {
-        src: assetUrl("/projects/monkeep-app-03-activity-2026-11-25.png"),
+        src: assetUrl("/projects/monkeep-app-03-activity-2026-11-25.webp"),
         width: 780,
         height: 1696,
       },
       {
-        src: assetUrl("/projects/monkeep-app-04-insights-2026-11-25.png"),
+        src: assetUrl("/projects/monkeep-app-04-insights-2026-11-25.webp"),
         width: 780,
         height: 1696,
       },
       {
-        src: assetUrl("/projects/monkeep-app-06-simulator-2026-11-25.png"),
+        src: assetUrl("/projects/monkeep-app-06-simulator-2026-11-25.webp"),
         width: 780,
         height: 1696,
       },
-      assetUrl("/projects/monkeep-landing-desktop-2026-11-25.png"),
+      assetUrl("/projects/monkeep-landing-desktop-2026-11-25.webp"),
     ],
   },
   27: {
@@ -1115,11 +1115,11 @@ Built at Genesis AI.`,
     duration: "Client website",
     year: "2026",
     images: [
-      assetUrl("/projects/external/acomodo-home-desktop-2026-11-25.png"),
-      assetUrl("/projects/external/acomodo-browse-desktop-2026-11-25.png"),
-      assetUrl("/projects/external/acomodo-property-desktop-2026-11-25.png"),
+      assetUrl("/projects/external/acomodo-home-desktop-2026-11-25.webp"),
+      assetUrl("/projects/external/acomodo-browse-desktop-2026-11-25.webp"),
+      assetUrl("/projects/external/acomodo-property-desktop-2026-11-25.webp"),
     ],
-    thumbnail: assetUrl("/projects/external/acomodo-home-tall-2026-11-25.png"),
+    thumbnail: assetUrl("/projects/external/acomodo-home-tall-2026-11-25.webp"),
   },
 };
 
