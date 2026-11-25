@@ -31,7 +31,7 @@ export const heroItems: HeroItem[] = [
     live: "https://staging.fe.downthecove.com/",
     techStack: ["nextjs", "typescript", "postgresql", "stripe", "docker"],
     layout: "bottom",
-    screens: ["/landing-images/hero-downthecove.png"],
+    screens: ["/landing-images/hero-downthecove.webp"],
   },
   {
     title: "moai",
@@ -42,8 +42,8 @@ export const heroItems: HeroItem[] = [
     techStack: ["nextjs", "typescript", "postgresql", "prisma", "tailwindcss"],
     layout: "split",
     screens: [
-      "/landing-images/hero-moai-1.png",
-      "/landing-images/hero-moai-2.png",
+      "/landing-images/hero-moai-1.webp",
+      "/landing-images/hero-moai-2.webp",
     ],
   },
   {
@@ -54,7 +54,7 @@ export const heroItems: HeroItem[] = [
     live: "https://tryhanabi.com",
     techStack: ["nextjs", "typescript", "tailwindcss", "motion", "react"],
     layout: "bottom",
-    screens: ["/landing-images/hero-hanabi.png"],
+    screens: ["/landing-images/hero-hanabi.webp"],
   },
 ];
 
@@ -63,44 +63,44 @@ export const techStackItems = {
     {
       id: 1,
       name: "typescript",
-      icon: assetUrl("/logos/ts.png"),
+      icon: assetUrl("/logos/ts-2026-11-25.webp"),
     },
     {
       id: 2,
       name: "cpp",
-      icon: assetUrl("/logos/c++.png"),
+      icon: assetUrl("/logos/c++-2026-11-25.webp"),
     },
     {
       id: 3,
       name: "js",
-      icon: assetUrl("/logos/js.png"),
+      icon: assetUrl("/logos/js-2026-11-25.webp"),
     },
   ],
   frontend: [
     {
       id: 1,
       name: "html",
-      icon: assetUrl("/logos/html.png"),
+      icon: assetUrl("/logos/html-2026-11-25.webp"),
     },
     {
       id: 2,
       name: "nextjs",
-      icon: assetUrl("/logos/nextjs.png"),
+      icon: assetUrl("/logos/nextjs-2026-11-25.webp"),
     },
     {
       id: 3,
       name: "react",
-      icon: assetUrl("/logos/react.png"),
+      icon: assetUrl("/logos/react-2026-11-25.webp"),
     },
     {
       id: 4,
       name: "tailwindcss",
-      icon: assetUrl("/logos/tailwindcss.png"),
+      icon: assetUrl("/logos/tailwindcss-2026-11-25.webp"),
     },
     {
       id: 5,
       name: "css",
-      icon: assetUrl("/logos/css.png"),
+      icon: assetUrl("/logos/css-2026-11-25.webp"),
     },
     {
       id: 6,
@@ -112,17 +112,17 @@ export const techStackItems = {
     {
       id: 1,
       name: "express",
-      icon: assetUrl("/logos/express.png"),
+      icon: assetUrl("/logos/express-2026-11-25.webp"),
     },
     {
       id: 2,
       name: "nodejs",
-      icon: assetUrl("/logos/nodejs.png"),
+      icon: assetUrl("/logos/nodejs-2026-11-25.webp"),
     },
     {
       id: 3,
       name: "postgres",
-      icon: assetUrl("/logos/postgresql.png"),
+      icon: assetUrl("/logos/postgresql-2026-11-25.webp"),
     },
     {
       id: 4,
@@ -144,17 +144,17 @@ export const techStackItems = {
     {
       id: 1,
       name: "github",
-      icon: assetUrl("/logos/Github.png"),
+      icon: assetUrl("/logos/Github-2026-11-25.webp"),
     },
     {
       id: 2,
       name: "docker",
-      icon: assetUrl("/logos/docker.png"),
+      icon: assetUrl("/logos/docker-2026-11-25.webp"),
     },
     {
       id: 3,
       name: "git",
-      icon: assetUrl("/logos/git.png"),
+      icon: assetUrl("/logos/git-2026-11-25.webp"),
     },
   ],
 };
@@ -170,7 +170,7 @@ export const projects = [
       • AI-powered content generation with comprehensive study materials`,
     live: "https://usepdx.tech",
     github: "https://github.com/dey11/pdx",
-    image: assetUrl("/projects/pdx.png"),
+    image: assetUrl("/projects/pdx-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -183,7 +183,7 @@ export const projects = [
       • Built from scratch without heavy dependencies`,
     live: "https://ballaratsports.vercel.app",
     github: "https://github.com/dey11/ballarat",
-    image: assetUrl("/projects/ballarat.png"),
+    image: assetUrl("/projects/ballarat-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -196,7 +196,7 @@ export const projects = [
       • Built from scratch without heavy dependencies`,
     live: "https://doublesalesai.vercel.app",
     // github: "https://github.com/dey11/ballarat",
-    image: assetUrl("/projects/doublesalesai.png"),
+    image: assetUrl("/projects/doublesalesai-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -218,7 +218,7 @@ export const projects = [
       • Automated competitor discovery, market positioning, and interactive chat for real-time insights`,
     live: "https://venturassist.xyz",
     github: "https://github.com/dey11/VenturAssist",
-    image: assetUrl("/projects/venturassist.png"),
+    image: assetUrl("/projects/venturassist-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -231,7 +231,7 @@ export const projects = [
       • Built from scratch without heavy dependencies`,
     live: "https://wabisabi.agency",
     github: "https://github.com/dey11/wabisabi-agency",
-    image: assetUrl("/landing-images/wabisabi.png"),
+    image: assetUrl("/landing-images/wabisabi-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -244,7 +244,7 @@ export const projects = [
       • User authentication and progress tracking`,
     live: "https://clarityhub.vercel.app",
     github: "https://github.com/dey11/clarity-hub",
-    image: assetUrl("/projects/clarityhub.png"),
+    image: assetUrl("/projects/clarityhub-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -257,7 +257,7 @@ export const projects = [
       • Real-time streaming voice API through websockets`,
     live: "https://convoagent.vercel.app/",
     github: "https://github.com/Dey11/gemini-conversational-agent",
-    image: assetUrl("/projects/realestate.png"),
+    image: assetUrl("/projects/realestate-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -270,7 +270,7 @@ export const projects = [
       • Location-based scraping with 7-day caching mechanism`,
     live: null,
     github: "https://github.com/Dey11/Tinder-scraper",
-    image: assetUrl("/projects/placeholder.png"),
+    image: assetUrl("/projects/placeholder-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -283,7 +283,7 @@ export const projects = [
       • Clean, minimalist design for reading experience`,
     live: "https://www.drites.site",
     github: "https://github.com/dey11/drites",
-    image: assetUrl("/projects/drites.png"),
+    image: assetUrl("/projects/drites-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -303,7 +303,7 @@ export const projects = [
       • Auto-generated chat titles based on conversation content`,
     live: "https://chatappui.vercel.app",
     github: "https://github.com/dey11/chatappui",
-    image: assetUrl("/projects/aichat.png"),
+    image: assetUrl("/projects/aichat-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -316,7 +316,7 @@ export const projects = [
       • Designed for desktop screens (1200px+)`,
     live: "https://dey-dashboard.vercel.app",
     github: "https://github.com/Dey11/dashboard-analytics-ui",
-    image: assetUrl("/projects/dashboard.png"),
+    image: assetUrl("/projects/dashboard-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -329,7 +329,7 @@ export const projects = [
       • Rate limiting and caching with Redis, Docker containerization`,
     live: null,
     github: "https://github.com/Dey11/Chat-System-Backend-with-Socketio",
-    image: assetUrl("/projects/placeholder.png"),
+    image: assetUrl("/projects/placeholder-2026-11-25.webp"),
     createdAt: "2025",
   },
   {
@@ -342,7 +342,7 @@ export const projects = [
       • Scheduled tasks with cron jobs for regular updates`,
     live: null,
     github: "https://github.com/Dey11/yunami",
-    image: assetUrl("/projects/placeholder.png"),
+    image: assetUrl("/projects/placeholder-2026-11-25.webp"),
     createdAt: "2023",
   },
 ];

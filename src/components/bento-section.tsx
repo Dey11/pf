@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence } from "motion/react";
-import { isPreSizedAsset } from "@/lib/assets";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import ProjectPopup from "./project-popup";
@@ -110,7 +109,6 @@ function BentoCard({
             src={thumbnail}
             alt=""
             fill
-            unoptimized={isPreSizedAsset(thumbnail)}
             sizes="(max-width: 1023px) 50vw, 28vw"
             className="object-cover object-top outline outline-1 -outline-offset-1 outline-white/10"
           />

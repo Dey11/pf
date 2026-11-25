@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["codevps.tailc7cd0f.ts.net"],
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
+    unoptimized: true,
     remotePatterns: [new URL(`${ASSET_BASE_URL}/**`)],
   },
 };

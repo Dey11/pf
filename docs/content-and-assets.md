@@ -54,6 +54,8 @@ assetUrl("/logos/stack/react.svg");
 
 `src/lib/assets.ts` strips duplicate slashes and joins the key to the configured public origin. External absolute URLs pass through unchanged.
 
+Next.js image optimization is disabled (`images.unoptimized` in `next.config.ts`) because the Vercel Hobby transformation quota ran out and returned 402 for uncached variants. Images are served as-is, so upload raster images as WebP sized for display: about 1600px wide for screenshots, 192px for stack and tech logos, and 64px for inline project logos.
+
 Uploaded assets use long-lived immutable caching. When image contents change, upload a new object key and update the source reference instead of overwriting the existing object. This avoids stale browser and edge caches.
 
 Use these key families consistently:

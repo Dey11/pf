@@ -86,13 +86,13 @@ I built PDX as a full-stack product and treated generation as a durable workflow
     duration: "Product build and BYOK relaunch",
     year: "2024",
     images: [
-      assetUrl("/projects/pdx/landing-v1.png"),
-      assetUrl("/projects/pdx/dashboard-v1.png"),
-      assetUrl("/projects/pdx/generate-theory-v1.png"),
-      assetUrl("/projects/pdx/byok-settings-v1.png"),
-      assetUrl("/projects/pdx/materials-v1.png"),
-      assetUrl("/projects/pdx/pricing-byok-v1.png"),
-      assetUrl("/projects/pdx/computer-networks-output-v1.png"),
+      assetUrl("/projects/pdx/landing-v1-2026-11-25.webp"),
+      assetUrl("/projects/pdx/dashboard-v1-2026-11-25.webp"),
+      assetUrl("/projects/pdx/generate-theory-v1-2026-11-25.webp"),
+      assetUrl("/projects/pdx/byok-settings-v1-2026-11-25.webp"),
+      assetUrl("/projects/pdx/materials-v1-2026-11-25.webp"),
+      assetUrl("/projects/pdx/pricing-byok-v1-2026-11-25.webp"),
+      assetUrl("/projects/pdx/computer-networks-output-v1-2026-11-25.webp"),
     ],
   },
   2: {
@@ -136,19 +136,19 @@ This was freelance client work. I optimized for a launch-stage local business: f
     images: [
       {
         src: assetUrl(
-          "/projects/external/ballarat-landing-desktop-2026-09-10.jpg",
+          "/projects/external/ballarat-landing-desktop-2026-09-10-2026-11-25.webp",
         ),
         width: 1440,
         height: 896,
       },
-      assetUrl("/projects/external/hanabi-ballarat-2.png"),
+      assetUrl("/projects/external/hanabi-ballarat-2-2026-11-25.webp"),
       assetUrl("/projects/external/ballarat-site-sports.webp"),
       assetUrl("/projects/external/ballarat-site-features.webp"),
       assetUrl("/projects/external/ballarat-site-formats.webp"),
       assetUrl("/projects/external/ballarat-site-about.webp"),
       assetUrl("/projects/external/ballarat-site-contact.webp"),
       assetUrl("/projects/external/ballarat-site-pricing.webp"),
-      assetUrl("/projects/external/hanabi-ballarat-3.png"),
+      assetUrl("/projects/external/hanabi-ballarat-3-2026-11-25.webp"),
     ],
   },
   4: {
@@ -197,7 +197,7 @@ This was built in a hackathon/team context, and the repo credits me as Lead Deve
     status: "Live",
     duration: "Hackathon build",
     year: "2025",
-    images: [assetUrl("/projects/venturassist.png")],
+    images: [assetUrl("/projects/venturassist-2026-11-25.webp")],
   },
   5: {
     id: "project-05-wabisabi",
@@ -238,11 +238,11 @@ This was freelance frontend work for a visual agency. I kept the project as a fa
     duration: "Agency site",
     year: "2025",
     images: [
-      assetUrl("/projects/external/hanabi-wabisabi-1.png"),
-      assetUrl("/projects/external/hanabi-wabisabi-2.png"),
-      assetUrl("/projects/external/hanabi-wabisabi-3.png"),
+      assetUrl("/projects/external/hanabi-wabisabi-1-2026-11-25.webp"),
+      assetUrl("/projects/external/hanabi-wabisabi-2-2026-11-25.webp"),
+      assetUrl("/projects/external/hanabi-wabisabi-3-2026-11-25.webp"),
     ],
-    thumbnail: assetUrl("/projects/external/hanabi-wabisabi-1.png"),
+    thumbnail: assetUrl("/projects/external/hanabi-wabisabi-1-2026-11-25.webp"),
   },
   8: {
     id: "project-08-tinder-scraper",
@@ -283,7 +283,9 @@ This was a solo take-home style systems project. I separated controllers, servic
     status: "Archived",
     duration: "Assignment",
     year: "2025",
-    images: [assetUrl("/projects/external/tinder-architecture.png")],
+    images: [
+      assetUrl("/projects/external/tinder-architecture-2026-11-25.webp"),
+    ],
   },
   13: {
     id: "project-13-chat-backend",
@@ -409,17 +411,23 @@ This is a solo WIP systems prototype where my role is best framed as AI systems 
     year: "2026",
     images: [
       {
-        src: assetUrl("/projects/directorscut/landing-desktop-2026-09-10.png"),
-        width: 2856,
-        height: 1780,
+        src: assetUrl(
+          "/projects/directorscut/landing-desktop-2026-09-10-2026-11-25.webp",
+        ),
+        width: 1600,
+        height: 997,
       },
       {
-        src: assetUrl("/projects/directorscut/create-desktop-2026-09-10.png"),
-        width: 2852,
-        height: 1774,
+        src: assetUrl(
+          "/projects/directorscut/create-desktop-2026-09-10-2026-11-25.webp",
+        ),
+        width: 1600,
+        height: 995,
       },
     ],
-    thumbnail: assetUrl("/projects/directorscut/create-desktop-2026-09-10.png"),
+    thumbnail: assetUrl(
+      "/projects/directorscut/create-desktop-2026-09-10-2026-11-25.webp",
+    ),
   },
   17: {
     id: "project-17-puckchat",
@@ -471,7 +479,7 @@ This is a solo personal AI product. I designed it around persistent state and co
     images: [
       {
         src: assetUrl(
-          "/projects/external/puckchat-home-desktop-2026-08-30.png",
+          "/projects/external/puckchat-home-desktop-2026-08-30-2026-11-25.webp",
         ),
         width: 1440,
         height: 916,
@@ -525,23 +533,31 @@ This was substantial freelance full-stack work. I built it as a platform rather 
     duration: "Full-stack client platform",
     year: "2026",
     images: [
-      assetUrl("/projects/external/downthecove-home-desktop-2026-08-30.png"),
-      assetUrl("/projects/external/downthecove-pdp-desktop-2026-08-30.png"),
+      assetUrl(
+        "/projects/external/downthecove-home-desktop-2026-08-30-2026-11-25.webp",
+      ),
+      assetUrl(
+        "/projects/external/downthecove-pdp-desktop-2026-08-30-2026-11-25.webp",
+      ),
       {
         src: assetUrl(
-          "/projects/external/downthecove-pdp-mobile-full-2026-08-30.png",
+          "/projects/external/downthecove-pdp-mobile-full-2026-08-30-2026-11-25.webp",
         ),
         width: 780,
         height: 10940,
       },
       assetUrl(
-        "/projects/external/downthecove-cove-club-desktop-2026-08-30.png",
+        "/projects/external/downthecove-cove-club-desktop-2026-08-30-2026-11-25.webp",
       ),
-      assetUrl("/projects/external/downthecove-sign-in-desktop-2026-08-30.png"),
-      assetUrl("/projects/external/downthecove-cart-desktop-2026-08-30.png"),
+      assetUrl(
+        "/projects/external/downthecove-sign-in-desktop-2026-08-30-2026-11-25.webp",
+      ),
+      assetUrl(
+        "/projects/external/downthecove-cart-desktop-2026-08-30-2026-11-25.webp",
+      ),
     ],
     thumbnail: assetUrl(
-      "/projects/external/downthecove-home-desktop-2026-08-30.png",
+      "/projects/external/downthecove-home-desktop-2026-08-30-2026-11-25.webp",
     ),
   },
   19: {
@@ -587,22 +603,24 @@ This was freelance solo work for a small business. I chose a headless WooCommerc
     duration: "Small-business commerce",
     year: "2026",
     images: [
-      assetUrl("/projects/external/hanabi-thomasbewick-2.png"),
-      assetUrl("/projects/external/hanabi-thomasbewick-1.png"),
-      assetUrl("/projects/external/thomasbewick-pdp-desktop-2026-08-30.png"),
+      assetUrl("/projects/external/hanabi-thomasbewick-2-2026-11-25.webp"),
+      assetUrl("/projects/external/hanabi-thomasbewick-1-2026-11-25.webp"),
+      assetUrl(
+        "/projects/external/thomasbewick-pdp-desktop-2026-08-30-2026-11-25.webp",
+      ),
       {
         src: assetUrl(
-          "/projects/external/thomasbewick-pdp-mobile-full-2026-08-30.png",
+          "/projects/external/thomasbewick-pdp-mobile-full-2026-08-30-2026-11-25.webp",
         ),
         width: 780,
         height: 8366,
       },
       assetUrl(
-        "/projects/external/thomasbewick-checkout-desktop-2026-08-30.png",
+        "/projects/external/thomasbewick-checkout-desktop-2026-08-30-2026-11-25.webp",
       ),
       {
         src: assetUrl(
-          "/projects/external/thomasbewick-checkout-mobile-full-2026-08-30.png",
+          "/projects/external/thomasbewick-checkout-mobile-full-2026-08-30-2026-11-25.webp",
         ),
         width: 780,
         height: 5488,
@@ -649,10 +667,10 @@ This is freelance full-stack product work. I treated the import pipeline as the 
     duration: "Client product build",
     year: "2026",
     images: [
-      assetUrl("/projects/external/krish-trade-moai-1.jpg"),
-      assetUrl("/projects/external/krish-trade-moai-2.jpg"),
-      assetUrl("/projects/external/krish-trade-moai-3.jpg"),
-      assetUrl("/projects/external/krish-trade-moai-4.jpg"),
+      assetUrl("/projects/external/krish-trade-moai-1-2026-11-25.webp"),
+      assetUrl("/projects/external/krish-trade-moai-2-2026-11-25.webp"),
+      assetUrl("/projects/external/krish-trade-moai-3-2026-11-25.webp"),
+      assetUrl("/projects/external/krish-trade-moai-4-2026-11-25.webp"),
     ],
   },
   21: {
@@ -695,12 +713,12 @@ This was a frontend/product-design implementation for a studio brand. I kept pro
     duration: "Studio site",
     year: "2026",
     images: [
-      assetUrl("/projects/external/hanabi-site-1.png"),
-      assetUrl("/projects/external/hanabi-site-2.png"),
-      assetUrl("/projects/external/hanabi-site-3.png"),
-      assetUrl("/projects/external/hanabi-site-4.png"),
+      assetUrl("/projects/external/hanabi-site-1-2026-11-25.webp"),
+      assetUrl("/projects/external/hanabi-site-2-2026-11-25.webp"),
+      assetUrl("/projects/external/hanabi-site-3-2026-11-25.webp"),
+      assetUrl("/projects/external/hanabi-site-4-2026-11-25.webp"),
     ],
-    thumbnail: assetUrl("/projects/external/hanabi-site-1.png"),
+    thumbnail: assetUrl("/projects/external/hanabi-site-1-2026-11-25.webp"),
   },
   22: {
     id: "project-22-leadly",
@@ -745,14 +763,22 @@ This is a solo or very small-team SaaS build. I designed it around async workers
     duration: "SaaS build",
     year: "2026",
     images: [
-      assetUrl("/projects/external/hanabi-leadly-2.png"),
-      assetUrl("/projects/external/hanabi-leadly-1.png"),
-      assetUrl("/projects/external/leadly-leads-desktop-2026-08-30.png"),
-      assetUrl("/projects/external/leadly-icps-desktop-2026-08-30.png"),
-      assetUrl("/projects/external/leadly-monitors-desktop-2026-08-30.png"),
-      assetUrl("/projects/external/leadly-schedule-desktop-2026-08-30.png"),
+      assetUrl("/projects/external/hanabi-leadly-2-2026-11-25.webp"),
+      assetUrl("/projects/external/hanabi-leadly-1-2026-11-25.webp"),
       assetUrl(
-        "/projects/external/leadly-settings-billing-desktop-2026-08-30.png",
+        "/projects/external/leadly-leads-desktop-2026-08-30-2026-11-25.webp",
+      ),
+      assetUrl(
+        "/projects/external/leadly-icps-desktop-2026-08-30-2026-11-25.webp",
+      ),
+      assetUrl(
+        "/projects/external/leadly-monitors-desktop-2026-08-30-2026-11-25.webp",
+      ),
+      assetUrl(
+        "/projects/external/leadly-schedule-desktop-2026-08-30-2026-11-25.webp",
+      ),
+      assetUrl(
+        "/projects/external/leadly-settings-billing-desktop-2026-08-30-2026-11-25.webp",
       ),
     ],
   },
@@ -803,42 +829,42 @@ Commercial figures on the site are presented as indicative project information a
     images: [
       {
         src: assetUrl(
-          "/projects/external/mahindra-hero-desktop-2026-08-30.png",
+          "/projects/external/mahindra-hero-desktop-2026-08-30-2026-11-25.webp",
         ),
         width: 1440,
         height: 900,
       },
       {
         src: assetUrl(
-          "/projects/external/mahindra-overview-desktop-2026-08-30.png",
+          "/projects/external/mahindra-overview-desktop-2026-08-30-2026-11-25.webp",
         ),
         width: 1440,
         height: 900,
       },
       {
         src: assetUrl(
-          "/projects/external/mahindra-plans-desktop-2026-08-30.png",
+          "/projects/external/mahindra-plans-desktop-2026-08-30-2026-11-25.webp",
         ),
         width: 1440,
         height: 900,
       },
       {
         src: assetUrl(
-          "/projects/external/mahindra-location-desktop-2026-08-30.png",
+          "/projects/external/mahindra-location-desktop-2026-08-30-2026-11-25.webp",
         ),
         width: 1440,
         height: 900,
       },
       {
         src: assetUrl(
-          "/projects/external/mahindra-overview-mobile-2026-08-30.png",
+          "/projects/external/mahindra-overview-mobile-2026-08-30-2026-11-25.webp",
         ),
         width: 780,
         height: 1688,
       },
       {
         src: assetUrl(
-          "/projects/external/mahindra-plans-mobile-2026-08-30.png",
+          "/projects/external/mahindra-plans-mobile-2026-08-30-2026-11-25.webp",
         ),
         width: 780,
         height: 1688,
@@ -889,44 +915,50 @@ The product started in 2024 and was later modernized around Better Auth, Prisma 
     year: "2024",
     images: [
       {
-        src: assetUrl("/projects/external/drites-home-desktop-2026-08-30.png"),
+        src: assetUrl(
+          "/projects/external/drites-home-desktop-2026-08-30-2026-11-25.webp",
+        ),
         width: 1440,
         height: 900,
       },
       {
         src: assetUrl(
-          "/projects/external/drites-home-full-desktop-2026-08-30.png",
+          "/projects/external/drites-home-full-desktop-2026-08-30-2026-11-25.webp",
         ),
         width: 1440,
         height: 2431,
       },
       {
-        src: assetUrl("/projects/external/drites-posts-desktop-2026-08-30.png"),
+        src: assetUrl(
+          "/projects/external/drites-posts-desktop-2026-08-30-2026-11-25.webp",
+        ),
         width: 1440,
         height: 1071,
       },
       {
         src: assetUrl(
-          "/projects/external/drites-article-desktop-2026-08-30.png",
+          "/projects/external/drites-article-desktop-2026-08-30-2026-11-25.webp",
         ),
         width: 1440,
         height: 900,
       },
       {
         src: assetUrl(
-          "/projects/external/drites-sign-in-desktop-2026-08-30.png",
+          "/projects/external/drites-sign-in-desktop-2026-08-30-2026-11-25.webp",
         ),
         width: 1440,
         height: 900,
       },
       {
-        src: assetUrl("/projects/external/drites-home-mobile-2026-08-30.png"),
+        src: assetUrl(
+          "/projects/external/drites-home-mobile-2026-08-30-2026-11-25.webp",
+        ),
         width: 780,
         height: 1688,
       },
       {
         src: assetUrl(
-          "/projects/external/drites-article-mobile-2026-08-30.png",
+          "/projects/external/drites-article-mobile-2026-08-30-2026-11-25.webp",
         ),
         width: 780,
         height: 1688,

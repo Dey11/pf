@@ -1,6 +1,6 @@
 "use client";
 
-import { assetUrl, isPreSizedAsset } from "@/lib/assets";
+import { assetUrl } from "@/lib/assets";
 import {
   projectBoxesByInventoryId,
   projectImageSource,
@@ -16,7 +16,7 @@ type ProjectId = keyof typeof projectBoxesByInventoryId;
 const projectLogos: Partial<Record<ProjectId, string | null>> = {
   1: null,
   18: assetUrl("/landing-images/downthecove-logo.svg"),
-  19: assetUrl("/logos/thomasbewick.png"),
+  19: assetUrl("/logos/thomasbewick-2026-11-25.webp"),
   21: assetUrl("/landing-images/hanabi-logo.svg"),
   25: assetUrl("/logos/11auction-2026-11-25.webp"),
   26: assetUrl("/logos/monkeep-2026-11-25.webp"),
@@ -111,7 +111,6 @@ function ProjectMention({ projectId }: { projectId: ProjectId }) {
               src={logo}
               alt=""
               fill
-              unoptimized={isPreSizedAsset(logo)}
               sizes="24px"
               aria-hidden
               className="object-contain"
@@ -130,7 +129,6 @@ function ProjectMention({ projectId }: { projectId: ProjectId }) {
               src={preview}
               alt={`${project.name} project preview`}
               fill
-              unoptimized={isPreSizedAsset(preview)}
               sizes="256px"
               className="object-cover object-top outline outline-1 -outline-offset-1 outline-white/10"
             />
