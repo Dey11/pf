@@ -31,6 +31,9 @@ Baseline: previous `/projects` page from `origin/master` at commit `005a9c0`, da
 Added after the baseline inventory:
 
 24. mahindra beaconhill - https://github.com/Dey11/real-estate-web2/tree/original-design-replica
+25. 11auction (Genesis AI work, private repos) - https://11auction.com
+26. monkeep (personal, private repo) - https://monkeep.app
+27. acomodo (Genesis AI work, private repos) - https://acomodo.in
 
 ## Current homepage status
 

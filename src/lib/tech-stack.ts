@@ -13,6 +13,11 @@ export const techMeta = {
     logo: assetUrl("/logos/stack/postgresql.svg"),
   },
   react: { label: "React", logo: assetUrl("/logos/stack/react.svg") },
+  reactnative: {
+    label: "React Native",
+    logo: assetUrl("/logos/stack/react.svg"),
+  },
+  expo: { label: "Expo", logo: assetUrl("/logos/stack/expo.svg") },
   tailwindcss: {
     label: "Tailwind CSS",
     logo: assetUrl("/logos/stack/tailwindcss.svg"),
@@ -43,6 +48,10 @@ export const techMeta = {
   },
   python: { label: "Python", logo: assetUrl("/logos/stack/python.svg") },
   zod: { label: "Zod", logo: assetUrl("/logos/stack/zod.svg") },
+  cloudflare: {
+    label: "Cloudflare R2",
+    logo: assetUrl("/logos/stack/cloudflare.svg"),
+  },
 } as const;
 
 export type TechKey = keyof typeof techMeta;

@@ -419,9 +419,7 @@ This is a solo WIP systems prototype where my role is best framed as AI systems 
         height: 1774,
       },
     ],
-    thumbnail: assetUrl(
-      "/projects/directorscut/create-desktop-2026-09-10.png",
-    ),
+    thumbnail: assetUrl("/projects/directorscut/create-desktop-2026-09-10.png"),
   },
   17: {
     id: "project-17-puckchat",
@@ -935,6 +933,194 @@ The product started in 2024 and was later modernized around Better Auth, Prisma 
       },
     ],
   },
+  25: {
+    id: "project-25-11auction",
+    color: "bg-[#E8C547]",
+    name: "11auction",
+    cardSummary: "Live fantasy sports auction rooms",
+    tagline:
+      "real-time fantasy auctions on web, iOS, and android for 140k+ players",
+    description:
+      "A free-to-play fantasy sports auction platform where friends bid on real cricket and football players in live rooms, then score points from their real matches. 140k+ players have placed 28M+ bids across the website and the iOS and Android app.",
+    content: `## Overview
+
+11auction turns fantasy sports into auction night with friends. Managers join a live room, bid against each other on real cricket and football players under a shared timer, and then score points from those players' real matches. It runs on the web at 11auction.com and as a native app on the App Store and Google Play.
+
+## Scale
+
+- 140k+ players
+- 28M+ bids placed
+- Live rooms across IPL Season, Daily, and Playoff formats, the Women's T20, and football tournaments
+
+## What I built
+
+- The iOS and Android app in Expo/React Native: live bidding, lobbies and live chat with moderation, results, profiles, deep links from shared invites, and native haptics, menus, and switches
+- Snapshot-first auction sync shared by every tournament format, with heartbeat recovery, stall detection, and catch-up after the app resumes so every client sees the same room
+- A smaller live heartbeat: the payload went from 779 KB to 57 B after the room state was reworked
+- App performance work: virtualized player and room lists, countdowns that re-render on their own instead of the whole screen, polling that pauses when a screen is not in focus, and cached queries
+- Web work on the Next.js app, including Cache Components for instant navigation, bounded reads for heavy series screens, and self-hosted error tracking
+- Release tooling for the app: tagged builds, player-facing release notes, and store listing preparation
+
+## Role
+
+This is my main work at Genesis AI, built with a small team. I own most of the mobile app and a large share of the realtime sync and performance work across web and mobile.`,
+    url: "https://11auction.com",
+    github: null,
+    tags: [
+      "reactnative",
+      "expo",
+      "nextjs",
+      "typescript",
+      "supabase",
+      "postgresql",
+      "tanstackquery",
+    ],
+    type: "Work",
+    status: "Live",
+    duration: "Web and mobile product",
+    year: "2026",
+    images: [
+      assetUrl("/projects/external/11auction-home-desktop-2026-11-25.png"),
+      {
+        src: assetUrl(
+          "/projects/external/11auction-app-store-01-2026-11-25.png",
+        ),
+        width: 780,
+        height: 1695,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/11auction-app-store-02-2026-11-25.png",
+        ),
+        width: 780,
+        height: 1695,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/11auction-app-store-03-2026-11-25.png",
+        ),
+        width: 780,
+        height: 1695,
+      },
+      {
+        src: assetUrl(
+          "/projects/external/11auction-app-store-04-2026-11-25.png",
+        ),
+        width: 780,
+        height: 1695,
+      },
+    ],
+  },
+  26: {
+    id: "project-26-monkeep",
+    color: "bg-[#E0561F]",
+    foreground: "light",
+    name: "monkeep",
+    cardSummary: "Calm personal finance app",
+    tagline:
+      "ios and android finance app that turns statements into a clear money picture",
+    description:
+      "A personal finance app that turns bank and card statements and quick manual entries into an understandable picture of where money went, remembers corrections, and keeps budgets, an emergency fund, and insights in one calm place. No bank login needed.",
+    content: `## Overview
+
+Monkeep is my own personal finance app for iOS and Android. People import bank and card statements or add spending in seconds, and Monkeep turns that into a clear view of where their money went. It remembers corrections, so a merchant fixed once stays fixed. It does not ask for a bank login.
+
+## Product
+
+- Home with monthly spend, trends, and an emergency mode that shows how many months of savings remain
+- Budgets by category, activity, and insights that explain changes in plain language
+- Statement import with previews, duplicate checks, and merchant memory
+- Quick manual entries that save offline first and sync when the phone is back online, plus voice dictation for adding records
+- An emergency fund planner, a what-if simulator, and data export
+- AI suggestions that are always shown for review and never write financial records on their own
+- Monkeep Plus subscriptions through RevenueCat
+
+## Architecture
+
+The mobile app is built with Expo and React Native. Convex is the backend for the ledger, imports, notifications, support, and verified subscriptions, with Better Auth for sign-in. Money is stored in integer minor units with explicit currencies, and every record keeps its source evidence. A Next.js admin covers support and operations with MFA, and a separate landing page runs the waitlist.
+
+## Status
+
+Monkeep is in TestFlight and being prepared for its first App Store release.`,
+    url: "https://monkeep.app",
+    github: null,
+    tags: ["reactnative", "expo", "typescript", "aisdk", "nextjs"],
+    type: "Personal",
+    status: "In progress",
+    duration: "Mobile product build",
+    year: "2026",
+    images: [
+      assetUrl("/projects/monkeep-header-2026-11-25.png"),
+      {
+        src: assetUrl("/projects/monkeep-app-01-home-2026-11-25.png"),
+        width: 780,
+        height: 1696,
+      },
+      {
+        src: assetUrl("/projects/monkeep-app-02-budget-2026-11-25.png"),
+        width: 780,
+        height: 1696,
+      },
+      {
+        src: assetUrl("/projects/monkeep-app-03-activity-2026-11-25.png"),
+        width: 780,
+        height: 1696,
+      },
+      {
+        src: assetUrl("/projects/monkeep-app-04-insights-2026-11-25.png"),
+        width: 780,
+        height: 1696,
+      },
+      {
+        src: assetUrl("/projects/monkeep-app-06-simulator-2026-11-25.png"),
+        width: 780,
+        height: 1696,
+      },
+      assetUrl("/projects/monkeep-landing-desktop-2026-11-25.png"),
+    ],
+  },
+  27: {
+    id: "project-27-acomodo",
+    color: "bg-[#C4314B]",
+    foreground: "light",
+    name: "acomodo",
+    cardSummary: "Verified student accommodation",
+    tagline:
+      "student accommodation site published from google sheets with a media sync worker",
+    description:
+      "A student accommodation site for verified, fully managed rooms across Dublin, Limerick, and London. The team edits listings in Google Sheets, and the site publishes only verified snapshots with photos and videos synced from Drive.",
+    content: `## Overview
+
+Acomodo helps students find verified, fully managed rooms across Dublin, Limerick, and London, with 24 properties and 185 beds listed. Students browse by city, room type, and move-in month, open a property to see its rooms, and send an enquiry to the team.
+
+## How it works
+
+The Acomodo team manages the catalogue in Google Sheets. A separate Bun worker reads the workbook every five minutes and only accepts a change after two matching reads at least five minutes apart, so a half-edited sheet never reaches the public site. Failed or partial reads keep the last published data. The same worker finds new photos and videos in each property's Drive folder and imports them into private storage.
+
+## What I built
+
+- The Next.js site: home, browse with filters, property pages, how it works, about, and landlord pages
+- The snapshot sync worker with its two-read acceptance rule, workbook migration, and media import
+- Starting-rent logic that moves to the next cheapest room as rooms fill up
+- Enquiry and waitlist forms that confirm success only after the team email is accepted
+
+## Role
+
+Built at Genesis AI.`,
+    url: "https://acomodo.in",
+    github: null,
+    tags: ["nextjs", "typescript", "zod", "cloudflare", "resend"],
+    type: "Work",
+    status: "Live",
+    duration: "Client website",
+    year: "2026",
+    images: [
+      assetUrl("/projects/external/acomodo-home-desktop-2026-11-25.png"),
+      assetUrl("/projects/external/acomodo-browse-desktop-2026-11-25.png"),
+      assetUrl("/projects/external/acomodo-property-desktop-2026-11-25.png"),
+    ],
+    thumbnail: assetUrl("/projects/external/acomodo-home-tall-2026-11-25.png"),
+  },
 };
 
 export const projectCardHeightByWeight = {
@@ -954,6 +1140,7 @@ export const prioritizedProjectColumns: {
   // edge. Moai, PuckChat, and Directorscut sit at the foot of the columns
   // because they are still in progress.
   [
+    { weight: 5, projectId: 25 },
     { weight: 4, projectId: 18 },
     { weight: 3, projectId: 4 },
     { weight: 5, projectId: 8 },
@@ -965,9 +1152,11 @@ export const prioritizedProjectColumns: {
     { weight: 4, projectId: 5 },
     { weight: 4, projectId: 23 },
     { weight: 3, projectId: 2 },
+    { weight: 5, projectId: 26 },
     { weight: 3, projectId: 17 },
   ],
   [
+    { weight: 5, projectId: 27 },
     { weight: 5, projectId: 1 },
     { weight: 5, projectId: 21 },
     { weight: 5, projectId: 24 },

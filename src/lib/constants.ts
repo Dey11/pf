@@ -102,6 +102,11 @@ export const techStackItems = {
       name: "css",
       icon: assetUrl("/logos/css.png"),
     },
+    {
+      id: 6,
+      name: "expo",
+      icon: assetUrl("/logos/expo-2026-11-25.png"),
+    },
   ],
   backend: [
     {
@@ -118,6 +123,21 @@ export const techStackItems = {
       id: 3,
       name: "postgres",
       icon: assetUrl("/logos/postgresql.png"),
+    },
+    {
+      id: 4,
+      name: "supabase",
+      icon: assetUrl("/logos/supabase-2026-11-25.png"),
+    },
+    {
+      id: 5,
+      name: "prisma",
+      icon: assetUrl("/logos/prisma-2026-11-25.png"),
+    },
+    {
+      id: 6,
+      name: "redis",
+      icon: assetUrl("/logos/redis-2026-11-25.png"),
     },
   ],
   miscellaneous: [

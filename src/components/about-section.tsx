@@ -18,6 +18,8 @@ const projectLogos: Partial<Record<ProjectId, string | null>> = {
   18: assetUrl("/landing-images/downthecove-logo.svg"),
   19: assetUrl("/logos/thomasbewick.png"),
   21: assetUrl("/landing-images/hanabi-logo.svg"),
+  25: assetUrl("/logos/11auction-2026-11-25.png"),
+  26: assetUrl("/logos/monkeep-2026-11-25.png"),
 };
 
 function InlineFact({
@@ -191,12 +193,13 @@ export default function AboutSection() {
           >
             200k+ calls
           </InlineFact>
-          , and help run a free-to-play fantasy auction product used by{" "}
+          , and help build <ProjectMention projectId={25} />, a free-to-play
+          fantasy auction product used by{" "}
           <InlineFact
             icon={assetUrl("/logos/stack/supabase.svg")}
-            detail="Auction rooms across IPL, FIFA, and the Women's T20 World Cup."
+            detail="Live auction rooms across cricket and football tournaments, on the website and the iOS and Android app. 28M+ bids placed."
           >
-            130k+ players
+            140k+ players
           </InlineFact>
           . I am equally happy tracing a queue failure and moving a button two
           pixels because both can be the thing standing between a product and a
@@ -206,11 +209,13 @@ export default function AboutSection() {
         <p>
           Outside work, I keep building. <ProjectMention projectId={22} /> finds
           high-intent conversations on Reddit, <ProjectMention projectId={1} />{" "}
-          turns a syllabus into structured study material, and{" "}
-          <ProjectMention projectId={21} /> gives the visual side of my brain
-          somewhere to misbehave. I also freelance regularly for founders and
-          small teams. Recent builds include <ProjectMention projectId={18} />{" "}
-          and <ProjectMention projectId={19} />.
+          turns a syllabus into structured study material,{" "}
+          <ProjectMention projectId={26} /> makes sense of bank statements on
+          your phone, and <ProjectMention projectId={21} /> gives the visual
+          side of my brain somewhere to misbehave. I also freelance regularly
+          for founders and small teams. Recent builds include{" "}
+          <ProjectMention projectId={18} /> and{" "}
+          <ProjectMention projectId={19} />.
         </p>
 
         <p>
