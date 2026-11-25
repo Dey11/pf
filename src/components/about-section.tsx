@@ -186,15 +186,8 @@ export default function AboutSection() {
         </p>
 
         <p>
-          At work, I build and operate voice AI systems that have handled{" "}
-          <InlineFact
-            icon={assetUrl("/logos/stack/elevenlabs.svg")}
-            detail="Outbound voice agents, batch orchestration, transcript extraction, and custom CRM workflows."
-          >
-            200k+ calls
-          </InlineFact>
-          , and help build <ProjectMention projectId={25} />, a free-to-play
-          fantasy auction product used by{" "}
+          At work, I help build <ProjectMention projectId={25} />, a
+          free-to-play fantasy auction product used by{" "}
           <InlineFact
             icon={assetUrl("/logos/stack/supabase.svg")}
             detail="Live auction rooms across cricket and football tournaments, on the website and the iOS and Android app. 28M+ bids placed."
@@ -211,8 +204,8 @@ export default function AboutSection() {
           high-intent conversations on Reddit, <ProjectMention projectId={1} />{" "}
           turns a syllabus into structured study material,{" "}
           <ProjectMention projectId={26} /> makes sense of bank statements on
-          your phone, and <ProjectMention projectId={21} /> gives the visual
-          side of my brain somewhere to misbehave. I also freelance regularly
+          your phone, and <ProjectMention projectId={21} /> is the product
+          design and web development agency I run. I also freelance regularly
           for founders and small teams. Recent builds include{" "}
           <ProjectMention projectId={18} /> and{" "}
           <ProjectMention projectId={19} />.

@@ -27,7 +27,6 @@ const experiences: Experience[] = [
       "Shrank the live auction heartbeat payload from 779 KB to 57 B and rebuilt auction sync on a snapshot-first realtime architecture with heartbeat recovery and stall detection.",
       "Improved app performance with virtualized lists, isolated countdown renders, route-scoped polling, and cached queries.",
       "Built Acomodo, a student accommodation site that publishes verified rooms from Google Sheets snapshots and imports Drive media into private storage.",
-      "Build and operate voice AI systems that have handled 200k+ calls, including prompt design, CRM integration, lead-batch workflows, transcript extraction, and post-call automation.",
     ],
     tags: [
       "Next.js",
@@ -39,7 +38,6 @@ const experiences: Experience[] = [
       "Prisma",
       "Redis",
       "TanStack Query",
-      "ElevenLabs",
     ],
   },
   {
